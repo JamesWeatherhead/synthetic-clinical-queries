@@ -1,0 +1,69 @@
+{
+  "query_id": "450",
+  "timestamp": "2025-10-22T16:12:44.389722",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Optimal treatment regimen for a 63yo male with metastatic prostate cancer, Robert Smith, treated at St. Mary's Hospital on April 15th, 2021 (MRN: #RS-234567)?",
+  "ground_truth_phi": "NAME: Robert Smith | GEOGRAPHIC_LOCATION: St. Mary's Hospital | DATE: April 15th, 2021 | MEDICAL_RECORD_NUMBER: #RS-234567",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Optimal treatment regimen for a 63yo male with metastatic prostate cancer, [REDACTED_NAME], treated at [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE] (MRN: #[REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 75,
+      "end": 87,
+      "score": 0.85,
+      "text": "Robert Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 100,
+      "end": 119,
+      "score": 0.85,
+      "text": "St. Mary's Hospital",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 123,
+      "end": 139,
+      "score": 0.85,
+      "text": "April 15th, 2021",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 147,
+      "end": 156,
+      "score": 0.7,
+      "text": "RS-234567",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  }
+}

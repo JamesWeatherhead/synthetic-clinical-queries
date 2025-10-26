@@ -1,0 +1,60 @@
+{
+  "query_id": "263",
+  "timestamp": "2025-10-22T16:12:43.401791",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Erica N., a 35yo female with MS, seen at Cedar Sinai on 03/10/2023, what is the best rehab protocol for her symptoms?",
+  "ground_truth_phi": "NAME: Erica N. | GEOGRAPHIC_LOCATION: Cedar Sinai | DATE: 03/10/2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "[REDACTED_NAME], a 35yo female with MS, seen at [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE], what is the best rehab protocol for her symptoms?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 0,
+      "end": 8,
+      "score": 0.85,
+      "text": "Erica N.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 41,
+      "end": 52,
+      "score": 0.85,
+      "text": "Cedar Sinai",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 56,
+      "end": 66,
+      "score": 0.6,
+      "text": "03/10/2023",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  }
+}

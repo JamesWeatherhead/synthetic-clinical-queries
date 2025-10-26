@@ -1,0 +1,88 @@
+{
+  "query_id": "290",
+  "timestamp": "2025-10-23T09:56:09.490136",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the latest treatment options for a 62-year-old female with ALS, Sally T., who attended the rehab session at 1234 Elm St., Springfield, IL on April 10, 2023?",
+  "ground_truth_phi": "NAME: Sally T. | GEOGRAPHIC_LOCATION: 1234 Elm St., Springfield, IL | DATE: April 10, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "62",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999738872051239,
+      "begin_offset": 44,
+      "end_offset": 46
+    },
+    {
+      "text": "Sally T",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9913372993469238,
+      "begin_offset": 73,
+      "end_offset": 80
+    },
+    {
+      "text": "rehab",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.20153497159481049,
+      "begin_offset": 100,
+      "end_offset": 105
+    },
+    {
+      "text": "1234 Elm St",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.736620306968689,
+      "begin_offset": 117,
+      "end_offset": 128
+    },
+    {
+      "text": "Springfield, IL",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.1502505987882614,
+      "begin_offset": 131,
+      "end_offset": 146
+    },
+    {
+      "text": "April 10, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999924898147583,
+      "begin_offset": 150,
+      "end_offset": 164
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.6667",
+    "f1_score": "0.8000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 6
+}

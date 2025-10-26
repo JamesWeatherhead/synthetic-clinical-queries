@@ -1,0 +1,66 @@
+{
+  "query_id": "66",
+  "timestamp": "2025-10-23T09:55:43.319078",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Interactions between Warfarin and antibiotics for Anne-Marie B., who resides at 123 Maple Street, was admitted to St. Jude’s on April 21st, 2024?",
+  "ground_truth_phi": "NAME: Anne-Marie B. | GEOGRAPHIC_LOCATION: 123 Maple Street | GEOGRAPHIC_LOCATION: St. Jude’s | DATE: April 21st, 2024",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Anne-Marie B",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9825404286384583,
+      "begin_offset": 50,
+      "end_offset": 62
+    },
+    {
+      "text": "St. Jude’s",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9796764850616455,
+      "begin_offset": 114,
+      "end_offset": 124
+    },
+    {
+      "text": "April 21st, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998515844345093,
+      "begin_offset": 128,
+      "end_offset": 144
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "123 Maple Street"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 3
+}

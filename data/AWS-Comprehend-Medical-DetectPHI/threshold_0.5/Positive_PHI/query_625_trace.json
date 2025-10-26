@@ -1,0 +1,79 @@
+{
+  "query_id": "625",
+  "timestamp": "2025-10-23T09:56:45.786781",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the latest treatment protocols for a 63-year-old female with hypertension and chronic migraines, Rebecca L., who was seen at Cleveland Clinic on March 10th, 2023 (MRN: CL-456789)?",
+  "ground_truth_phi": "NAME: Rebecca L. | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: March 10th, 2023 | MEDICAL_RECORD_NUMBER: CL-456789",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "63",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999634861946106,
+      "begin_offset": 46,
+      "end_offset": 48
+    },
+    {
+      "text": "Rebecca L",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8163546919822693,
+      "begin_offset": 106,
+      "end_offset": 115
+    },
+    {
+      "text": "Cleveland Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9982048273086548,
+      "begin_offset": 134,
+      "end_offset": 150
+    },
+    {
+      "text": "March 10th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999809265136719,
+      "begin_offset": 154,
+      "end_offset": 170
+    },
+    {
+      "text": "456789",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6163269877433777,
+      "begin_offset": 180,
+      "end_offset": 186
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

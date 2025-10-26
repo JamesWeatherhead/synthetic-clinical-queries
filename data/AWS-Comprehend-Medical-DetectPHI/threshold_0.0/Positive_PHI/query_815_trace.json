@@ -1,0 +1,70 @@
+{
+  "query_id": "815",
+  "timestamp": "2025-10-23T09:57:04.555186",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Treatment options for a 60-year-old female with advanced non-small cell lung cancer, Ms. Angela K., currently admitted at Johns Hopkins Hospital as of February 14, 2022.",
+  "ground_truth_phi": "NAME: Ms. Angela K. | GEOGRAPHIC_LOCATION: Johns Hopkins Hospital | DATE: February 14, 2022",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "60",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995881915092468,
+      "begin_offset": 24,
+      "end_offset": 26
+    },
+    {
+      "text": "Angela K",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9852355718612671,
+      "begin_offset": 89,
+      "end_offset": 97
+    },
+    {
+      "text": "Johns Hopkins Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9910516738891602,
+      "begin_offset": 122,
+      "end_offset": 144
+    },
+    {
+      "text": "February 14, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9994876384735107,
+      "begin_offset": 151,
+      "end_offset": 168
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

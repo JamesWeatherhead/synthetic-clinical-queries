@@ -1,0 +1,69 @@
+{
+  "query_id": "343",
+  "timestamp": "2025-10-22T16:12:43.821292",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the recent ADA recommendations for managing diabetic neuropathy in patients like John D. who visited our New York office on April 7, 2023 (Health ID: HD-112233)?",
+  "ground_truth_phi": "NAME: John D. | GEOGRAPHIC_LOCATION: New York | DATE: April 7, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: HD-112233",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What are the recent ADA recommendations for managing diabetic neuropathy in patients like [REDACTED_NAME] who visited our [REDACTED_GEOGRAPHIC_LOCATION] office on [REDACTED_DATE] (Health ID: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 90,
+      "end": 97,
+      "score": 0.85,
+      "text": "John D.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 114,
+      "end": 122,
+      "score": 0.85,
+      "text": "New York",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 133,
+      "end": 146,
+      "score": 0.85,
+      "text": "April 7, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 159,
+      "end": 168,
+      "score": 0.7,
+      "text": "HD-112233",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  }
+}

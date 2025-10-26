@@ -1,0 +1,61 @@
+{
+  "query_id": "885",
+  "timestamp": "2025-10-23T09:57:11.677394",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Effectiveness of Esomeprazole vs. Omeprazole in managing GERD for patients similar to Samantha P., who visited our Houston clinic on June 20th, 2023?",
+  "ground_truth_phi": "NAME: Samantha P. | GEOGRAPHIC_LOCATION: Houston clinic | DATE: June 20th, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "Samantha P",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9975107908248901,
+      "begin_offset": 86,
+      "end_offset": 96
+    },
+    {
+      "text": "Houston clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9900816082954407,
+      "begin_offset": 115,
+      "end_offset": 129
+    },
+    {
+      "text": "June 20th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999840259552002,
+      "begin_offset": 133,
+      "end_offset": 148
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

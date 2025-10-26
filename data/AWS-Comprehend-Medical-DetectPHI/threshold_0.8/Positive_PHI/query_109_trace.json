@@ -1,0 +1,79 @@
+{
+  "query_id": "109",
+  "timestamp": "2025-10-23T09:55:47.876152",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "\"Recommendations for a 29-year-old female with Type 1 Diabetes, Samantha P., treated at Bellevue Hospital on December 12th, 2022 (MRN: BH-112233)?\"",
+  "ground_truth_phi": "NAME: Samantha P. | GEOGRAPHIC_LOCATION: Bellevue Hospital | DATE: December 12th, 2022 | MEDICAL_RECORD_NUMBER: BH-112233",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "29",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9994696974754333,
+      "begin_offset": 23,
+      "end_offset": 25
+    },
+    {
+      "text": "Samantha P",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9845091700553894,
+      "begin_offset": 64,
+      "end_offset": 74
+    },
+    {
+      "text": "Bellevue Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9821651577949524,
+      "begin_offset": 88,
+      "end_offset": 105
+    },
+    {
+      "text": "December 12th, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999980092048645,
+      "begin_offset": 109,
+      "end_offset": 128
+    },
+    {
+      "text": "112233",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8530777096748352,
+      "begin_offset": 138,
+      "end_offset": 144
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 5
+}

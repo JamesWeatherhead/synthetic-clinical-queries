@@ -1,0 +1,76 @@
+{
+  "query_id": "814",
+  "timestamp": "2025-10-22T16:12:46.308959",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommendations for managing a 40yo male with a history of stroke, Dr. Bob L. sent an email on May 5th, 2023 regarding this case.",
+  "ground_truth_phi": "NAME: Dr. Bob L. | DATE: May 5th, 2023 | EMAIL_ADDRESS: email",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Recommendations for managing a [REDACTED_DATE] male with a history of stroke, Dr. [REDACTED_NAME] sent an email on [REDACTED_DATE] regarding this case.",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 31,
+      "end": 35,
+      "score": 0.85,
+      "text": "40yo",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 71,
+      "end": 77,
+      "score": 0.85,
+      "text": "Bob L.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 95,
+      "end": 103,
+      "score": 0.85,
+      "text": "May 5th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 104,
+      "end": 108,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "EMAIL_ADDRESS",
+        "value": "email",
+        "start": 86,
+        "end": 91
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.6667",
+    "precision": "0.0000",
+    "f1_score": "0.0000"
+  }
+}

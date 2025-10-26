@@ -1,0 +1,79 @@
+{
+  "query_id": "924",
+  "timestamp": "2025-10-23T09:57:16.402507",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Side effects of Zoloft for a 29-year-old female diagnosed with PTSD, patient name Mary A., consulted at Stanford Health on January 10th, 2024 (Fax: 650-123-4567)?",
+  "ground_truth_phi": "NAME: Mary A. | GEOGRAPHIC_LOCATION: Stanford Health | DATE: January 10th, 2024 | FAX_NUMBER: 650-123-4567",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "29",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9962598085403442,
+      "begin_offset": 29,
+      "end_offset": 31
+    },
+    {
+      "text": "Mary A",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9682725667953491,
+      "begin_offset": 82,
+      "end_offset": 88
+    },
+    {
+      "text": "Stanford Health",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9779661297798157,
+      "begin_offset": 104,
+      "end_offset": 119
+    },
+    {
+      "text": "January 10th, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997562766075134,
+      "begin_offset": 123,
+      "end_offset": 141
+    },
+    {
+      "text": "650-123-4567",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9615911841392517,
+      "begin_offset": 148,
+      "end_offset": 160
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

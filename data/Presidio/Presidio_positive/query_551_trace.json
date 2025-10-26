@@ -1,0 +1,87 @@
+{
+  "query_id": "551",
+  "timestamp": "2025-10-22T16:12:44.944997",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Are there any trials available for a 34-year-old female with refractory Hodgkin's lymphoma, named Lisa W., treated at Johns Hopkins Hospital in Baltimore, MD, on October 5th, 2023?",
+  "ground_truth_phi": "NAME: Lisa W. | GEOGRAPHIC_LOCATION: Johns Hopkins Hospital in Baltimore, MD | DATE: October 5th, 2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Are there any trials available for a [REDACTED_DATE] female with refractory Hodgkin's lymphoma, named [REDACTED_NAME], treated at Johns Hopkins Hospital in [REDACTED_GEOGRAPHIC_LOCATION], [REDACTED_GEOGRAPHIC_LOCATION], on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 37,
+      "end": 48,
+      "score": 0.85,
+      "text": "34-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 98,
+      "end": 105,
+      "score": 0.85,
+      "text": "Lisa W.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 144,
+      "end": 153,
+      "score": 0.85,
+      "text": "Baltimore",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 155,
+      "end": 157,
+      "score": 0.85,
+      "text": "MD",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 162,
+      "end": 174,
+      "score": 0.85,
+      "text": "October 5th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 175,
+      "end": 179,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "recall": "1.0000",
+    "precision": "0.1667",
+    "f1_score": "0.2857"
+  }
+}

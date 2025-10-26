@@ -1,0 +1,53 @@
+{
+  "query_id": "193",
+  "timestamp": "2025-10-22T16:24:24.517676",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the differential diagnoses for an elevated INR in a 55-year-old woman who presented last week with fatigue and jaundice, in addition to a history of lupus diagnosed in 2015?",
+  "presidio_output": "What are the differential diagnoses for an elevated INR in a [REDACTED_DATE] woman who presented [REDACTED_DATE] with fatigue and jaundice, in addition to a history of lupus diagnosed in [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 61,
+      "end": 72,
+      "score": 0.85,
+      "text": "55-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 93,
+      "end": 102,
+      "score": 0.85,
+      "text": "last week",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 177,
+      "end": 181,
+      "score": 0.85,
+      "text": "2015",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 3,
+    "false_redactions_by_type": {
+      "DATE": 3
+    },
+    "status": "OVER_REDACTED"
+  }
+}

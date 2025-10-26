@@ -1,0 +1,73 @@
+{
+  "query_id": "597",
+  "timestamp": "2025-10-22T16:12:45.187798",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "eval for pt w/ hx of COPD, Mary Johnson, admitted to UCSF on Feb 15, 2023. need guidance on inhaler use. MRN: 982-12-34.",
+  "ground_truth_phi": "NAME: Mary Johnson | GEOGRAPHIC_LOCATION: UCSF | DATE: Feb 15, 2023 | MEDICAL_RECORD_NUMBER: 982-12-34",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "[REDACTED_NAME] hx of COPD, [REDACTED_NAME], admitted to UCSF on [REDACTED_DATE]. need guidance on inhaler use. MRN: 982-12-34.",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 0,
+      "end": 14,
+      "score": 0.85,
+      "text": "eval for pt w/",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 27,
+      "end": 39,
+      "score": 0.85,
+      "text": "Mary Johnson",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 61,
+      "end": 73,
+      "score": 0.85,
+      "text": "Feb 15, 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UCSF",
+        "start": 53,
+        "end": 57
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "982-12-34",
+        "start": 110,
+        "end": 119
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 3,
+    "recall": "0.5000",
+    "precision": "0.6667",
+    "f1_score": "0.5714"
+  }
+}

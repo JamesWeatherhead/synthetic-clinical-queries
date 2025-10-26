@@ -1,0 +1,70 @@
+{
+  "query_id": "633",
+  "timestamp": "2025-10-23T09:56:46.619927",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "pt seen by Dr. Sarah Lee at Cedar-Sinai on 02/25/2023 for management of COPD, what are the current GOLD guidelines? MRN: 98765432",
+  "ground_truth_phi": "NAME: Sarah Lee | GEOGRAPHIC_LOCATION: Cedar-Sinai | DATE: 02/25/2023 | MEDICAL_RECORD_NUMBER: 98765432",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Sarah Lee",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9993805885314941,
+      "begin_offset": 15,
+      "end_offset": 24
+    },
+    {
+      "text": "Cedar-Sinai",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9629493355751038,
+      "begin_offset": 28,
+      "end_offset": 39
+    },
+    {
+      "text": "02/25/2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999911785125732,
+      "begin_offset": 43,
+      "end_offset": 53
+    },
+    {
+      "text": "98765432",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9927045702934265,
+      "begin_offset": 121,
+      "end_offset": 129
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

@@ -1,0 +1,70 @@
+{
+  "query_id": "1039",
+  "timestamp": "2025-10-23T09:57:31.996893",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Latest treatment protocol for a 30-year-old female, Lisa B., who underwent spinal surgery at Mass General on April 10th, 2023. Her insurance number is INS-987654.",
+  "ground_truth_phi": "NAME: Lisa B. | GEOGRAPHIC_LOCATION: Mass General | DATE: April 10th, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: INS-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "30",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9949370622634888,
+      "begin_offset": 32,
+      "end_offset": 34
+    },
+    {
+      "text": "Lisa B",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9906067848205566,
+      "begin_offset": 52,
+      "end_offset": 58
+    },
+    {
+      "text": "April 10th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996159076690674,
+      "begin_offset": 109,
+      "end_offset": 125
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Mass General"
+      },
+      {
+        "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+        "value": "INS-987654"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 2,
+    "leaked_failures": 2,
+    "total_detected": 3,
+    "true_positives": 2,
+    "recall": "0.5000",
+    "precision": "0.6667",
+    "f1_score": "0.5714"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 3
+}

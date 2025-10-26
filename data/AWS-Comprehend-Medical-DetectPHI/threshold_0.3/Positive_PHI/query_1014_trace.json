@@ -1,0 +1,66 @@
+{
+  "query_id": "1014",
+  "timestamp": "2025-10-23T09:57:29.353536",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Treatment options for a 30-year-old female diagnosed with lupus, seen at Cedar Sinai on March 8, 2022 (ID#: LUP-98765)?",
+  "ground_truth_phi": "GEOGRAPHIC_LOCATION: Cedar Sinai | DATE: March 8, 2022 | UNIQUE_IDENTIFIER: LUP-98765",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "30",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9987125396728516,
+      "begin_offset": 24,
+      "end_offset": 26
+    },
+    {
+      "text": "Cedar Sinai",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9884999394416809,
+      "begin_offset": 73,
+      "end_offset": 84
+    },
+    {
+      "text": "March 8, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999856948852539,
+      "begin_offset": 88,
+      "end_offset": 101
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "UNIQUE_IDENTIFIER",
+        "value": "LUP-98765"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "true_positives": 2,
+    "recall": "0.6667",
+    "precision": "0.6667",
+    "f1_score": "0.6667"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

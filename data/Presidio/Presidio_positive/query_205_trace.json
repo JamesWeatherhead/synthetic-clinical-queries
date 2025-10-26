@@ -1,0 +1,82 @@
+{
+  "query_id": "205",
+  "timestamp": "2025-10-22T16:12:43.104944",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the current treatment options for a 55-year-old male with stage III colon cancer, David Smith, who presented at St. Mary's Hospital on March 22nd, 2023 (MRN: 98765AB)?",
+  "ground_truth_phi": "NAME: David Smith | GEOGRAPHIC_LOCATION: St. Mary's Hospital | DATE: March 22nd, 2023 | MEDICAL_RECORD_NUMBER: 98765AB",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What are the current treatment options for a [REDACTED_DATE] male with stage III colon cancer, [REDACTED_NAME], who presented at St. Mary's Hospital on [REDACTED_DATE] (MRN: 98765AB)?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 45,
+      "end": 56,
+      "score": 0.85,
+      "text": "55-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 91,
+      "end": 102,
+      "score": 0.85,
+      "text": "David Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 144,
+      "end": 155,
+      "score": 0.85,
+      "text": "March 22nd,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 156,
+      "end": 160,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "St. Mary's Hospital",
+        "start": 121,
+        "end": 140
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "98765AB",
+        "start": 167,
+        "end": 174
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 4,
+    "recall": "0.5000",
+    "precision": "0.2500",
+    "f1_score": "0.3333"
+  }
+}

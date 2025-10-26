@@ -1,0 +1,61 @@
+{
+  "query_id": "714",
+  "timestamp": "2025-10-23T09:56:54.146635",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "concerns about using amiodarone in pt w/ hx of CHF, referenced in John's notes from 09/12/2022 at St. Luke's. His email is john_doe@example.com.",
+  "ground_truth_phi": "NAME: John | DATE: 09/12/2022 | GEOGRAPHIC_LOCATION: St. Luke's | EMAIL_ADDRESS: john_doe@example.com",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "09/12/2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999943971633911,
+      "begin_offset": 84,
+      "end_offset": 94
+    },
+    {
+      "text": "St. Luke's",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.960609495639801,
+      "begin_offset": 98,
+      "end_offset": 108
+    },
+    {
+      "text": "john_doe@example.com",
+      "aws_type": "EMAIL",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999499320983887,
+      "begin_offset": 123,
+      "end_offset": 143
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

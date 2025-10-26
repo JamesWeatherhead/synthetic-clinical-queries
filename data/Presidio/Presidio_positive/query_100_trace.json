@@ -1,0 +1,73 @@
+{
+  "query_id": "100",
+  "timestamp": "2025-10-22T16:12:42.587400",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the current treatment options for a 65-year-old male, John Smith, with BPH seen at Glenview Clinic on Dec 15, 2022 (MRN: 87342GH)?",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: Glenview Clinic | DATE: Dec 15, 2022 | MEDICAL_RECORD_NUMBER: 87342GH",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What are the current treatment options for a [REDACTED_DATE] male, [REDACTED_NAME], with BPH seen at Glenview Clinic on [REDACTED_DATE] (MRN: 87342GH)?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 45,
+      "end": 56,
+      "score": 0.85,
+      "text": "65-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 63,
+      "end": 73,
+      "score": 0.85,
+      "text": "John Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 111,
+      "end": 123,
+      "score": 0.85,
+      "text": "Dec 15, 2022",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Glenview Clinic",
+        "start": 92,
+        "end": 107
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "87342GH",
+        "start": 130,
+        "end": 137
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 3,
+    "recall": "0.5000",
+    "precision": "0.6667",
+    "f1_score": "0.5714"
+  }
+}

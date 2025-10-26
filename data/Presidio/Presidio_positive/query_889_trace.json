@@ -1,0 +1,67 @@
+{
+  "query_id": "889",
+  "timestamp": "2025-10-22T16:12:46.706069",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the contraindications for prescribing Eliquis to a 70yo male, John N., who has a follow-up appointment at St. Mary's Hospital on May 8th, 2023?",
+  "ground_truth_phi": "NAME: John N. | GEOGRAPHIC_LOCATION: St. Mary's Hospital | DATE: May 8th, 2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "What are the contraindications for prescribing Eliquis to a 70yo male, [REDACTED_NAME], who has a follow-up appointment at St. Mary's Hospital on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 71,
+      "end": 78,
+      "score": 0.85,
+      "text": "John N.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 138,
+      "end": 146,
+      "score": 0.85,
+      "text": "May 8th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 147,
+      "end": 151,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "St. Mary's Hospital",
+        "start": 115,
+        "end": 134
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.6667",
+    "precision": "0.3333",
+    "f1_score": "0.4444"
+  }
+}

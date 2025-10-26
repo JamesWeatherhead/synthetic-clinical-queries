@@ -1,0 +1,54 @@
+{
+  "query_id": "857",
+  "timestamp": "2025-10-22T16:24:25.250562",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Effectiveness of Dapagliflozin vs. Empagliflozin in reducing cardiovascular outcomes in patients with Type 2 Diabetes diagnosed in 2019?",
+  "presidio_output": "Effectiveness of [REDACTED_NAME] vs. [REDACTED_NAME] in reducing cardiovascular outcomes in patients with Type 2 Diabetes diagnosed in [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 17,
+      "end": 30,
+      "score": 0.85,
+      "text": "Dapagliflozin",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 35,
+      "end": 48,
+      "score": 0.85,
+      "text": "Empagliflozin",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 131,
+      "end": 135,
+      "score": 0.85,
+      "text": "2019",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 3,
+    "false_redactions_by_type": {
+      "NAME": 2,
+      "DATE": 1
+    },
+    "status": "OVER_REDACTED"
+  }
+}

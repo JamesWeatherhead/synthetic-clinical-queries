@@ -1,0 +1,88 @@
+{
+  "query_id": "935",
+  "timestamp": "2025-10-23T09:57:18.305724",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Effective regimens for a 72yo male with COPD, Henry B., who was treated at St. Joseph's Hospital in Phoenix on March 30th, 2023 (Phone: 602-555-1234)?",
+  "ground_truth_phi": "NAME: Henry B. | GEOGRAPHIC_LOCATION: St. Joseph's Hospital in Phoenix | DATE: March 30th, 2023 | PHONE_NUMBER: 602-555-1234",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "72yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9992859959602356,
+      "begin_offset": 25,
+      "end_offset": 29
+    },
+    {
+      "text": "Henry B",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9758365154266357,
+      "begin_offset": 46,
+      "end_offset": 53
+    },
+    {
+      "text": "St. Joseph's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.988492488861084,
+      "begin_offset": 75,
+      "end_offset": 96
+    },
+    {
+      "text": "Phoenix",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9870719313621521,
+      "begin_offset": 100,
+      "end_offset": 107
+    },
+    {
+      "text": "March 30th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997923970222473,
+      "begin_offset": 111,
+      "end_offset": 127
+    },
+    {
+      "text": "602-555-1234",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9923847913742065,
+      "begin_offset": 136,
+      "end_offset": 148
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "0.8333",
+    "f1_score": "0.9091"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 6
+}

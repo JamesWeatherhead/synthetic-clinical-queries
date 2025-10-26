@@ -1,0 +1,79 @@
+{
+  "query_id": "194",
+  "timestamp": "2025-10-23T09:55:56.148737",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "guidelines on tx for 70yo male pt w/ hx of COPD & CHF, John D., admitted at Orlando Health April 2023 (MRN 765-4321), worried about metoprolol side efects.",
+  "ground_truth_phi": "NAME: John D. | GEOGRAPHIC_LOCATION: Orlando Health | DATE: April 2023 | MEDICAL_RECORD_NUMBER: 765-4321",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "70yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9952691197395325,
+      "begin_offset": 21,
+      "end_offset": 25
+    },
+    {
+      "text": "John D",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7727258205413818,
+      "begin_offset": 55,
+      "end_offset": 61
+    },
+    {
+      "text": "Orlando Health",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9822949171066284,
+      "begin_offset": 76,
+      "end_offset": 90
+    },
+    {
+      "text": "April 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9991382360458374,
+      "begin_offset": 91,
+      "end_offset": 101
+    },
+    {
+      "text": "765-4321",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7732844948768616,
+      "begin_offset": 107,
+      "end_offset": 115
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 5
+}

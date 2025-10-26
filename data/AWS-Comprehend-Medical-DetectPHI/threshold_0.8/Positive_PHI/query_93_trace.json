@@ -1,0 +1,75 @@
+{
+  "query_id": "93",
+  "timestamp": "2025-10-23T09:55:46.210509",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the recommendations for managing atrial fibrillation in a 72-year-old male, Robert Johnson, who was seen at Cleveland Clinic on February 3rd, 2023 (insurance ID: CL-987654)?",
+  "ground_truth_phi": "NAME: Robert Johnson | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: February 3rd, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: CL-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "72",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997016787528992,
+      "begin_offset": 67,
+      "end_offset": 69
+    },
+    {
+      "text": "Robert Johnson",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9993532299995422,
+      "begin_offset": 85,
+      "end_offset": 99
+    },
+    {
+      "text": "Cleveland Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9979921579360962,
+      "begin_offset": 117,
+      "end_offset": 133
+    },
+    {
+      "text": "February 3rd, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999446868896484,
+      "begin_offset": 137,
+      "end_offset": 155
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+        "value": "CL-987654"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 4
+}

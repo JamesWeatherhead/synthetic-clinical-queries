@@ -1,0 +1,60 @@
+{
+  "query_id": "874",
+  "timestamp": "2025-10-22T16:12:46.620151",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "tx options for pt dx'd w/ CHF & COPD, consult notes for Richard M. from Chicago on Sept 15 2022. what are the side efects of current meds?",
+  "ground_truth_phi": "NAME: Richard M. | GEOGRAPHIC_LOCATION: Chicago | DATE: Sept 15 2022",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "tx options for pt dx'd w/ CHF & COPD, consult notes for [REDACTED_NAME] from [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE]. what are the side efects of current meds?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 56,
+      "end": 66,
+      "score": 0.85,
+      "text": "Richard M.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 72,
+      "end": 79,
+      "score": 0.85,
+      "text": "Chicago",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 83,
+      "end": 95,
+      "score": 0.85,
+      "text": "Sept 15 2022",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  }
+}

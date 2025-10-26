@@ -1,0 +1,78 @@
+{
+  "query_id": "517",
+  "timestamp": "2025-10-22T16:12:44.765109",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Adverse effects of taking lisinopril for a 55-year-old male, David L. seen at our San Francisco clinic on July 10, 2022. Insurance number: 1234-567-890?",
+  "ground_truth_phi": "NAME: David L. | GEOGRAPHIC_LOCATION: San Francisco clinic | DATE: July 10, 2022 | HEALTH_PLAN_BENEFICIARY_NUMBER: 1234-567-890",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Adverse effects of taking lisinopril for a [REDACTED_DATE] male, [REDACTED_NAME] seen at our [REDACTED_GEOGRAPHIC_LOCATION] clinic on [REDACTED_DATE]. Insurance number: [REDACTED_PHONE_NUMBER]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 43,
+      "end": 54,
+      "score": 0.85,
+      "text": "55-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 61,
+      "end": 69,
+      "score": 0.85,
+      "text": "David L.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 82,
+      "end": 95,
+      "score": 0.85,
+      "text": "San Francisco",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 106,
+      "end": 119,
+      "score": 0.85,
+      "text": "July 10, 2022",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 139,
+      "end": 151,
+      "score": 0.75,
+      "text": "1234-567-890",
+      "recognizer": "PhoneRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.6000",
+    "f1_score": "0.7500"
+  }
+}

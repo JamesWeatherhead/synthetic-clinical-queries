@@ -1,0 +1,67 @@
+{
+  "query_id": "54",
+  "timestamp": "2025-10-22T16:12:42.318038",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Effectiveness of insulin pumps vs. injections in managing T1DM for a 20yo female, Anna, seen at Stanford Clinic on Apr 15, 2021, insurance plan #DB-2345678.",
+  "ground_truth_phi": "NAME: Anna | GEOGRAPHIC_LOCATION: Stanford Clinic | DATE: Apr 15, 2021 | HEALTH_PLAN_BENEFICIARY_NUMBER: #DB-2345678",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Effectiveness of insulin pumps vs. injections in managing T1DM for a 20yo female, [REDACTED_NAME], seen at Stanford Clinic on [REDACTED_DATE], insurance plan #[REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 82,
+      "end": 86,
+      "score": 0.85,
+      "text": "Anna",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 115,
+      "end": 127,
+      "score": 0.85,
+      "text": "Apr 15, 2021",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 145,
+      "end": 155,
+      "score": 0.7,
+      "text": "DB-2345678",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Stanford Clinic",
+        "start": 96,
+        "end": 111
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "0.6667",
+    "f1_score": "0.7059"
+  }
+}

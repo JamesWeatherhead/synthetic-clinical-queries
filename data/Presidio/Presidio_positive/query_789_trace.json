@@ -1,0 +1,76 @@
+{
+  "query_id": "789",
+  "timestamp": "2025-10-22T16:12:46.183199",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommendations for anticoagulation in pt w/ hx of AFib, seen by Dr. Smith at Cleveland Clinic on October 23rd, 2021. MRN is CC-98765 for ref.`",
+  "ground_truth_phi": "NAME: Dr. Smith | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: October 23rd, 2021 | MEDICAL_RECORD_NUMBER: CC-98765",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Recommendations for anticoagulation in pt w/ hx of AFib, seen by Dr. [REDACTED_NAME] at Cleveland Clinic on [REDACTED_DATE]. MRN is [REDACTED_NAME] for ref.`",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 69,
+      "end": 74,
+      "score": 0.85,
+      "text": "Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 98,
+      "end": 116,
+      "score": 0.85,
+      "text": "October 23rd, 2021",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 125,
+      "end": 133,
+      "score": 0.85,
+      "text": "CC-98765",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 125,
+      "end": 133,
+      "score": 0.7,
+      "text": "CC-98765",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Cleveland Clinic",
+        "start": 78,
+        "end": 94
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.5000",
+    "f1_score": "0.6000"
+  }
+}

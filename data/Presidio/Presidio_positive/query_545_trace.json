@@ -1,0 +1,64 @@
+{
+  "query_id": "545",
+  "timestamp": "2025-10-22T16:12:44.907887",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Updates on the management of chronic kidney disease in diabetic patients as per ADA guidelines, referencing case of John Smith at St. Mary's Hospital, admitted on December 12, 2022 (MRN: 12345ABC).",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: St. Mary's Hospital | DATE: December 12, 2022 | MEDICAL_RECORD_NUMBER: 12345ABC",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Updates on the management of chronic kidney disease in diabetic patients as per ADA guidelines, referencing case of [REDACTED_NAME] at St. Mary's Hospital, admitted on [REDACTED_DATE] (MRN: 12345ABC).",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 116,
+      "end": 126,
+      "score": 0.85,
+      "text": "John Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 163,
+      "end": 180,
+      "score": 0.85,
+      "text": "December 12, 2022",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "St. Mary's Hospital",
+        "start": 130,
+        "end": 149
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "12345ABC",
+        "start": 187,
+        "end": 195
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 2,
+    "recall": "0.5000",
+    "precision": "1.0000",
+    "f1_score": "0.6667"
+  }
+}

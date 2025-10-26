@@ -1,0 +1,70 @@
+{
+  "query_id": "581",
+  "timestamp": "2025-10-23T09:56:41.280936",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Recommended follow-up for a 50-year-old male with a positive colonoscopy result, Robert L., from Dallas, seen on April 12th, 2024 (Health Plan: HP-998877)?",
+  "ground_truth_phi": "NAME: Robert L. | GEOGRAPHIC_LOCATION: Dallas | DATE: April 12th, 2024 | HEALTH_PLAN_BENEFICIARY_NUMBER: HP-998877",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "50",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995836615562439,
+      "begin_offset": 28,
+      "end_offset": 30
+    },
+    {
+      "text": "Robert L",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9993771910667419,
+      "begin_offset": 81,
+      "end_offset": 89
+    },
+    {
+      "text": "April 12th, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995427131652832,
+      "begin_offset": 113,
+      "end_offset": 129
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Dallas"
+      },
+      {
+        "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+        "value": "HP-998877"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 2,
+    "leaked_failures": 2,
+    "total_detected": 3,
+    "true_positives": 2,
+    "recall": "0.5000",
+    "precision": "0.6667",
+    "f1_score": "0.5714"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 3
+}

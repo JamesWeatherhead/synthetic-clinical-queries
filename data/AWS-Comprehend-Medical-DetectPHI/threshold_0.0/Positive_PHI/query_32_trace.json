@@ -1,0 +1,97 @@
+{
+  "query_id": "32",
+  "timestamp": "2025-10-23T09:55:39.801893",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Recommended treatment protocol for 64yo female, Lisa G., diagnosed with COPD, admitted to the ICU at St. Joseph's Hospital on September 22nd, 2022 (MRN: SJH-123456)?",
+  "ground_truth_phi": "NAME: Lisa G. | GEOGRAPHIC_LOCATION: St. Joseph's Hospital | DATE: September 22nd, 2022 | MEDICAL_RECORD_NUMBER: SJH-123456",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "64yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.993678867816925,
+      "begin_offset": 35,
+      "end_offset": 39
+    },
+    {
+      "text": "Lisa G",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9961289167404175,
+      "begin_offset": 48,
+      "end_offset": 54
+    },
+    {
+      "text": "ICU",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9986733198165894,
+      "begin_offset": 94,
+      "end_offset": 97
+    },
+    {
+      "text": "St. Joseph's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9894354343414307,
+      "begin_offset": 101,
+      "end_offset": 122
+    },
+    {
+      "text": "September 22nd, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.99993896484375,
+      "begin_offset": 126,
+      "end_offset": 146
+    },
+    {
+      "text": "SJH",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8817616701126099,
+      "begin_offset": 153,
+      "end_offset": 156
+    },
+    {
+      "text": "123456",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7544920444488525,
+      "begin_offset": 157,
+      "end_offset": 163
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 7,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "0.7143",
+    "f1_score": "0.8333"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 7,
+  "aws_entities_filtered_count": 7
+}

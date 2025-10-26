@@ -1,0 +1,69 @@
+{
+  "query_id": "745",
+  "timestamp": "2025-10-22T16:12:45.936794",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "help needed for managing pt w/ hx of CHF & hypothyroidism, similar to case of Michael B. from clinic in Dallas, last seen Jan 20, 2023. his insurance ID is 98765432.",
+  "ground_truth_phi": "NAME: Michael B. | GEOGRAPHIC_LOCATION: Dallas | DATE: Jan 20, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: 98765432",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "help needed for managing pt w/ hx of CHF & hypothyroidism, similar to case of [REDACTED_NAME] from clinic in [REDACTED_GEOGRAPHIC_LOCATION], last seen [REDACTED_DATE]. his insurance ID is [REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 78,
+      "end": 88,
+      "score": 0.85,
+      "text": "Michael B.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 104,
+      "end": 110,
+      "score": 0.85,
+      "text": "Dallas",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 122,
+      "end": 134,
+      "score": 0.85,
+      "text": "Jan 20, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 156,
+      "end": 164,
+      "score": 0.5,
+      "text": "98765432",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  }
+}

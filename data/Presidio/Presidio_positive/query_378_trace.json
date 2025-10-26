@@ -1,0 +1,67 @@
+{
+  "query_id": "378",
+  "timestamp": "2025-10-22T16:12:44.026311",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Contraindications for starting warfarin therapy in a 63-year-old female, Emily H., who had a knee replacement at General Hospital on March 15, 2022?",
+  "ground_truth_phi": "NAME: Emily H. | GEOGRAPHIC_LOCATION: General Hospital | DATE: March 15, 2022",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Contraindications for starting warfarin therapy in a [REDACTED_DATE] female, [REDACTED_NAME], who had a knee replacement at General Hospital on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 53,
+      "end": 64,
+      "score": 0.85,
+      "text": "63-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 73,
+      "end": 81,
+      "score": 0.85,
+      "text": "Emily H.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 133,
+      "end": 147,
+      "score": 0.85,
+      "text": "March 15, 2022",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "General Hospital",
+        "start": 113,
+        "end": 129
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.6667",
+    "precision": "0.6667",
+    "f1_score": "0.6667"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "query_id": "858",
+  "timestamp": "2025-10-23T09:57:09.246329",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "best alt. for pt w/ HTN, see hx of Michael T., tx'd at Stanford on Feb 10 2023, doc mentioned amlodipine contraindication, ins: ZY-567890.",
+  "ground_truth_phi": "NAME: Michael T. | GEOGRAPHIC_LOCATION: Stanford | DATE: Feb 10 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: ZY-567890",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Michael T",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9956621527671814,
+      "begin_offset": 35,
+      "end_offset": 44
+    },
+    {
+      "text": "Stanford",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9950643181800842,
+      "begin_offset": 55,
+      "end_offset": 63
+    },
+    {
+      "text": "Feb 10 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9981347322463989,
+      "begin_offset": 67,
+      "end_offset": 78
+    },
+    {
+      "text": "567890",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6382865309715271,
+      "begin_offset": 131,
+      "end_offset": 137
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

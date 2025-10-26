@@ -1,0 +1,79 @@
+{
+  "query_id": "494",
+  "timestamp": "2025-10-23T09:56:31.913419",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the side effects of incobotulinumtoxinA in a 50-year-old male patient, Peter A., who was seen at Mt. Sinai hospital on February 1st, 2023 (email: peter.a@example.com)?",
+  "ground_truth_phi": "NAME: Peter A. | GEOGRAPHIC_LOCATION: Mt. Sinai hospital | DATE: February 1st, 2023 | EMAIL_ADDRESS: peter.a@example.com",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "50",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9984645843505859,
+      "begin_offset": 54,
+      "end_offset": 56
+    },
+    {
+      "text": "Peter A",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8235017657279968,
+      "begin_offset": 80,
+      "end_offset": 87
+    },
+    {
+      "text": "Mt. Sinai hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9954259991645813,
+      "begin_offset": 106,
+      "end_offset": 124
+    },
+    {
+      "text": "February 1st, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999279975891113,
+      "begin_offset": 128,
+      "end_offset": 146
+    },
+    {
+      "text": "peter.a@example.com",
+      "aws_type": "EMAIL",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999496936798096,
+      "begin_offset": 155,
+      "end_offset": 174
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

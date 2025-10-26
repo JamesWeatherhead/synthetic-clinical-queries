@@ -1,0 +1,79 @@
+{
+  "query_id": "430",
+  "timestamp": "2025-10-23T09:56:24.887992",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Updated treatment options for chronic migraine in a 32-year-old female, Sarah T., who was admitted to Bellevue Hospital on April 15th, 2023 (MRN: B123-456).",
+  "ground_truth_phi": "NAME: Sarah T. | GEOGRAPHIC_LOCATION: Bellevue Hospital | DATE: April 15th, 2023 | MEDICAL_RECORD_NUMBER: B123-456",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "32",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9992378950119019,
+      "begin_offset": 52,
+      "end_offset": 54
+    },
+    {
+      "text": "Sarah T",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9784473776817322,
+      "begin_offset": 72,
+      "end_offset": 79
+    },
+    {
+      "text": "Bellevue Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9862059950828552,
+      "begin_offset": 102,
+      "end_offset": 119
+    },
+    {
+      "text": "April 15th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9992496371269226,
+      "begin_offset": 123,
+      "end_offset": 139
+    },
+    {
+      "text": "B123-456",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8446738719940186,
+      "begin_offset": 146,
+      "end_offset": 154
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

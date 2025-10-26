@@ -1,0 +1,75 @@
+{
+  "query_id": "450",
+  "timestamp": "2025-10-23T09:56:26.911437",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Optimal treatment regimen for a 63yo male with metastatic prostate cancer, Robert Smith, treated at St. Mary's Hospital on April 15th, 2021 (MRN: #RS-234567)?",
+  "ground_truth_phi": "NAME: Robert Smith | GEOGRAPHIC_LOCATION: St. Mary's Hospital | DATE: April 15th, 2021 | MEDICAL_RECORD_NUMBER: #RS-234567",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "63yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999500036239624,
+      "begin_offset": 32,
+      "end_offset": 36
+    },
+    {
+      "text": "Robert Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9982163310050964,
+      "begin_offset": 75,
+      "end_offset": 87
+    },
+    {
+      "text": "St. Mary's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9891815781593323,
+      "begin_offset": 100,
+      "end_offset": 119
+    },
+    {
+      "text": "April 15th, 2021",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998582601547241,
+      "begin_offset": 123,
+      "end_offset": 139
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "#RS-234567"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 4
+}

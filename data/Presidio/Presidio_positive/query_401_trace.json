@@ -1,0 +1,69 @@
+{
+  "query_id": "401",
+  "timestamp": "2025-10-22T16:12:44.153696",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Best practices for managing hypertension in a 55-year-old male patient, Robert Smith (phone: 123-456-7890), with a new diagnosis on February 20, 2024?",
+  "ground_truth_phi": "NAME: Robert Smith | PHONE_NUMBER: 123-456-7890 | DATE: February 20, 2024",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Best practices for managing hypertension in a [REDACTED_DATE] male patient, [REDACTED_NAME] (phone: [REDACTED_PHONE_NUMBER]), with a new diagnosis on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 46,
+      "end": 57,
+      "score": 0.85,
+      "text": "55-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 72,
+      "end": 84,
+      "score": 0.85,
+      "text": "Robert Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 132,
+      "end": 149,
+      "score": 0.85,
+      "text": "February 20, 2024",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 93,
+      "end": 105,
+      "score": 0.75,
+      "text": "123-456-7890",
+      "recognizer": "PhoneRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  }
+}

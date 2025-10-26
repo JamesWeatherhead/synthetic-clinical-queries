@@ -1,0 +1,79 @@
+{
+  "query_id": "733",
+  "timestamp": "2025-10-23T09:56:55.764381",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Current protocols for managing acute myocardial infarction in a 55-year-old male, Richard T., who presented to Cedar Clinic on September 20th, 2023 (MRN: CT-123456)?",
+  "ground_truth_phi": "NAME: Richard T. | GEOGRAPHIC_LOCATION: Cedar Clinic | DATE: September 20th, 2023 | MEDICAL_RECORD_NUMBER: CT-123456",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "55",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999450445175171,
+      "begin_offset": 64,
+      "end_offset": 66
+    },
+    {
+      "text": "Richard T",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9968603849411011,
+      "begin_offset": 82,
+      "end_offset": 91
+    },
+    {
+      "text": "Cedar Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9978219270706177,
+      "begin_offset": 111,
+      "end_offset": 123
+    },
+    {
+      "text": "September 20th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999138116836548,
+      "begin_offset": 127,
+      "end_offset": 147
+    },
+    {
+      "text": "CT-123456)",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9647060036659241,
+      "begin_offset": 154,
+      "end_offset": 164
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

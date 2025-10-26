@@ -1,0 +1,78 @@
+{
+  "query_id": "709",
+  "timestamp": "2025-10-22T16:12:45.764467",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "guidelines for tx of 52yo F w/ hx of epilepsy. prev. admitted at Cedars-Sinai on Aug 7th, 2023. doc noted similar case as Lauren P. insurance ID LP-987654.",
+  "ground_truth_phi": "GEOGRAPHIC_LOCATION: Cedars-Sinai | DATE: Aug 7th, 2023 | NAME: Lauren P. | HEALTH_PLAN_BENEFICIARY_NUMBER: LP-987654",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "guidelines for tx of 52yo F w/ hx of epilepsy. prev. admitted at [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE]. doc noted similar case as [REDACTED_NAME] insurance ID [REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 65,
+      "end": 77,
+      "score": 0.85,
+      "text": "Cedars-Sinai",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 81,
+      "end": 89,
+      "score": 0.85,
+      "text": "Aug 7th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 90,
+      "end": 94,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 122,
+      "end": 131,
+      "score": 0.85,
+      "text": "Lauren P.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 145,
+      "end": 154,
+      "score": 0.7,
+      "text": "LP-987654",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.6000",
+    "f1_score": "0.7500"
+  }
+}

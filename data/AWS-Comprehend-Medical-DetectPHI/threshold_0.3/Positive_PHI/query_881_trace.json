@@ -1,0 +1,66 @@
+{
+  "query_id": "881",
+  "timestamp": "2025-10-23T09:57:11.318705",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Recommended treatment options for a 70-year-old male with chronic atrial fibrillation, similar to Robert Q., cared for at St. Luke's Medical Center last year?",
+  "ground_truth_phi": "NAME: Robert Q. | GEOGRAPHIC_LOCATION: St. Luke's Medical Center | DATE: last year",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "70",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996386766433716,
+      "begin_offset": 36,
+      "end_offset": 38
+    },
+    {
+      "text": "Robert Q",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.908181369304657,
+      "begin_offset": 98,
+      "end_offset": 106
+    },
+    {
+      "text": "St. Luke's Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9634761214256287,
+      "begin_offset": 122,
+      "end_offset": 147
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "DATE",
+        "value": "last year"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "true_positives": 2,
+    "recall": "0.6667",
+    "precision": "0.6667",
+    "f1_score": "0.6667"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

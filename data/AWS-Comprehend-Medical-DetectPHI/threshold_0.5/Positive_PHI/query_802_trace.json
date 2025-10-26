@@ -1,0 +1,61 @@
+{
+  "query_id": "802",
+  "timestamp": "2025-10-23T09:57:03.159548",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the latest treatment guidelines for managing multiple myeloma in a 65-year-old female, Debra K., diagnosed on April 22, 2024?",
+  "ground_truth_phi": "NAME: Debra K. | DATE: April 22, 2024",
+  "ground_truth_phi_count": 2,
+  "aws_entities_detected": [
+    {
+      "text": "65",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997895359992981,
+      "begin_offset": 76,
+      "end_offset": 78
+    },
+    {
+      "text": "Debra K",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9957249164581299,
+      "begin_offset": 96,
+      "end_offset": 103
+    },
+    {
+      "text": "April 22, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998867511749268,
+      "begin_offset": 119,
+      "end_offset": 133
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 2,
+    "successfully_detected": 2,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "true_positives": 2,
+    "recall": "1.0000",
+    "precision": "0.6667",
+    "f1_score": "0.8000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

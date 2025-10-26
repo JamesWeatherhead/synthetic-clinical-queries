@@ -1,0 +1,78 @@
+{
+  "query_id": "579",
+  "timestamp": "2025-10-22T16:12:45.094340",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guidelines for treating pediatric asthma in a 10-year-old child, Sam W., living in Chicago, Illinois, who was seen in our clinic on August 1st, 2022.",
+  "ground_truth_phi": "NAME: Sam W. | GEOGRAPHIC_LOCATION: Chicago, Illinois | DATE: August 1st, 2022",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Guidelines for treating pediatric asthma in a [REDACTED_DATE] child, [REDACTED_NAME], living in [REDACTED_GEOGRAPHIC_LOCATION], [REDACTED_GEOGRAPHIC_LOCATION], who was seen in our clinic on [REDACTED_DATE].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 46,
+      "end": 57,
+      "score": 0.85,
+      "text": "10-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 65,
+      "end": 71,
+      "score": 0.85,
+      "text": "Sam W.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 83,
+      "end": 90,
+      "score": 0.85,
+      "text": "Chicago",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 92,
+      "end": 100,
+      "score": 0.85,
+      "text": "Illinois",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 132,
+      "end": 148,
+      "score": 0.85,
+      "text": "August 1st, 2022",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.4000",
+    "f1_score": "0.5714"
+  }
+}

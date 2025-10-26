@@ -1,0 +1,67 @@
+{
+  "query_id": "704",
+  "timestamp": "2025-10-22T16:12:45.732875",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "pt w/ hx of COPD & HTN, Alex R., f/u at Sunrise Clinic on Feb 14th 2024. Questions about ACE inhibitors. ref# 784-55-2943.",
+  "ground_truth_phi": "NAME: Alex R. | GEOGRAPHIC_LOCATION: Sunrise Clinic | DATE: Feb 14th 2024 | SOCIAL_SECURITY_NUMBER: 784-55-2943",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "pt w/ hx of COPD & HTN, [REDACTED_NAME], f/u at Sunrise Clinic on [REDACTED_DATE]. Questions about ACE inhibitors. ref# [REDACTED_SOCIAL_SECURITY_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 24,
+      "end": 31,
+      "score": 0.85,
+      "text": "Alex R.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 58,
+      "end": 71,
+      "score": 0.85,
+      "text": "Feb 14th 2024",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "US_SSN",
+      "hipaa_category": "SOCIAL_SECURITY_NUMBER",
+      "start": 110,
+      "end": 121,
+      "score": 0.5,
+      "text": "784-55-2943",
+      "recognizer": "UsSsnRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Sunrise Clinic",
+        "start": 40,
+        "end": 54
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "query_id": "575",
+  "timestamp": "2025-10-23T09:56:40.501453",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Management of chronic atrial fibrillation in a 70-year-old male, Martin L., admitted to Mount Sinai on July 15, 2023 (MRN: 12345678)?",
+  "ground_truth_phi": "NAME: Martin L. | GEOGRAPHIC_LOCATION: Mount Sinai | DATE: July 15, 2023 | MEDICAL_RECORD_NUMBER: 12345678",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "70",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997209906578064,
+      "begin_offset": 47,
+      "end_offset": 49
+    },
+    {
+      "text": "Martin L",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9954865574836731,
+      "begin_offset": 65,
+      "end_offset": 73
+    },
+    {
+      "text": "Mount Sinai",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9922693967819214,
+      "begin_offset": 88,
+      "end_offset": 99
+    },
+    {
+      "text": "July 15, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999784231185913,
+      "begin_offset": 103,
+      "end_offset": 116
+    },
+    {
+      "text": "12345678",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9965954422950745,
+      "begin_offset": 123,
+      "end_offset": 131
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

@@ -1,0 +1,70 @@
+{
+  "query_id": "409",
+  "timestamp": "2025-10-23T09:56:22.903107",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best anticoagulation therapy for a 68-year-old male with atrial fibrillation, Martin L., currently admitted to New York Presbyterian Hospital, MRN: NYP-112233.",
+  "ground_truth_phi": "NAME: Martin L. | GEOGRAPHIC_LOCATION: New York Presbyterian Hospital | MEDICAL_RECORD_NUMBER: NYP-112233",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "68",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9994094371795654,
+      "begin_offset": 35,
+      "end_offset": 37
+    },
+    {
+      "text": "Martin L",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9891065955162048,
+      "begin_offset": 78,
+      "end_offset": 86
+    },
+    {
+      "text": "New York Presbyterian Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9975601434707642,
+      "begin_offset": 111,
+      "end_offset": 141
+    },
+    {
+      "text": "NYP-112233",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.44536763429641724,
+      "begin_offset": 148,
+      "end_offset": 158
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

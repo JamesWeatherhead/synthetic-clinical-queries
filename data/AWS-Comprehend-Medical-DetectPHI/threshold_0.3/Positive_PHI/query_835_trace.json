@@ -1,0 +1,70 @@
+{
+  "query_id": "835",
+  "timestamp": "2025-10-23T09:57:06.673987",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Recommendations for managing chronic migraines in a 34-year-old woman, Jennifer R., who has been treated at Stanford Health Care since March 3rd, 2021?",
+  "ground_truth_phi": "NAME: Jennifer R. | GEOGRAPHIC_LOCATION: Stanford Health Care | DATE: March 3rd, 2021",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "34",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999055862426758,
+      "begin_offset": 52,
+      "end_offset": 54
+    },
+    {
+      "text": "Jennifer R",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.914138674736023,
+      "begin_offset": 71,
+      "end_offset": 81
+    },
+    {
+      "text": "Stanford Health Care",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9653925895690918,
+      "begin_offset": 108,
+      "end_offset": 128
+    },
+    {
+      "text": "March 3rd, 2021",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999825954437256,
+      "begin_offset": 135,
+      "end_offset": 150
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

@@ -1,0 +1,79 @@
+{
+  "query_id": "73",
+  "timestamp": "2025-10-23T09:55:43.962237",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the side effects of atorvastatin in a 60-year-old male patient, Michael Brown, seen at the Miami Clinic on March 1st, 2023 (Email: mbrown@example.com)?",
+  "ground_truth_phi": "NAME: Michael Brown | GEOGRAPHIC_LOCATION: Miami Clinic | DATE: March 1st, 2023 | EMAIL_ADDRESS: mbrown@example.com",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "60",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.993236243724823,
+      "begin_offset": 47,
+      "end_offset": 49
+    },
+    {
+      "text": "Michael Brown",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.998537540435791,
+      "begin_offset": 73,
+      "end_offset": 86
+    },
+    {
+      "text": "Miami Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9954853653907776,
+      "begin_offset": 100,
+      "end_offset": 112
+    },
+    {
+      "text": "March 1st, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999754428863525,
+      "begin_offset": 116,
+      "end_offset": 131
+    },
+    {
+      "text": "mbrown@example.com",
+      "aws_type": "EMAIL",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999756813049316,
+      "begin_offset": 140,
+      "end_offset": 158
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

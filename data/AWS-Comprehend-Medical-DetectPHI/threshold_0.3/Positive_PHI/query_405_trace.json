@@ -1,0 +1,70 @@
+{
+  "query_id": "405",
+  "timestamp": "2025-10-23T09:56:22.377396",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best practices for managing post-stroke rehabilitation in a 72-year-old female, Maria S., who was admitted to Good Samaritan Hospital on April 12, 2023.",
+  "ground_truth_phi": "NAME: Maria S. | GEOGRAPHIC_LOCATION: Good Samaritan Hospital | DATE: April 12, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "72",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9984857439994812,
+      "begin_offset": 60,
+      "end_offset": 62
+    },
+    {
+      "text": "Maria S",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9785659909248352,
+      "begin_offset": 80,
+      "end_offset": 87
+    },
+    {
+      "text": "Good Samaritan Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.5110026597976685,
+      "begin_offset": 110,
+      "end_offset": 133
+    },
+    {
+      "text": "April 12, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998106360435486,
+      "begin_offset": 137,
+      "end_offset": 151
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

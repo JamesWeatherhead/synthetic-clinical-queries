@@ -1,0 +1,70 @@
+{
+  "query_id": "292",
+  "timestamp": "2025-10-23T09:56:09.817773",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the recommended follow-up protocols for a 70-year-old female, Emily G., after hip replacement surgery performed at St. Luke's Hospital on September 21, 2021?",
+  "ground_truth_phi": "NAME: Emily G. | GEOGRAPHIC_LOCATION: St. Luke's Hospital | DATE: September 21, 2021",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "70",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9989499449729919,
+      "begin_offset": 51,
+      "end_offset": 53
+    },
+    {
+      "text": "Emily G",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9797975420951843,
+      "begin_offset": 71,
+      "end_offset": 78
+    },
+    {
+      "text": "St. Luke's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.99128258228302,
+      "begin_offset": 124,
+      "end_offset": 143
+    },
+    {
+      "text": "September 21, 2021",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999630451202393,
+      "begin_offset": 147,
+      "end_offset": 165
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

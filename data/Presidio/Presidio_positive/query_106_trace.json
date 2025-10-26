@@ -1,0 +1,69 @@
+{
+  "query_id": "106",
+  "timestamp": "2025-10-22T16:12:42.614761",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "\"Contraindications for prescribing lisinopril to a 60-year-old male with a history of heart disease, James K., visit date March 15, 2022, at Houston Memorial.\"",
+  "ground_truth_phi": "NAME: James K. | GEOGRAPHIC_LOCATION: Houston Memorial | DATE: March 15, 2022",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "\"Contraindications for prescribing lisinopril to a [REDACTED_DATE] male with a history of heart disease, [REDACTED_NAME], visit [REDACTED_DATE], at [REDACTED_GEOGRAPHIC_LOCATION].\"",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 51,
+      "end": 62,
+      "score": 0.85,
+      "text": "60-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 101,
+      "end": 109,
+      "score": 0.85,
+      "text": "James K.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 117,
+      "end": 136,
+      "score": 0.85,
+      "text": "date March 15, 2022",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 141,
+      "end": 157,
+      "score": 0.85,
+      "text": "Houston Memorial",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "0.5000",
+    "f1_score": "0.6667"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "query_id": "334",
+  "timestamp": "2025-10-22T16:12:43.770163",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Tx options for 75yo female DX'd w/ osteoporosis, Mary A., evaluated at Johns Hopkins on 9/15/2023. Also, her phone number is 410-555-1234.",
+  "ground_truth_phi": "NAME: Mary A. | GEOGRAPHIC_LOCATION: Johns Hopkins | DATE: 9/15/2023 | PHONE_NUMBER: 410-555-1234",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Tx options for [REDACTED_DATE] female DX'd w/ osteoporosis, [REDACTED_NAME], evaluated at Johns Hopkins on [REDACTED_DATE]. Also, her phone number is [REDACTED_PHONE_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 15,
+      "end": 19,
+      "score": 0.85,
+      "text": "75yo",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 49,
+      "end": 56,
+      "score": 0.85,
+      "text": "Mary A.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 125,
+      "end": 137,
+      "score": 0.75,
+      "text": "410-555-1234",
+      "recognizer": "PhoneRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 88,
+      "end": 97,
+      "score": 0.6,
+      "text": "9/15/2023",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Johns Hopkins",
+        "start": 71,
+        "end": 84
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

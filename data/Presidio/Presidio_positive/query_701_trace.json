@@ -1,0 +1,91 @@
+{
+  "query_id": "701",
+  "timestamp": "2025-10-22T16:12:45.716675",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Current treatment recommendations for hypertension in a 60-year-old African American male, Michael B., evaluated at Houston General Hospital on July 8th, 2023 (MRN: H678934).",
+  "ground_truth_phi": "NAME: Michael B. | GEOGRAPHIC_LOCATION: Houston General Hospital | DATE: July 8th, 2023 | MEDICAL_RECORD_NUMBER: H678934",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Current treatment recommendations for hypertension in a [REDACTED_DATE] [REDACTED_NRP] male, [REDACTED_NAME], evaluated at Houston General Hospital on [REDACTED_DATE] (MRN: H678934).",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 56,
+      "end": 67,
+      "score": 0.85,
+      "text": "60-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "NRP",
+      "hipaa_category": "NRP",
+      "start": 68,
+      "end": 84,
+      "score": 0.85,
+      "text": "African American",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 91,
+      "end": 101,
+      "score": 0.85,
+      "text": "Michael B.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 144,
+      "end": 153,
+      "score": 0.85,
+      "text": "July 8th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 154,
+      "end": 158,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Houston General Hospital",
+        "start": 116,
+        "end": 140
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "H678934",
+        "start": 165,
+        "end": 172
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 5,
+    "recall": "0.5000",
+    "precision": "0.2000",
+    "f1_score": "0.2857"
+  }
+}

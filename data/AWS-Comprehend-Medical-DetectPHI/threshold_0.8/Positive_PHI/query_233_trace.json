@@ -1,0 +1,66 @@
+{
+  "query_id": "233",
+  "timestamp": "2025-10-23T09:56:00.905415",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "current EBM for pt w/ hx of CHF, seen at Harborview Medical. Name: Sam K., DOB: 04/22/1955. He has insurance id: PL-987654321.",
+  "ground_truth_phi": "NAME: Sam K. | DATE: 04/22/1955 | HEALTH_PLAN_BENEFICIARY_NUMBER: PL-987654321 | GEOGRAPHIC_LOCATION: Harborview Medical",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Sam K",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9990049004554749,
+      "begin_offset": 67,
+      "end_offset": 72
+    },
+    {
+      "text": "04/22/1955",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999487400054932,
+      "begin_offset": 80,
+      "end_offset": 90
+    },
+    {
+      "text": "987654321",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9710038304328918,
+      "begin_offset": 116,
+      "end_offset": 125
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Harborview Medical"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 3
+}

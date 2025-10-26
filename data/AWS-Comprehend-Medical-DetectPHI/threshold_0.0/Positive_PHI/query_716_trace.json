@@ -1,0 +1,79 @@
+{
+  "query_id": "716",
+  "timestamp": "2025-10-23T09:56:54.403713",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the current treatment options for a 62-year-old male with newly diagnosed ALS, John Smith, who presented to Johns Hopkins University Hospital on April 15th, 2024 (MRN: 12345-JHU)?",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: Johns Hopkins University Hospital | DATE: April 15th, 2024 | MEDICAL_RECORD_NUMBER: 12345-JHU",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "62",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998600482940674,
+      "begin_offset": 45,
+      "end_offset": 47
+    },
+    {
+      "text": "John Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9982485771179199,
+      "begin_offset": 88,
+      "end_offset": 98
+    },
+    {
+      "text": "Johns Hopkins University Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.982668399810791,
+      "begin_offset": 117,
+      "end_offset": 150
+    },
+    {
+      "text": "April 15th, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996311664581299,
+      "begin_offset": 154,
+      "end_offset": 170
+    },
+    {
+      "text": "12345",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.06808676570653915,
+      "begin_offset": 177,
+      "end_offset": 182
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

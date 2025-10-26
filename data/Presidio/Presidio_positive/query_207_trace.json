@@ -1,0 +1,76 @@
+{
+  "query_id": "207",
+  "timestamp": "2025-10-22T16:12:43.113791",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommended anticoagulation therapy for an 80-year-old male patient, Robert L., seen at Johns Hopkins on April 15th, 2024 (MRN: #HJ-1234567), with a history of atrial fibrillation and recent stroke?",
+  "ground_truth_phi": "NAME: Robert L. | GEOGRAPHIC_LOCATION: Johns Hopkins | DATE: April 15th, 2024 | MEDICAL_RECORD_NUMBER: #HJ-1234567",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Recommended anticoagulation therapy for an [REDACTED_DATE] male patient, [REDACTED_NAME], seen at Johns Hopkins on [REDACTED_DATE] (MRN: #[REDACTED_MEDICAL_RECORD_NUMBER]), with a history of atrial fibrillation and recent stroke?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 43,
+      "end": 54,
+      "score": 0.85,
+      "text": "80-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 69,
+      "end": 78,
+      "score": 0.85,
+      "text": "Robert L.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 105,
+      "end": 121,
+      "score": 0.85,
+      "text": "April 15th, 2024",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 129,
+      "end": 139,
+      "score": 0.7,
+      "text": "HJ-1234567",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Johns Hopkins",
+        "start": 88,
+        "end": 101
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.5000",
+    "f1_score": "0.6000"
+  }
+}

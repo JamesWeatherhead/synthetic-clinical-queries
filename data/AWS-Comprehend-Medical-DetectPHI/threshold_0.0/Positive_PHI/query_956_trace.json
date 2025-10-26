@@ -1,0 +1,79 @@
+{
+  "query_id": "956",
+  "timestamp": "2025-10-23T09:57:21.120631",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Current treatment options for a 70-year-old male with stage IV colon cancer, John Smith, evaluated at Cedar Sinai on March 15th, 2023 (MRN: CS-789123)?",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: Cedar Sinai | DATE: March 15th, 2023 | MEDICAL_RECORD_NUMBER: CS-789123",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "70",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996788501739502,
+      "begin_offset": 32,
+      "end_offset": 34
+    },
+    {
+      "text": "John Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9990153312683105,
+      "begin_offset": 77,
+      "end_offset": 87
+    },
+    {
+      "text": "Cedar Sinai",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9934501051902771,
+      "begin_offset": 102,
+      "end_offset": 113
+    },
+    {
+      "text": "March 15th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999575614929199,
+      "begin_offset": 117,
+      "end_offset": 133
+    },
+    {
+      "text": "789123",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.5209460854530334,
+      "begin_offset": 143,
+      "end_offset": 149
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

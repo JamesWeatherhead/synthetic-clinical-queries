@@ -1,0 +1,85 @@
+{
+  "query_id": "1039",
+  "timestamp": "2025-10-22T16:12:47.508687",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Latest treatment protocol for a 30-year-old female, Lisa B., who underwent spinal surgery at Mass General on April 10th, 2023. Her insurance number is INS-987654.",
+  "ground_truth_phi": "NAME: Lisa B. | GEOGRAPHIC_LOCATION: Mass General | DATE: April 10th, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: INS-987654",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Latest treatment protocol for a [REDACTED_DATE] female, [REDACTED_NAME], who underwent spinal surgery at Mass General on [REDACTED_DATE]. Her insurance number is [REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 32,
+      "end": 43,
+      "score": 0.85,
+      "text": "30-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 52,
+      "end": 59,
+      "score": 0.85,
+      "text": "Lisa B.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 109,
+      "end": 120,
+      "score": 0.85,
+      "text": "April 10th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 121,
+      "end": 125,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 151,
+      "end": 161,
+      "score": 0.7,
+      "text": "INS-987654",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Mass General",
+        "start": 93,
+        "end": 105
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.4000",
+    "f1_score": "0.5217"
+  }
+}

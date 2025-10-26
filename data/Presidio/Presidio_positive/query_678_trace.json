@@ -1,0 +1,76 @@
+{
+  "query_id": "678",
+  "timestamp": "2025-10-22T16:12:45.614242",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Exercise recommendations for a 65yo woman, Maria G., post-MI, treated at Mass General on 05/09/2023. Follow-up visit scheduled for next month.",
+  "ground_truth_phi": "NAME: Maria G. | GEOGRAPHIC_LOCATION: Mass General | DATE: 05/09/2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Exercise recommendations for a 65yo woman, [REDACTED_NAME], [REDACTED_NRP], treated at Mass General on [REDACTED_DATE]. Follow-up visit scheduled for [REDACTED_DATE].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 43,
+      "end": 51,
+      "score": 0.85,
+      "text": "Maria G.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "NRP",
+      "hipaa_category": "NRP",
+      "start": 53,
+      "end": 60,
+      "score": 0.85,
+      "text": "post-MI",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 131,
+      "end": 141,
+      "score": 0.85,
+      "text": "next month",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 89,
+      "end": 99,
+      "score": 0.6,
+      "text": "05/09/2023",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Mass General",
+        "start": 73,
+        "end": 85
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.6667",
+    "precision": "0.5000",
+    "f1_score": "0.5714"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "query_id": "985",
+  "timestamp": "2025-10-23T09:57:25.109806",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Current treatment protocols for epilepsy in a 25-year-old female named Emily Brown, diagnosed at Mount Sinai Hospital on February 10, 2023 (MRN: 11223344)?",
+  "ground_truth_phi": "NAME: Emily Brown | GEOGRAPHIC_LOCATION: Mount Sinai Hospital | DATE: February 10, 2023 | MEDICAL_RECORD_NUMBER: 11223344",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "25",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.993462085723877,
+      "begin_offset": 46,
+      "end_offset": 48
+    },
+    {
+      "text": "Emily Brown",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9979228377342224,
+      "begin_offset": 71,
+      "end_offset": 82
+    },
+    {
+      "text": "Mount Sinai Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9957236051559448,
+      "begin_offset": 97,
+      "end_offset": 117
+    },
+    {
+      "text": "February 10, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999680519104004,
+      "begin_offset": 121,
+      "end_offset": 138
+    },
+    {
+      "text": "11223344",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9954416751861572,
+      "begin_offset": 145,
+      "end_offset": 153
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

@@ -1,0 +1,70 @@
+{
+  "query_id": "383",
+  "timestamp": "2025-10-23T09:56:20.076513",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "rec. tx for pt w/ hx of HTN & CAD, see notes for Michael J., seen at UCSF on Feb 2nd 2022. concerned about drug interactions w/ lisinopril. his plan is HP-987654.",
+  "ground_truth_phi": "NAME: Michael J. | GEOGRAPHIC_LOCATION: UCSF | DATE: Feb 2nd 2022 | HEALTH_PLAN_BENEFICIARY_NUMBER: HP-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Michael J",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9942352175712585,
+      "begin_offset": 49,
+      "end_offset": 58
+    },
+    {
+      "text": "UCSF",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.949277937412262,
+      "begin_offset": 69,
+      "end_offset": 73
+    },
+    {
+      "text": "Feb 2nd 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9967838525772095,
+      "begin_offset": 77,
+      "end_offset": 89
+    },
+    {
+      "text": "987654",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7604833245277405,
+      "begin_offset": 155,
+      "end_offset": 161
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

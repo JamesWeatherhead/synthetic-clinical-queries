@@ -1,0 +1,58 @@
+{
+  "query_id": "57",
+  "timestamp": "2025-10-22T16:12:42.336547",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "s/p THA, pt Sarah L., Methodist Hospital, post-op fever day 2, what are best practices?",
+  "ground_truth_phi": "NAME: Sarah L. | GEOGRAPHIC_LOCATION: Methodist Hospital",
+  "ground_truth_phi_count": 2,
+  "presidio_output": "s/p THA, pt [REDACTED_NAME], Methodist Hospital, post-op fever [REDACTED_DATE], what are best practices?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 12,
+      "end": 20,
+      "score": 0.85,
+      "text": "Sarah L.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 56,
+      "end": 61,
+      "score": 0.85,
+      "text": "day 2",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Methodist Hospital",
+        "start": 22,
+        "end": 40
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 2,
+    "successfully_redacted": 1,
+    "leaked_failures": 1,
+    "total_detected": 2,
+    "recall": "0.5000",
+    "precision": "0.5000",
+    "f1_score": "0.5000"
+  }
+}

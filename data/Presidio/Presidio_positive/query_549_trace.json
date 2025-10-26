@@ -1,0 +1,69 @@
+{
+  "query_id": "549",
+  "timestamp": "2025-10-22T16:12:44.928612",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommendations for post-op care following cardiac surgery in 65yo male, Michael H., seen at Cedar Sinai on 2023-11-14. His MRN is 007-654321.",
+  "ground_truth_phi": "NAME: Michael H. | GEOGRAPHIC_LOCATION: Cedar Sinai | DATE: 2023-11-14 | MEDICAL_RECORD_NUMBER: 007-654321",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Recommendations for post-op care following cardiac surgery in 65yo male, [REDACTED_NAME], seen at [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE]. His MRN is 007-[REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 73,
+      "end": 83,
+      "score": 0.85,
+      "text": "Michael H.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 93,
+      "end": 104,
+      "score": 0.85,
+      "text": "Cedar Sinai",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 108,
+      "end": 118,
+      "score": 0.85,
+      "text": "2023-11-14",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 135,
+      "end": 141,
+      "score": 0.5,
+      "text": "654321",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  }
+}

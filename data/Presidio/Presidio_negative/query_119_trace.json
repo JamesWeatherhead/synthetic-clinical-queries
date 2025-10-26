@@ -1,0 +1,53 @@
+{
+  "query_id": "119",
+  "timestamp": "2025-10-22T16:24:24.411279",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What is the recommended dosage of metformin for a 50-year-old female with a BMI over 30, newly diagnosed with Type 2 Diabetes last month?",
+  "presidio_output": "What is the recommended dosage of metformin for a [REDACTED_DATE] female with a BMI over [REDACTED_DATE], newly diagnosed with Type 2 Diabetes [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 50,
+      "end": 61,
+      "score": 0.85,
+      "text": "50-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 85,
+      "end": 87,
+      "score": 0.85,
+      "text": "30",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 126,
+      "end": 136,
+      "score": 0.85,
+      "text": "last month",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 3,
+    "false_redactions_by_type": {
+      "DATE": 3
+    },
+    "status": "OVER_REDACTED"
+  }
+}

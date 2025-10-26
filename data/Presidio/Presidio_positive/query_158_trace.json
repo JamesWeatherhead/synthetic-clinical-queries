@@ -1,0 +1,78 @@
+{
+  "query_id": "158",
+  "timestamp": "2025-10-22T16:12:42.890095",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Latest ACC/AHA guidelines for anticoagulation management in a patient with atrial fibrillation, Mr. John Williams, who was evaluated at Mount Sinai Hospital on Sept 15th, 2023. His insurance ID is ABC-987654.",
+  "ground_truth_phi": "NAME: John Williams | GEOGRAPHIC_LOCATION: Mount Sinai Hospital | DATE: Sept 15th, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: ABC-987654",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Latest ACC/AHA guidelines for anticoagulation management in a patient with atrial fibrillation, Mr. [REDACTED_NAME], who was evaluated at [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE]. His insurance ID is [REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 100,
+      "end": 113,
+      "score": 0.85,
+      "text": "John Williams",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 136,
+      "end": 156,
+      "score": 0.85,
+      "text": "Mount Sinai Hospital",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 160,
+      "end": 170,
+      "score": 0.85,
+      "text": "Sept 15th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 171,
+      "end": 175,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 197,
+      "end": 207,
+      "score": 0.7,
+      "text": "ABC-987654",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.6000",
+    "f1_score": "0.7500"
+  }
+}

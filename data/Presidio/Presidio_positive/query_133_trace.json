@@ -1,0 +1,64 @@
+{
+  "query_id": "133",
+  "timestamp": "2025-10-22T16:12:42.748046",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "concern about rx of warfarin in a 56yo pt named Daniel Cruz, seen at Brigham & Women’s on 08/22, with MRN DX-54321. hx of DVT.",
+  "ground_truth_phi": "NAME: Daniel Cruz | GEOGRAPHIC_LOCATION: Brigham & Women’s | DATE: 08/22 | MEDICAL_RECORD_NUMBER: DX-54321",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "concern about rx of warfarin in a 56yo pt named [REDACTED_NAME], seen at Brigham & Women’s on 08/22, with MRN [REDACTED_MEDICAL_RECORD_NUMBER]. hx of DVT.",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 48,
+      "end": 59,
+      "score": 0.85,
+      "text": "Daniel Cruz",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 106,
+      "end": 114,
+      "score": 0.7,
+      "text": "DX-54321",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Brigham & Women’s",
+        "start": 69,
+        "end": 86
+      },
+      {
+        "type": "DATE",
+        "value": "08/22",
+        "start": 90,
+        "end": 95
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 2,
+    "recall": "0.5000",
+    "precision": "1.0000",
+    "f1_score": "0.6667"
+  }
+}

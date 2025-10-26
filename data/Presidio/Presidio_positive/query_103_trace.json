@@ -1,0 +1,76 @@
+{
+  "query_id": "103",
+  "timestamp": "2025-10-22T16:12:42.600292",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "side efects of atorvastatin in pt w/ hx of TIA? case reviewed by Dr. Emily P. at our Seattle office on 05/08/2023, ref. code: EM-2554.",
+  "ground_truth_phi": "NAME: Dr. Emily P. | GEOGRAPHIC_LOCATION: Seattle | DATE: 05/08/2023 | UNIQUE_IDENTIFIER: EM-2554",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "side efects of atorvastatin in pt w/ hx of TIA? case reviewed by Dr. [REDACTED_NAME] at our [REDACTED_GEOGRAPHIC_LOCATION] office on [REDACTED_GEOGRAPHIC_LOCATION], ref. code: EM-2554.",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 69,
+      "end": 77,
+      "score": 0.85,
+      "text": "Emily P.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 85,
+      "end": 92,
+      "score": 0.85,
+      "text": "Seattle",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 103,
+      "end": 113,
+      "score": 0.85,
+      "text": "05/08/2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 103,
+      "end": 113,
+      "score": 0.6,
+      "text": "05/08/2023",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "UNIQUE_IDENTIFIER",
+        "value": "EM-2554",
+        "start": 126,
+        "end": 133
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.5000",
+    "f1_score": "0.6000"
+  }
+}

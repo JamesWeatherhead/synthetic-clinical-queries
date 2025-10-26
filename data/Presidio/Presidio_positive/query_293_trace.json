@@ -1,0 +1,69 @@
+{
+  "query_id": "293",
+  "timestamp": "2025-10-22T16:12:43.572915",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommended dosage adjustments for atorvastatin in a 65-year-old male, John A., from Chicago who has a history of liver disease, seen on 07/14/2022?",
+  "ground_truth_phi": "NAME: John A. | GEOGRAPHIC_LOCATION: Chicago | DATE: 07/14/2022",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Recommended dosage adjustments for atorvastatin in a [REDACTED_DATE] male, [REDACTED_NAME], from [REDACTED_GEOGRAPHIC_LOCATION] who has a history of liver disease, seen on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 53,
+      "end": 64,
+      "score": 0.85,
+      "text": "65-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 71,
+      "end": 78,
+      "score": 0.85,
+      "text": "John A.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 85,
+      "end": 92,
+      "score": 0.85,
+      "text": "Chicago",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 137,
+      "end": 147,
+      "score": 0.6,
+      "text": "07/14/2022",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "query_id": "724",
+  "timestamp": "2025-10-23T09:56:55.016138",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guideline for new dx of H. pylori in 47yo F, Mary R., visited Cedar Falls Med Center, IA on 8/8/2023. Her insurance ID: HF-789012.",
+  "ground_truth_phi": "NAME: Mary R. | GEOGRAPHIC_LOCATION: Cedar Falls Med Center, IA | DATE: 8/8/2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: HF-789012",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "47yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9291064739227295,
+      "begin_offset": 37,
+      "end_offset": 41
+    },
+    {
+      "text": "Mary R",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9950031638145447,
+      "begin_offset": 45,
+      "end_offset": 51
+    },
+    {
+      "text": "Cedar Falls Med Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9960551261901855,
+      "begin_offset": 62,
+      "end_offset": 84
+    },
+    {
+      "text": "8/8/2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999821186065674,
+      "begin_offset": 92,
+      "end_offset": 100
+    },
+    {
+      "text": "789012",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.48115232586860657,
+      "begin_offset": 123,
+      "end_offset": 129
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

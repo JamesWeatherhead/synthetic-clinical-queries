@@ -1,0 +1,84 @@
+{
+  "query_id": "939",
+  "timestamp": "2025-10-23T09:57:18.827383",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Current best practices for managing a 63yo male w/ COPD and asthma, Jennifer S. mentioned this case at UCLA meeting on Jul 12, 2022. Check s/p pacemaker insertion on 06/01/2021. He has policy ID: ZY-765432.",
+  "ground_truth_phi": "NAME: Jennifer S. | GEOGRAPHIC_LOCATION: UCLA | DATE: Jul 12, 2022 | DATE: 06/01/2021 | HEALTH_PLAN_BENEFICIARY_NUMBER: ZY-765432",
+  "ground_truth_phi_count": 5,
+  "aws_entities_detected": [
+    {
+      "text": "63yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9980266690254211,
+      "begin_offset": 38,
+      "end_offset": 42
+    },
+    {
+      "text": "Jennifer S.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9168299436569214,
+      "begin_offset": 68,
+      "end_offset": 79
+    },
+    {
+      "text": "UCLA",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8931286334991455,
+      "begin_offset": 103,
+      "end_offset": 107
+    },
+    {
+      "text": "Jul 12, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999728262424469,
+      "begin_offset": 119,
+      "end_offset": 131
+    },
+    {
+      "text": "06/01/2021",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999673366546631,
+      "begin_offset": 166,
+      "end_offset": 176
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+        "value": "ZY-765432"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 5,
+    "successfully_detected": 4,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "0.8000",
+    "precision": "0.8000",
+    "f1_score": "0.8000"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 5
+}

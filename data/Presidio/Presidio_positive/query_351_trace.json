@@ -1,0 +1,85 @@
+{
+  "query_id": "351",
+  "timestamp": "2025-10-22T16:12:43.875305",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guidelines for managing atrial fibrillation in a 62-year-old male, Robert L., seen at Northwestern Medical Center on July 10th, 2021 (Contact: robert.l@example.com)?",
+  "ground_truth_phi": "NAME: Robert L. | GEOGRAPHIC_LOCATION: Northwestern Medical Center | DATE: July 10th, 2021 | EMAIL_ADDRESS: robert.l@example.com",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Guidelines for managing atrial fibrillation in a [REDACTED_DATE] male, [REDACTED_NAME], seen at Northwestern Medical Center on [REDACTED_DATE] (Contact: [REDACTED_EMAIL_ADDRESS])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "EMAIL_ADDRESS",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "start": 143,
+      "end": 163,
+      "score": 1.0,
+      "text": "robert.l@example.com",
+      "recognizer": "EmailRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 49,
+      "end": 60,
+      "score": 0.85,
+      "text": "62-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 67,
+      "end": 76,
+      "score": 0.85,
+      "text": "Robert L.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 117,
+      "end": 132,
+      "score": 0.85,
+      "text": "July 10th, 2021",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "URL",
+      "hipaa_category": "WEB_URL",
+      "start": 152,
+      "end": 163,
+      "score": 0.5,
+      "text": "example.com",
+      "recognizer": "UrlRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Northwestern Medical Center",
+        "start": 86,
+        "end": 113
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.6000",
+    "f1_score": "0.6667"
+  }
+}

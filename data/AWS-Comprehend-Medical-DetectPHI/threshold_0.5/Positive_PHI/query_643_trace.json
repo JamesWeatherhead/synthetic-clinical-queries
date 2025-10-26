@@ -1,0 +1,70 @@
+{
+  "query_id": "643",
+  "timestamp": "2025-10-23T09:56:47.517204",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best approach for handling severe asthma in pt w/ hx of HTN. Pls check prior notes, John K.'s case reviewed at Northwestern on Feb 10th 2023. Concerns about insurance policy #AB-987654.",
+  "ground_truth_phi": "NAME: John K. | GEOGRAPHIC_LOCATION: Northwestern | DATE: Feb 10th 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: AB-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "John K.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9944307208061218,
+      "begin_offset": 84,
+      "end_offset": 91
+    },
+    {
+      "text": "Northwestern",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9845489263534546,
+      "begin_offset": 111,
+      "end_offset": 123
+    },
+    {
+      "text": "Feb 10th 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9954190254211426,
+      "begin_offset": 127,
+      "end_offset": 140
+    },
+    {
+      "text": "987654",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6178092360496521,
+      "begin_offset": 178,
+      "end_offset": 184
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

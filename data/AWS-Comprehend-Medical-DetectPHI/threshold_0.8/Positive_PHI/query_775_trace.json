@@ -1,0 +1,70 @@
+{
+  "query_id": "775",
+  "timestamp": "2025-10-23T09:57:00.496419",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Recommendations for a 70-year-old male with a new diagnosis of ALS, first seen by Dr. Robert P. at Lincoln Medical Center on 11/08/2023?",
+  "ground_truth_phi": "NAME: Dr. Robert P. | GEOGRAPHIC_LOCATION: Lincoln Medical Center | DATE: 11/08/2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "70",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999790370464325,
+      "begin_offset": 22,
+      "end_offset": 24
+    },
+    {
+      "text": "Robert P.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9859660267829895,
+      "begin_offset": 86,
+      "end_offset": 95
+    },
+    {
+      "text": "Lincoln Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9992204904556274,
+      "begin_offset": 99,
+      "end_offset": 121
+    },
+    {
+      "text": "11/08/2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999606609344482,
+      "begin_offset": 125,
+      "end_offset": 135
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

@@ -1,0 +1,76 @@
+{
+  "query_id": "560",
+  "timestamp": "2025-10-22T16:12:44.987354",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Best treatment options for an 82-year-old female with recurrent UTI, Lynn S., who visited St. Joseph's Clinic on April 12th, 2023 (MRN: SJ-12345)?",
+  "ground_truth_phi": "NAME: Lynn S. | GEOGRAPHIC_LOCATION: St. Joseph's Clinic | DATE: April 12th, 2023 | MEDICAL_RECORD_NUMBER: SJ-12345",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Best treatment options for an [REDACTED_DATE] female with recurrent UTI, [REDACTED_NAME], who visited St. Joseph's Clinic on [REDACTED_DATE] (MRN: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 30,
+      "end": 41,
+      "score": 0.85,
+      "text": "82-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 69,
+      "end": 76,
+      "score": 0.85,
+      "text": "Lynn S.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 113,
+      "end": 129,
+      "score": 0.85,
+      "text": "April 12th, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 136,
+      "end": 144,
+      "score": 0.7,
+      "text": "SJ-12345",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "St. Joseph's Clinic",
+        "start": 90,
+        "end": 109
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

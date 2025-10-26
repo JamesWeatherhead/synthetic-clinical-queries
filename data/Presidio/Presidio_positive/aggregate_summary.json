@@ -1,0 +1,13 @@
+{
+  "evaluation_timestamp": "2025-10-22T16:12:47.579065",
+  "model": "Presidio-2.2.360",
+  "query_type": "positive",
+  "total_queries_processed": 832,
+  "total_phi_entities": 2973,
+  "successfully_redacted": 2317,
+  "leaked_phi": 656,
+  "queries_with_leaks": 565,
+  "queries_perfect_redaction": 267,
+  "recall": 0.779347460477632,
+  "perfect_rate": 0.32091346153846156
+}

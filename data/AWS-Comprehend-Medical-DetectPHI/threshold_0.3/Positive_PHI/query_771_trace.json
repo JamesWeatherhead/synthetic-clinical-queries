@@ -1,0 +1,79 @@
+{
+  "query_id": "771",
+  "timestamp": "2025-10-23T09:56:59.979340",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Management guidelines for atrial fibrillation in an 82-year-old male, Arthur King, recently seen at St. Patrick's Hospital on July 10th, 2022 (MRN: SPH-123456)?",
+  "ground_truth_phi": "NAME: Arthur King | GEOGRAPHIC_LOCATION: St. Patrick's Hospital | DATE: July 10th, 2022 | MEDICAL_RECORD_NUMBER: SPH-123456",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "82",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999673366546631,
+      "begin_offset": 52,
+      "end_offset": 54
+    },
+    {
+      "text": "Arthur King",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9536168575286865,
+      "begin_offset": 70,
+      "end_offset": 81
+    },
+    {
+      "text": "St. Patrick's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9854252934455872,
+      "begin_offset": 100,
+      "end_offset": 122
+    },
+    {
+      "text": "July 10th, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999771118164062,
+      "begin_offset": 126,
+      "end_offset": 141
+    },
+    {
+      "text": "SPH-123456",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.427084743976593,
+      "begin_offset": 148,
+      "end_offset": 158
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

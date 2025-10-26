@@ -1,0 +1,61 @@
+{
+  "query_id": "738",
+  "timestamp": "2025-10-23T10:23:44.937856",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Prognosis for a 50-year-old male patient with high creatinine levels and a history of ALS from Miami, diagnosed in 2019.",
+  "ground_truth_phi": "",
+  "ground_truth_phi_count": 0,
+  "aws_entities_detected": [
+    {
+      "text": "50",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996566772460938,
+      "begin_offset": 16,
+      "end_offset": 18
+    },
+    {
+      "text": "Miami",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9630128145217896,
+      "begin_offset": 95,
+      "end_offset": 100
+    },
+    {
+      "text": "2019",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9971886277198792,
+      "begin_offset": 115,
+      "end_offset": 119
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 0,
+    "successfully_detected": 0,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "true_positives": 0,
+    "recall": "1.0000",
+    "precision": "0.0000",
+    "f1_score": "0.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

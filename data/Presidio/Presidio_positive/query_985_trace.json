@@ -1,0 +1,78 @@
+{
+  "query_id": "985",
+  "timestamp": "2025-10-22T16:12:47.217668",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Current treatment protocols for epilepsy in a 25-year-old female named Emily Brown, diagnosed at Mount Sinai Hospital on February 10, 2023 (MRN: 11223344)?",
+  "ground_truth_phi": "NAME: Emily Brown | GEOGRAPHIC_LOCATION: Mount Sinai Hospital | DATE: February 10, 2023 | MEDICAL_RECORD_NUMBER: 11223344",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Current treatment protocols for epilepsy in a [REDACTED_DATE] female named [REDACTED_NAME], diagnosed at [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE] ([REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 140,
+      "end": 153,
+      "score": 0.9,
+      "text": "MRN: 11223344",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 46,
+      "end": 57,
+      "score": 0.85,
+      "text": "25-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 71,
+      "end": 82,
+      "score": 0.85,
+      "text": "Emily Brown",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 97,
+      "end": 117,
+      "score": 0.85,
+      "text": "Mount Sinai Hospital",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 121,
+      "end": 138,
+      "score": 0.85,
+      "text": "February 10, 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.6000",
+    "f1_score": "0.7500"
+  }
+}

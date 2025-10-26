@@ -1,0 +1,64 @@
+{
+  "query_id": "736",
+  "timestamp": "2025-10-22T16:12:45.889592",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guidelines for treating a 55-year-old male, John Smith, with stage 3 CKD and hypertension; seen at St. Luke's Hospital, MRN: 12345-678.",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: St. Luke's Hospital | MEDICAL_RECORD_NUMBER: 12345-678",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Guidelines for treating a [REDACTED_DATE] male, [REDACTED_NAME], with stage 3 CKD and hypertension; seen at St. Luke's Hospital, MRN: 12345-678.",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 26,
+      "end": 37,
+      "score": 0.85,
+      "text": "55-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 44,
+      "end": 54,
+      "score": 0.85,
+      "text": "John Smith",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "St. Luke's Hospital",
+        "start": 99,
+        "end": 118
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "12345-678",
+        "start": 125,
+        "end": 134
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 1,
+    "leaked_failures": 2,
+    "total_detected": 2,
+    "recall": "0.3333",
+    "precision": "0.5000",
+    "f1_score": "0.4000"
+  }
+}

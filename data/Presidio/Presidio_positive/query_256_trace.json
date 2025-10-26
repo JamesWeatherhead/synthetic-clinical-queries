@@ -1,0 +1,69 @@
+{
+  "query_id": "256",
+  "timestamp": "2025-10-22T16:12:43.361534",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Treatment recommendations for a 60-year-old male, Robert J., with chronic hepatitis C, presented at Los Angeles County Hospital on 09/21/2024?",
+  "ground_truth_phi": "NAME: Robert J. | GEOGRAPHIC_LOCATION: Los Angeles County Hospital | DATE: 09/21/2024",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Treatment recommendations for a [REDACTED_DATE] male, [REDACTED_NAME], with chronic hepatitis C, presented at [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 32,
+      "end": 43,
+      "score": 0.85,
+      "text": "60-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 50,
+      "end": 59,
+      "score": 0.85,
+      "text": "Robert J.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 100,
+      "end": 127,
+      "score": 0.85,
+      "text": "Los Angeles County Hospital",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 131,
+      "end": 141,
+      "score": 0.6,
+      "text": "09/21/2024",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  }
+}

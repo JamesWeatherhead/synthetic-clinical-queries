@@ -1,0 +1,75 @@
+{
+  "query_id": "245",
+  "timestamp": "2025-10-23T09:56:02.675997",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best treatment for a 60-year-old male with Stage 3 COPD, John R., who was admitted to St. John's Hospital on August 15th, 2023 (MRN: SJ-12345)?",
+  "ground_truth_phi": "NAME: John R. | GEOGRAPHIC_LOCATION: St. John's Hospital | DATE: August 15th, 2023 | MEDICAL_RECORD_NUMBER: SJ-12345",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "60",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9976460337638855,
+      "begin_offset": 21,
+      "end_offset": 23
+    },
+    {
+      "text": "John R",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9758240580558777,
+      "begin_offset": 57,
+      "end_offset": 63
+    },
+    {
+      "text": "St. John's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9941153526306152,
+      "begin_offset": 86,
+      "end_offset": 105
+    },
+    {
+      "text": "August 15th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999738931655884,
+      "begin_offset": 109,
+      "end_offset": 126
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "SJ-12345"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 4
+}

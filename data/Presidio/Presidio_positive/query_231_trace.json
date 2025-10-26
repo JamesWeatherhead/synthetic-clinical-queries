@@ -1,0 +1,67 @@
+{
+  "query_id": "231",
+  "timestamp": "2025-10-22T16:12:43.220959",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Please provide the latest ACR guidelines for managing rheumatoid arthritis in a 55-year-old female named Emily D., seen at Columbia Presbyterian on August 15, 2023.",
+  "ground_truth_phi": "NAME: Emily D. | GEOGRAPHIC_LOCATION: Columbia Presbyterian | DATE: August 15, 2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Please provide the latest ACR guidelines for managing rheumatoid arthritis in a [REDACTED_DATE] female named [REDACTED_NAME], seen at Columbia Presbyterian on [REDACTED_DATE].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 80,
+      "end": 91,
+      "score": 0.85,
+      "text": "55-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 105,
+      "end": 113,
+      "score": 0.85,
+      "text": "Emily D.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 148,
+      "end": 163,
+      "score": 0.85,
+      "text": "August 15, 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Columbia Presbyterian",
+        "start": 123,
+        "end": 144
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.6667",
+    "precision": "0.6667",
+    "f1_score": "0.6667"
+  }
+}

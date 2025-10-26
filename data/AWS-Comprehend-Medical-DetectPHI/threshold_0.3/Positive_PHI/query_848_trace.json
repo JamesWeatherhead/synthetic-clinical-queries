@@ -1,0 +1,70 @@
+{
+  "query_id": "848",
+  "timestamp": "2025-10-23T09:57:08.207258",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Management protocol for post-op care in pts w/ hx of COPD, last reviewed at St. Luke's Hospital for Jane D. on April 4 '23 (MRN: 789-12-3456)?",
+  "ground_truth_phi": "NAME: Jane D. | GEOGRAPHIC_LOCATION: St. Luke's Hospital | DATE: April 4 '23 | MEDICAL_RECORD_NUMBER: 789-12-3456",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "St. Luke's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9901244044303894,
+      "begin_offset": 76,
+      "end_offset": 95
+    },
+    {
+      "text": "Jane D.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9235706925392151,
+      "begin_offset": 100,
+      "end_offset": 107
+    },
+    {
+      "text": "April 4 '23",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998941421508789,
+      "begin_offset": 111,
+      "end_offset": 122
+    },
+    {
+      "text": "789-12-3456",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9959275126457214,
+      "begin_offset": 129,
+      "end_offset": 140
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

@@ -1,0 +1,70 @@
+{
+  "query_id": "595",
+  "timestamp": "2025-10-23T09:56:42.709002",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the current treatment options for a 60-year-old male with newly diagnosed prostate cancer, Richard Brown, who had his biopsy at Houston Methodist Hospital on August 13, 2024?",
+  "ground_truth_phi": "NAME: Richard Brown | GEOGRAPHIC_LOCATION: Houston Methodist Hospital | DATE: August 13, 2024",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "60",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996145963668823,
+      "begin_offset": 45,
+      "end_offset": 47
+    },
+    {
+      "text": "Richard Brown",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9977593421936035,
+      "begin_offset": 100,
+      "end_offset": 113
+    },
+    {
+      "text": "Houston Methodist Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9870063066482544,
+      "begin_offset": 137,
+      "end_offset": 163
+    },
+    {
+      "text": "August 13, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999825954437256,
+      "begin_offset": 167,
+      "end_offset": 182
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

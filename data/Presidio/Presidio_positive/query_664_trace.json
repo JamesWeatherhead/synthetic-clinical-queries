@@ -1,0 +1,67 @@
+{
+  "query_id": "664",
+  "timestamp": "2025-10-22T16:12:45.544332",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Mgmt. of stage 3 CKD in 60yo male, pts chart indicates consultation w/ Dr. Emily R. at UCLA Med Ctr on 04/10/22. Insurance ID: HMO-67890.",
+  "ground_truth_phi": "NAME: Dr. Emily R. | GEOGRAPHIC_LOCATION: UCLA Med Ctr | DATE: 04/10/22 | HEALTH_PLAN_BENEFICIARY_NUMBER: HMO-67890",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Mgmt. of stage 3 CKD in 60yo male, pts chart indicates consultation w/ Dr. [REDACTED_NAME] at UCLA Med Ctr on [REDACTED_DATE]. Insurance ID: [REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 75,
+      "end": 83,
+      "score": 0.85,
+      "text": "Emily R.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 127,
+      "end": 136,
+      "score": 0.7,
+      "text": "HMO-67890",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 103,
+      "end": 111,
+      "score": 0.6,
+      "text": "04/10/22",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UCLA Med Ctr",
+        "start": 87,
+        "end": 99
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "0.6667",
+    "f1_score": "0.7059"
+  }
+}

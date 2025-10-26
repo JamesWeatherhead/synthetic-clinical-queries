@@ -1,0 +1,87 @@
+{
+  "query_id": "1",
+  "timestamp": "2025-10-22T16:12:41.991754",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Evaluation of long-term outcomes for bypass surgery in patients over 60, referencing Mr. James T., operated at St. Vincent's on May 30th, 2022 (ID: 987654321)?",
+  "ground_truth_phi": "NAME: James T. | GEOGRAPHIC_LOCATION: St. Vincent's | DATE: May 30th, 2022 | UNIQUE_IDENTIFIER: 987654321",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Evaluation of long-term outcomes for bypass surgery in patients over [REDACTED_DATE], referencing Mr. [REDACTED_NAME], operated at [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE] [REDACTED_UNIQUE_IDENTIFIER]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "UNIQUE_IDENTIFIER",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "start": 143,
+      "end": 158,
+      "score": 0.95,
+      "text": "(ID: 987654321)",
+      "recognizer": "UniqueIdentifierRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 69,
+      "end": 71,
+      "score": 0.85,
+      "text": "60",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 89,
+      "end": 97,
+      "score": 0.85,
+      "text": "James T.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 111,
+      "end": 124,
+      "score": 0.85,
+      "text": "St. Vincent's",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 128,
+      "end": 142,
+      "score": 0.85,
+      "text": "May 30th, 2022",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 148,
+      "end": 157,
+      "score": 0.5,
+      "text": "987654321",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "recall": "1.0000",
+    "precision": "0.6667",
+    "f1_score": "0.8000"
+  }
+}

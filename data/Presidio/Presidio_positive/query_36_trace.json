@@ -1,0 +1,78 @@
+{
+  "query_id": "36",
+  "timestamp": "2025-10-22T16:12:42.217057",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Treatment options for a 34-year-old woman, Mary Johnson, presenting with resistant hypertension, seen by Dr. Patel in New York City on March 15, 2023?",
+  "ground_truth_phi": "NAME: Mary Johnson | NAME: Dr. Patel | GEOGRAPHIC_LOCATION: New York City | DATE: March 15, 2023",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Treatment options for a [REDACTED_DATE] woman, [REDACTED_NAME], presenting with resistant hypertension, seen by Dr. [REDACTED_NAME] in [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 24,
+      "end": 35,
+      "score": 0.85,
+      "text": "34-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 43,
+      "end": 55,
+      "score": 0.85,
+      "text": "Mary Johnson",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 109,
+      "end": 114,
+      "score": 0.85,
+      "text": "Patel",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 118,
+      "end": 131,
+      "score": 0.85,
+      "text": "New York City",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 135,
+      "end": 149,
+      "score": 0.85,
+      "text": "March 15, 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.6000",
+    "f1_score": "0.7500"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "query_id": "658",
+  "timestamp": "2025-10-22T16:12:45.482769",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Current guidelines for anticoagulation in a 58-year-old female, Lisa S., with non-valvular atrial fibrillation, seen last week at Baylor Scott & White. Her phone number is (123) 456-7890.",
+  "ground_truth_phi": "NAME: Lisa S. | GEOGRAPHIC_LOCATION: Baylor Scott & White | DATE: last week | PHONE_NUMBER: (123) 456-7890",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Current guidelines for anticoagulation in a [REDACTED_DATE] female, [REDACTED_NAME], with non-valvular atrial fibrillation, seen [REDACTED_DATE] at Baylor Scott & White. Her phone number is [REDACTED_PHONE_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 44,
+      "end": 55,
+      "score": 0.85,
+      "text": "58-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 64,
+      "end": 71,
+      "score": 0.85,
+      "text": "Lisa S.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 117,
+      "end": 126,
+      "score": 0.85,
+      "text": "last week",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 172,
+      "end": 186,
+      "score": 0.75,
+      "text": "(123) 456-7890",
+      "recognizer": "PhoneRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Baylor Scott & White",
+        "start": 130,
+        "end": 150
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

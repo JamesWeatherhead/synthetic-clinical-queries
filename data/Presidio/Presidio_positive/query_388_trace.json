@@ -1,0 +1,73 @@
+{
+  "query_id": "388",
+  "timestamp": "2025-10-22T16:12:44.078745",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the potential interactions between warfarin and antibiotics for a 65-year-old female patient, Maria K., who visited UCLA Medical Center on January 15, 2024 (Insurance ID: 54321-7890)?",
+  "ground_truth_phi": "NAME: Maria K. | GEOGRAPHIC_LOCATION: UCLA Medical Center | DATE: January 15, 2024 | HEALTH_PLAN_BENEFICIARY_NUMBER: 54321-7890",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What are the potential interactions between warfarin and antibiotics for a [REDACTED_DATE] female patient, [REDACTED_NAME], who visited UCLA Medical Center on [REDACTED_DATE] (Insurance ID: 54321-7890)?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 75,
+      "end": 86,
+      "score": 0.85,
+      "text": "65-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 103,
+      "end": 111,
+      "score": 0.85,
+      "text": "Maria K.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 148,
+      "end": 164,
+      "score": 0.85,
+      "text": "January 15, 2024",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UCLA Medical Center",
+        "start": 125,
+        "end": 144
+      },
+      {
+        "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+        "value": "54321-7890",
+        "start": 180,
+        "end": 190
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 3,
+    "recall": "0.5000",
+    "precision": "0.6667",
+    "f1_score": "0.5714"
+  }
+}

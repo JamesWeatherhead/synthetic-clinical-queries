@@ -1,0 +1,69 @@
+{
+  "query_id": "157",
+  "timestamp": "2025-10-22T16:12:42.882709",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "best mgmt for pt w/ hx of HTN & COPD, refer to notes for Lisa W., treated at Cedar Sinai on Jan 10th 2022. concerns about drug-drug interactions. her contact is (555) 678-1234.",
+  "ground_truth_phi": "NAME: Lisa W. | GEOGRAPHIC_LOCATION: Cedar Sinai | DATE: Jan 10th 2022 | PHONE_NUMBER: (555) 678-1234",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "best mgmt for pt w/ hx of HTN & COPD, refer to notes for [REDACTED_NAME], treated at [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE]. concerns about drug-drug interactions. her contact is [REDACTED_PHONE_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 57,
+      "end": 64,
+      "score": 0.85,
+      "text": "Lisa W.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 77,
+      "end": 88,
+      "score": 0.85,
+      "text": "Cedar Sinai",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 92,
+      "end": 105,
+      "score": 0.85,
+      "text": "Jan 10th 2022",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 161,
+      "end": 175,
+      "score": 0.4,
+      "text": "(555) 678-1234",
+      "recognizer": "PhoneRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  }
+}

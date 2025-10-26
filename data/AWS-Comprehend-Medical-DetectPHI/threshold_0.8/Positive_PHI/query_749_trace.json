@@ -1,0 +1,75 @@
+{
+  "query_id": "749",
+  "timestamp": "2025-10-23T09:56:57.281022",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Side effects of lisinopril in a 59-year-old male, James H., seen at Phoenix Clinic on January 18, 2024, with MRN PHX-987654?",
+  "ground_truth_phi": "NAME: James H. | GEOGRAPHIC_LOCATION: Phoenix Clinic | DATE: January 18, 2024 | MEDICAL_RECORD_NUMBER: PHX-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "59",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9990956783294678,
+      "begin_offset": 32,
+      "end_offset": 34
+    },
+    {
+      "text": "James H",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9963781237602234,
+      "begin_offset": 50,
+      "end_offset": 57
+    },
+    {
+      "text": "Phoenix Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9962658286094666,
+      "begin_offset": 68,
+      "end_offset": 82
+    },
+    {
+      "text": "January 18, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999161958694458,
+      "begin_offset": 86,
+      "end_offset": 102
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "PHX-987654"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 4
+}

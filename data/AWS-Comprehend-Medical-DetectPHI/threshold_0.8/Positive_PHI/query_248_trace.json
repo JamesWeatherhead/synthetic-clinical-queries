@@ -1,0 +1,61 @@
+{
+  "query_id": "248",
+  "timestamp": "2025-10-23T09:56:03.001578",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "clarify dx and mngmnt for pt w/ hx of CHF, Stan M., seen at UW Med on July 4th 2023. also, concerns about drug interactions for his current meds. phone: 555-987-6543.",
+  "ground_truth_phi": "NAME: Stan M. | GEOGRAPHIC_LOCATION: UW Med | DATE: July 4th 2023 | PHONE_NUMBER: 555-987-6543",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "July 4th 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998792409896851,
+      "begin_offset": 70,
+      "end_offset": 83
+    },
+    {
+      "text": "555-987-6543",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9987806677818298,
+      "begin_offset": 153,
+      "end_offset": 165
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "NAME",
+        "value": "Stan M."
+      },
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UW Med"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 2,
+    "leaked_failures": 2,
+    "total_detected": 2,
+    "true_positives": 2,
+    "recall": "0.5000",
+    "precision": "1.0000",
+    "f1_score": "0.6667"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 2
+}

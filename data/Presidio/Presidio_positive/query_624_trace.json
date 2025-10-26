@@ -1,0 +1,87 @@
+{
+  "query_id": "624",
+  "timestamp": "2025-10-22T16:12:45.330653",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guidelines for postoperative care of a 50-year-old female following a total knee replacement, specifically for Sarah Doe visited at St. Joseph Hospital in Chicago on Sept 15th, 2022?",
+  "ground_truth_phi": "NAME: Sarah Doe | GEOGRAPHIC_LOCATION: St. Joseph Hospital in Chicago | DATE: Sept 15th, 2022",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Guidelines for postoperative care of a [REDACTED_DATE] female following a total knee replacement, specifically for [REDACTED_NAME] visited at [REDACTED_GEOGRAPHIC_LOCATION] in [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 39,
+      "end": 50,
+      "score": 0.85,
+      "text": "50-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 111,
+      "end": 120,
+      "score": 0.85,
+      "text": "Sarah Doe",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 132,
+      "end": 151,
+      "score": 0.85,
+      "text": "St. Joseph Hospital",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 155,
+      "end": 162,
+      "score": 0.85,
+      "text": "Chicago",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 166,
+      "end": 176,
+      "score": 0.85,
+      "text": "Sept 15th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 177,
+      "end": 181,
+      "score": 0.85,
+      "text": "2022",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "recall": "1.0000",
+    "precision": "0.1667",
+    "f1_score": "0.2857"
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "query_id": "659",
+  "timestamp": "2025-10-22T16:12:45.490938",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "new protocol for tx of post-op wound infections in pts wi/hx of diabetes, review case details for Susan P., treated at UCLA Med Center on Apr 4, 2023. fax records to 987-654-3210.",
+  "ground_truth_phi": "NAME: Susan P. | GEOGRAPHIC_LOCATION: UCLA Med Center | DATE: Apr 4, 2023 | FAX_NUMBER: 987-654-3210",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "new protocol for [REDACTED_GEOGRAPHIC_LOCATION] of post-op wound infections in pts wi/hx of diabetes, review case details for [REDACTED_NAME], treated at UCLA Med Center on [REDACTED_DATE]. fax records to [REDACTED_UK_NHS].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "UK_NHS",
+      "hipaa_category": "UK_NHS",
+      "start": 166,
+      "end": 178,
+      "score": 1.0,
+      "text": "987-654-3210",
+      "recognizer": "NhsRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 17,
+      "end": 19,
+      "score": 0.85,
+      "text": "tx",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 98,
+      "end": 106,
+      "score": 0.85,
+      "text": "Susan P.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 138,
+      "end": 149,
+      "score": 0.85,
+      "text": "Apr 4, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 166,
+      "end": 178,
+      "score": 0.4,
+      "text": "987-654-3210",
+      "recognizer": "PhoneRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UCLA Med Center",
+        "start": 119,
+        "end": 134
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.6000",
+    "f1_score": "0.6667"
+  }
+}

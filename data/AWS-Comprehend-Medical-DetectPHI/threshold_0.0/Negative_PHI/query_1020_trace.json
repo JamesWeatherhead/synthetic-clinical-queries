@@ -1,0 +1,52 @@
+{
+  "query_id": "1020",
+  "timestamp": "2025-10-23T10:23:51.834429",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Which treatment options are best for a 52-year-old female with a high Chaddock reflex and a history of Huntington's disease noted in 2021?",
+  "ground_truth_phi": "",
+  "ground_truth_phi_count": 0,
+  "aws_entities_detected": [
+    {
+      "text": "52",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9993865489959717,
+      "begin_offset": 39,
+      "end_offset": 41
+    },
+    {
+      "text": "2021",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8995587229728699,
+      "begin_offset": 133,
+      "end_offset": 137
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 0,
+    "successfully_detected": 0,
+    "leaked_failures": 0,
+    "total_detected": 2,
+    "true_positives": 0,
+    "recall": "1.0000",
+    "precision": "0.0000",
+    "f1_score": "0.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 2,
+  "aws_entities_filtered_count": 2
+}

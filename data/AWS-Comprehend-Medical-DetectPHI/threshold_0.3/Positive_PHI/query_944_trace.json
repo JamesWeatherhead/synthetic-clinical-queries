@@ -1,0 +1,75 @@
+{
+  "query_id": "944",
+  "timestamp": "2025-10-23T09:57:19.548481",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Contraindications for prescribing lisinopril to a 55-year-old male, John M., with renal impairment, seen at Brooklyn General on Feb 14, 2023 (MRN: BG-54321)?",
+  "ground_truth_phi": "NAME: John M. | GEOGRAPHIC_LOCATION: Brooklyn General | DATE: Feb 14, 2023 | MEDICAL_RECORD_NUMBER: BG-54321",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "55",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9988364577293396,
+      "begin_offset": 50,
+      "end_offset": 52
+    },
+    {
+      "text": "John M",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9785359501838684,
+      "begin_offset": 68,
+      "end_offset": 74
+    },
+    {
+      "text": "Brooklyn General",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9108083844184875,
+      "begin_offset": 108,
+      "end_offset": 124
+    },
+    {
+      "text": "Feb 14, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995379447937012,
+      "begin_offset": 128,
+      "end_offset": 140
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "BG-54321"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

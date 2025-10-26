@@ -1,0 +1,55 @@
+{
+  "query_id": "229",
+  "timestamp": "2025-10-22T16:24:24.565376",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Is there a correlation between a high Chaddock reflex and multiple sclerosis in a 40-year-old African American woman?",
+  "presidio_output": "Is there a correlation between a high [REDACTED_NAME] reflex and multiple sclerosis in a [REDACTED_DATE] [REDACTED_NRP] woman?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 38,
+      "end": 46,
+      "score": 0.85,
+      "text": "Chaddock",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 82,
+      "end": 93,
+      "score": 0.85,
+      "text": "40-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "NRP",
+      "hipaa_category": "NRP",
+      "start": 94,
+      "end": 110,
+      "score": 0.85,
+      "text": "African American",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 3,
+    "false_redactions_by_type": {
+      "NAME": 1,
+      "DATE": 1,
+      "NRP": 1
+    },
+    "status": "OVER_REDACTED"
+  }
+}

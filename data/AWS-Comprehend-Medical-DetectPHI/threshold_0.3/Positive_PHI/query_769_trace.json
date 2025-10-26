@@ -1,0 +1,70 @@
+{
+  "query_id": "769",
+  "timestamp": "2025-10-23T09:56:59.713448",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the current recommendations for perioperative care in patients with COPD, similar to Jared P., seen at the Cleveland Clinic on November 15, 2022, his insurance plan: 123-45-6789?",
+  "ground_truth_phi": "NAME: Jared P. | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: November 15, 2022 | HEALTH_PLAN_BENEFICIARY_NUMBER: 123-45-6789",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Jared P",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9764397740364075,
+      "begin_offset": 94,
+      "end_offset": 101
+    },
+    {
+      "text": "Cleveland Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9987336993217468,
+      "begin_offset": 116,
+      "end_offset": 132
+    },
+    {
+      "text": "November 15, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999762773513794,
+      "begin_offset": 136,
+      "end_offset": 153
+    },
+    {
+      "text": "123-45-6789",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9960988759994507,
+      "begin_offset": 175,
+      "end_offset": 186
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

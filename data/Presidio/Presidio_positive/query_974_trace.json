@@ -1,0 +1,60 @@
+{
+  "query_id": "974",
+  "timestamp": "2025-10-22T16:12:47.148991",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Best practices for monitoring INR in 76yo male post-aortic valve replacement, pt name: John D., operated at Houston Heart Center on 08/12/2022, s/p warfarin therapy?",
+  "ground_truth_phi": "NAME: John D. | GEOGRAPHIC_LOCATION: Houston Heart Center | DATE: 08/12/2022",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Best practices for monitoring INR in 76yo male post-aortic valve replacement, pt name: [REDACTED_NAME], operated at [REDACTED_GEOGRAPHIC_LOCATION] warfarin therapy?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 87,
+      "end": 94,
+      "score": 0.85,
+      "text": "John D.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 108,
+      "end": 147,
+      "score": 0.85,
+      "text": "Houston Heart Center on 08/12/2022, s/p",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 132,
+      "end": 142,
+      "score": 0.6,
+      "text": "08/12/2022",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "recall": "1.0000",
+    "precision": "0.6667",
+    "f1_score": "0.8000"
+  }
+}

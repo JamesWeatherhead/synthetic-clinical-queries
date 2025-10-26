@@ -1,0 +1,96 @@
+{
+  "query_id": "757",
+  "timestamp": "2025-10-22T16:12:45.996355",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guidelines for managing hypertension in a 60-year-old female, Mary Johnson, who lives in Miami, FL, diagnosed on December 1st, 2023 (MRN: FL-987654)?",
+  "ground_truth_phi": "NAME: Mary Johnson | GEOGRAPHIC_LOCATION: Miami, FL | DATE: December 1st, 2023 | MEDICAL_RECORD_NUMBER: FL-987654",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Guidelines for managing hypertension in a [REDACTED_DATE] female, [REDACTED_NAME], who lives in [REDACTED_GEOGRAPHIC_LOCATION], [REDACTED_GEOGRAPHIC_LOCATION], diagnosed on [REDACTED_DATE] (MRN: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 42,
+      "end": 53,
+      "score": 0.85,
+      "text": "60-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 62,
+      "end": 74,
+      "score": 0.85,
+      "text": "Mary Johnson",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 89,
+      "end": 94,
+      "score": 0.85,
+      "text": "Miami",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 96,
+      "end": 98,
+      "score": 0.85,
+      "text": "FL",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 113,
+      "end": 126,
+      "score": 0.85,
+      "text": "December 1st,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 127,
+      "end": 131,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 138,
+      "end": 147,
+      "score": 0.7,
+      "text": "FL-987654",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 7,
+    "recall": "1.0000",
+    "precision": "0.2857",
+    "f1_score": "0.4444"
+  }
+}

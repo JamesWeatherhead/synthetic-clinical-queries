@@ -1,0 +1,67 @@
+{
+  "query_id": "638",
+  "timestamp": "2025-10-22T16:12:45.396864",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the risks of using ACE inhibitors in a hypertensive patient like Robert Smith, age 60, seen on Jan 22, '24 at Lakeside Clinic?",
+  "ground_truth_phi": "NAME: Robert Smith | DATE: Jan 22, '24 | GEOGRAPHIC_LOCATION: Lakeside Clinic",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "What are the risks of using ACE inhibitors in a hypertensive patient like [REDACTED_NAME], [REDACTED_DATE], seen on [REDACTED_DATE], '24 at Lakeside Clinic?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 74,
+      "end": 86,
+      "score": 0.85,
+      "text": "Robert Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 88,
+      "end": 94,
+      "score": 0.85,
+      "text": "age 60",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 104,
+      "end": 110,
+      "score": 0.85,
+      "text": "Jan 22",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Lakeside Clinic",
+        "start": 119,
+        "end": 134
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.6667",
+    "precision": "0.3333",
+    "f1_score": "0.4444"
+  }
+}

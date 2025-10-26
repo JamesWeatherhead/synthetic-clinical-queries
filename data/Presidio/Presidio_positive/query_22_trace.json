@@ -1,0 +1,76 @@
+{
+  "query_id": "22",
+  "timestamp": "2025-10-22T16:12:42.136867",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Best practices for anticoagulation therapy in a 71yo female, Mary S., with AFib, treated at UCSF, admitted on Jan 8th, 2023 (MRN: UCSF-12345)?",
+  "ground_truth_phi": "NAME: Mary S. | GEOGRAPHIC_LOCATION: UCSF | DATE: Jan 8th, 2023 | MEDICAL_RECORD_NUMBER: UCSF-12345",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Best practices for anticoagulation therapy in a 71yo female, [REDACTED_NAME], with AFib, treated at UCSF, admitted on [REDACTED_DATE] (MRN: [REDACTED_NAME])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 61,
+      "end": 68,
+      "score": 0.85,
+      "text": "Mary S.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 110,
+      "end": 118,
+      "score": 0.85,
+      "text": "Jan 8th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 119,
+      "end": 123,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 130,
+      "end": 140,
+      "score": 0.85,
+      "text": "UCSF-12345",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UCSF",
+        "start": 92,
+        "end": 96
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.5000",
+    "f1_score": "0.6000"
+  }
+}

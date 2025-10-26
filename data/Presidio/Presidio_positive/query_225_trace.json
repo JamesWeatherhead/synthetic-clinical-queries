@@ -1,0 +1,76 @@
+{
+  "query_id": "225",
+  "timestamp": "2025-10-22T16:12:43.198473",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Management options for a 60-year-old female with a history of hypertension and diabetes, John S., seen at New York Presbyterian on April 10th, 2023 (MRN: #NY-123456)?",
+  "ground_truth_phi": "NAME: John S. | GEOGRAPHIC_LOCATION: New York Presbyterian | DATE: April 10th, 2023 | MEDICAL_RECORD_NUMBER: #NY-123456",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Management options for a [REDACTED_DATE] female with a history of hypertension and diabetes, [REDACTED_NAME], seen at New York Presbyterian on [REDACTED_DATE] (MRN: #[REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 25,
+      "end": 36,
+      "score": 0.85,
+      "text": "60-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 89,
+      "end": 96,
+      "score": 0.85,
+      "text": "John S.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 131,
+      "end": 147,
+      "score": 0.85,
+      "text": "April 10th, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 155,
+      "end": 164,
+      "score": 0.7,
+      "text": "NY-123456",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "New York Presbyterian",
+        "start": 106,
+        "end": 127
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.5000",
+    "f1_score": "0.6000"
+  }
+}

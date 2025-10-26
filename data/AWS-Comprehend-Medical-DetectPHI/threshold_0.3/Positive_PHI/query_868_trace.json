@@ -1,0 +1,79 @@
+{
+  "query_id": "868",
+  "timestamp": "2025-10-23T09:57:09.994979",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Pls advise on next steps for pt w/ COPD exacerbation, Robert T., address is 1234 Elm St, Boston, seen on 04/14/2023. Med rec #: JH-12345.",
+  "ground_truth_phi": "NAME: Robert T. | GEOGRAPHIC_LOCATION: 1234 Elm St, Boston | DATE: 04/14/2023 | MEDICAL_RECORD_NUMBER: JH-12345",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Robert T",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9960110187530518,
+      "begin_offset": 54,
+      "end_offset": 62
+    },
+    {
+      "text": "Boston",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.423223614692688,
+      "begin_offset": 89,
+      "end_offset": 95
+    },
+    {
+      "text": "04/14/2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998899698257446,
+      "begin_offset": 105,
+      "end_offset": 115
+    },
+    {
+      "text": "JH",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.4447705149650574,
+      "begin_offset": 128,
+      "end_offset": 130
+    },
+    {
+      "text": "12345",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.39142096042633057,
+      "begin_offset": 131,
+      "end_offset": 136
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

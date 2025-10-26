@@ -1,0 +1,88 @@
+{
+  "query_id": "931",
+  "timestamp": "2025-10-23T09:57:17.648882",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Updated asthma management guidelines for a 6yo male, Robert Smith, who was admitted to Children's Hospital in Houston on April 15th, 2023 (MRN: CH12345)?",
+  "ground_truth_phi": "NAME: Robert Smith | GEOGRAPHIC_LOCATION: Children's Hospital in Houston | DATE: April 15th, 2023 | MEDICAL_RECORD_NUMBER: CH12345",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "6yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9345332980155945,
+      "begin_offset": 43,
+      "end_offset": 46
+    },
+    {
+      "text": "Robert Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9980316758155823,
+      "begin_offset": 53,
+      "end_offset": 65
+    },
+    {
+      "text": "Children's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9965099692344666,
+      "begin_offset": 87,
+      "end_offset": 106
+    },
+    {
+      "text": "Houston",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9983474016189575,
+      "begin_offset": 110,
+      "end_offset": 117
+    },
+    {
+      "text": "April 15th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9993976354598999,
+      "begin_offset": 121,
+      "end_offset": 137
+    },
+    {
+      "text": "CH12345",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9657346606254578,
+      "begin_offset": 144,
+      "end_offset": 151
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "0.8333",
+    "f1_score": "0.9091"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 6
+}

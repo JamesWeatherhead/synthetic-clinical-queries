@@ -1,0 +1,88 @@
+{
+  "query_id": "211",
+  "timestamp": "2025-10-23T09:55:58.480269",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Current treatment options for a 52-year-old male, Tom P., who suffered a myocardial infarction and was treated at New York-Presbyterian on April 10th, 2023 (SSN: 123-45-6789)?",
+  "ground_truth_phi": "NAME: Tom P. | GEOGRAPHIC_LOCATION: New York-Presbyterian | DATE: April 10th, 2023 | SOCIAL_SECURITY_NUMBER: 123-45-6789",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "52",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996732473373413,
+      "begin_offset": 32,
+      "end_offset": 34
+    },
+    {
+      "text": "Tom P",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7425505518913269,
+      "begin_offset": 50,
+      "end_offset": 55
+    },
+    {
+      "text": "New York",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9874496459960938,
+      "begin_offset": 114,
+      "end_offset": 122
+    },
+    {
+      "text": "Presbyterian",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7951527833938599,
+      "begin_offset": 123,
+      "end_offset": 135
+    },
+    {
+      "text": "April 10th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9987372756004333,
+      "begin_offset": 139,
+      "end_offset": 155
+    },
+    {
+      "text": "123-45-6789",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9976546168327332,
+      "begin_offset": 162,
+      "end_offset": 173
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "0.8333",
+    "f1_score": "0.9091"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 6
+}

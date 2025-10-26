@@ -1,0 +1,66 @@
+{
+  "query_id": "789",
+  "timestamp": "2025-10-23T09:57:01.881389",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Recommendations for anticoagulation in pt w/ hx of AFib, seen by Dr. Smith at Cleveland Clinic on October 23rd, 2021. MRN is CC-98765 for ref.`",
+  "ground_truth_phi": "NAME: Dr. Smith | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: October 23rd, 2021 | MEDICAL_RECORD_NUMBER: CC-98765",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9989780187606812,
+      "begin_offset": 69,
+      "end_offset": 74
+    },
+    {
+      "text": "Cleveland Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9990425705909729,
+      "begin_offset": 78,
+      "end_offset": 94
+    },
+    {
+      "text": "October 23rd, 2021",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999186992645264,
+      "begin_offset": 98,
+      "end_offset": 116
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "CC-98765"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

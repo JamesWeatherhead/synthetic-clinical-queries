@@ -1,0 +1,70 @@
+{
+  "query_id": "474",
+  "timestamp": "2025-10-23T09:56:29.630596",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Current recommendations for anticoagulation therapy in a 63-year-old female, Linda M., with a history of DVT, initially diagnosed in Salt Lake City on July 19, 2022?",
+  "ground_truth_phi": "NAME: Linda M. | GEOGRAPHIC_LOCATION: Salt Lake City | DATE: July 19, 2022",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "63",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998464584350586,
+      "begin_offset": 57,
+      "end_offset": 59
+    },
+    {
+      "text": "Linda M",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9798226952552795,
+      "begin_offset": 77,
+      "end_offset": 84
+    },
+    {
+      "text": "Salt Lake City",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7329186201095581,
+      "begin_offset": 133,
+      "end_offset": 147
+    },
+    {
+      "text": "July 19, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999866485595703,
+      "begin_offset": 151,
+      "end_offset": 164
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

@@ -1,0 +1,85 @@
+{
+  "query_id": "245",
+  "timestamp": "2025-10-22T16:12:43.296874",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Best treatment for a 60-year-old male with Stage 3 COPD, John R., who was admitted to St. John's Hospital on August 15th, 2023 (MRN: SJ-12345)?",
+  "ground_truth_phi": "NAME: John R. | GEOGRAPHIC_LOCATION: St. John's Hospital | DATE: August 15th, 2023 | MEDICAL_RECORD_NUMBER: SJ-12345",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Best treatment for a [REDACTED_DATE] male with Stage 3 COPD, [REDACTED_NAME], who was admitted to St. John's Hospital on [REDACTED_DATE] (MRN: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 21,
+      "end": 32,
+      "score": 0.85,
+      "text": "60-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 57,
+      "end": 64,
+      "score": 0.85,
+      "text": "John R.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 109,
+      "end": 121,
+      "score": 0.85,
+      "text": "August 15th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 122,
+      "end": 126,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 133,
+      "end": 141,
+      "score": 0.7,
+      "text": "SJ-12345",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "St. John's Hospital",
+        "start": 86,
+        "end": 105
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.4000",
+    "f1_score": "0.5217"
+  }
+}

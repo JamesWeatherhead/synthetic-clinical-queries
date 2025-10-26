@@ -1,0 +1,76 @@
+{
+  "query_id": "29",
+  "timestamp": "2025-10-22T16:12:42.167171",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "tx protocol for 59yo male w/ hx of HTN & DM, observed at John's Hopkins on Feb 1, 2023 (MRN: JH-123456). pt reportd rxns to Lisinopril.",
+  "ground_truth_phi": "GEOGRAPHIC_LOCATION: John's Hopkins | DATE: Feb 1, 2023 | MEDICAL_RECORD_NUMBER: JH-123456",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "tx protocol for 59yo male w/ hx of HTN & DM, observed at John's Hopkins on [REDACTED_DATE] (MRN: [REDACTED_NAME]). pt [REDACTED_NAME] to Lisinopril.",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 75,
+      "end": 86,
+      "score": 0.85,
+      "text": "Feb 1, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 93,
+      "end": 102,
+      "score": 0.85,
+      "text": "JH-123456",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 108,
+      "end": 120,
+      "score": 0.85,
+      "text": "reportd rxns",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 93,
+      "end": 102,
+      "score": 0.7,
+      "text": "JH-123456",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "John's Hopkins",
+        "start": 57,
+        "end": 71
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.6667",
+    "precision": "0.5000",
+    "f1_score": "0.5714"
+  }
+}

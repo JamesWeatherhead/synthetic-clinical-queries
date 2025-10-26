@@ -1,0 +1,73 @@
+{
+  "query_id": "661",
+  "timestamp": "2025-10-22T16:12:45.505683",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the latest treatment guidelines for a 50-year-old male with hypertension and diabetes, Harry Smith, who was admitted to New York Presbyterian Hospital on January 15, 2023, with MRN 12345-NYP?",
+  "ground_truth_phi": "NAME: Harry Smith | GEOGRAPHIC_LOCATION: New York Presbyterian Hospital | DATE: January 15, 2023 | MEDICAL_RECORD_NUMBER: 12345-NYP",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What are the latest treatment guidelines for a [REDACTED_DATE] male with hypertension and diabetes, [REDACTED_NAME], who was admitted to New York Presbyterian Hospital on [REDACTED_DATE], with MRN 12345-NYP?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 47,
+      "end": 58,
+      "score": 0.85,
+      "text": "50-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 96,
+      "end": 107,
+      "score": 0.85,
+      "text": "Harry Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 163,
+      "end": 179,
+      "score": 0.85,
+      "text": "January 15, 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "New York Presbyterian Hospital",
+        "start": 129,
+        "end": 159
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "12345-NYP",
+        "start": 190,
+        "end": 199
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 3,
+    "recall": "0.5000",
+    "precision": "0.6667",
+    "f1_score": "0.5714"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "query_id": "438",
+  "timestamp": "2025-10-23T09:56:25.524303",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Side effects of prescribing Eliquis to a 65-year-old male, Jacob L., outpatient visit at Houston Med on July 20, 2023, HBN: 789-456-123?",
+  "ground_truth_phi": "NAME: Jacob L. | GEOGRAPHIC_LOCATION: Houston Med | DATE: July 20, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: 789-456-123",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "65",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9994133710861206,
+      "begin_offset": 41,
+      "end_offset": 43
+    },
+    {
+      "text": "Jacob L",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9977403879165649,
+      "begin_offset": 59,
+      "end_offset": 66
+    },
+    {
+      "text": "Houston",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.5729531645774841,
+      "begin_offset": 89,
+      "end_offset": 96
+    },
+    {
+      "text": "July 20, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999344348907471,
+      "begin_offset": 104,
+      "end_offset": 117
+    },
+    {
+      "text": "789-456-123",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6403859257698059,
+      "begin_offset": 124,
+      "end_offset": 135
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

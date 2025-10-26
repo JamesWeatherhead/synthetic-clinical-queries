@@ -1,0 +1,69 @@
+{
+  "query_id": "957",
+  "timestamp": "2025-10-22T16:12:47.067972",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guidelines for managing hypertension in pregnant patients like Mary Johnson, last seen at St. Francis Hospital, Chicago on December 22nd, 2022?",
+  "ground_truth_phi": "NAME: Mary Johnson | GEOGRAPHIC_LOCATION: St. Francis Hospital, Chicago | DATE: December 22nd, 2022",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Guidelines for managing hypertension in pregnant patients like [REDACTED_NAME], last seen at [REDACTED_GEOGRAPHIC_LOCATION], [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 63,
+      "end": 75,
+      "score": 0.85,
+      "text": "Mary Johnson",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 90,
+      "end": 110,
+      "score": 0.85,
+      "text": "St. Francis Hospital",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 112,
+      "end": 119,
+      "score": 0.85,
+      "text": "Chicago",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 123,
+      "end": 142,
+      "score": 0.85,
+      "text": "December 22nd, 2022",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "0.5000",
+    "f1_score": "0.6667"
+  }
+}

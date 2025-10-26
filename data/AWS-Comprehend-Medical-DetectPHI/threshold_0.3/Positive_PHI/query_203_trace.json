@@ -1,0 +1,70 @@
+{
+  "query_id": "203",
+  "timestamp": "2025-10-23T09:55:57.433518",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Management options for a 50-year-old female patient with migraine headaches who was seen by Dr. Emily T., at the Denver Neurology Clinic in November 2022?",
+  "ground_truth_phi": "NAME: Dr. Emily T. | GEOGRAPHIC_LOCATION: Denver Neurology Clinic | DATE: November 2022",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "50",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9990228414535522,
+      "begin_offset": 25,
+      "end_offset": 27
+    },
+    {
+      "text": "Emily T",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9989186525344849,
+      "begin_offset": 96,
+      "end_offset": 103
+    },
+    {
+      "text": "Denver Neurology Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9949067234992981,
+      "begin_offset": 113,
+      "end_offset": 136
+    },
+    {
+      "text": "November 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999966025352478,
+      "begin_offset": 140,
+      "end_offset": 153
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

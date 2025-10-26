@@ -1,0 +1,79 @@
+{
+  "query_id": "856",
+  "timestamp": "2025-10-23T09:57:09.123536",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Updated management guidelines for atrial fibrillation in a 75-year-old male, Joseph Brown, admitted to Cedars-Sinai on September 22nd, 2022 (MRN: CS-987654)?",
+  "ground_truth_phi": "NAME: Joseph Brown | GEOGRAPHIC_LOCATION: Cedars-Sinai | DATE: September 22nd, 2022 | MEDICAL_RECORD_NUMBER: CS-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "75",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996809959411621,
+      "begin_offset": 59,
+      "end_offset": 61
+    },
+    {
+      "text": "Joseph Brown",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.998202919960022,
+      "begin_offset": 77,
+      "end_offset": 89
+    },
+    {
+      "text": "Cedars-Sinai",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9397137761116028,
+      "begin_offset": 103,
+      "end_offset": 115
+    },
+    {
+      "text": "September 22nd, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999184608459473,
+      "begin_offset": 119,
+      "end_offset": 139
+    },
+    {
+      "text": "987654",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.5627777576446533,
+      "begin_offset": 149,
+      "end_offset": 155
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

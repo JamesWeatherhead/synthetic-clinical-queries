@@ -1,0 +1,70 @@
+{
+  "query_id": "117",
+  "timestamp": "2025-10-23T09:55:48.508267",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "rec mgmt for pt w/ hx of CHF, last seen by Dr. Nathan S. at Houston Clinic on 4/22/22. considering adding spironolactone, pt has ins plan #R-987654.",
+  "ground_truth_phi": "NAME: Dr. Nathan S. | GEOGRAPHIC_LOCATION: Houston Clinic | DATE: 4/22/22 | HEALTH_PLAN_BENEFICIARY_NUMBER: #R-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Nathan S.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996317625045776,
+      "begin_offset": 47,
+      "end_offset": 56
+    },
+    {
+      "text": "Houston Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9960154891014099,
+      "begin_offset": 60,
+      "end_offset": 74
+    },
+    {
+      "text": "4/22/22",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999542236328125,
+      "begin_offset": 78,
+      "end_offset": 85
+    },
+    {
+      "text": "987654",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9055733680725098,
+      "begin_offset": 141,
+      "end_offset": 147
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

@@ -1,0 +1,85 @@
+{
+  "query_id": "8",
+  "timestamp": "2025-10-22T16:12:42.034661",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Is it safe to prescribe atorvastatin to a 35-year-old Hispanic male with a history of liver disease, John P., who had a check-up at Lakeside Clinic on Feb 5th, 2022?",
+  "ground_truth_phi": "NAME: John P. | GEOGRAPHIC_LOCATION: Lakeside Clinic | DATE: Feb 5th, 2022",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Is it safe to prescribe atorvastatin to a [REDACTED_DATE] [REDACTED_NRP] male with a history of liver disease, [REDACTED_NAME], who had a check-up at Lakeside Clinic on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 42,
+      "end": 53,
+      "score": 0.85,
+      "text": "35-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "NRP",
+      "hipaa_category": "NRP",
+      "start": 54,
+      "end": 62,
+      "score": 0.85,
+      "text": "Hispanic",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 101,
+      "end": 108,
+      "score": 0.85,
+      "text": "John P.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 151,
+      "end": 159,
+      "score": 0.85,
+      "text": "Feb 5th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 160,
+      "end": 164,
+      "score": 0.85,
+      "text": "2022",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Lakeside Clinic",
+        "start": 132,
+        "end": 147
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.6667",
+    "precision": "0.2000",
+    "f1_score": "0.3077"
+  }
+}

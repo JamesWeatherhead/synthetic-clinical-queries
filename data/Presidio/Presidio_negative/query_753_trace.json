@@ -1,0 +1,45 @@
+{
+  "query_id": "753",
+  "timestamp": "2025-10-22T16:24:25.167886",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the potential side effects of levothyroxine in adults with a history of Graves' disease reported in 2021?",
+  "presidio_output": "What are the potential side effects of levothyroxine in adults with a history of [REDACTED_NAME]' disease reported in [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 81,
+      "end": 87,
+      "score": 0.85,
+      "text": "Graves",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 109,
+      "end": 113,
+      "score": 0.85,
+      "text": "2021",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 2,
+    "false_redactions_by_type": {
+      "NAME": 1,
+      "DATE": 1
+    },
+    "status": "OVER_REDACTED"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "query_id": "177",
+  "timestamp": "2025-10-23T09:55:54.739392",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Effective treatment options for a 38-year-old female, Amanda C., presenting with severe asthma exacerbation, attended in San Francisco General Hospital on September 9th, 2023, insurance ID 9875-4321.",
+  "ground_truth_phi": "NAME: Amanda C. | GEOGRAPHIC_LOCATION: San Francisco General Hospital | DATE: September 9th, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: 9875-4321",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "38",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996138215065002,
+      "begin_offset": 34,
+      "end_offset": 36
+    },
+    {
+      "text": "Amanda",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6775957942008972,
+      "begin_offset": 54,
+      "end_offset": 60
+    },
+    {
+      "text": "San Francisco General Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9896253943443298,
+      "begin_offset": 121,
+      "end_offset": 151
+    },
+    {
+      "text": "September 9th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9943420886993408,
+      "begin_offset": 155,
+      "end_offset": 174
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+        "value": "9875-4321"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 4
+}

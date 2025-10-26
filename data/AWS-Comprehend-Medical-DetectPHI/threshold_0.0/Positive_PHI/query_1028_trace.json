@@ -1,0 +1,57 @@
+{
+  "query_id": "1028",
+  "timestamp": "2025-10-23T09:57:30.824490",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "rec for pt w/ hx of COPD & HTN, notes from Dr. A. Smith's clinic, admitted on Jan 15th 2023. concerned about rx interactions w/ new meds.",
+  "ground_truth_phi": "NAME: Dr. A. Smith | DATE: Jan 15th 2023",
+  "ground_truth_phi_count": 2,
+  "aws_entities_detected": [
+    {
+      "text": "A. Smith's clinic",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9940727353096008,
+      "begin_offset": 47,
+      "end_offset": 64
+    },
+    {
+      "text": "Jan 15th 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9990265369415283,
+      "begin_offset": 78,
+      "end_offset": 91
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "NAME",
+        "value": "Dr. A. Smith"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 2,
+    "successfully_detected": 1,
+    "leaked_failures": 1,
+    "total_detected": 2,
+    "true_positives": 1,
+    "recall": "0.5000",
+    "precision": "0.5000",
+    "f1_score": "0.5000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 2,
+  "aws_entities_filtered_count": 2
+}

@@ -1,0 +1,69 @@
+{
+  "query_id": "972",
+  "timestamp": "2025-10-22T16:12:47.142672",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Prognosis for 39yo female w/ stage IIIC ovarian cancer under Dr. Allen at St. Mary's Hospital, Dallas, last seen on 03/21/2023? Her insurance ID: HN-54321.",
+  "ground_truth_phi": "NAME: Dr. Allen | GEOGRAPHIC_LOCATION: St. Mary's Hospital, Dallas | DATE: 03/21/2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: HN-54321",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Prognosis for 39yo female w/ stage IIIC ovarian cancer under Dr. [REDACTED_NAME] at St. Mary's Hospital, [REDACTED_GEOGRAPHIC_LOCATION], last seen on [REDACTED_DATE]? Her insurance ID: [REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 65,
+      "end": 70,
+      "score": 0.85,
+      "text": "Allen",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 95,
+      "end": 101,
+      "score": 0.85,
+      "text": "Dallas",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 146,
+      "end": 154,
+      "score": 0.7,
+      "text": "HN-54321",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 116,
+      "end": 126,
+      "score": 0.6,
+      "text": "03/21/2023",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "0.5000",
+    "f1_score": "0.6667"
+  }
+}

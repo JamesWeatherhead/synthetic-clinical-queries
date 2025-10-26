@@ -1,0 +1,94 @@
+{
+  "query_id": "959",
+  "timestamp": "2025-10-22T16:12:47.081682",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommended therapies for a 65-year-old woman with COPD, known as Nancy K., who visited the Cleveland Clinic on April 18th, 2023 (Insurance ID: 987654321)?",
+  "ground_truth_phi": "NAME: Nancy K. | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: April 18th, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: 987654321",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Recommended therapies for a [REDACTED_DATE] woman with COPD, known as [REDACTED_NAME], who visited the Cleveland Clinic on [REDACTED_DATE] (Insurance [REDACTED_UNIQUE_IDENTIFIER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "UNIQUE_IDENTIFIER",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "start": 140,
+      "end": 153,
+      "score": 0.9,
+      "text": "ID: 987654321",
+      "recognizer": "UniqueIdentifierRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 28,
+      "end": 39,
+      "score": 0.85,
+      "text": "65-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 66,
+      "end": 74,
+      "score": 0.85,
+      "text": "Nancy K.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 112,
+      "end": 123,
+      "score": 0.85,
+      "text": "April 18th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 124,
+      "end": 128,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 144,
+      "end": 153,
+      "score": 0.5,
+      "text": "987654321",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Cleveland Clinic",
+        "start": 92,
+        "end": 108
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 6,
+    "recall": "0.7500",
+    "precision": "0.3333",
+    "f1_score": "0.4615"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "query_id": "454",
+  "timestamp": "2025-10-22T16:12:44.408805",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Risk factors and contraindications for using Eliquis in a 58yo male, James B., treated at UCLA Medical Center on 11th March 2023? His insurance number is 987-65-4321.",
+  "ground_truth_phi": "NAME: James B. | GEOGRAPHIC_LOCATION: UCLA Medical Center | DATE: 11th March 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: 987-65-4321",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Risk factors and contraindications for using Eliquis in a 58yo male, [REDACTED_NAME], treated at UCLA Medical Center on [REDACTED_DATE]? His insurance number is [REDACTED_US_ITIN].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 69,
+      "end": 77,
+      "score": 0.85,
+      "text": "James B.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 113,
+      "end": 128,
+      "score": 0.85,
+      "text": "11th March 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "US_ITIN",
+      "hipaa_category": "US_ITIN",
+      "start": 154,
+      "end": 165,
+      "score": 0.5,
+      "text": "987-65-4321",
+      "recognizer": "UsItinRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UCLA Medical Center",
+        "start": 90,
+        "end": 109
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  }
+}

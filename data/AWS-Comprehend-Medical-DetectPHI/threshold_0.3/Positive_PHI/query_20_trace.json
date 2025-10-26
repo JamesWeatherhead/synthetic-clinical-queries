@@ -1,0 +1,79 @@
+{
+  "query_id": "20",
+  "timestamp": "2025-10-23T09:55:38.788890",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines on post-operative care for a 60-year-old male with COPD, Robert Brown, who was treated at St. Francis Hospital on April 14, 2024 (MRN: #SF-998877)?",
+  "ground_truth_phi": "NAME: Robert Brown | GEOGRAPHIC_LOCATION: St. Francis Hospital | DATE: April 14, 2024 | MEDICAL_RECORD_NUMBER: #SF-998877",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "60",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9990476965904236,
+      "begin_offset": 40,
+      "end_offset": 42
+    },
+    {
+      "text": "Robert Brown",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9989732503890991,
+      "begin_offset": 68,
+      "end_offset": 80
+    },
+    {
+      "text": "St. Francis Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9768476486206055,
+      "begin_offset": 101,
+      "end_offset": 121
+    },
+    {
+      "text": "April 14, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999066591262817,
+      "begin_offset": 125,
+      "end_offset": 139
+    },
+    {
+      "text": "998877",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8119955062866211,
+      "begin_offset": 150,
+      "end_offset": 156
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

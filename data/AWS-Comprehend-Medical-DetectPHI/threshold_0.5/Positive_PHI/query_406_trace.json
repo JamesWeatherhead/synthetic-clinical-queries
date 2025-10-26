@@ -1,0 +1,84 @@
+{
+  "query_id": "406",
+  "timestamp": "2025-10-23T09:56:22.508240",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Recommendations for treating pediatric asthma in a 10-year-old male patient, Jeremy B., evaluated at Children's Hospital Los Angeles on September 21, 2022, MRN: CH-203948.",
+  "ground_truth_phi": "NAME: Jeremy B. | GEOGRAPHIC_LOCATION: Children's Hospital Los Angeles | DATE: September 21, 2022 | MEDICAL_RECORD_NUMBER: CH-203948",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "10",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9883129000663757,
+      "begin_offset": 51,
+      "end_offset": 53
+    },
+    {
+      "text": "Jeremy B",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9955549836158752,
+      "begin_offset": 77,
+      "end_offset": 85
+    },
+    {
+      "text": "Children's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9934078454971313,
+      "begin_offset": 101,
+      "end_offset": 120
+    },
+    {
+      "text": "Los Angeles",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.570586085319519,
+      "begin_offset": 121,
+      "end_offset": 132
+    },
+    {
+      "text": "September 21, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998346567153931,
+      "begin_offset": 136,
+      "end_offset": 154
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "CH-203948"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "0.7500",
+    "precision": "0.8000",
+    "f1_score": "0.7742"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 5
+}

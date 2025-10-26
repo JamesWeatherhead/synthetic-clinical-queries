@@ -1,0 +1,79 @@
+{
+  "query_id": "950",
+  "timestamp": "2025-10-23T09:57:20.394688",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Appropriate antibiotics for treating community-acquired pneumonia in a 35-year-old woman, Jessica B., who visited the ER at Mount Sinai Hospital on March 25th, 2024?",
+  "ground_truth_phi": "NAME: Jessica B. | GEOGRAPHIC_LOCATION: Mount Sinai Hospital | DATE: March 25th, 2024",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "35",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9988842606544495,
+      "begin_offset": 71,
+      "end_offset": 73
+    },
+    {
+      "text": "Jessica B",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9778834581375122,
+      "begin_offset": 90,
+      "end_offset": 99
+    },
+    {
+      "text": "ER",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9960271120071411,
+      "begin_offset": 118,
+      "end_offset": 120
+    },
+    {
+      "text": "Mount Sinai Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9985837936401367,
+      "begin_offset": 124,
+      "end_offset": 144
+    },
+    {
+      "text": "March 25th, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999966025352478,
+      "begin_offset": 148,
+      "end_offset": 164
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.6000",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

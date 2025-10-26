@@ -1,0 +1,85 @@
+{
+  "query_id": "40",
+  "timestamp": "2025-10-22T16:12:42.239413",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the latest treatments for a 55-year-old male with recurrent glioblastoma, James A., who was diagnosed at Stanford Medical Center on January 15th, 2023 (MRN: #SG-920311)?",
+  "ground_truth_phi": "NAME: James A. | GEOGRAPHIC_LOCATION: Stanford Medical Center | DATE: January 15th, 2023 | MEDICAL_RECORD_NUMBER: #SG-920311",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What are the latest treatments for a [REDACTED_DATE] male with recurrent glioblastoma, [REDACTED_NAME], who was diagnosed at Stanford Medical Center on [REDACTED_DATE], [REDACTED_DATE] (MRN: #[REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 37,
+      "end": 48,
+      "score": 0.85,
+      "text": "55-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 83,
+      "end": 91,
+      "score": 0.85,
+      "text": "James A.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 141,
+      "end": 153,
+      "score": 0.85,
+      "text": "January 15th",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 155,
+      "end": 159,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 167,
+      "end": 176,
+      "score": 0.7,
+      "text": "SG-920311",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Stanford Medical Center",
+        "start": 114,
+        "end": 137
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.2000",
+    "f1_score": "0.3158"
+  }
+}

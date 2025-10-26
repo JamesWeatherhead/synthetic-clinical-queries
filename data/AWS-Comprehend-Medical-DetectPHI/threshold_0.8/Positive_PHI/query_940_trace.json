@@ -1,0 +1,75 @@
+{
+  "query_id": "940",
+  "timestamp": "2025-10-23T09:57:19.024893",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Treatment recommendations for a 72-year-old female with hypertensive crisis, consulted by Dr. Robert K. at San Francisco Health on Nov 6, 2023. Her MRN is #SF-54321.",
+  "ground_truth_phi": "NAME: Robert K. | GEOGRAPHIC_LOCATION: San Francisco Health | DATE: Nov 6, 2023 | MEDICAL_RECORD_NUMBER: #SF-54321",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "72",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998461008071899,
+      "begin_offset": 32,
+      "end_offset": 34
+    },
+    {
+      "text": "Robert K.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9980056881904602,
+      "begin_offset": 94,
+      "end_offset": 103
+    },
+    {
+      "text": "San Francisco Health",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9969947338104248,
+      "begin_offset": 107,
+      "end_offset": 127
+    },
+    {
+      "text": "Nov 6, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9994389414787292,
+      "begin_offset": 131,
+      "end_offset": 142
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "#SF-54321"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

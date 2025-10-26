@@ -1,0 +1,96 @@
+{
+  "query_id": "902",
+  "timestamp": "2025-10-22T16:12:46.770820",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guidelines for managing chronic heart failure in a 75-year-old female patient, Lisa Thompson from Houston, admitted on September 12, 2022. Insurance policy number TX-456789.",
+  "ground_truth_phi": "NAME: Lisa Thompson | GEOGRAPHIC_LOCATION: Houston | DATE: September 12, 2022 | HEALTH_PLAN_BENEFICIARY_NUMBER: TX-456789",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Guidelines for managing chronic heart failure in a [REDACTED_DATE] female patient, [REDACTED_NAME] from [REDACTED_GEOGRAPHIC_LOCATION], admitted on [REDACTED_DATE]. Insurance policy number [REDACTED_GEOGRAPHIC_LOCATION].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 51,
+      "end": 62,
+      "score": 0.85,
+      "text": "75-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 79,
+      "end": 92,
+      "score": 0.85,
+      "text": "Lisa Thompson",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 98,
+      "end": 105,
+      "score": 0.85,
+      "text": "Houston",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 119,
+      "end": 137,
+      "score": 0.85,
+      "text": "September 12, 2022",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 163,
+      "end": 172,
+      "score": 0.85,
+      "text": "TX-456789",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 163,
+      "end": 172,
+      "score": 0.7,
+      "text": "TX-456789",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "US_DRIVER_LICENSE",
+      "hipaa_category": "US_DRIVER_LICENSE",
+      "start": 166,
+      "end": 172,
+      "score": 0.4,
+      "text": "456789",
+      "recognizer": "UsLicenseRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 7,
+    "recall": "1.0000",
+    "precision": "0.5714",
+    "f1_score": "0.7273"
+  }
+}

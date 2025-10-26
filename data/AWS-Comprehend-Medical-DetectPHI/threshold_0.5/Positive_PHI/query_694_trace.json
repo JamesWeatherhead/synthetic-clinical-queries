@@ -1,0 +1,79 @@
+{
+  "query_id": "694",
+  "timestamp": "2025-10-23T09:56:52.150025",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "side efects of atorvastatin in pt w/ hx of CKD, similar case as Robert L. seen at UCLA Med Ctr on Jan 12th 2024. insurance policy HZ-987654.",
+  "ground_truth_phi": "NAME: Robert L. | GEOGRAPHIC_LOCATION: UCLA Med Ctr | DATE: Jan 12th 2024 | HEALTH_PLAN_BENEFICIARY_NUMBER: HZ-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Robert L.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8857924938201904,
+      "begin_offset": 64,
+      "end_offset": 73
+    },
+    {
+      "text": "UCLA Med Ctr",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9289308786392212,
+      "begin_offset": 82,
+      "end_offset": 94
+    },
+    {
+      "text": "Jan 12th",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995150566101074,
+      "begin_offset": 98,
+      "end_offset": 106
+    },
+    {
+      "text": "2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6503152847290039,
+      "begin_offset": 107,
+      "end_offset": 111
+    },
+    {
+      "text": "987654",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.5828699469566345,
+      "begin_offset": 133,
+      "end_offset": 139
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

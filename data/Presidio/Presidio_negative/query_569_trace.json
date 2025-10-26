@@ -1,0 +1,55 @@
+{
+  "query_id": "569",
+  "timestamp": "2025-10-22T16:24:24.933643",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What is the current treatment protocol for a 60-year-old Asian male diagnosed with type 2 diabetes and a history of Chaddock reflex?",
+  "presidio_output": "What is the current treatment protocol for a [REDACTED_DATE] [REDACTED_NRP] male diagnosed with type 2 diabetes and a history of [REDACTED_NAME] reflex?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 45,
+      "end": 56,
+      "score": 0.85,
+      "text": "60-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "NRP",
+      "hipaa_category": "NRP",
+      "start": 57,
+      "end": 62,
+      "score": 0.85,
+      "text": "Asian",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 116,
+      "end": 124,
+      "score": 0.85,
+      "text": "Chaddock",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 3,
+    "false_redactions_by_type": {
+      "DATE": 1,
+      "NRP": 1,
+      "NAME": 1
+    },
+    "status": "OVER_REDACTED"
+  }
+}

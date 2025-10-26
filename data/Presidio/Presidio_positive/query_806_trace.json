@@ -1,0 +1,76 @@
+{
+  "query_id": "806",
+  "timestamp": "2025-10-22T16:12:46.266835",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the current treatment options for a 67-year-old male diagnosed with atrial fibrillation, Michael Smith, seen at Vanderbilt University Medical Center on January 15th, 2023?",
+  "ground_truth_phi": "NAME: Michael Smith | GEOGRAPHIC_LOCATION: Vanderbilt University Medical Center | DATE: January 15th, 2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "What are the current treatment options for a [REDACTED_DATE] male diagnosed with atrial fibrillation, [REDACTED_NAME], seen at Vanderbilt University Medical Center on [REDACTED_DATE], [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 45,
+      "end": 56,
+      "score": 0.85,
+      "text": "67-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 98,
+      "end": 111,
+      "score": 0.85,
+      "text": "Michael Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 161,
+      "end": 173,
+      "score": 0.85,
+      "text": "January 15th",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 175,
+      "end": 179,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Vanderbilt University Medical Center",
+        "start": 121,
+        "end": 157
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.6667",
+    "precision": "0.2500",
+    "f1_score": "0.3636"
+  }
+}

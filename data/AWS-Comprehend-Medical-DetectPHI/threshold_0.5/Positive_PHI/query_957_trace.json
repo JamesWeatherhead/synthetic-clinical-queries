@@ -1,0 +1,70 @@
+{
+  "query_id": "957",
+  "timestamp": "2025-10-23T09:57:21.317445",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for managing hypertension in pregnant patients like Mary Johnson, last seen at St. Francis Hospital, Chicago on December 22nd, 2022?",
+  "ground_truth_phi": "NAME: Mary Johnson | GEOGRAPHIC_LOCATION: St. Francis Hospital, Chicago | DATE: December 22nd, 2022",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "Mary Johnson",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9983591437339783,
+      "begin_offset": 63,
+      "end_offset": 75
+    },
+    {
+      "text": "St. Francis Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9722698330879211,
+      "begin_offset": 90,
+      "end_offset": 110
+    },
+    {
+      "text": "Chicago",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9844707250595093,
+      "begin_offset": 112,
+      "end_offset": 119
+    },
+    {
+      "text": "December 22nd, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999802112579346,
+      "begin_offset": 123,
+      "end_offset": 142
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

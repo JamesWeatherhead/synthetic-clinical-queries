@@ -1,0 +1,61 @@
+{
+  "query_id": "929",
+  "timestamp": "2025-10-23T09:57:17.243101",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Recommendations for postoperative care after hip replacement surgery, specifically for cases like Emily R. who was admitted to General Hospital on September 10, 2023?",
+  "ground_truth_phi": "NAME: Emily R. | GEOGRAPHIC_LOCATION: General Hospital | DATE: September 10, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "Emily R.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9794665575027466,
+      "begin_offset": 98,
+      "end_offset": 106
+    },
+    {
+      "text": "General Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9872847199440002,
+      "begin_offset": 127,
+      "end_offset": 143
+    },
+    {
+      "text": "September 10, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999967098236084,
+      "begin_offset": 147,
+      "end_offset": 165
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

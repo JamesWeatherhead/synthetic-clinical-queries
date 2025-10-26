@@ -1,0 +1,79 @@
+{
+  "query_id": "294",
+  "timestamp": "2025-10-23T09:56:10.149811",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the contraindications for prescribing calcium channel blockers to a 75-year-old male, David P., who was admitted to General Hospital on 03/03/2023, MRN: 987-654-321?",
+  "ground_truth_phi": "NAME: David P. | GEOGRAPHIC_LOCATION: General Hospital | DATE: 03/03/2023 | MEDICAL_RECORD_NUMBER: 987-654-321",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "75",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9611133337020874,
+      "begin_offset": 77,
+      "end_offset": 79
+    },
+    {
+      "text": "David P",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9941608309745789,
+      "begin_offset": 95,
+      "end_offset": 102
+    },
+    {
+      "text": "General Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9810712933540344,
+      "begin_offset": 125,
+      "end_offset": 141
+    },
+    {
+      "text": "03/03/2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999587535858154,
+      "begin_offset": 145,
+      "end_offset": 155
+    },
+    {
+      "text": "987-654-321",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9993243217468262,
+      "begin_offset": 162,
+      "end_offset": 173
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

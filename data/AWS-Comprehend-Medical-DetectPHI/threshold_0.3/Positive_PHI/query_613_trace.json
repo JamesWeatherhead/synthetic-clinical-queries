@@ -1,0 +1,61 @@
+{
+  "query_id": "613",
+  "timestamp": "2025-10-23T09:56:44.639092",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "info on carb counting for insulin-dependent diabetic pt, Kevin R., seen at our 5th avenue clinic, needs recs before next appt on 12th Jan 2023.",
+  "ground_truth_phi": "NAME: Kevin R. | GEOGRAPHIC_LOCATION: 5th avenue clinic | DATE: 12th Jan 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "Kevin R",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9981503486633301,
+      "begin_offset": 57,
+      "end_offset": 64
+    },
+    {
+      "text": "5th avenue clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9862096905708313,
+      "begin_offset": 79,
+      "end_offset": 96
+    },
+    {
+      "text": "12th Jan 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9318429827690125,
+      "begin_offset": 129,
+      "end_offset": 142
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

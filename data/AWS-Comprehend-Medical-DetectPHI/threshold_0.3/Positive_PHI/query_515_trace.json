@@ -1,0 +1,70 @@
+{
+  "query_id": "515",
+  "timestamp": "2025-10-23T09:56:34.451397",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Rec'd tx options for pt w/ hx of atrial fibrillation, Johnathon Smith, who's been at Cleveland Clinic since 02/15/2023. MRN: CL-993847?",
+  "ground_truth_phi": "NAME: Johnathon Smith | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: 02/15/2023 | MEDICAL_RECORD_NUMBER: CL-993847",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Johnathon Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9985955357551575,
+      "begin_offset": 54,
+      "end_offset": 69
+    },
+    {
+      "text": "Cleveland Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9961983561515808,
+      "begin_offset": 85,
+      "end_offset": 101
+    },
+    {
+      "text": "02/15/2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999468326568604,
+      "begin_offset": 108,
+      "end_offset": 118
+    },
+    {
+      "text": "993847",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.4306623935699463,
+      "begin_offset": 128,
+      "end_offset": 134
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

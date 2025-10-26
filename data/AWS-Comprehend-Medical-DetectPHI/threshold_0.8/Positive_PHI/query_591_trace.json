@@ -1,0 +1,79 @@
+{
+  "query_id": "591",
+  "timestamp": "2025-10-23T09:56:42.320952",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Updated COPD treatment guidelines for a 64yo female, Margaret Brown, last admitted to Roosevelt Hospital on March 20th, 2022 (MRN: 32345321).",
+  "ground_truth_phi": "NAME: Margaret Brown | GEOGRAPHIC_LOCATION: Roosevelt Hospital | DATE: March 20th, 2022 | MEDICAL_RECORD_NUMBER: 32345321",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "64yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9991746544837952,
+      "begin_offset": 40,
+      "end_offset": 44
+    },
+    {
+      "text": "Margaret Brown",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9965652823448181,
+      "begin_offset": 53,
+      "end_offset": 67
+    },
+    {
+      "text": "Roosevelt Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.988101601600647,
+      "begin_offset": 86,
+      "end_offset": 104
+    },
+    {
+      "text": "March 20th, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999852180480957,
+      "begin_offset": 108,
+      "end_offset": 124
+    },
+    {
+      "text": "32345321",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.995198667049408,
+      "begin_offset": 131,
+      "end_offset": 139
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

@@ -1,0 +1,76 @@
+{
+  "query_id": "507",
+  "timestamp": "2025-10-22T16:12:44.710080",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Management guidelines for a 29-year-old female patient with type 1 diabetes, patient ID 987654, diagnosed at Johns Hopkins Hospital on March 3, 2019.",
+  "ground_truth_phi": "UNIQUE_IDENTIFIER: patient ID 987654 | GEOGRAPHIC_LOCATION: Johns Hopkins Hospital | DATE: March 3, 2019",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Management guidelines for a [REDACTED_DATE] female patient with type 1 diabetes, patient [REDACTED_UNIQUE_IDENTIFIER], diagnosed at Johns Hopkins Hospital on [REDACTED_DATE].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "UNIQUE_IDENTIFIER",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "start": 85,
+      "end": 94,
+      "score": 0.9,
+      "text": "ID 987654",
+      "recognizer": "UniqueIdentifierRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 28,
+      "end": 39,
+      "score": 0.85,
+      "text": "29-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 135,
+      "end": 148,
+      "score": 0.85,
+      "text": "March 3, 2019",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 88,
+      "end": 94,
+      "score": 0.5,
+      "text": "987654",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Johns Hopkins Hospital",
+        "start": 109,
+        "end": 131
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.6667",
+    "precision": "0.2500",
+    "f1_score": "0.3636"
+  }
+}

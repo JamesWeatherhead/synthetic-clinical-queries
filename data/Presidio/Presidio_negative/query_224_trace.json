@@ -1,0 +1,35 @@
+{
+  "query_id": "224",
+  "timestamp": "2025-10-22T16:24:24.556269",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the side effects of proton pump inhibitors commonly seen in patients with GERD and a history of Barrett's esophagus?",
+  "presidio_output": "What are the side effects of proton pump inhibitors commonly seen in patients with GERD and a history of [REDACTED_NAME]'s esophagus?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 105,
+      "end": 112,
+      "score": 0.85,
+      "text": "Barrett",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 1,
+    "false_redactions_by_type": {
+      "NAME": 1
+    },
+    "status": "OVER_REDACTED"
+  }
+}

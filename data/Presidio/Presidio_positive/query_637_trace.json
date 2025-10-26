@@ -1,0 +1,60 @@
+{
+  "query_id": "637",
+  "timestamp": "2025-10-22T16:12:45.391215",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Management guidelines for an infant with severe GERD, seen at Children's Hospital, Boston, on 12-12-2022. pt has hx of prematurity.",
+  "ground_truth_phi": "GEOGRAPHIC_LOCATION: Children's Hospital, Boston | DATE: 12-12-2022",
+  "ground_truth_phi_count": 2,
+  "presidio_output": "Management guidelines for an infant with severe GERD, seen at Children's Hospital, [REDACTED_GEOGRAPHIC_LOCATION], on [REDACTED_DATE]. pt has hx of prematurity.",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 83,
+      "end": 89,
+      "score": 0.85,
+      "text": "Boston",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 94,
+      "end": 104,
+      "score": 0.85,
+      "text": "12-12-2022",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 94,
+      "end": 104,
+      "score": 0.4,
+      "text": "12-12-2022",
+      "recognizer": "PhoneRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 2,
+    "successfully_redacted": 2,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "recall": "1.0000",
+    "precision": "0.3333",
+    "f1_score": "0.5000"
+  }
+}

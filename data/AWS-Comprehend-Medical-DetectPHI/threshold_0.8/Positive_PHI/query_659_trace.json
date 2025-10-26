@@ -1,0 +1,70 @@
+{
+  "query_id": "659",
+  "timestamp": "2025-10-23T09:56:48.924797",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "new protocol for tx of post-op wound infections in pts wi/hx of diabetes, review case details for Susan P., treated at UCLA Med Center on Apr 4, 2023. fax records to 987-654-3210.",
+  "ground_truth_phi": "NAME: Susan P. | GEOGRAPHIC_LOCATION: UCLA Med Center | DATE: Apr 4, 2023 | FAX_NUMBER: 987-654-3210",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Susan P",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9492224454879761,
+      "begin_offset": 98,
+      "end_offset": 105
+    },
+    {
+      "text": "UCLA Med Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9872775673866272,
+      "begin_offset": 119,
+      "end_offset": 134
+    },
+    {
+      "text": "Apr 4, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9805039167404175,
+      "begin_offset": 138,
+      "end_offset": 149
+    },
+    {
+      "text": "987-654-3210",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9988698363304138,
+      "begin_offset": 166,
+      "end_offset": 178
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

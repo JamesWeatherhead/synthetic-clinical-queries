@@ -1,0 +1,54 @@
+{
+  "query_id": "314",
+  "timestamp": "2025-10-22T16:24:24.644153",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Management of a 68-year-old male with a history of heart failure and past MI, current eGFR is 45, and on metoprolol?",
+  "presidio_output": "Management of a [REDACTED_DATE] male with a history of heart failure and past [REDACTED_GEOGRAPHIC_LOCATION], current eGFR is [REDACTED_DATE], and on metoprolol?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 16,
+      "end": 27,
+      "score": 0.85,
+      "text": "68-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 74,
+      "end": 76,
+      "score": 0.85,
+      "text": "MI",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 94,
+      "end": 96,
+      "score": 0.85,
+      "text": "45",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 3,
+    "false_redactions_by_type": {
+      "DATE": 2,
+      "GEOGRAPHIC_LOCATION": 1
+    },
+    "status": "OVER_REDACTED"
+  }
+}

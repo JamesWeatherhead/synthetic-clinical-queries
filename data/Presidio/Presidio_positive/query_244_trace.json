@@ -1,0 +1,78 @@
+{
+  "query_id": "244",
+  "timestamp": "2025-10-22T16:12:43.290110",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Safety of combining rivaroxaban with amiodarone for a 72-year-old female, Martha T., with AFib, evaluated at Mount Sinai on August 18th, 2023 (MRN: MS-6789012)?",
+  "ground_truth_phi": "NAME: Martha T. | GEOGRAPHIC_LOCATION: Mount Sinai | DATE: August 18th, 2023 | MEDICAL_RECORD_NUMBER: MS-6789012",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Safety of combining rivaroxaban with amiodarone for a [REDACTED_DATE] female, [REDACTED_NAME], with AFib, evaluated at [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE] (MRN: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 54,
+      "end": 65,
+      "score": 0.85,
+      "text": "72-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 74,
+      "end": 83,
+      "score": 0.85,
+      "text": "Martha T.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 109,
+      "end": 120,
+      "score": 0.85,
+      "text": "Mount Sinai",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 124,
+      "end": 141,
+      "score": 0.85,
+      "text": "August 18th, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 148,
+      "end": 158,
+      "score": 0.7,
+      "text": "MS-6789012",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  }
+}

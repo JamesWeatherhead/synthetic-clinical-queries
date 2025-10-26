@@ -1,0 +1,35 @@
+{
+  "query_id": "593",
+  "timestamp": "2025-10-22T16:24:24.950491",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Best practices for managing a male patient, age 68, with a high Framingham risk score and family history of early onset Alzheimer's.",
+  "presidio_output": "Best practices for managing a male patient, [REDACTED_DATE], with a high Framingham risk score and family history of early onset Alzheimer's.",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 44,
+      "end": 50,
+      "score": 0.85,
+      "text": "age 68",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 1,
+    "false_redactions_by_type": {
+      "DATE": 1
+    },
+    "status": "OVER_REDACTED"
+  }
+}

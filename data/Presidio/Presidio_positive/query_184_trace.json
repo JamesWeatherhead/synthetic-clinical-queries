@@ -1,0 +1,69 @@
+{
+  "query_id": "184",
+  "timestamp": "2025-10-22T16:12:42.995751",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guidelines for the treatment of hypertension in a patient like Mary A., reviewed at Cedar Sinai on August 23rd, 2023 (Phone: 555-123-4567)?",
+  "ground_truth_phi": "NAME: Mary A. | GEOGRAPHIC_LOCATION: Cedar Sinai | DATE: August 23rd, 2023 | PHONE_NUMBER: 555-123-4567",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Guidelines for the treatment of hypertension in a patient like [REDACTED_NAME], reviewed at [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE] (Phone: [REDACTED_PHONE_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 63,
+      "end": 70,
+      "score": 0.85,
+      "text": "Mary A.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 84,
+      "end": 95,
+      "score": 0.85,
+      "text": "Cedar Sinai",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 99,
+      "end": 116,
+      "score": 0.85,
+      "text": "August 23rd, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 125,
+      "end": 137,
+      "score": 0.75,
+      "text": "555-123-4567",
+      "recognizer": "PhoneRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  }
+}

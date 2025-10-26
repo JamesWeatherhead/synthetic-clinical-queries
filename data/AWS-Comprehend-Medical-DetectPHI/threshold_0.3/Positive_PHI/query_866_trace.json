@@ -1,0 +1,75 @@
+{
+  "query_id": "866",
+  "timestamp": "2025-10-23T09:57:09.870309",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the treatment options for a 50-year-old Hispanic male with metastatic melanoma, Jonathan Garcia, seen at Cedar Sinai on August 12th, 2023, MRN: 87654-321?",
+  "ground_truth_phi": "NAME: Jonathan Garcia | GEOGRAPHIC_LOCATION: Cedar Sinai | DATE: August 12th, 2023 | MEDICAL_RECORD_NUMBER: 87654-321",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "50",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9993112087249756,
+      "begin_offset": 37,
+      "end_offset": 39
+    },
+    {
+      "text": "Jonathan Garcia",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9994162321090698,
+      "begin_offset": 89,
+      "end_offset": 104
+    },
+    {
+      "text": "Cedar Sinai",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9959294199943542,
+      "begin_offset": 114,
+      "end_offset": 125
+    },
+    {
+      "text": "August 12th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999526739120483,
+      "begin_offset": 129,
+      "end_offset": 146
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "87654-321"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 4
+}

@@ -1,0 +1,78 @@
+{
+  "query_id": "644",
+  "timestamp": "2025-10-22T16:12:45.422584",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Are there any known interactions between warfarin and amiodarone for a 70-year-old male patient, Michael T., admitted on May 20th, 2023 at UCLA Medical Center?",
+  "ground_truth_phi": "NAME: Michael T. | GEOGRAPHIC_LOCATION: UCLA Medical Center | DATE: May 20th, 2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Are there any known interactions between warfarin and amiodarone for a [REDACTED_DATE] male patient, [REDACTED_NAME], admitted on [REDACTED_DATE] at [REDACTED_GEOGRAPHIC_LOCATION]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 71,
+      "end": 82,
+      "score": 0.85,
+      "text": "70-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 97,
+      "end": 107,
+      "score": 0.85,
+      "text": "Michael T.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 121,
+      "end": 130,
+      "score": 0.85,
+      "text": "May 20th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 131,
+      "end": 135,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 139,
+      "end": 158,
+      "score": 0.85,
+      "text": "UCLA Medical Center",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.4000",
+    "f1_score": "0.5714"
+  }
+}

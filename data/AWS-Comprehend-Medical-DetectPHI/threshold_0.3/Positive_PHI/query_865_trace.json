@@ -1,0 +1,79 @@
+{
+  "query_id": "865",
+  "timestamp": "2025-10-23T09:57:09.744606",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "pt 54yo w/ chronic renal failure, notes indicate Dr. Allen J. treated him at City Medical Center on 02-22-2024, MRN B12345678. Need alternative treatment options?",
+  "ground_truth_phi": "NAME: Dr. Allen J. | GEOGRAPHIC_LOCATION: City Medical Center | DATE: 02-22-2024 | MEDICAL_RECORD_NUMBER: B12345678",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "54yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9948791265487671,
+      "begin_offset": 3,
+      "end_offset": 7
+    },
+    {
+      "text": "Allen J.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9590011239051819,
+      "begin_offset": 53,
+      "end_offset": 61
+    },
+    {
+      "text": "City Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9968811273574829,
+      "begin_offset": 77,
+      "end_offset": 96
+    },
+    {
+      "text": "02-22-2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9994644522666931,
+      "begin_offset": 100,
+      "end_offset": 110
+    },
+    {
+      "text": "B12345678",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9983330368995667,
+      "begin_offset": 116,
+      "end_offset": 125
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

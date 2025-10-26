@@ -1,0 +1,76 @@
+{
+  "query_id": "49",
+  "timestamp": "2025-10-22T16:12:42.290859",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Current therapy for 35-year-old female with relapsed Hodgkin's lymphoma, David P., last treated at UCLA Medical Center on 08/18/2023?",
+  "ground_truth_phi": "NAME: David P. | GEOGRAPHIC_LOCATION: UCLA Medical Center | DATE: 08/18/2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Current therapy for [REDACTED_DATE] female with relapsed Hodgkin's lymphoma, [REDACTED_NAME], last treated at UCLA Medical Center on [REDACTED_NAME]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 20,
+      "end": 31,
+      "score": 0.85,
+      "text": "35-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 73,
+      "end": 81,
+      "score": 0.85,
+      "text": "David P.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 122,
+      "end": 132,
+      "score": 0.85,
+      "text": "08/18/2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 122,
+      "end": 132,
+      "score": 0.6,
+      "text": "08/18/2023",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UCLA Medical Center",
+        "start": 99,
+        "end": 118
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.6667",
+    "precision": "0.5000",
+    "f1_score": "0.5714"
+  }
+}

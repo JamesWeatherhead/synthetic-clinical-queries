@@ -1,0 +1,69 @@
+{
+  "query_id": "308",
+  "timestamp": "2025-10-22T16:12:43.659491",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "rec. imaging for pt w/ pleuritic chest pain post-thoracotomy. pt is John D seen at St. Mary's, discharged on 02/04/23. His contact is 555-123-4567.",
+  "ground_truth_phi": "NAME: John D | GEOGRAPHIC_LOCATION: St. Mary's | DATE: 02/04/23 | PHONE_NUMBER: 555-123-4567",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "rec. imaging for pt w/ pleuritic chest pain post-thoracotomy. pt is [REDACTED_NAME] seen at [REDACTED_GEOGRAPHIC_LOCATION], discharged on [REDACTED_DATE]. His contact is [REDACTED_PHONE_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 68,
+      "end": 74,
+      "score": 0.85,
+      "text": "John D",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 83,
+      "end": 93,
+      "score": 0.85,
+      "text": "St. Mary's",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 109,
+      "end": 117,
+      "score": 0.6,
+      "text": "02/04/23",
+      "recognizer": "DateRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 134,
+      "end": 146,
+      "score": 0.4,
+      "text": "555-123-4567",
+      "recognizer": "PhoneRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  }
+}

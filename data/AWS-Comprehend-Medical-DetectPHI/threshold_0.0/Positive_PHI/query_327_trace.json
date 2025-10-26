@@ -1,0 +1,70 @@
+{
+  "query_id": "327",
+  "timestamp": "2025-10-23T09:56:14.013684",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "guidelines for anticoagulation in pt w/ afib post-stroke, ref Paul M's case at UCLA med center 08/22/2023; SSN is 123-45-6789.",
+  "ground_truth_phi": "NAME: Paul M | GEOGRAPHIC_LOCATION: UCLA med center | DATE: 08/22/2023 | SOCIAL_SECURITY_NUMBER: 123-45-6789",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Paul M",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8392027616500854,
+      "begin_offset": 62,
+      "end_offset": 68
+    },
+    {
+      "text": "UCLA med center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9801260828971863,
+      "begin_offset": 79,
+      "end_offset": 94
+    },
+    {
+      "text": "08/22/2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998137354850769,
+      "begin_offset": 95,
+      "end_offset": 105
+    },
+    {
+      "text": "123-45-6789",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9956603646278381,
+      "begin_offset": 114,
+      "end_offset": 125
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

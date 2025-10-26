@@ -1,0 +1,79 @@
+{
+  "query_id": "250",
+  "timestamp": "2025-10-23T09:56:03.331033",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best treatment options for a 56-year-old male with metastatic melanoma, John Smith, last treated at New York Presbyterian on February 15, 2022 (MRN: 12345678)?",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: New York Presbyterian | DATE: February 15, 2022 | MEDICAL_RECORD_NUMBER: 12345678",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "56",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996540546417236,
+      "begin_offset": 29,
+      "end_offset": 31
+    },
+    {
+      "text": "John Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9981204867362976,
+      "begin_offset": 72,
+      "end_offset": 82
+    },
+    {
+      "text": "New York",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9664345979690552,
+      "begin_offset": 100,
+      "end_offset": 108
+    },
+    {
+      "text": "February 15, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999786615371704,
+      "begin_offset": 125,
+      "end_offset": 142
+    },
+    {
+      "text": "12345678",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9968093037605286,
+      "begin_offset": 149,
+      "end_offset": 157
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 5
+}

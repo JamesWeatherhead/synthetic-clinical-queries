@@ -1,0 +1,61 @@
+{
+  "query_id": "872",
+  "timestamp": "2025-10-23T09:57:10.357672",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Considerations for prescribing lisinopril to a patient named Emily R. from Brooklyn seen on February 5th, 2024 with a diagnosis of hypertension and diabetes?",
+  "ground_truth_phi": "NAME: Emily R. | GEOGRAPHIC_LOCATION: Brooklyn | DATE: February 5th, 2024",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "Emily R.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9812347292900085,
+      "begin_offset": 61,
+      "end_offset": 69
+    },
+    {
+      "text": "Brooklyn",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6311434507369995,
+      "begin_offset": 75,
+      "end_offset": 83
+    },
+    {
+      "text": "February 5th, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998981952667236,
+      "begin_offset": 92,
+      "end_offset": 110
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

@@ -1,0 +1,70 @@
+{
+  "query_id": "806",
+  "timestamp": "2025-10-23T09:57:03.565732",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the current treatment options for a 67-year-old male diagnosed with atrial fibrillation, Michael Smith, seen at Vanderbilt University Medical Center on January 15th, 2023?",
+  "ground_truth_phi": "NAME: Michael Smith | GEOGRAPHIC_LOCATION: Vanderbilt University Medical Center | DATE: January 15th, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "67",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997935891151428,
+      "begin_offset": 45,
+      "end_offset": 47
+    },
+    {
+      "text": "Michael Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9946650266647339,
+      "begin_offset": 98,
+      "end_offset": 111
+    },
+    {
+      "text": "Vanderbilt University Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9037604928016663,
+      "begin_offset": 121,
+      "end_offset": 157
+    },
+    {
+      "text": "January 15th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999208450317383,
+      "begin_offset": 161,
+      "end_offset": 179
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

@@ -1,0 +1,79 @@
+{
+  "query_id": "16",
+  "timestamp": "2025-10-23T09:55:38.286949",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Are there any new guidelines for managing hypertension in patients similar to Jane D., a 55-year-old female seen at Brigham and Women's Hospital on March 22nd, 2024, with insurance number HP-678901?",
+  "ground_truth_phi": "NAME: Jane D. | GEOGRAPHIC_LOCATION: Brigham and Women's Hospital | DATE: March 22nd, 2024 | HEALTH_PLAN_BENEFICIARY_NUMBER: HP-678901",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Jane D",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8115127682685852,
+      "begin_offset": 78,
+      "end_offset": 84
+    },
+    {
+      "text": "55",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998249411582947,
+      "begin_offset": 89,
+      "end_offset": 91
+    },
+    {
+      "text": "Brigham and Women's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9311763048171997,
+      "begin_offset": 116,
+      "end_offset": 144
+    },
+    {
+      "text": "March 22nd, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999345541000366,
+      "begin_offset": 148,
+      "end_offset": 164
+    },
+    {
+      "text": "678901",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7161723971366882,
+      "begin_offset": 191,
+      "end_offset": 197
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

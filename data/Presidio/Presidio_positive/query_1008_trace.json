@@ -1,0 +1,76 @@
+{
+  "query_id": "1008",
+  "timestamp": "2025-10-22T16:12:47.344271",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Treatment protocol for a 55-year-old male with stage III colon cancer, seen by Dr. John White at Bellevue Hospital on August 21st, 2022 (MRN: 123456)?",
+  "ground_truth_phi": "NAME: John White | GEOGRAPHIC_LOCATION: Bellevue Hospital | DATE: August 21st, 2022 | MEDICAL_RECORD_NUMBER: 123456",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Treatment protocol for a [REDACTED_DATE] male with stage III colon cancer, seen by Dr. [REDACTED_NAME] at Bellevue Hospital on [REDACTED_DATE] ([REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 137,
+      "end": 148,
+      "score": 0.9,
+      "text": "MRN: 123456",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 25,
+      "end": 36,
+      "score": 0.85,
+      "text": "55-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 83,
+      "end": 93,
+      "score": 0.85,
+      "text": "John White",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 118,
+      "end": 135,
+      "score": 0.85,
+      "text": "August 21st, 2022",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Bellevue Hospital",
+        "start": 97,
+        "end": 114
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.5000",
+    "f1_score": "0.6000"
+  }
+}

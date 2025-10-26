@@ -1,0 +1,79 @@
+{
+  "query_id": "44",
+  "timestamp": "2025-10-23T09:55:41.075401",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Comparative effectiveness of rivaroxaban vs. dabigatran for stroke prevention in a 75-year-old female with atrial fibrillation, Mary B., treated at Brigham and Women's Hospital, Boston on July 10, 2023?",
+  "ground_truth_phi": "NAME: Mary B. | GEOGRAPHIC_LOCATION: Brigham and Women's Hospital, Boston | DATE: July 10, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "75",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.998976469039917,
+      "begin_offset": 83,
+      "end_offset": 85
+    },
+    {
+      "text": "Mary B",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.993028461933136,
+      "begin_offset": 128,
+      "end_offset": 134
+    },
+    {
+      "text": "Brigham and Women's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9329008460044861,
+      "begin_offset": 148,
+      "end_offset": 176
+    },
+    {
+      "text": "Boston",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9459966421127319,
+      "begin_offset": 178,
+      "end_offset": 184
+    },
+    {
+      "text": "July 10, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999517202377319,
+      "begin_offset": 188,
+      "end_offset": 201
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

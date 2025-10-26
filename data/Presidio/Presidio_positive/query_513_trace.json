@@ -1,0 +1,82 @@
+{
+  "query_id": "513",
+  "timestamp": "2025-10-22T16:12:44.745420",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommended treatment for a 52-year-old male, John H., with chronic hepatitis C, seen at Mercy Clinic on 3/14/2022. Patient's MRN: 789-45-321.",
+  "ground_truth_phi": "NAME: John H. | GEOGRAPHIC_LOCATION: Mercy Clinic | DATE: 3/14/2022 | MEDICAL_RECORD_NUMBER: 789-45-321",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Recommended treatment for a [REDACTED_DATE] male, [REDACTED_NAME], with chronic hepatitis C, seen at Mercy Clinic on [REDACTED_GEOGRAPHIC_LOCATION]. Patient's MRN: 789-45-321.",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 28,
+      "end": 39,
+      "score": 0.85,
+      "text": "52-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 46,
+      "end": 53,
+      "score": 0.85,
+      "text": "John H.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 105,
+      "end": 114,
+      "score": 0.85,
+      "text": "3/14/2022",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 105,
+      "end": 114,
+      "score": 0.6,
+      "text": "3/14/2022",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Mercy Clinic",
+        "start": 89,
+        "end": 101
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "789-45-321",
+        "start": 131,
+        "end": 141
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 4,
+    "recall": "0.5000",
+    "precision": "0.5000",
+    "f1_score": "0.5000"
+  }
+}

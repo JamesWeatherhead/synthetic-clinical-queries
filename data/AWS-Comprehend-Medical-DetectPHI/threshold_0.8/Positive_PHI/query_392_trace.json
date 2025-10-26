@@ -1,0 +1,75 @@
+{
+  "query_id": "392",
+  "timestamp": "2025-10-23T09:56:21.093862",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best practices for post-op care in a 65-year-old male, Mr. Anderson, discharged from Bellevue Hospital on September 30, 2023 (MRN: BH-903123)?",
+  "ground_truth_phi": "NAME: Mr. Anderson | GEOGRAPHIC_LOCATION: Bellevue Hospital | DATE: September 30, 2023 | MEDICAL_RECORD_NUMBER: BH-903123",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "65",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9991889595985413,
+      "begin_offset": 37,
+      "end_offset": 39
+    },
+    {
+      "text": "Anderson",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9994325041770935,
+      "begin_offset": 59,
+      "end_offset": 67
+    },
+    {
+      "text": "Bellevue Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9830011129379272,
+      "begin_offset": 85,
+      "end_offset": 102
+    },
+    {
+      "text": "September 30, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998900890350342,
+      "begin_offset": 106,
+      "end_offset": 124
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "BH-903123"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 4
+}

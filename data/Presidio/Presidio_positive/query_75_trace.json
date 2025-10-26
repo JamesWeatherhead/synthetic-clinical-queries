@@ -1,0 +1,85 @@
+{
+  "query_id": "75",
+  "timestamp": "2025-10-22T16:12:42.433871",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guidelines for managing hypertension in a 60-year-old African American male, William Smith, recently admitted to Central Medical Center on February 20, 2023 (MRN: 555-67-8901)?",
+  "ground_truth_phi": "NAME: William Smith | GEOGRAPHIC_LOCATION: Central Medical Center | DATE: February 20, 2023 | MEDICAL_RECORD_NUMBER: 555-67-8901",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Guidelines for managing hypertension in a [REDACTED_DATE] [REDACTED_NRP] male, [REDACTED_NAME], recently admitted to Central Medical Center on [REDACTED_DATE] (MRN: [REDACTED_SOCIAL_SECURITY_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 42,
+      "end": 53,
+      "score": 0.85,
+      "text": "60-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "NRP",
+      "hipaa_category": "NRP",
+      "start": 54,
+      "end": 70,
+      "score": 0.85,
+      "text": "African American",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 77,
+      "end": 90,
+      "score": 0.85,
+      "text": "William Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 139,
+      "end": 156,
+      "score": 0.85,
+      "text": "February 20, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "US_SSN",
+      "hipaa_category": "SOCIAL_SECURITY_NUMBER",
+      "start": 163,
+      "end": 174,
+      "score": 0.5,
+      "text": "555-67-8901",
+      "recognizer": "UsSsnRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Central Medical Center",
+        "start": 113,
+        "end": 135
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.6000",
+    "f1_score": "0.6667"
+  }
+}

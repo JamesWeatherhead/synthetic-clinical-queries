@@ -1,0 +1,79 @@
+{
+  "query_id": "607",
+  "timestamp": "2025-10-23T09:56:44.003673",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guideline recommendations for managing atrial fibrillation in a 70-year-old male, Robert K., diagnosed at NYU Langone Health on July 15th, 2023 (SSN: 555-66-7777)?",
+  "ground_truth_phi": "NAME: Robert K. | GEOGRAPHIC_LOCATION: NYU Langone Health | DATE: July 15th, 2023 | SOCIAL_SECURITY_NUMBER: 555-66-7777",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "70",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997853636741638,
+      "begin_offset": 64,
+      "end_offset": 66
+    },
+    {
+      "text": "Robert K",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9960850477218628,
+      "begin_offset": 82,
+      "end_offset": 90
+    },
+    {
+      "text": "NYU Langone Health",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9673457741737366,
+      "begin_offset": 106,
+      "end_offset": 124
+    },
+    {
+      "text": "July 15th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999077320098877,
+      "begin_offset": 128,
+      "end_offset": 143
+    },
+    {
+      "text": "555-66-7777",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9992695450782776,
+      "begin_offset": 150,
+      "end_offset": 161
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

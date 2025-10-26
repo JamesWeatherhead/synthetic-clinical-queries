@@ -1,0 +1,82 @@
+{
+  "query_id": "315",
+  "timestamp": "2025-10-22T16:12:43.690169",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the treatment options for a 55-year-old male, Robert Smith, with recurrent colon cancer noted in his February 12th, 2023 visit at Cedars-Sinai Medical Center (MRN: 123-45-678)?",
+  "ground_truth_phi": "NAME: Robert Smith | DATE: February 12th, 2023 | GEOGRAPHIC_LOCATION: Cedars-Sinai Medical Center | MEDICAL_RECORD_NUMBER: 123-45-678",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What are the treatment options for a [REDACTED_DATE] male, [REDACTED_NAME], with recurrent colon cancer noted in his [REDACTED_DATE], [REDACTED_DATE] visit at Cedars-Sinai Medical Center (MRN: 123-45-678)?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 37,
+      "end": 48,
+      "score": 0.85,
+      "text": "55-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 55,
+      "end": 67,
+      "score": 0.85,
+      "text": "Robert Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 110,
+      "end": 123,
+      "score": 0.85,
+      "text": "February 12th",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 125,
+      "end": 129,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Cedars-Sinai Medical Center",
+        "start": 139,
+        "end": 166
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "123-45-678",
+        "start": 173,
+        "end": 183
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 4,
+    "recall": "0.5000",
+    "precision": "0.2500",
+    "f1_score": "0.3333"
+  }
+}

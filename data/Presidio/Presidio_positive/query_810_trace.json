@@ -1,0 +1,85 @@
+{
+  "query_id": "810",
+  "timestamp": "2025-10-22T16:12:46.285168",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Treatment guidelines for a 72-year-old female, Nancy L., diagnosed with Alzheimer's, admitted to Cleveland Clinic on February 5th, 2023 (MRN: CLV-123456)?",
+  "ground_truth_phi": "NAME: Nancy L. | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: February 5th, 2023 | MEDICAL_RECORD_NUMBER: CLV-123456",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Treatment guidelines for a [REDACTED_DATE] female, [REDACTED_NAME], diagnosed with Alzheimer's, admitted to Cleveland Clinic on [REDACTED_DATE] (MRN: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 27,
+      "end": 38,
+      "score": 0.85,
+      "text": "72-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 47,
+      "end": 55,
+      "score": 0.85,
+      "text": "Nancy L.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 117,
+      "end": 130,
+      "score": 0.85,
+      "text": "February 5th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 131,
+      "end": 135,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 142,
+      "end": 152,
+      "score": 0.7,
+      "text": "CLV-123456",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Cleveland Clinic",
+        "start": 97,
+        "end": 113
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.4000",
+    "f1_score": "0.5217"
+  }
+}

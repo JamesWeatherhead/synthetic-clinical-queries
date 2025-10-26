@@ -1,0 +1,52 @@
+{
+  "query_id": "790",
+  "timestamp": "2025-10-23T10:23:45.987742",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the long-term effects of metformin in a 65-year-old female with an eGFR of 45? Findings from recent studies published in 2021?",
+  "ground_truth_phi": "",
+  "ground_truth_phi_count": 0,
+  "aws_entities_detected": [
+    {
+      "text": "65",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9976006150245667,
+      "begin_offset": 49,
+      "end_offset": 51
+    },
+    {
+      "text": "2021",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.971737802028656,
+      "begin_offset": 130,
+      "end_offset": 134
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 0,
+    "successfully_detected": 0,
+    "leaked_failures": 0,
+    "total_detected": 2,
+    "true_positives": 0,
+    "recall": "1.0000",
+    "precision": "0.0000",
+    "f1_score": "0.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 2,
+  "aws_entities_filtered_count": 2
+}

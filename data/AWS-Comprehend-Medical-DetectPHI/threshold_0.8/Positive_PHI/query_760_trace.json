@@ -1,0 +1,75 @@
+{
+  "query_id": "760",
+  "timestamp": "2025-10-23T09:56:58.318803",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Management of atrial fibrillation for a 68-year-old male, John A., who was admitted to UCLA Medical Center on January 5th, 2024 (MRN: #UCLA-12345).",
+  "ground_truth_phi": "NAME: John A. | GEOGRAPHIC_LOCATION: UCLA Medical Center | DATE: January 5th, 2024 | MEDICAL_RECORD_NUMBER: #UCLA-12345",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "68",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999871015548706,
+      "begin_offset": 40,
+      "end_offset": 42
+    },
+    {
+      "text": "John A",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9334797859191895,
+      "begin_offset": 58,
+      "end_offset": 64
+    },
+    {
+      "text": "UCLA Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9908490180969238,
+      "begin_offset": 87,
+      "end_offset": 106
+    },
+    {
+      "text": "January 5th, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999291896820068,
+      "begin_offset": 110,
+      "end_offset": 127
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "#UCLA-12345"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 4
+}

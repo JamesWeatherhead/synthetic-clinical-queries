@@ -1,0 +1,79 @@
+{
+  "query_id": "821",
+  "timestamp": "2025-10-23T09:57:05.312073",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for managing asthma in a 10-year-old boy, Kevin L., evaluated at St. Mary's Hospital on July 12th, 2023 (MRN: A12345678)?",
+  "ground_truth_phi": "NAME: Kevin L. | GEOGRAPHIC_LOCATION: St. Mary's Hospital | DATE: July 12th, 2023 | MEDICAL_RECORD_NUMBER: A12345678",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "10",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.994170606136322,
+      "begin_offset": 36,
+      "end_offset": 38
+    },
+    {
+      "text": "Kevin L",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996582269668579,
+      "begin_offset": 53,
+      "end_offset": 60
+    },
+    {
+      "text": "St. Mary's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9822816848754883,
+      "begin_offset": 76,
+      "end_offset": 95
+    },
+    {
+      "text": "July 12th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999667406082153,
+      "begin_offset": 99,
+      "end_offset": 114
+    },
+    {
+      "text": "A12345678",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999508261680603,
+      "begin_offset": 121,
+      "end_offset": 130
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

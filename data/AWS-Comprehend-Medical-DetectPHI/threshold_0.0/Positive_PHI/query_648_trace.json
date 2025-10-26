@@ -1,0 +1,70 @@
+{
+  "query_id": "648",
+  "timestamp": "2025-10-23T09:56:48.031320",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Current CDC guidelines for treating Lyme disease in a 12-year-old child, Alice Thompson, living in Raleigh, diagnosed on July 10, 2023?",
+  "ground_truth_phi": "NAME: Alice Thompson | GEOGRAPHIC_LOCATION: Raleigh | DATE: July 10, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "12",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9972533583641052,
+      "begin_offset": 54,
+      "end_offset": 56
+    },
+    {
+      "text": "Alice Thompson",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9930464625358582,
+      "begin_offset": 73,
+      "end_offset": 87
+    },
+    {
+      "text": "Raleigh",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9901069402694702,
+      "begin_offset": 99,
+      "end_offset": 106
+    },
+    {
+      "text": "July 10, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999737739562988,
+      "begin_offset": 121,
+      "end_offset": 134
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

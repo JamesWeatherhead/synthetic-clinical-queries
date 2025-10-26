@@ -1,0 +1,84 @@
+{
+  "query_id": "586",
+  "timestamp": "2025-10-23T09:56:41.818052",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Recommended treatment options for a 70-year-old female, Linda H., with stage 3 lung cancer, last admitted to UCLA Medical Center in Los Angeles on Nov 15, 2022 (MRN: LH-98765)?",
+  "ground_truth_phi": "NAME: Linda H. | GEOGRAPHIC_LOCATION: UCLA Medical Center in Los Angeles | DATE: Nov 15, 2022 | MEDICAL_RECORD_NUMBER: LH-98765",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "70",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999583899974823,
+      "begin_offset": 36,
+      "end_offset": 38
+    },
+    {
+      "text": "Linda H",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9909713268280029,
+      "begin_offset": 56,
+      "end_offset": 63
+    },
+    {
+      "text": "UCLA Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9960556030273438,
+      "begin_offset": 109,
+      "end_offset": 128
+    },
+    {
+      "text": "Los Angeles",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9961304664611816,
+      "begin_offset": 132,
+      "end_offset": 143
+    },
+    {
+      "text": "Nov 15, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998457431793213,
+      "begin_offset": 147,
+      "end_offset": 159
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "LH-98765"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "0.7500",
+    "precision": "0.8000",
+    "f1_score": "0.7742"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 5
+}

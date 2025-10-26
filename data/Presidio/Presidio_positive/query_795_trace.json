@@ -1,0 +1,69 @@
+{
+  "query_id": "795",
+  "timestamp": "2025-10-22T16:12:46.214876",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guidelines for managing a 40-year-old female with severe asthma, who visited Dr. Anthony Brown's office in Brooklyn on October 3, 2023.",
+  "ground_truth_phi": "NAME: Dr. Anthony Brown | GEOGRAPHIC_LOCATION: Brooklyn | DATE: October 3, 2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Guidelines for managing a [REDACTED_DATE] female with severe asthma, who visited Dr. [REDACTED_NAME]'s office in [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 26,
+      "end": 37,
+      "score": 0.85,
+      "text": "40-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 81,
+      "end": 94,
+      "score": 0.85,
+      "text": "Anthony Brown",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 107,
+      "end": 115,
+      "score": 0.85,
+      "text": "Brooklyn",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 119,
+      "end": 134,
+      "score": 0.85,
+      "text": "October 3, 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "0.5000",
+    "f1_score": "0.6667"
+  }
+}

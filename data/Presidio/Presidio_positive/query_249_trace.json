@@ -1,0 +1,96 @@
+{
+  "query_id": "249",
+  "timestamp": "2025-10-22T16:12:43.318806",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What is the 5-year survival rate for a 50-year-old male with Stage IV pancreatic cancer, Robert T., diagnosed on March 2nd, 2023, at MD Anderson (ins. #789-1234-567)?",
+  "ground_truth_phi": "NAME: Robert T. | GEOGRAPHIC_LOCATION: MD Anderson | DATE: March 2nd, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: 789-1234-567",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What is the [REDACTED_DATE] survival rate for a [REDACTED_DATE] male with Stage IV pancreatic cancer, [REDACTED_NAME], diagnosed on [REDACTED_DATE], at [REDACTED_GEOGRAPHIC_LOCATION] (ins. #[REDACTED_PHONE_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 12,
+      "end": 18,
+      "score": 0.85,
+      "text": "5-year",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 39,
+      "end": 50,
+      "score": 0.85,
+      "text": "50-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 89,
+      "end": 98,
+      "score": 0.85,
+      "text": "Robert T.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 113,
+      "end": 123,
+      "score": 0.85,
+      "text": "March 2nd,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 124,
+      "end": 128,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 133,
+      "end": 144,
+      "score": 0.85,
+      "text": "MD Anderson",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 152,
+      "end": 164,
+      "score": 0.4,
+      "text": "789-1234-567",
+      "recognizer": "PhoneRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 7,
+    "recall": "1.0000",
+    "precision": "0.4286",
+    "f1_score": "0.6000"
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "query_id": "578",
+  "timestamp": "2025-10-22T16:12:45.088080",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Treatment options for advanced prostate cancer in a 72-year-old African American male, seen at Johns Hopkins Hospital on February 10, 2023 (MRN: JH-345678)?",
+  "ground_truth_phi": "GEOGRAPHIC_LOCATION: Johns Hopkins Hospital | DATE: February 10, 2023 | MEDICAL_RECORD_NUMBER: JH-345678",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Treatment options for advanced prostate cancer in a [REDACTED_DATE] [REDACTED_NRP] male, seen at Johns Hopkins Hospital on [REDACTED_DATE] (MRN: [REDACTED_NAME])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 52,
+      "end": 63,
+      "score": 0.85,
+      "text": "72-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "NRP",
+      "hipaa_category": "NRP",
+      "start": 64,
+      "end": 80,
+      "score": 0.85,
+      "text": "African American",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 121,
+      "end": 138,
+      "score": 0.85,
+      "text": "February 10, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 145,
+      "end": 154,
+      "score": 0.85,
+      "text": "JH-345678",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 145,
+      "end": 154,
+      "score": 0.7,
+      "text": "JH-345678",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Johns Hopkins Hospital",
+        "start": 95,
+        "end": 117
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.6667",
+    "precision": "0.4000",
+    "f1_score": "0.5000"
+  }
+}

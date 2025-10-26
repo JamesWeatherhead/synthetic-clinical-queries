@@ -1,0 +1,44 @@
+{
+  "query_id": "306",
+  "timestamp": "2025-10-22T16:24:24.632327",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guidelines for managing a 65-year-old female patient with a history of atrial fibrillation and recent increase in CHA2DS2-VASc score since 2021.",
+  "presidio_output": "Guidelines for managing a [REDACTED_DATE] female patient with a history of atrial fibrillation and recent increase in CHA2DS2-VASc score since [REDACTED_DATE].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 26,
+      "end": 37,
+      "score": 0.85,
+      "text": "65-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 139,
+      "end": 143,
+      "score": 0.85,
+      "text": "2021",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 2,
+    "false_redactions_by_type": {
+      "DATE": 2
+    },
+    "status": "OVER_REDACTED"
+  }
+}

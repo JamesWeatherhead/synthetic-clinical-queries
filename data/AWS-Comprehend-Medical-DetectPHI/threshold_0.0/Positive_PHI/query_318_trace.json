@@ -1,0 +1,79 @@
+{
+  "query_id": "318",
+  "timestamp": "2025-10-23T09:56:13.364351",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best practices for managing post-op infection in a 45yo female, Maria Garcia, operated on at Stanford Hospital on April 4th, 2023 (SSN: 987-65-4321)?",
+  "ground_truth_phi": "NAME: Maria Garcia | GEOGRAPHIC_LOCATION: Stanford Hospital | DATE: April 4th, 2023 | SOCIAL_SECURITY_NUMBER: 987-65-4321",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "45yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.99553382396698,
+      "begin_offset": 51,
+      "end_offset": 55
+    },
+    {
+      "text": "Maria Garcia",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.99854975938797,
+      "begin_offset": 64,
+      "end_offset": 76
+    },
+    {
+      "text": "Stanford Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9827677607536316,
+      "begin_offset": 93,
+      "end_offset": 110
+    },
+    {
+      "text": "April 4th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996618032455444,
+      "begin_offset": 114,
+      "end_offset": 129
+    },
+    {
+      "text": "987-65-4321",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995118379592896,
+      "begin_offset": 136,
+      "end_offset": 147
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

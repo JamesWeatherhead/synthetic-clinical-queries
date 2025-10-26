@@ -1,0 +1,79 @@
+{
+  "query_id": "457",
+  "timestamp": "2025-10-23T09:56:27.684523",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Safety and efficacy of new asthma inhalers for a 55-year-old male, John Q., evaluated at Westside Medical on June 2nd, 2022, MRN: WSM-321789.",
+  "ground_truth_phi": "NAME: John Q. | GEOGRAPHIC_LOCATION: Westside Medical | DATE: June 2nd, 2022 | MEDICAL_RECORD_NUMBER: WSM-321789",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "55",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9988057613372803,
+      "begin_offset": 49,
+      "end_offset": 51
+    },
+    {
+      "text": "John Q",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9170287847518921,
+      "begin_offset": 67,
+      "end_offset": 73
+    },
+    {
+      "text": "Westside Medical",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9725186228752136,
+      "begin_offset": 89,
+      "end_offset": 105
+    },
+    {
+      "text": "June 2nd, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999274015426636,
+      "begin_offset": 109,
+      "end_offset": 123
+    },
+    {
+      "text": "WSM-321789",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.12650805711746216,
+      "begin_offset": 130,
+      "end_offset": 140
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

@@ -1,0 +1,69 @@
+{
+  "query_id": "710",
+  "timestamp": "2025-10-22T16:12:45.771840",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Can you provide data on the efficacy of atorvastatin in reducing LDL levels for a 65-year-old male patient, John A., who visited our clinic in Dallas on Jan 15, 2023?",
+  "ground_truth_phi": "NAME: John A. | GEOGRAPHIC_LOCATION: Dallas | DATE: Jan 15, 2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Can you provide data on the efficacy of atorvastatin in reducing LDL levels for a [REDACTED_DATE] male patient, [REDACTED_NAME], who visited our clinic in [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 82,
+      "end": 93,
+      "score": 0.85,
+      "text": "65-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 108,
+      "end": 115,
+      "score": 0.85,
+      "text": "John A.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 143,
+      "end": 149,
+      "score": 0.85,
+      "text": "Dallas",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 153,
+      "end": 165,
+      "score": 0.85,
+      "text": "Jan 15, 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  }
+}

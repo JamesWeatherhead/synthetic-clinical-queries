@@ -1,0 +1,87 @@
+{
+  "query_id": "1034",
+  "timestamp": "2025-10-22T16:12:47.482163",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Best practices for anticoagulation in an 80-year-old female, Eleanor M., currently residing at 789 Pine Street, San Francisco, CA with phone number 415-555-1234?",
+  "ground_truth_phi": "NAME: Eleanor M. | GEOGRAPHIC_LOCATION: 789 Pine Street, San Francisco, CA | PHONE_NUMBER: 415-555-1234",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Best practices for anticoagulation in an [REDACTED_DATE] female, [REDACTED_NAME], currently residing at [REDACTED_GEOGRAPHIC_LOCATION], [REDACTED_GEOGRAPHIC_LOCATION], [REDACTED_GEOGRAPHIC_LOCATION] with phone number [REDACTED_PHONE_NUMBER]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 41,
+      "end": 52,
+      "score": 0.85,
+      "text": "80-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 61,
+      "end": 71,
+      "score": 0.85,
+      "text": "Eleanor M.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 95,
+      "end": 110,
+      "score": 0.85,
+      "text": "789 Pine Street",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 112,
+      "end": 125,
+      "score": 0.85,
+      "text": "San Francisco",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 127,
+      "end": 129,
+      "score": 0.85,
+      "text": "CA",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 148,
+      "end": 160,
+      "score": 0.75,
+      "text": "415-555-1234",
+      "recognizer": "PhoneRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "recall": "1.0000",
+    "precision": "0.3333",
+    "f1_score": "0.5000"
+  }
+}

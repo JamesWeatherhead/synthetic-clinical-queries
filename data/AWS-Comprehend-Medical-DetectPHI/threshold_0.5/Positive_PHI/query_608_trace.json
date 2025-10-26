@@ -1,0 +1,70 @@
+{
+  "query_id": "608",
+  "timestamp": "2025-10-23T09:56:44.127075",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Effectiveness of levothyroxine in treating hypothyroidism in a 53-year-old female, Maria G., who visited our clinic in Chicago on February 20th, 2023?",
+  "ground_truth_phi": "NAME: Maria G. | GEOGRAPHIC_LOCATION: Chicago | DATE: February 20th, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "53",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9982655644416809,
+      "begin_offset": 63,
+      "end_offset": 65
+    },
+    {
+      "text": "Maria G",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9960481524467468,
+      "begin_offset": 83,
+      "end_offset": 90
+    },
+    {
+      "text": "Chicago",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9966520667076111,
+      "begin_offset": 119,
+      "end_offset": 126
+    },
+    {
+      "text": "February 20th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999489784240723,
+      "begin_offset": 130,
+      "end_offset": 149
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

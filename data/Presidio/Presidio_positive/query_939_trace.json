@@ -1,0 +1,85 @@
+{
+  "query_id": "939",
+  "timestamp": "2025-10-22T16:12:46.977942",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Current best practices for managing a 63yo male w/ COPD and asthma, Jennifer S. mentioned this case at UCLA meeting on Jul 12, 2022. Check s/p pacemaker insertion on 06/01/2021. He has policy ID: ZY-765432.",
+  "ground_truth_phi": "NAME: Jennifer S. | GEOGRAPHIC_LOCATION: UCLA | DATE: Jul 12, 2022 | DATE: 06/01/2021 | HEALTH_PLAN_BENEFICIARY_NUMBER: ZY-765432",
+  "ground_truth_phi_count": 5,
+  "presidio_output": "Current best practices for managing a 63yo male w/ COPD and asthma, [REDACTED_NAME] mentioned this case at UCLA meeting on [REDACTED_DATE]. Check s/p pacemaker insertion on [REDACTED_DATE]. He has policy ID: [REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 68,
+      "end": 79,
+      "score": 0.85,
+      "text": "Jennifer S.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 119,
+      "end": 131,
+      "score": 0.85,
+      "text": "Jul 12, 2022",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 196,
+      "end": 205,
+      "score": 0.7,
+      "text": "ZY-765432",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 166,
+      "end": 176,
+      "score": 0.6,
+      "text": "06/01/2021",
+      "recognizer": "DateRecognizer"
+    },
+    {
+      "entity_type": "US_DRIVER_LICENSE",
+      "hipaa_category": "US_DRIVER_LICENSE",
+      "start": 199,
+      "end": 205,
+      "score": 0.4,
+      "text": "765432",
+      "recognizer": "UsLicenseRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UCLA",
+        "start": 103,
+        "end": 107
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 5,
+    "successfully_redacted": 4,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.8000",
+    "precision": "0.8000",
+    "f1_score": "0.8000"
+  }
+}

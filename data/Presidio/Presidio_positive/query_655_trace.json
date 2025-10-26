@@ -1,0 +1,78 @@
+{
+  "query_id": "655",
+  "timestamp": "2025-10-22T16:12:45.468199",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Management of hypertension in a 58-year-old male named Thomas B., last follow-up on April 12th, 2023 at Geisinger Medical Center (SSN: 987-65-4321)?",
+  "ground_truth_phi": "NAME: Thomas B. | DATE: April 12th, 2023 | GEOGRAPHIC_LOCATION: Geisinger Medical Center | SOCIAL_SECURITY_NUMBER: 987-65-4321",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Management of hypertension in a [REDACTED_DATE] male named [REDACTED_NAME], last follow-up on [REDACTED_DATE] at [REDACTED_GEOGRAPHIC_LOCATION] (SSN: [REDACTED_US_ITIN])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 32,
+      "end": 43,
+      "score": 0.85,
+      "text": "58-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 55,
+      "end": 64,
+      "score": 0.85,
+      "text": "Thomas B.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 84,
+      "end": 100,
+      "score": 0.85,
+      "text": "April 12th, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 104,
+      "end": 128,
+      "score": 0.85,
+      "text": "Geisinger Medical Center",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "US_ITIN",
+      "hipaa_category": "US_ITIN",
+      "start": 135,
+      "end": 146,
+      "score": 0.5,
+      "text": "987-65-4321",
+      "recognizer": "UsItinRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  }
+}

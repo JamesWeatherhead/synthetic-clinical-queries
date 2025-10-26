@@ -1,0 +1,85 @@
+{
+  "query_id": "486",
+  "timestamp": "2025-10-22T16:12:44.600306",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Management of hypertension in a 63-year-old male, Robert Smith (MRN: 876-54-321), with a history of stroke, treated at Elmwood Hospital in Sacramento, CA.",
+  "ground_truth_phi": "NAME: Robert Smith | MEDICAL_RECORD_NUMBER: 876-54-321 | GEOGRAPHIC_LOCATION: Elmwood Hospital | GEOGRAPHIC_LOCATION: Sacramento, CA",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Management of hypertension in a [REDACTED_DATE] male, [REDACTED_NAME] (MRN: 876-54-321), with a history of stroke, treated at [REDACTED_GEOGRAPHIC_LOCATION] in [REDACTED_GEOGRAPHIC_LOCATION], [REDACTED_GEOGRAPHIC_LOCATION].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 32,
+      "end": 43,
+      "score": 0.85,
+      "text": "63-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 50,
+      "end": 62,
+      "score": 0.85,
+      "text": "Robert Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 119,
+      "end": 135,
+      "score": 0.85,
+      "text": "Elmwood Hospital",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 139,
+      "end": 149,
+      "score": 0.85,
+      "text": "Sacramento",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 151,
+      "end": 153,
+      "score": 0.85,
+      "text": "CA",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "876-54-321",
+        "start": 69,
+        "end": 79
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.4000",
+    "f1_score": "0.5217"
+  }
+}

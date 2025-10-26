@@ -1,0 +1,96 @@
+{
+  "query_id": "995",
+  "timestamp": "2025-10-22T16:12:47.272506",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Rec. intervention for a pt dx'd w/ acute myeloid leukemia, Sarah K., consulted at Baylor on Nov 5 2021 (Phone: 987-654-3210), insurance ID 8765012.",
+  "ground_truth_phi": "NAME: Sarah K. | GEOGRAPHIC_LOCATION: Baylor | DATE: Nov 5 2021 | PHONE_NUMBER: 987-654-3210 | HEALTH_PLAN_BENEFICIARY_NUMBER: 8765012",
+  "ground_truth_phi_count": 5,
+  "presidio_output": "Rec. intervention for a pt dx'd w/ acute myeloid leukemia, [REDACTED_NAME], consulted at [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE] (Phone: [REDACTED_UK_NHS]), insurance [REDACTED_UNIQUE_IDENTIFIER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "UK_NHS",
+      "hipaa_category": "UK_NHS",
+      "start": 111,
+      "end": 123,
+      "score": 1.0,
+      "text": "987-654-3210",
+      "recognizer": "NhsRecognizer"
+    },
+    {
+      "entity_type": "UNIQUE_IDENTIFIER",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "start": 136,
+      "end": 146,
+      "score": 0.9,
+      "text": "ID 8765012",
+      "recognizer": "UniqueIdentifierRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 59,
+      "end": 67,
+      "score": 0.85,
+      "text": "Sarah K.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 82,
+      "end": 88,
+      "score": 0.85,
+      "text": "Baylor",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 92,
+      "end": 102,
+      "score": 0.85,
+      "text": "Nov 5 2021",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 111,
+      "end": 123,
+      "score": 0.75,
+      "text": "987-654-3210",
+      "recognizer": "PhoneRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 139,
+      "end": 146,
+      "score": 0.5,
+      "text": "8765012",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 5,
+    "successfully_redacted": 5,
+    "leaked_failures": 0,
+    "total_detected": 7,
+    "recall": "1.0000",
+    "precision": "0.7143",
+    "f1_score": "0.8333"
+  }
+}

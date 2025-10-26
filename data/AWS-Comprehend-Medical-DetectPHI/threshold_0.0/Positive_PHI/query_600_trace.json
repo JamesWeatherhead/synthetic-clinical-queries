@@ -1,0 +1,79 @@
+{
+  "query_id": "600",
+  "timestamp": "2025-10-23T09:56:43.098796",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for managing chronic heart failure in a 65-year-old female, Emily R., who was admitted to Texas Health Hospital on April 12th, 2022 (MRN: THH-12345)?",
+  "ground_truth_phi": "NAME: Emily R. | GEOGRAPHIC_LOCATION: Texas Health Hospital | DATE: April 12th, 2022 | MEDICAL_RECORD_NUMBER: THH-12345",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "65",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998708963394165,
+      "begin_offset": 51,
+      "end_offset": 53
+    },
+    {
+      "text": "Emily R",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9710862040519714,
+      "begin_offset": 71,
+      "end_offset": 78
+    },
+    {
+      "text": "Texas Health Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9859721660614014,
+      "begin_offset": 101,
+      "end_offset": 122
+    },
+    {
+      "text": "April 12th, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999911904335022,
+      "begin_offset": 126,
+      "end_offset": 142
+    },
+    {
+      "text": "THH-12345",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.1378372311592102,
+      "begin_offset": 149,
+      "end_offset": 158
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

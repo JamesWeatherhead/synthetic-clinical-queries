@@ -1,0 +1,85 @@
+{
+  "query_id": "383",
+  "timestamp": "2025-10-22T16:12:44.045919",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "rec. tx for pt w/ hx of HTN & CAD, see notes for Michael J., seen at UCSF on Feb 2nd 2022. concerned about drug interactions w/ lisinopril. his plan is HP-987654.",
+  "ground_truth_phi": "NAME: Michael J. | GEOGRAPHIC_LOCATION: UCSF | DATE: Feb 2nd 2022 | HEALTH_PLAN_BENEFICIARY_NUMBER: HP-987654",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "rec. [REDACTED_GEOGRAPHIC_LOCATION] for pt w/ hx of HTN & CAD, see notes for [REDACTED_NAME], seen at UCSF on [REDACTED_DATE]. concerned about drug interactions w/ [REDACTED_DATE]. his plan is [REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 5,
+      "end": 7,
+      "score": 0.85,
+      "text": "tx",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 49,
+      "end": 59,
+      "score": 0.85,
+      "text": "Michael J.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 77,
+      "end": 89,
+      "score": 0.85,
+      "text": "Feb 2nd 2022",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 128,
+      "end": 138,
+      "score": 0.85,
+      "text": "lisinopril",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 152,
+      "end": 161,
+      "score": 0.7,
+      "text": "HP-987654",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UCSF",
+        "start": 69,
+        "end": 73
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.6000",
+    "f1_score": "0.6667"
+  }
+}

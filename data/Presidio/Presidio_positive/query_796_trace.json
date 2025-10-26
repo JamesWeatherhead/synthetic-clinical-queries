@@ -1,0 +1,78 @@
+{
+  "query_id": "796",
+  "timestamp": "2025-10-22T16:12:46.220940",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the guidelines for treating a 34-year-old female with bipolar disorder, Jennifer S., currently living in Brooklyn, NY, seen on February 10, 2023?",
+  "ground_truth_phi": "NAME: Jennifer S. | GEOGRAPHIC_LOCATION: Brooklyn, NY | DATE: February 10, 2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "What are the guidelines for treating a [REDACTED_DATE] female with bipolar disorder, [REDACTED_NAME], currently living in [REDACTED_GEOGRAPHIC_LOCATION], [REDACTED_GEOGRAPHIC_LOCATION], seen on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 39,
+      "end": 50,
+      "score": 0.85,
+      "text": "34-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 81,
+      "end": 92,
+      "score": 0.85,
+      "text": "Jennifer S.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 114,
+      "end": 122,
+      "score": 0.85,
+      "text": "Brooklyn",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 124,
+      "end": 126,
+      "score": 0.85,
+      "text": "NY",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 136,
+      "end": 153,
+      "score": 0.85,
+      "text": "February 10, 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.4000",
+    "f1_score": "0.5714"
+  }
+}

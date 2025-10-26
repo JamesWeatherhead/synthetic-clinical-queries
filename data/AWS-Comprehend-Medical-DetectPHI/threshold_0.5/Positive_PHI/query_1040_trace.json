@@ -1,0 +1,70 @@
+{
+  "query_id": "1040",
+  "timestamp": "2025-10-23T09:57:32.120195",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "contraindications for prescribing warfarin in pt w/ hx of afib, ref. case of John D., treated at Stanford on Nov 3, 2022, email johndoe@hospital.org?",
+  "ground_truth_phi": "NAME: John D. | GEOGRAPHIC_LOCATION: Stanford | DATE: Nov 3, 2022 | EMAIL_ADDRESS: johndoe@hospital.org",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "John D",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9446955919265747,
+      "begin_offset": 77,
+      "end_offset": 83
+    },
+    {
+      "text": "Stanford",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9785668849945068,
+      "begin_offset": 97,
+      "end_offset": 105
+    },
+    {
+      "text": "Nov 3, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998879432678223,
+      "begin_offset": 109,
+      "end_offset": 120
+    },
+    {
+      "text": "johndoe@hospital.org",
+      "aws_type": "EMAIL",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9979578256607056,
+      "begin_offset": 128,
+      "end_offset": 148
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

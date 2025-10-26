@@ -1,0 +1,79 @@
+{
+  "query_id": "896",
+  "timestamp": "2025-10-23T09:57:13.076211",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the current treatment options for advanced melanoma in a 60-year-old male, Robert Smith, who was admitted to Jackson Memorial Hospital on February 12th, 2023 (MRN: #JM-1234567)?",
+  "ground_truth_phi": "NAME: Robert Smith | GEOGRAPHIC_LOCATION: Jackson Memorial Hospital | DATE: February 12th, 2023 | MEDICAL_RECORD_NUMBER: #JM-1234567",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "60",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9992668032646179,
+      "begin_offset": 66,
+      "end_offset": 68
+    },
+    {
+      "text": "Robert Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9990556836128235,
+      "begin_offset": 84,
+      "end_offset": 96
+    },
+    {
+      "text": "Jackson Memorial Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9934055805206299,
+      "begin_offset": 118,
+      "end_offset": 143
+    },
+    {
+      "text": "February 12th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999425411224365,
+      "begin_offset": 147,
+      "end_offset": 166
+    },
+    {
+      "text": "1234567",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9938712120056152,
+      "begin_offset": 177,
+      "end_offset": 184
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

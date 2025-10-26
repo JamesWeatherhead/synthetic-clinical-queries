@@ -1,0 +1,75 @@
+{
+  "query_id": "805",
+  "timestamp": "2025-10-23T09:57:03.442414",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidance on post-operative care for a 50-year-old male, Sam H., after knee replacement surgery at UCLA Health on October 10, 2023 (insurance ID: 99887-65432)?",
+  "ground_truth_phi": "NAME: Sam H. | GEOGRAPHIC_LOCATION: UCLA Health | DATE: October 10, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: 99887-65432",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "50",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.994358479976654,
+      "begin_offset": 38,
+      "end_offset": 40
+    },
+    {
+      "text": "Sam H",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.4259287118911743,
+      "begin_offset": 56,
+      "end_offset": 61
+    },
+    {
+      "text": "UCLA Health",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9860326647758484,
+      "begin_offset": 98,
+      "end_offset": 109
+    },
+    {
+      "text": "October 10, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999748468399048,
+      "begin_offset": 113,
+      "end_offset": 129
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+        "value": "99887-65432"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 4
+}

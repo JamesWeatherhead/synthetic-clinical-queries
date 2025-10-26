@@ -1,0 +1,70 @@
+{
+  "query_id": "123",
+  "timestamp": "2025-10-23T09:55:49.486200",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Recommendations for managing a 22-year-old female with epilepsy, Lisa M., treated at Bellevue Hospital on Feb 10th, 2023, considering her recent EEG results?",
+  "ground_truth_phi": "NAME: Lisa M. | GEOGRAPHIC_LOCATION: Bellevue Hospital | DATE: Feb 10th, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "22",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9963204860687256,
+      "begin_offset": 31,
+      "end_offset": 33
+    },
+    {
+      "text": "Lisa M",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9312571287155151,
+      "begin_offset": 65,
+      "end_offset": 71
+    },
+    {
+      "text": "Bellevue Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9882005453109741,
+      "begin_offset": 85,
+      "end_offset": 102
+    },
+    {
+      "text": "Feb 10th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9982507824897766,
+      "begin_offset": 106,
+      "end_offset": 120
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

@@ -1,0 +1,78 @@
+{
+  "query_id": "767",
+  "timestamp": "2025-10-22T16:12:46.054666",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the side effects of Trulicity in patients over 70 like Michael S., seen at Mount Sinai on May 4th, 2024, with history of hypertension (Patient ID: #MS-334455)?",
+  "ground_truth_phi": "NAME: Michael S. | GEOGRAPHIC_LOCATION: Mount Sinai | DATE: May 4th, 2024 | UNIQUE_IDENTIFIER: #MS-334455",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What are the side effects of Trulicity in patients over 70 like [REDACTED_NAME], seen at [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE], with history of hypertension (Patient ID: #[REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 64,
+      "end": 74,
+      "score": 0.85,
+      "text": "Michael S.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 84,
+      "end": 95,
+      "score": 0.85,
+      "text": "Mount Sinai",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 99,
+      "end": 107,
+      "score": 0.85,
+      "text": "May 4th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 108,
+      "end": 112,
+      "score": 0.85,
+      "text": "2024",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 157,
+      "end": 166,
+      "score": 0.7,
+      "text": "MS-334455",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.4000",
+    "f1_score": "0.5714"
+  }
+}

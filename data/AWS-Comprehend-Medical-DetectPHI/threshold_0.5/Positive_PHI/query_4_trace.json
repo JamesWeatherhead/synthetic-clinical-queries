@@ -1,0 +1,70 @@
+{
+  "query_id": "4",
+  "timestamp": "2025-10-23T09:55:36.732134",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best practices for managing GERD in a 50-year-old woman, Sarah P., especially post-hysterectomy procedure done at UCLA Medical Center on March 5th, 2021?",
+  "ground_truth_phi": "NAME: Sarah P. | GEOGRAPHIC_LOCATION: UCLA Medical Center | DATE: March 5th, 2021",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "50",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9984069466590881,
+      "begin_offset": 38,
+      "end_offset": 40
+    },
+    {
+      "text": "Sarah P",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6269419193267822,
+      "begin_offset": 57,
+      "end_offset": 64
+    },
+    {
+      "text": "UCLA Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9884745478630066,
+      "begin_offset": 114,
+      "end_offset": 133
+    },
+    {
+      "text": "March 5th, 2021",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999778270721436,
+      "begin_offset": 137,
+      "end_offset": 152
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

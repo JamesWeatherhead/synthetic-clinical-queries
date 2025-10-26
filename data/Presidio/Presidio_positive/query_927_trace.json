@@ -1,0 +1,69 @@
+{
+  "query_id": "927",
+  "timestamp": "2025-10-22T16:12:46.902745",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Evidence-based practices for treating chronic migraines in adolescents, particularly in patients like Ryan T. from Chicago, who was treated on January 5th, 2022?",
+  "ground_truth_phi": "NAME: Ryan T. | GEOGRAPHIC_LOCATION: Chicago | DATE: January 5th, 2022",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Evidence-based practices for treating chronic migraines in adolescents, particularly in patients like [REDACTED_NAME] from [REDACTED_GEOGRAPHIC_LOCATION], who was treated on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 102,
+      "end": 109,
+      "score": 0.85,
+      "text": "Ryan T.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 115,
+      "end": 122,
+      "score": 0.85,
+      "text": "Chicago",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 143,
+      "end": 155,
+      "score": 0.85,
+      "text": "January 5th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 156,
+      "end": 160,
+      "score": 0.85,
+      "text": "2022",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "0.5000",
+    "f1_score": "0.6667"
+  }
+}

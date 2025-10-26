@@ -1,0 +1,58 @@
+{
+  "query_id": "807",
+  "timestamp": "2025-10-22T16:12:46.272681",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "rec. mgmnt for pt Emily R., w/ hx of RA, last seen at UCSF Med Cntr on Jul 12th 2022. any contraindications for Humira?",
+  "ground_truth_phi": "NAME: Emily R. | GEOGRAPHIC_LOCATION: UCSF Med Cntr | DATE: Jul 12th 2022",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "rec. mgmnt for pt [REDACTED_NAME], w/ hx of RA, last seen at UCSF Med Cntr on [REDACTED_DATE]. any contraindications for Humira?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 18,
+      "end": 26,
+      "score": 0.85,
+      "text": "Emily R.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 71,
+      "end": 84,
+      "score": 0.85,
+      "text": "Jul 12th 2022",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UCSF Med Cntr",
+        "start": 54,
+        "end": 67
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 2,
+    "recall": "0.6667",
+    "precision": "1.0000",
+    "f1_score": "0.8000"
+  }
+}

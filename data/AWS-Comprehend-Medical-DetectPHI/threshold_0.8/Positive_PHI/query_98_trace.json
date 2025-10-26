@@ -1,0 +1,75 @@
+{
+  "query_id": "98",
+  "timestamp": "2025-10-23T09:55:46.733589",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "management of 45yo male with new dx of a-fib, seen by Dr. Steven L., at St. Luke's Hosp on Aug 10, 2023, med rec #99887766, w/ hx of chronic kidney disease?",
+  "ground_truth_phi": "NAME: Dr. Steven L. | GEOGRAPHIC_LOCATION: St. Luke's Hosp | DATE: Aug 10, 2023 | MEDICAL_RECORD_NUMBER: 99887766",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "45yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9989776611328125,
+      "begin_offset": 14,
+      "end_offset": 18
+    },
+    {
+      "text": "Steven L",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995852112770081,
+      "begin_offset": 58,
+      "end_offset": 66
+    },
+    {
+      "text": "St. Luke's Hosp",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9495976567268372,
+      "begin_offset": 72,
+      "end_offset": 87
+    },
+    {
+      "text": "Aug 10, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9992577433586121,
+      "begin_offset": 91,
+      "end_offset": 103
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "99887766"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 4
+}

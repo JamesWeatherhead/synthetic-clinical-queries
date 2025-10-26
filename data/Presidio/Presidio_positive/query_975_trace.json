@@ -1,0 +1,76 @@
+{
+  "query_id": "975",
+  "timestamp": "2025-10-22T16:12:47.155679",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Latest treatment protocols for methicillin-resistant Staphylococcus aureus (MRSA) pneumonia in an ICU patient, 47yo female, admitted to Mt. Sinai Hospital on 05/30/2023, physician in charge: Dr. Lee.",
+  "ground_truth_phi": "GEOGRAPHIC_LOCATION: Mt. Sinai Hospital | DATE: 05/30/2023 | NAME: Dr. Lee",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Latest treatment protocols for methicillin-resistant [REDACTED_NAME] aureus (MRSA) pneumonia in an ICU patient, 47yo female, admitted to Mt. Sinai Hospital on [REDACTED_GEOGRAPHIC_LOCATION], physician in charge: Dr. [REDACTED_NAME].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 53,
+      "end": 67,
+      "score": 0.85,
+      "text": "Staphylococcus",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 158,
+      "end": 168,
+      "score": 0.85,
+      "text": "05/30/2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 195,
+      "end": 198,
+      "score": 0.85,
+      "text": "Lee",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 158,
+      "end": 168,
+      "score": 0.6,
+      "text": "05/30/2023",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Mt. Sinai Hospital",
+        "start": 136,
+        "end": 154
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.6667",
+    "precision": "0.2500",
+    "f1_score": "0.3636"
+  }
+}

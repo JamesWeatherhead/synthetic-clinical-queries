@@ -1,0 +1,69 @@
+{
+  "query_id": "682",
+  "timestamp": "2025-10-22T16:12:45.633451",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "concerns about drug interactions for pt Joan A. w/ hx of diabetes, s/p heart transplant, seen at St. Luke's on 11/11/2021, using insurance ID HP-202301?",
+  "ground_truth_phi": "NAME: Joan A. | GEOGRAPHIC_LOCATION: St. Luke's | DATE: 11/11/2021 | HEALTH_PLAN_BENEFICIARY_NUMBER: HP-202301",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "concerns about drug interactions for pt [REDACTED_NAME] hx of diabetes, s/p heart transplant, seen at [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE], using insurance ID [REDACTED_MEDICAL_RECORD_NUMBER]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 40,
+      "end": 50,
+      "score": 0.85,
+      "text": "Joan A. w/",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 97,
+      "end": 107,
+      "score": 0.85,
+      "text": "St. Luke's",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 142,
+      "end": 151,
+      "score": 0.7,
+      "text": "HP-202301",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 111,
+      "end": 121,
+      "score": 0.6,
+      "text": "11/11/2021",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "query_id": "255",
+  "timestamp": "2025-10-23T09:56:04.247663",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Management options for 52-year-old female, Claudia A., with advanced ovarian cancer at St. Mary's Hospital, diagnosed on May 15th, 2023 (MRN: 789456123)?",
+  "ground_truth_phi": "NAME: Claudia A. | GEOGRAPHIC_LOCATION: St. Mary's Hospital | DATE: May 15th, 2023 | MEDICAL_RECORD_NUMBER: 789456123",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "52",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9967670440673828,
+      "begin_offset": 23,
+      "end_offset": 25
+    },
+    {
+      "text": "Claudia",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8352605104446411,
+      "begin_offset": 43,
+      "end_offset": 50
+    },
+    {
+      "text": "St. Mary's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.990023672580719,
+      "begin_offset": 87,
+      "end_offset": 106
+    },
+    {
+      "text": "May 15th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999092817306519,
+      "begin_offset": 121,
+      "end_offset": 135
+    },
+    {
+      "text": "789456123",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9958944320678711,
+      "begin_offset": 142,
+      "end_offset": 151
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

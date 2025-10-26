@@ -1,0 +1,70 @@
+{
+  "query_id": "172",
+  "timestamp": "2025-10-23T09:55:54.232559",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Survival rates for stage IV lung cancer in a 58-year-old male, James Brown, treated at Johns Hopkins University Hospital on August 15, 2022?",
+  "ground_truth_phi": "NAME: James Brown | GEOGRAPHIC_LOCATION: Johns Hopkins University Hospital | DATE: August 15, 2022",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "58",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999871015548706,
+      "begin_offset": 45,
+      "end_offset": 47
+    },
+    {
+      "text": "James Brown",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9981533885002136,
+      "begin_offset": 63,
+      "end_offset": 74
+    },
+    {
+      "text": "Johns Hopkins University Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9098882079124451,
+      "begin_offset": 87,
+      "end_offset": 120
+    },
+    {
+      "text": "August 15, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999674558639526,
+      "begin_offset": 124,
+      "end_offset": 139
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

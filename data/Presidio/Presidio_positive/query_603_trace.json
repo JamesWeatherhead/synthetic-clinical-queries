@@ -1,0 +1,67 @@
+{
+  "query_id": "603",
+  "timestamp": "2025-10-22T16:12:45.219262",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Current treatment protocols for COPD exacerbation in a 62yo male, Andrew B., who visited the Springfield Clinic on January 10, 2024 (phone: 555-123-4567).",
+  "ground_truth_phi": "NAME: Andrew B. | GEOGRAPHIC_LOCATION: Springfield Clinic | DATE: January 10, 2024 | PHONE_NUMBER: 555-123-4567",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Current treatment protocols for COPD exacerbation in a 62yo male, [REDACTED_NAME], who visited the Springfield Clinic on [REDACTED_DATE] (phone: [REDACTED_PHONE_NUMBER]).",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 66,
+      "end": 75,
+      "score": 0.85,
+      "text": "Andrew B.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 115,
+      "end": 131,
+      "score": 0.85,
+      "text": "January 10, 2024",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 140,
+      "end": 152,
+      "score": 0.75,
+      "text": "555-123-4567",
+      "recognizer": "PhoneRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Springfield Clinic",
+        "start": 93,
+        "end": 111
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  }
+}

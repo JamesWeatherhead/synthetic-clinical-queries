@@ -1,0 +1,69 @@
+{
+  "query_id": "633",
+  "timestamp": "2025-10-22T16:12:45.372767",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "pt seen by Dr. Sarah Lee at Cedar-Sinai on 02/25/2023 for management of COPD, what are the current GOLD guidelines? MRN: 98765432",
+  "ground_truth_phi": "NAME: Sarah Lee | GEOGRAPHIC_LOCATION: Cedar-Sinai | DATE: 02/25/2023 | MEDICAL_RECORD_NUMBER: 98765432",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "pt seen by Dr. [REDACTED_NAME] at [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE] for management of COPD, what are the current GOLD guidelines? [REDACTED_MEDICAL_RECORD_NUMBER]",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 116,
+      "end": 129,
+      "score": 0.9,
+      "text": "MRN: 98765432",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 15,
+      "end": 24,
+      "score": 0.85,
+      "text": "Sarah Lee",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 28,
+      "end": 39,
+      "score": 0.85,
+      "text": "Cedar-Sinai",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 43,
+      "end": 53,
+      "score": 0.6,
+      "text": "02/25/2023",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  }
+}

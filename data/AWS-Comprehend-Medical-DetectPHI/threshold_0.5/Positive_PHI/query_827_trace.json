@@ -1,0 +1,70 @@
+{
+  "query_id": "827",
+  "timestamp": "2025-10-23T09:57:05.806054",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Latest AHA guidelines for managing atrial fibrillation in a 75-year-old patient, Michael Brown, who has a pacemaker implanted in Texas Health Presbyterian Hospital on April 10, 2021.",
+  "ground_truth_phi": "NAME: Michael Brown | GEOGRAPHIC_LOCATION: Texas Health Presbyterian Hospital | DATE: April 10, 2021",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "75",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997287392616272,
+      "begin_offset": 60,
+      "end_offset": 62
+    },
+    {
+      "text": "Michael Brown",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9971532821655273,
+      "begin_offset": 81,
+      "end_offset": 94
+    },
+    {
+      "text": "Texas Health Presbyterian Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9786421060562134,
+      "begin_offset": 129,
+      "end_offset": 163
+    },
+    {
+      "text": "April 10, 2021",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998272061347961,
+      "begin_offset": 167,
+      "end_offset": 181
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

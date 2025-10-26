@@ -1,0 +1,70 @@
+{
+  "query_id": "182",
+  "timestamp": "2025-10-23T09:55:55.112484",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Tx options for pt w/hx of breast CA, Jane D., assessed at Baylor on 07/15/2022 (MRN: BD-654321). Considering tamoxifen.",
+  "ground_truth_phi": "NAME: Jane D. | GEOGRAPHIC_LOCATION: Baylor | DATE: 07/15/2022 | MEDICAL_RECORD_NUMBER: BD-654321",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Jane D",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9266560077667236,
+      "begin_offset": 37,
+      "end_offset": 43
+    },
+    {
+      "text": "Baylor",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8094660043716431,
+      "begin_offset": 58,
+      "end_offset": 64
+    },
+    {
+      "text": "07/15/2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999617338180542,
+      "begin_offset": 68,
+      "end_offset": 78
+    },
+    {
+      "text": "BD-654321",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.3461607098579407,
+      "begin_offset": 85,
+      "end_offset": 94
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

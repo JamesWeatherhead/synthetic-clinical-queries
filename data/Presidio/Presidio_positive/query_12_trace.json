@@ -1,0 +1,96 @@
+{
+  "query_id": "12",
+  "timestamp": "2025-10-22T16:12:42.071584",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Effectiveness of esomeprazole 40 mg daily for GERD in a 55-year-old with chronic kidney disease, referred by Dr. Sarah P. from Chicago on August 19, 2023 (Email: sarah.p@medsite.com)?",
+  "ground_truth_phi": "NAME: Dr. Sarah P. | GEOGRAPHIC_LOCATION: Chicago | DATE: August 19, 2023 | EMAIL_ADDRESS: sarah.p@medsite.com",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Effectiveness of esomeprazole 40 mg [REDACTED_DATE] for GERD in a [REDACTED_DATE] with chronic kidney disease, referred by Dr. [REDACTED_NAME] from [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE] (Email: [REDACTED_EMAIL_ADDRESS])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "EMAIL_ADDRESS",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "start": 162,
+      "end": 181,
+      "score": 1.0,
+      "text": "sarah.p@medsite.com",
+      "recognizer": "EmailRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 36,
+      "end": 41,
+      "score": 0.85,
+      "text": "daily",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 56,
+      "end": 67,
+      "score": 0.85,
+      "text": "55-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 113,
+      "end": 121,
+      "score": 0.85,
+      "text": "Sarah P.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 127,
+      "end": 134,
+      "score": 0.85,
+      "text": "Chicago",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 138,
+      "end": 153,
+      "score": 0.85,
+      "text": "August 19, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "URL",
+      "hipaa_category": "WEB_URL",
+      "start": 170,
+      "end": 181,
+      "score": 0.5,
+      "text": "medsite.com",
+      "recognizer": "UrlRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 7,
+    "recall": "1.0000",
+    "precision": "0.4286",
+    "f1_score": "0.6000"
+  }
+}

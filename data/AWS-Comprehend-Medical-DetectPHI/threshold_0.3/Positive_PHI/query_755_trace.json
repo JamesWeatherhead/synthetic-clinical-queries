@@ -1,0 +1,79 @@
+{
+  "query_id": "755",
+  "timestamp": "2025-10-23T09:56:57.789812",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What is the 5-year survival rate for stage 3 ovarian cancer in 54-year-old Patricia L., treated at Memorial Sloan Kettering on Feb 3rd, 2023 (MRN: #MSK112233)?",
+  "ground_truth_phi": "NAME: Patricia L. | GEOGRAPHIC_LOCATION: Memorial Sloan Kettering | DATE: Feb 3rd, 2023 | MEDICAL_RECORD_NUMBER: #MSK112233",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "54",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9761444926261902,
+      "begin_offset": 63,
+      "end_offset": 65
+    },
+    {
+      "text": "Patricia L",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9726062417030334,
+      "begin_offset": 75,
+      "end_offset": 85
+    },
+    {
+      "text": "Memorial Sloan Kettering",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9464468955993652,
+      "begin_offset": 99,
+      "end_offset": 123
+    },
+    {
+      "text": "Feb 3rd, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.99928218126297,
+      "begin_offset": 127,
+      "end_offset": 140
+    },
+    {
+      "text": "MSK112233",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9906546473503113,
+      "begin_offset": 148,
+      "end_offset": 157
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

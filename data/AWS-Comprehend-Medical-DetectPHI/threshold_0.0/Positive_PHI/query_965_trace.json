@@ -1,0 +1,88 @@
+{
+  "query_id": "965",
+  "timestamp": "2025-10-23T09:57:22.365014",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "need guidance on tx for 49yo female dx'd w/ stage II breast ca in 2021, Jane A., seen at Cleveland Clinic on Apr. 2nd, 2023. her policy number is XYZ-987654.",
+  "ground_truth_phi": "NAME: Jane A. | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: Apr. 2nd, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: XYZ-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "49yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9805582165718079,
+      "begin_offset": 24,
+      "end_offset": 28
+    },
+    {
+      "text": "2021",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9643970131874084,
+      "begin_offset": 66,
+      "end_offset": 70
+    },
+    {
+      "text": "Jane A",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9544664621353149,
+      "begin_offset": 72,
+      "end_offset": 78
+    },
+    {
+      "text": "Cleveland Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9987826943397522,
+      "begin_offset": 89,
+      "end_offset": 105
+    },
+    {
+      "text": "Apr. 2nd, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9136891961097717,
+      "begin_offset": 109,
+      "end_offset": 123
+    },
+    {
+      "text": "987654",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6046631932258606,
+      "begin_offset": 150,
+      "end_offset": 156
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.6667",
+    "f1_score": "0.8000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 6
+}

@@ -1,0 +1,79 @@
+{
+  "query_id": "432",
+  "timestamp": "2025-10-23T09:56:25.015665",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best practices for managing asthma exacerbations in a 10-year-old boy, Jacob L., seen at St. Jude's Clinic on February 10th, 2024 (MRN: SJ-678910)?",
+  "ground_truth_phi": "NAME: Jacob L. | GEOGRAPHIC_LOCATION: St. Jude's Clinic | DATE: February 10th, 2024 | MEDICAL_RECORD_NUMBER: SJ-678910",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "10",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9650689363479614,
+      "begin_offset": 54,
+      "end_offset": 56
+    },
+    {
+      "text": "Jacob L",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9952130317687988,
+      "begin_offset": 71,
+      "end_offset": 78
+    },
+    {
+      "text": "St. Jude's Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.992929995059967,
+      "begin_offset": 89,
+      "end_offset": 106
+    },
+    {
+      "text": "February 10th, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999446868896484,
+      "begin_offset": 110,
+      "end_offset": 129
+    },
+    {
+      "text": "678910",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9363350868225098,
+      "begin_offset": 139,
+      "end_offset": 145
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 5
+}

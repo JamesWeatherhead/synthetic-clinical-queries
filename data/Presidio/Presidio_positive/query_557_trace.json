@@ -1,0 +1,76 @@
+{
+  "query_id": "557",
+  "timestamp": "2025-10-22T16:12:44.973228",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Updated management guidelines for a 60-year-old female, Mary Johnson, diagnosed with chronic atrial fibrillation, with follow-up at UCSF on January 10th, 2024 (MRN: 987-654321)?",
+  "ground_truth_phi": "NAME: Mary Johnson | GEOGRAPHIC_LOCATION: UCSF | DATE: January 10th, 2024 | MEDICAL_RECORD_NUMBER: 987-654321",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Updated management guidelines for a [REDACTED_DATE] female, [REDACTED_NAME], diagnosed with chronic atrial fibrillation, with follow-up at UCSF on [REDACTED_DATE] (MRN: 987-[REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 36,
+      "end": 47,
+      "score": 0.85,
+      "text": "60-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 56,
+      "end": 68,
+      "score": 0.85,
+      "text": "Mary Johnson",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 140,
+      "end": 158,
+      "score": 0.85,
+      "text": "January 10th, 2024",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 169,
+      "end": 175,
+      "score": 0.5,
+      "text": "654321",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UCSF",
+        "start": 132,
+        "end": 136
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.5000",
+    "f1_score": "0.6000"
+  }
+}

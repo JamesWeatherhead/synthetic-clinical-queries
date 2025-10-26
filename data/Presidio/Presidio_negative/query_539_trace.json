@@ -1,0 +1,44 @@
+{
+  "query_id": "539",
+  "timestamp": "2025-10-22T16:24:24.895370",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the potential side effects of atorvastatin in a 55-year-old male with a history of type 2 diabetes and hyperlipidemia, diagnosed 3 years ago?",
+  "presidio_output": "What are the potential side effects of atorvastatin in a [REDACTED_DATE] male with a history of type 2 diabetes and hyperlipidemia, diagnosed [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 57,
+      "end": 68,
+      "score": 0.85,
+      "text": "55-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 138,
+      "end": 149,
+      "score": 0.85,
+      "text": "3 years ago",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 2,
+    "false_redactions_by_type": {
+      "DATE": 2
+    },
+    "status": "OVER_REDACTED"
+  }
+}

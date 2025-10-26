@@ -1,0 +1,67 @@
+{
+  "query_id": "895",
+  "timestamp": "2025-10-22T16:12:46.736998",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the side effects of clozapine in a 35-year-old male patient, Daniel R., treated at Cedars-Sinai Medical Center on August 10, 2022?",
+  "ground_truth_phi": "NAME: Daniel R. | GEOGRAPHIC_LOCATION: Cedars-Sinai Medical Center | DATE: August 10, 2022",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "What are the side effects of clozapine in a [REDACTED_DATE] male patient, [REDACTED_NAME], treated at Cedars-Sinai Medical Center on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 44,
+      "end": 55,
+      "score": 0.85,
+      "text": "35-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 70,
+      "end": 79,
+      "score": 0.85,
+      "text": "Daniel R.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 123,
+      "end": 138,
+      "score": 0.85,
+      "text": "August 10, 2022",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Cedars-Sinai Medical Center",
+        "start": 92,
+        "end": 119
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.6667",
+    "precision": "0.6667",
+    "f1_score": "0.6667"
+  }
+}

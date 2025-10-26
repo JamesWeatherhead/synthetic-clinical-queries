@@ -1,0 +1,66 @@
+{
+  "query_id": "41",
+  "timestamp": "2025-10-23T09:55:40.825629",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Current AHA guidelines for managing atrial fibrillation in a 69-year-old female, Julia Smith, treated at NY Presbyterian on April 20th, 2024?",
+  "ground_truth_phi": "NAME: Julia Smith | GEOGRAPHIC_LOCATION: NY Presbyterian | DATE: April 20th, 2024",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "69",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999076128005981,
+      "begin_offset": 61,
+      "end_offset": 63
+    },
+    {
+      "text": "Julia Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9910825490951538,
+      "begin_offset": 81,
+      "end_offset": 92
+    },
+    {
+      "text": "April 20th, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997314810752869,
+      "begin_offset": 124,
+      "end_offset": 140
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "NY Presbyterian"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "true_positives": 2,
+    "recall": "0.6667",
+    "precision": "0.6667",
+    "f1_score": "0.6667"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 3
+}

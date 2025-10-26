@@ -1,0 +1,70 @@
+{
+  "query_id": "509",
+  "timestamp": "2025-10-23T09:56:33.811236",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Current best practices for managing a 47-year-old female with a history of melanoma, associated with IP address 192.168.1.1, last seen in the dermatology department on October 10th, 2021.",
+  "ground_truth_phi": "IP_ADDRESS: 192.168.1.1 | DATE: October 10th, 2021",
+  "ground_truth_phi_count": 2,
+  "aws_entities_detected": [
+    {
+      "text": "47",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9986306428909302,
+      "begin_offset": 38,
+      "end_offset": 40
+    },
+    {
+      "text": "192.168.1.1",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.49492281675338745,
+      "begin_offset": 112,
+      "end_offset": 123
+    },
+    {
+      "text": "dermatology department",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9503192901611328,
+      "begin_offset": 142,
+      "end_offset": 164
+    },
+    {
+      "text": "October 10th, 2021",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999703168869019,
+      "begin_offset": 168,
+      "end_offset": 186
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 2,
+    "successfully_detected": 2,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 2,
+    "recall": "1.0000",
+    "precision": "0.5000",
+    "f1_score": "0.6667"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

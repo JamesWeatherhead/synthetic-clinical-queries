@@ -1,0 +1,75 @@
+{
+  "query_id": "420",
+  "timestamp": "2025-10-23T09:56:24.088393",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Current treatment options for a 57-year-old male, Michael Smith, diagnosed with melanoma on January 15th, 2023, at Stanford Health Care (MRN: 12345-67890)?",
+  "ground_truth_phi": "NAME: Michael Smith | DATE: January 15th, 2023 | GEOGRAPHIC_LOCATION: Stanford Health Care | MEDICAL_RECORD_NUMBER: 12345-67890",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "57",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998032450675964,
+      "begin_offset": 32,
+      "end_offset": 34
+    },
+    {
+      "text": "Michael Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9950292706489563,
+      "begin_offset": 50,
+      "end_offset": 63
+    },
+    {
+      "text": "January 15th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999695897102356,
+      "begin_offset": 92,
+      "end_offset": 110
+    },
+    {
+      "text": "Stanford Health Care",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9818889498710632,
+      "begin_offset": 115,
+      "end_offset": 135
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "12345-67890"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 4
+}

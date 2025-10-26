@@ -1,0 +1,87 @@
+{
+  "query_id": "25",
+  "timestamp": "2025-10-22T16:12:42.150819",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Management guidelines for a 65-year-old male with metastatic prostate cancer, Robert Smith, treated at Valley Clinic, New York, on April 12, 2023 (MRN: VC-1029384)?",
+  "ground_truth_phi": "NAME: Robert Smith | GEOGRAPHIC_LOCATION: Valley Clinic, New York | DATE: April 12, 2023 | MEDICAL_RECORD_NUMBER: VC-1029384",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Management guidelines for a [REDACTED_DATE] male with metastatic prostate cancer, [REDACTED_NAME], treated at Valley Clinic, [REDACTED_GEOGRAPHIC_LOCATION], on [REDACTED_DATE] (MRN: [REDACTED_NAME])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 28,
+      "end": 39,
+      "score": 0.85,
+      "text": "65-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 78,
+      "end": 90,
+      "score": 0.85,
+      "text": "Robert Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 118,
+      "end": 126,
+      "score": 0.85,
+      "text": "New York",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 131,
+      "end": 145,
+      "score": 0.85,
+      "text": "April 12, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 152,
+      "end": 162,
+      "score": 0.85,
+      "text": "VC-1029384",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 152,
+      "end": 162,
+      "score": 0.7,
+      "text": "VC-1029384",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "recall": "1.0000",
+    "precision": "0.5000",
+    "f1_score": "0.6667"
+  }
+}

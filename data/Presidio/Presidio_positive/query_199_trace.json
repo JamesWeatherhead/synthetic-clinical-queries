@@ -1,0 +1,67 @@
+{
+  "query_id": "199",
+  "timestamp": "2025-10-22T16:12:43.065147",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Concerns about prescribing lithium for pt w/ bipolar disorder & past hx of renal issues, specifically for Alice B., reviewed at UCSF on Jan 20th '23 (MRN: USF-987654)?",
+  "ground_truth_phi": "NAME: Alice B. | GEOGRAPHIC_LOCATION: UCSF | DATE: Jan 20th '23 | MEDICAL_RECORD_NUMBER: USF-987654",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Concerns about prescribing lithium for pt w/ bipolar disorder & past hx of renal issues, specifically for [REDACTED_NAME], reviewed at UCSF on [REDACTED_DATE] (MRN: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 106,
+      "end": 114,
+      "score": 0.85,
+      "text": "Alice B.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 136,
+      "end": 148,
+      "score": 0.85,
+      "text": "Jan 20th '23",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 155,
+      "end": 165,
+      "score": 0.7,
+      "text": "USF-987654",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UCSF",
+        "start": 128,
+        "end": 132
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "query_id": "859",
+  "timestamp": "2025-10-22T16:12:46.559762",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Differential diagnosis for elevated liver enzymes in a 62-year-old female, Karen White, evaluated at Bellevue Hospital on April 14th, 2021 (MRN: BH-445566)?",
+  "ground_truth_phi": "NAME: Karen White | GEOGRAPHIC_LOCATION: Bellevue Hospital | DATE: April 14th, 2021 | MEDICAL_RECORD_NUMBER: BH-445566",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Differential diagnosis for elevated liver enzymes in a [REDACTED_DATE] female, [REDACTED_NAME], evaluated at Bellevue Hospital on [REDACTED_DATE] (MRN: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 55,
+      "end": 66,
+      "score": 0.85,
+      "text": "62-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 75,
+      "end": 86,
+      "score": 0.85,
+      "text": "Karen White",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 122,
+      "end": 138,
+      "score": 0.85,
+      "text": "April 14th, 2021",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 145,
+      "end": 154,
+      "score": 0.7,
+      "text": "BH-445566",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Bellevue Hospital",
+        "start": 101,
+        "end": 118
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

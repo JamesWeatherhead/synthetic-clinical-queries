@@ -1,0 +1,87 @@
+{
+  "query_id": "1035",
+  "timestamp": "2025-10-22T16:12:47.488323",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Contraindications for warfarin in a 54yo male, John A., who was seen at Memorial Hospital, Los Angeles, CA on 07/21/2023, with MRN: 987654321?",
+  "ground_truth_phi": "NAME: John A. | GEOGRAPHIC_LOCATION: Memorial Hospital, Los Angeles, CA | DATE: 07/21/2023 | MEDICAL_RECORD_NUMBER: 987654321",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Contraindications for warfarin in a 54yo male, [REDACTED_NAME], who was seen at Memorial Hospital, [REDACTED_GEOGRAPHIC_LOCATION], [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_NAME], with [REDACTED_MEDICAL_RECORD_NUMBER]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 127,
+      "end": 141,
+      "score": 0.9,
+      "text": "MRN: 987654321",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 47,
+      "end": 54,
+      "score": 0.85,
+      "text": "John A.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 91,
+      "end": 102,
+      "score": 0.85,
+      "text": "Los Angeles",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 104,
+      "end": 106,
+      "score": 0.85,
+      "text": "CA",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 110,
+      "end": 120,
+      "score": 0.85,
+      "text": "07/21/2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 110,
+      "end": 120,
+      "score": 0.6,
+      "text": "07/21/2023",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "recall": "1.0000",
+    "precision": "0.3333",
+    "f1_score": "0.5000"
+  }
+}

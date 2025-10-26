@@ -1,0 +1,79 @@
+{
+  "query_id": "995",
+  "timestamp": "2025-10-23T09:57:26.558847",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Rec. intervention for a pt dx'd w/ acute myeloid leukemia, Sarah K., consulted at Baylor on Nov 5 2021 (Phone: 987-654-3210), insurance ID 8765012.",
+  "ground_truth_phi": "NAME: Sarah K. | GEOGRAPHIC_LOCATION: Baylor | DATE: Nov 5 2021 | PHONE_NUMBER: 987-654-3210 | HEALTH_PLAN_BENEFICIARY_NUMBER: 8765012",
+  "ground_truth_phi_count": 5,
+  "aws_entities_detected": [
+    {
+      "text": "Sarah K",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9748088121414185,
+      "begin_offset": 59,
+      "end_offset": 66
+    },
+    {
+      "text": "Baylor",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.970595121383667,
+      "begin_offset": 82,
+      "end_offset": 88
+    },
+    {
+      "text": "Nov 5 2021",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9983940720558167,
+      "begin_offset": 92,
+      "end_offset": 102
+    },
+    {
+      "text": "987-654-3210",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999680757522583,
+      "begin_offset": 111,
+      "end_offset": 123
+    },
+    {
+      "text": "8765012",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9894483089447021,
+      "begin_offset": 139,
+      "end_offset": 146
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 5,
+    "successfully_detected": 5,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

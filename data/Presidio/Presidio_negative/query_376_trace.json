@@ -1,0 +1,45 @@
+{
+  "query_id": "376",
+  "timestamp": "2025-10-22T16:24:24.712976",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the diagnostic criteria for a 55-year-old female presenting with Cushing's syndrome?",
+  "presidio_output": "What are the diagnostic criteria for a [REDACTED_DATE] female presenting with [REDACTED_NAME]'s syndrome?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 39,
+      "end": 50,
+      "score": 0.85,
+      "text": "55-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 74,
+      "end": 81,
+      "score": 0.85,
+      "text": "Cushing",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 2,
+    "false_redactions_by_type": {
+      "DATE": 1,
+      "NAME": 1
+    },
+    "status": "OVER_REDACTED"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "query_id": "482",
+  "timestamp": "2025-10-22T16:12:44.574462",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommended treatment for a 32yo female, Sarah Lee, with newly diagnosed cervical cancer, and residing at 123 Main St., Springfield, seen on April 4th, 2023?",
+  "ground_truth_phi": "NAME: Sarah Lee | GEOGRAPHIC_LOCATION: 123 Main St., Springfield | DATE: April 4th, 2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Recommended treatment for a 32yo female, [REDACTED_NAME], with newly diagnosed cervical cancer, and residing at 123 [REDACTED_GEOGRAPHIC_LOCATION], [REDACTED_GEOGRAPHIC_LOCATION], seen on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 41,
+      "end": 50,
+      "score": 0.85,
+      "text": "Sarah Lee",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 110,
+      "end": 118,
+      "score": 0.85,
+      "text": "Main St.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 120,
+      "end": 131,
+      "score": 0.85,
+      "text": "Springfield",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 141,
+      "end": 151,
+      "score": 0.85,
+      "text": "April 4th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 152,
+      "end": 156,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.2000",
+    "f1_score": "0.3333"
+  }
+}

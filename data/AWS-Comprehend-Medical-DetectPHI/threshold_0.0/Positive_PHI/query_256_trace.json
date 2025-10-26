@@ -1,0 +1,70 @@
+{
+  "query_id": "256",
+  "timestamp": "2025-10-23T09:56:04.370797",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Treatment recommendations for a 60-year-old male, Robert J., with chronic hepatitis C, presented at Los Angeles County Hospital on 09/21/2024?",
+  "ground_truth_phi": "NAME: Robert J. | GEOGRAPHIC_LOCATION: Los Angeles County Hospital | DATE: 09/21/2024",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "60",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999515175819397,
+      "begin_offset": 32,
+      "end_offset": 34
+    },
+    {
+      "text": "Robert J",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9981750249862671,
+      "begin_offset": 50,
+      "end_offset": 58
+    },
+    {
+      "text": "Los Angeles County Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9963041543960571,
+      "begin_offset": 100,
+      "end_offset": 127
+    },
+    {
+      "text": "09/21/2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999853372573853,
+      "begin_offset": 131,
+      "end_offset": 141
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

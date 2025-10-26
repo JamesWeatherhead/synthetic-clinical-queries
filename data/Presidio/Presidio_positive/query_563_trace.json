@@ -1,0 +1,67 @@
+{
+  "query_id": "563",
+  "timestamp": "2025-10-22T16:12:45.001177",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Looking for latest COPD management guidelines for a 72yo male, James P., last seen at UCLA clinic on Feb 5, 2023. He's on insurance plan #YH-543210.",
+  "ground_truth_phi": "NAME: James P. | GEOGRAPHIC_LOCATION: UCLA clinic | DATE: Feb 5, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: #YH-543210",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Looking for latest COPD management guidelines for a 72yo male, [REDACTED_NAME], last seen at UCLA clinic on [REDACTED_DATE]. He's on insurance plan #[REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 63,
+      "end": 71,
+      "score": 0.85,
+      "text": "James P.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 101,
+      "end": 112,
+      "score": 0.85,
+      "text": "Feb 5, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 138,
+      "end": 147,
+      "score": 0.7,
+      "text": "YH-543210",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UCLA clinic",
+        "start": 86,
+        "end": 97
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "0.6667",
+    "f1_score": "0.7059"
+  }
+}

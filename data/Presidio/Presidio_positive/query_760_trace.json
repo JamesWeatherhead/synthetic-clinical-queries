@@ -1,0 +1,73 @@
+{
+  "query_id": "760",
+  "timestamp": "2025-10-22T16:12:46.008439",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Management of atrial fibrillation for a 68-year-old male, John A., who was admitted to UCLA Medical Center on January 5th, 2024 (MRN: #UCLA-12345).",
+  "ground_truth_phi": "NAME: John A. | GEOGRAPHIC_LOCATION: UCLA Medical Center | DATE: January 5th, 2024 | MEDICAL_RECORD_NUMBER: #UCLA-12345",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Management of atrial fibrillation for a [REDACTED_DATE] male, [REDACTED_NAME], who was admitted to UCLA Medical Center on [REDACTED_DATE] (MRN: #UCLA-12345).",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 40,
+      "end": 51,
+      "score": 0.85,
+      "text": "68-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 58,
+      "end": 65,
+      "score": 0.85,
+      "text": "John A.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 110,
+      "end": 127,
+      "score": 0.85,
+      "text": "January 5th, 2024",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UCLA Medical Center",
+        "start": 87,
+        "end": 106
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "#UCLA-12345",
+        "start": 134,
+        "end": 145
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 3,
+    "recall": "0.5000",
+    "precision": "0.6667",
+    "f1_score": "0.5714"
+  }
+}

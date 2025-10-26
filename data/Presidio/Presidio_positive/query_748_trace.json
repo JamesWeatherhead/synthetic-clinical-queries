@@ -1,0 +1,73 @@
+{
+  "query_id": "748",
+  "timestamp": "2025-10-22T16:12:45.950262",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "tx rec for 82yo male, hx of CHF & COPD, Smith J., visited UCLA Med Ctr on 04/21/2023. Concerns about prescribing carvedilol. His insurance # is NP-1234AB.",
+  "ground_truth_phi": "NAME: Smith J. | GEOGRAPHIC_LOCATION: UCLA Med Ctr | DATE: 04/21/2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: NP-1234AB",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "[REDACTED_NAME] male, hx of CHF & COPD, [REDACTED_NAME], visited UCLA Med Ctr on [REDACTED_DATE]. Concerns about prescribing carvedilol. His insurance # is NP-1234AB.",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 0,
+      "end": 15,
+      "score": 0.85,
+      "text": "tx rec for 82yo",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 40,
+      "end": 48,
+      "score": 0.85,
+      "text": "Smith J.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 74,
+      "end": 84,
+      "score": 0.6,
+      "text": "04/21/2023",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UCLA Med Ctr",
+        "start": 58,
+        "end": 70
+      },
+      {
+        "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+        "value": "NP-1234AB",
+        "start": 144,
+        "end": 153
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 3,
+    "recall": "0.5000",
+    "precision": "0.6667",
+    "f1_score": "0.5714"
+  }
+}

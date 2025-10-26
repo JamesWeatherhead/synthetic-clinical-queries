@@ -1,0 +1,67 @@
+{
+  "query_id": "848",
+  "timestamp": "2025-10-22T16:12:46.502814",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Management protocol for post-op care in pts w/ hx of COPD, last reviewed at St. Luke's Hospital for Jane D. on April 4 '23 (MRN: 789-12-3456)?",
+  "ground_truth_phi": "NAME: Jane D. | GEOGRAPHIC_LOCATION: St. Luke's Hospital | DATE: April 4 '23 | MEDICAL_RECORD_NUMBER: 789-12-3456",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Management protocol for post-op care in pts w/ hx of COPD, last reviewed at St. Luke's Hospital for [REDACTED_NAME] on [REDACTED_DATE] (MRN: [REDACTED_SOCIAL_SECURITY_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 100,
+      "end": 107,
+      "score": 0.85,
+      "text": "Jane D.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 111,
+      "end": 122,
+      "score": 0.85,
+      "text": "April 4 '23",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "US_SSN",
+      "hipaa_category": "SOCIAL_SECURITY_NUMBER",
+      "start": 129,
+      "end": 140,
+      "score": 0.5,
+      "text": "789-12-3456",
+      "recognizer": "UsSsnRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "St. Luke's Hospital",
+        "start": 76,
+        "end": 95
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  }
+}

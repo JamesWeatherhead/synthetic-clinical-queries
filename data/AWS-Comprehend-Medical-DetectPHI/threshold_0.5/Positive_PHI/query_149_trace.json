@@ -1,0 +1,84 @@
+{
+  "query_id": "149",
+  "timestamp": "2025-10-23T09:55:52.228142",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the side effects of chemotherapy for an 8-year-old girl called Emma R., treated at Children’s Clinic on March 20th, 2023, with MRN CC-456789?",
+  "ground_truth_phi": "NAME: Emma R. | GEOGRAPHIC_LOCATION: Children's Clinic | DATE: March 20th, 2023 | MEDICAL_RECORD_NUMBER: CC-456789",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "8",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9894577264785767,
+      "begin_offset": 49,
+      "end_offset": 50
+    },
+    {
+      "text": "Emma R",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9725303053855896,
+      "begin_offset": 72,
+      "end_offset": 78
+    },
+    {
+      "text": "Children’s Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9980047345161438,
+      "begin_offset": 92,
+      "end_offset": 109
+    },
+    {
+      "text": "March 20th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999957799911499,
+      "begin_offset": 113,
+      "end_offset": 129
+    },
+    {
+      "text": "456789",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7556500434875488,
+      "begin_offset": 143,
+      "end_offset": 149
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Children's Clinic"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "0.7500",
+    "precision": "0.8000",
+    "f1_score": "0.7742"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

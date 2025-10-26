@@ -1,0 +1,78 @@
+{
+  "query_id": "31",
+  "timestamp": "2025-10-22T16:12:42.181514",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guidelines for managing hypertension in a 70-year-old African American male, known as Mr. Smith, evaluated at Elm Street Medical Center on March 10, 2021?",
+  "ground_truth_phi": "NAME: Mr. Smith | GEOGRAPHIC_LOCATION: Elm Street Medical Center | DATE: March 10, 2021",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Guidelines for managing hypertension in a [REDACTED_DATE] [REDACTED_NRP] male, known as Mr. [REDACTED_NAME], evaluated at [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 42,
+      "end": 53,
+      "score": 0.85,
+      "text": "70-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "NRP",
+      "hipaa_category": "NRP",
+      "start": 54,
+      "end": 70,
+      "score": 0.85,
+      "text": "African American",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 90,
+      "end": 95,
+      "score": 0.85,
+      "text": "Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 110,
+      "end": 135,
+      "score": 0.85,
+      "text": "Elm Street Medical Center",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 139,
+      "end": 153,
+      "score": 0.85,
+      "text": "March 10, 2021",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.4000",
+    "f1_score": "0.5714"
+  }
+}

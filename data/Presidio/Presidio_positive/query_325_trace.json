@@ -1,0 +1,76 @@
+{
+  "query_id": "325",
+  "timestamp": "2025-10-22T16:12:43.730580",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Current best practices for managing neurogenic bladder in a 62yo male, Robert F. seen at St. John's Clinic on July 8th, 2023 (MRN: RF-987654)?",
+  "ground_truth_phi": "NAME: Robert F. | GEOGRAPHIC_LOCATION: St. John's Clinic | DATE: July 8th, 2023 | MEDICAL_RECORD_NUMBER: RF-987654",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Current best practices for managing neurogenic bladder in a 62yo male, [REDACTED_NAME] seen at St. John's Clinic on [REDACTED_DATE] (MRN: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 71,
+      "end": 80,
+      "score": 0.85,
+      "text": "Robert F.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 110,
+      "end": 119,
+      "score": 0.85,
+      "text": "July 8th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 120,
+      "end": 124,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 131,
+      "end": 140,
+      "score": 0.7,
+      "text": "RF-987654",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "St. John's Clinic",
+        "start": 89,
+        "end": 106
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.5000",
+    "f1_score": "0.6000"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "query_id": "920",
+  "timestamp": "2025-10-23T09:57:15.676156",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Recommendations for anticoagulation therapy in a patient with atrial fibrillation, Michael R. who was admitted to Johns Hopkins on September 15th, 2023, phone number 410-555-1234?",
+  "ground_truth_phi": "NAME: Michael R. | GEOGRAPHIC_LOCATION: Johns Hopkins | DATE: September 15th, 2023 | PHONE_NUMBER: 410-555-1234",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Michael R.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9472572207450867,
+      "begin_offset": 83,
+      "end_offset": 93
+    },
+    {
+      "text": "Johns Hopkins",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7744629383087158,
+      "begin_offset": 114,
+      "end_offset": 127
+    },
+    {
+      "text": "September 15th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.997443437576294,
+      "begin_offset": 131,
+      "end_offset": 151
+    },
+    {
+      "text": "410-555-1234",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9812638759613037,
+      "begin_offset": 166,
+      "end_offset": 178
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

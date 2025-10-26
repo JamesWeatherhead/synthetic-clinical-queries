@@ -1,0 +1,75 @@
+{
+  "query_id": "622",
+  "timestamp": "2025-10-23T09:56:45.391589",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Could you provide the latest treatment protocols for chronic kidney disease in a 55yo Asian male, Michael T. seen at Cedar Sinai on February 28th, 2023 (MRN: 99887-6543)?",
+  "ground_truth_phi": "NAME: Michael T. | GEOGRAPHIC_LOCATION: Cedar Sinai | DATE: February 28th, 2023 | MEDICAL_RECORD_NUMBER: 99887-6543",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "55yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9873784184455872,
+      "begin_offset": 81,
+      "end_offset": 85
+    },
+    {
+      "text": "Michael T.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7184324860572815,
+      "begin_offset": 98,
+      "end_offset": 108
+    },
+    {
+      "text": "Cedar Sinai",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9934011101722717,
+      "begin_offset": 117,
+      "end_offset": 128
+    },
+    {
+      "text": "February 28th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999891996383667,
+      "begin_offset": 132,
+      "end_offset": 151
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "99887-6543"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

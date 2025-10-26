@@ -1,0 +1,85 @@
+{
+  "query_id": "877",
+  "timestamp": "2025-10-22T16:12:46.642313",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Can you provide the guidelines for managing hypertension in a 62-year-old patient named Robert L., who was admitted to the Cleveland Clinic on September 10, 2022, with MRN 1122334455?",
+  "ground_truth_phi": "NAME: Robert L. | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: September 10, 2022 | MEDICAL_RECORD_NUMBER: 1122334455",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Can you provide the guidelines for managing hypertension in a [REDACTED_DATE] patient named [REDACTED_NAME], who was admitted to the Cleveland Clinic on [REDACTED_DATE], with [REDACTED_MEDICAL_RECORD_NUMBER]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 168,
+      "end": 182,
+      "score": 0.9,
+      "text": "MRN 1122334455",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 62,
+      "end": 73,
+      "score": 0.85,
+      "text": "62-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 88,
+      "end": 97,
+      "score": 0.85,
+      "text": "Robert L.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 143,
+      "end": 161,
+      "score": 0.85,
+      "text": "September 10, 2022",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 172,
+      "end": 182,
+      "score": 0.4,
+      "text": "1122334455",
+      "recognizer": "PhoneRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Cleveland Clinic",
+        "start": 123,
+        "end": 139
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.6000",
+    "f1_score": "0.6667"
+  }
+}

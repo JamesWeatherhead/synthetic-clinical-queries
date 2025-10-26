@@ -1,0 +1,44 @@
+{
+  "query_id": "243",
+  "timestamp": "2025-10-22T16:24:24.583191",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Protocol for managing post-operative pain in a 64-year-old male, diagnosed with prostate cancer in 2021, following robotic-assisted laparoscopic prostatectomy?",
+  "presidio_output": "Protocol for managing post-operative pain in a [REDACTED_DATE] male, diagnosed with prostate cancer in [REDACTED_DATE], following robotic-assisted laparoscopic prostatectomy?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 47,
+      "end": 58,
+      "score": 0.85,
+      "text": "64-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 99,
+      "end": 103,
+      "score": 0.85,
+      "text": "2021",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 2,
+    "false_redactions_by_type": {
+      "DATE": 2
+    },
+    "status": "OVER_REDACTED"
+  }
+}

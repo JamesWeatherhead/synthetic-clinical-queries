@@ -1,0 +1,67 @@
+{
+  "query_id": "200",
+  "timestamp": "2025-10-22T16:12:43.071705",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the treatment options for a 62-year-old male with chronic atrial fibrillation who was admitted to St. Mary's Hospital on April 12th, 2022, under Dr. Alan S.?",
+  "ground_truth_phi": "GEOGRAPHIC_LOCATION: St. Mary's Hospital | DATE: April 12th, 2022 | NAME: Dr. Alan S.",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "What are the treatment options for a [REDACTED_DATE] male with chronic atrial fibrillation who was admitted to St. Mary's Hospital on [REDACTED_DATE], under Dr. [REDACTED_NAME]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 37,
+      "end": 48,
+      "score": 0.85,
+      "text": "62-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 130,
+      "end": 146,
+      "score": 0.85,
+      "text": "April 12th, 2022",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 158,
+      "end": 165,
+      "score": 0.85,
+      "text": "Alan S.",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "St. Mary's Hospital",
+        "start": 107,
+        "end": 126
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.6667",
+    "precision": "0.3333",
+    "f1_score": "0.4444"
+  }
+}

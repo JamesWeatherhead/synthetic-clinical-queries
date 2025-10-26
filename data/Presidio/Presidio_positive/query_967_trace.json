@@ -1,0 +1,60 @@
+{
+  "query_id": "967",
+  "timestamp": "2025-10-22T16:12:47.122117",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Best practices for managing chronic migraines in patients, like Julia K. from Westwood, treated with Botox injections in July 2021.",
+  "ground_truth_phi": "NAME: Julia K. | GEOGRAPHIC_LOCATION: Westwood | DATE: July 2021",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Best practices for managing chronic migraines in patients, like [REDACTED_NAME] from [REDACTED_NAME], treated with Botox injections in [REDACTED_DATE].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 64,
+      "end": 72,
+      "score": 0.85,
+      "text": "Julia K.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 78,
+      "end": 86,
+      "score": 0.85,
+      "text": "Westwood",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 121,
+      "end": 130,
+      "score": 0.85,
+      "text": "July 2021",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  }
+}

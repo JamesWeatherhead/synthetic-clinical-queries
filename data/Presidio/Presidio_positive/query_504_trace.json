@@ -1,0 +1,67 @@
+{
+  "query_id": "504",
+  "timestamp": "2025-10-22T16:12:44.691497",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Prognosis for a 67yo female pt w/ CHF, Dianne L., who had a cardiac arrest on Feb 10th 2021 at Rush University Medical Center. Insurance number: HPN-987654321.",
+  "ground_truth_phi": "NAME: Dianne L. | DATE: Feb 10th 2021 | GEOGRAPHIC_LOCATION: Rush University Medical Center | HEALTH_PLAN_BENEFICIARY_NUMBER: HPN-987654321",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Prognosis for a 67yo female pt w/ CHF, [REDACTED_NAME], who had a cardiac arrest on [REDACTED_DATE] at Rush University Medical Center. Insurance number: HPN-[REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 39,
+      "end": 48,
+      "score": 0.85,
+      "text": "Dianne L.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 78,
+      "end": 91,
+      "score": 0.85,
+      "text": "Feb 10th 2021",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 149,
+      "end": 158,
+      "score": 0.5,
+      "text": "987654321",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Rush University Medical Center",
+        "start": 95,
+        "end": 125
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "0.6667",
+    "f1_score": "0.7059"
+  }
+}

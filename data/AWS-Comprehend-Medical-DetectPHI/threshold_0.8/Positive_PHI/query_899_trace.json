@@ -1,0 +1,75 @@
+{
+  "query_id": "899",
+  "timestamp": "2025-10-23T09:57:13.329734",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "mgmt for 70yo male, hx of CHF, admitted to JFK Medical Center on Jan 1st '23, pt name John D. his insurance policy # is ABC-987654.",
+  "ground_truth_phi": "NAME: John D. | GEOGRAPHIC_LOCATION: JFK Medical Center | DATE: Jan 1st '23 | HEALTH_PLAN_BENEFICIARY_NUMBER: ABC-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "70yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.984343409538269,
+      "begin_offset": 9,
+      "end_offset": 13
+    },
+    {
+      "text": "JFK Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9983147382736206,
+      "begin_offset": 43,
+      "end_offset": 61
+    },
+    {
+      "text": "Jan 1st '23",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9987743496894836,
+      "begin_offset": 65,
+      "end_offset": 76
+    },
+    {
+      "text": "John D.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9251728653907776,
+      "begin_offset": 86,
+      "end_offset": 93
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+        "value": "ABC-987654"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 4
+}

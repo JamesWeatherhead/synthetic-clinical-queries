@@ -1,0 +1,79 @@
+{
+  "query_id": "880",
+  "timestamp": "2025-10-23T09:57:11.194593",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "rec'd care plan for a pt w/ hx of COPD, dx'd by Dr. Smith at Washington Hospital on 03/19/2023. Include any new COPD tx options published in 2023. MRN: WH-123456.",
+  "ground_truth_phi": "NAME: Dr. Smith | GEOGRAPHIC_LOCATION: Washington Hospital | DATE: 03/19/2023 | MEDICAL_RECORD_NUMBER: WH-123456",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9992489218711853,
+      "begin_offset": 52,
+      "end_offset": 57
+    },
+    {
+      "text": "Washington Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9941250085830688,
+      "begin_offset": 61,
+      "end_offset": 80
+    },
+    {
+      "text": "03/19/2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999697208404541,
+      "begin_offset": 84,
+      "end_offset": 94
+    },
+    {
+      "text": "2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9643529057502747,
+      "begin_offset": 141,
+      "end_offset": 145
+    },
+    {
+      "text": "WH-123456",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.3418950140476227,
+      "begin_offset": 152,
+      "end_offset": 161
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

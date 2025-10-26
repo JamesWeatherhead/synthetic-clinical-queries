@@ -1,0 +1,88 @@
+{
+  "query_id": "419",
+  "timestamp": "2025-10-23T09:56:23.956472",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the treatment recommendations for epilepsy in a 30-year-old male, Michael Johnson, seen at UCSF Hospital in San Francisco on March 2, 2023 (MRN: UCS-908765)?",
+  "ground_truth_phi": "NAME: Michael Johnson | GEOGRAPHIC_LOCATION: UCSF Hospital in San Francisco | DATE: March 2, 2023 | MEDICAL_RECORD_NUMBER: UCS-908765",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "30",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9984126091003418,
+      "begin_offset": 57,
+      "end_offset": 59
+    },
+    {
+      "text": "Michael Johnson",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.996863603591919,
+      "begin_offset": 75,
+      "end_offset": 90
+    },
+    {
+      "text": "UCSF Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9674385190010071,
+      "begin_offset": 100,
+      "end_offset": 113
+    },
+    {
+      "text": "San Francisco",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9946901798248291,
+      "begin_offset": 117,
+      "end_offset": 130
+    },
+    {
+      "text": "March 2, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999740123748779,
+      "begin_offset": 134,
+      "end_offset": 147
+    },
+    {
+      "text": "908765",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.4634668827056885,
+      "begin_offset": 158,
+      "end_offset": 164
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "0.8333",
+    "f1_score": "0.9091"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 6
+}

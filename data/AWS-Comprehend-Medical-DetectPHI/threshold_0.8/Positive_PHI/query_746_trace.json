@@ -1,0 +1,79 @@
+{
+  "query_id": "746",
+  "timestamp": "2025-10-23T09:56:57.035228",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Management of hypertension in a 67-year-old female, Mary A., admitted to Methodist Hospital on 08-15-2023 with MRN 789-65-4321?",
+  "ground_truth_phi": "NAME: Mary A. | GEOGRAPHIC_LOCATION: Methodist Hospital | DATE: 08-15-2023 | MEDICAL_RECORD_NUMBER: 789-65-4321",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "67",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997397065162659,
+      "begin_offset": 32,
+      "end_offset": 34
+    },
+    {
+      "text": "Mary A",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9344730973243713,
+      "begin_offset": 52,
+      "end_offset": 58
+    },
+    {
+      "text": "Methodist Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.988420844078064,
+      "begin_offset": 73,
+      "end_offset": 91
+    },
+    {
+      "text": "08-15-2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996709823608398,
+      "begin_offset": 95,
+      "end_offset": 105
+    },
+    {
+      "text": "789-65-4321",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9983308911323547,
+      "begin_offset": 115,
+      "end_offset": 126
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

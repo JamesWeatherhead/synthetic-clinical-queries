@@ -1,0 +1,79 @@
+{
+  "query_id": "698",
+  "timestamp": "2025-10-23T09:56:52.541434",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Safety profile of Remdesivir for treating COVID-19 in a 65-year-old patient, Michael H., who was admitted to Bellevue Hospital on April 5th, 2022 (MRN: B-987654)?",
+  "ground_truth_phi": "NAME: Michael H. | GEOGRAPHIC_LOCATION: Bellevue Hospital | DATE: April 5th, 2022 | MEDICAL_RECORD_NUMBER: B-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "65",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.992163896560669,
+      "begin_offset": 56,
+      "end_offset": 58
+    },
+    {
+      "text": "Michael H",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9880346655845642,
+      "begin_offset": 77,
+      "end_offset": 86
+    },
+    {
+      "text": "Bellevue Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9830161929130554,
+      "begin_offset": 109,
+      "end_offset": 126
+    },
+    {
+      "text": "April 5th, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998749494552612,
+      "begin_offset": 130,
+      "end_offset": 145
+    },
+    {
+      "text": "B-987654)",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9214283227920532,
+      "begin_offset": 152,
+      "end_offset": 161
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

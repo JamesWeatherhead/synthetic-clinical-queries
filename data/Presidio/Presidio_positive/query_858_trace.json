@@ -1,0 +1,67 @@
+{
+  "query_id": "858",
+  "timestamp": "2025-10-22T16:12:46.552201",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "best alt. for pt w/ HTN, see hx of Michael T., tx'd at Stanford on Feb 10 2023, doc mentioned amlodipine contraindication, ins: ZY-567890.",
+  "ground_truth_phi": "NAME: Michael T. | GEOGRAPHIC_LOCATION: Stanford | DATE: Feb 10 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: ZY-567890",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "best alt. for pt w/ HTN, see hx of [REDACTED_NAME], tx'd at Stanford on [REDACTED_DATE], doc mentioned amlodipine contraindication, ins: [REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 35,
+      "end": 45,
+      "score": 0.85,
+      "text": "Michael T.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 67,
+      "end": 78,
+      "score": 0.85,
+      "text": "Feb 10 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 128,
+      "end": 137,
+      "score": 0.7,
+      "text": "ZY-567890",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Stanford",
+        "start": 55,
+        "end": 63
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  }
+}

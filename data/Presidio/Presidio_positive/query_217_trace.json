@@ -1,0 +1,64 @@
+{
+  "query_id": "217",
+  "timestamp": "2025-10-22T16:12:43.165486",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "guidelines for pt w/ hx of COPD, John D., latest visit at Johns Hopkins on Jul 7th 2023, medical record 12345-JH needing respiratory therapy options.",
+  "ground_truth_phi": "NAME: John D. | GEOGRAPHIC_LOCATION: Johns Hopkins | DATE: Jul 7th 2023 | MEDICAL_RECORD_NUMBER: 12345-JH",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "guidelines for pt w/ hx of COPD, [REDACTED_NAME], latest visit at Johns Hopkins on [REDACTED_DATE], medical record 12345-JH needing respiratory therapy options.",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 33,
+      "end": 40,
+      "score": 0.85,
+      "text": "John D.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 75,
+      "end": 87,
+      "score": 0.85,
+      "text": "Jul 7th 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Johns Hopkins",
+        "start": 58,
+        "end": 71
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "12345-JH",
+        "start": 104,
+        "end": 112
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 2,
+    "recall": "0.5000",
+    "precision": "1.0000",
+    "f1_score": "0.6667"
+  }
+}

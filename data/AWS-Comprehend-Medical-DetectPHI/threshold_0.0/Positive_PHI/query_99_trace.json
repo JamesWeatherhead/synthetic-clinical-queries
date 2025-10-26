@@ -1,0 +1,79 @@
+{
+  "query_id": "99",
+  "timestamp": "2025-10-23T09:55:46.862372",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "side efects of prednisone in treating a 23yo female w/ SLE, per consult w/ Dr. Clara Bennett, at River Valley Clinic on Jan 2nd, 2023, pt had MRN: RV123456.",
+  "ground_truth_phi": "NAME: Dr. Clara Bennett | GEOGRAPHIC_LOCATION: River Valley Clinic | DATE: Jan 2nd, 2023 | MEDICAL_RECORD_NUMBER: RV123456",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "23yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9612182974815369,
+      "begin_offset": 40,
+      "end_offset": 44
+    },
+    {
+      "text": "Clara Bennett",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9993245601654053,
+      "begin_offset": 79,
+      "end_offset": 92
+    },
+    {
+      "text": "River Valley Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.996473491191864,
+      "begin_offset": 97,
+      "end_offset": 116
+    },
+    {
+      "text": "Jan 2nd, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9990542531013489,
+      "begin_offset": 120,
+      "end_offset": 133
+    },
+    {
+      "text": "RV123456",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9711236953735352,
+      "begin_offset": 147,
+      "end_offset": 155
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

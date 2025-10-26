@@ -1,0 +1,76 @@
+{
+  "query_id": "270",
+  "timestamp": "2025-10-22T16:12:43.434736",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the latest treatment guidelines for a 66-year-old male, John Smith, with stage 3 prostate cancer, who was seen at St. Mary's Hospital on May 10, 2023 (MRN: 123-45-6789)?",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: St. Mary's Hospital | DATE: May 10, 2023 | MEDICAL_RECORD_NUMBER: 123-45-6789",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What are the latest treatment guidelines for a [REDACTED_DATE] male, [REDACTED_NAME], with stage 3 prostate cancer, who was seen at [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE] (MRN: 123-45-6789)?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 47,
+      "end": 58,
+      "score": 0.85,
+      "text": "66-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 65,
+      "end": 75,
+      "score": 0.85,
+      "text": "John Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 123,
+      "end": 142,
+      "score": 0.85,
+      "text": "St. Mary's Hospital",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 146,
+      "end": 158,
+      "score": 0.85,
+      "text": "May 10, 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "123-45-6789",
+        "start": 165,
+        "end": 176
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

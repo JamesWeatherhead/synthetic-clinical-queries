@@ -1,0 +1,73 @@
+{
+  "query_id": "839",
+  "timestamp": "2025-10-22T16:12:46.441703",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Advise on the use of lisinopril in a 45yo male pt w/CKD, last seen by Dr. Emily Brown at Colorado Springs Clinic on 07/20/23 (MRN: A1234567)?",
+  "ground_truth_phi": "NAME: Dr. Emily Brown | GEOGRAPHIC_LOCATION: Colorado Springs Clinic | DATE: 07/20/23 | MEDICAL_RECORD_NUMBER: A1234567",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Advise on the use of [REDACTED_DATE] in a 45yo male pt w/CKD, last seen by Dr. [REDACTED_NAME] at Colorado Springs Clinic on [REDACTED_DATE] (MRN: A1234567)?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 21,
+      "end": 31,
+      "score": 0.85,
+      "text": "lisinopril",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 74,
+      "end": 85,
+      "score": 0.85,
+      "text": "Emily Brown",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 116,
+      "end": 124,
+      "score": 0.6,
+      "text": "07/20/23",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Colorado Springs Clinic",
+        "start": 89,
+        "end": 112
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "A1234567",
+        "start": 131,
+        "end": 139
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 3,
+    "recall": "0.5000",
+    "precision": "0.3333",
+    "f1_score": "0.4000"
+  }
+}

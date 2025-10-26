@@ -1,0 +1,79 @@
+{
+  "query_id": "537",
+  "timestamp": "2025-10-23T09:56:36.609712",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Preferred tx for 45yo male w/ Crohn's flare, last seen by Dr. J. at Johns Hopkins on 04/23/23. Consider participation in the IMPACT trial 2022.",
+  "ground_truth_phi": "NAME: Dr. J. | GEOGRAPHIC_LOCATION: Johns Hopkins | DATE: 04/23/23",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "45yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995179176330566,
+      "begin_offset": 17,
+      "end_offset": 21
+    },
+    {
+      "text": "J.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9643576741218567,
+      "begin_offset": 62,
+      "end_offset": 64
+    },
+    {
+      "text": "Johns Hopkins",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8012443780899048,
+      "begin_offset": 68,
+      "end_offset": 81
+    },
+    {
+      "text": "04/23/23",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999884366989136,
+      "begin_offset": 85,
+      "end_offset": 93
+    },
+    {
+      "text": "trial 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.18807512521743774,
+      "begin_offset": 132,
+      "end_offset": 142
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.6000",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

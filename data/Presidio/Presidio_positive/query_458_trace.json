@@ -1,0 +1,85 @@
+{
+  "query_id": "458",
+  "timestamp": "2025-10-22T16:12:44.432679",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommendations for treating chronic migraines in a patient, Sarah B., who visited Springfield Clinic on March 9th, 2023, MRN: SC-654321.",
+  "ground_truth_phi": "NAME: Sarah B. | GEOGRAPHIC_LOCATION: Springfield Clinic | DATE: March 9th, 2023 | MEDICAL_RECORD_NUMBER: SC-654321",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Recommendations for treating chronic migraines in a patient, [REDACTED_NAME], who visited Springfield Clinic on [REDACTED_DATE], MRN: [REDACTED_DATE].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 61,
+      "end": 69,
+      "score": 0.85,
+      "text": "Sarah B.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 105,
+      "end": 115,
+      "score": 0.85,
+      "text": "March 9th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 116,
+      "end": 120,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 127,
+      "end": 136,
+      "score": 0.85,
+      "text": "SC-654321",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 127,
+      "end": 136,
+      "score": 0.7,
+      "text": "SC-654321",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Springfield Clinic",
+        "start": 83,
+        "end": 101
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.4000",
+    "f1_score": "0.5217"
+  }
+}

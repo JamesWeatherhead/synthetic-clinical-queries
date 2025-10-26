@@ -1,0 +1,61 @@
+{
+  "query_id": "954",
+  "timestamp": "2025-10-23T09:57:20.915900",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Rec. for anticoagulation tx in pt s/p TKR w/ hx of DVT, seen by Dr. Harris at UWMC on 05/02/23. Concern about drug interactions w/ current meds.",
+  "ground_truth_phi": "NAME: Dr. Harris | GEOGRAPHIC_LOCATION: UWMC | DATE: 05/02/23",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "Harris",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995960593223572,
+      "begin_offset": 68,
+      "end_offset": 74
+    },
+    {
+      "text": "UWMC",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995498061180115,
+      "begin_offset": 78,
+      "end_offset": 82
+    },
+    {
+      "text": "05/02/23",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999806880950928,
+      "begin_offset": 86,
+      "end_offset": 94
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

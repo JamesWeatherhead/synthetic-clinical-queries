@@ -1,0 +1,85 @@
+{
+  "query_id": "718",
+  "timestamp": "2025-10-22T16:12:45.812025",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "pt age 39 w/ chronic migraine, Jane B., seen at Cleveland Clinic, 12/12/2023. what are latest recs for prophylaxis? Med Rec#: CC-789654",
+  "ground_truth_phi": "NAME: Jane B. | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: 12/12/2023 | MEDICAL_RECORD_NUMBER: CC-789654",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "pt [REDACTED_DATE] w/ chronic migraine, [REDACTED_NAME], seen at Cleveland Clinic, [REDACTED_DATE]. what are latest recs for prophylaxis? Med Rec#: [REDACTED_NAME]",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 3,
+      "end": 9,
+      "score": 0.85,
+      "text": "age 39",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 31,
+      "end": 38,
+      "score": 0.85,
+      "text": "Jane B.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 126,
+      "end": 135,
+      "score": 0.85,
+      "text": "CC-789654",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 126,
+      "end": 135,
+      "score": 0.7,
+      "text": "CC-789654",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 66,
+      "end": 76,
+      "score": 0.6,
+      "text": "12/12/2023",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Cleveland Clinic",
+        "start": 48,
+        "end": 64
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.6000",
+    "f1_score": "0.6667"
+  }
+}

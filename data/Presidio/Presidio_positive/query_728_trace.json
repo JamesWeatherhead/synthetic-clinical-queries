@@ -1,0 +1,67 @@
+{
+  "query_id": "728",
+  "timestamp": "2025-10-22T16:12:45.855761",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Current mgmt guidelines for COPD in a 55yo male, Robert A., seen at Georgetown University Med Center on Jan 20th '23? Also, his phone is 202-555-1234.",
+  "ground_truth_phi": "NAME: Robert A. | GEOGRAPHIC_LOCATION: Georgetown University Med Center | DATE: Jan 20th '23 | PHONE_NUMBER: 202-555-1234",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Current mgmt guidelines for COPD in a 55yo male, [REDACTED_NAME], seen at Georgetown University Med Center on [REDACTED_DATE]? Also, his phone is [REDACTED_PHONE_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 49,
+      "end": 58,
+      "score": 0.85,
+      "text": "Robert A.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 104,
+      "end": 116,
+      "score": 0.85,
+      "text": "Jan 20th '23",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 137,
+      "end": 149,
+      "score": 0.75,
+      "text": "202-555-1234",
+      "recognizer": "PhoneRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Georgetown University Med Center",
+        "start": 68,
+        "end": 100
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  }
+}

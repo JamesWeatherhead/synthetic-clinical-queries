@@ -1,0 +1,79 @@
+{
+  "query_id": "672",
+  "timestamp": "2025-10-23T09:56:50.165822",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Current treatment options for rheumatoid arthritis in a 52-year-old woman, Mary Johnson, who presented at Cleveland Clinic on December 10th, 2022, with health plan number HP-987654.",
+  "ground_truth_phi": "NAME: Mary Johnson | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: December 10th, 2022 | HEALTH_PLAN_BENEFICIARY_NUMBER: HP-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "52",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9994218349456787,
+      "begin_offset": 56,
+      "end_offset": 58
+    },
+    {
+      "text": "Mary Johnson",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9984622001647949,
+      "begin_offset": 75,
+      "end_offset": 87
+    },
+    {
+      "text": "Cleveland Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9983568787574768,
+      "begin_offset": 106,
+      "end_offset": 122
+    },
+    {
+      "text": "December 10th, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999624490737915,
+      "begin_offset": 126,
+      "end_offset": 145
+    },
+    {
+      "text": "987654",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6088975667953491,
+      "begin_offset": 174,
+      "end_offset": 180
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

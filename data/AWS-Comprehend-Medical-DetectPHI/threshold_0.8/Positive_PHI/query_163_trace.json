@@ -1,0 +1,70 @@
+{
+  "query_id": "163",
+  "timestamp": "2025-10-23T09:55:53.493351",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "best practices for managing T2DM in pt seen by Dr. Stevens at the Downtown Clinic; DOB 12/11/1958, case reviewed Mar 3, 2023.",
+  "ground_truth_phi": "NAME: Dr. Stevens | GEOGRAPHIC_LOCATION: Downtown Clinic | DATE: Mar 3, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "Stevens",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.998132050037384,
+      "begin_offset": 51,
+      "end_offset": 58
+    },
+    {
+      "text": "Downtown Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9988678693771362,
+      "begin_offset": 66,
+      "end_offset": 81
+    },
+    {
+      "text": "12/11/1958",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999220371246338,
+      "begin_offset": 87,
+      "end_offset": 97
+    },
+    {
+      "text": "Mar 3, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9992735981941223,
+      "begin_offset": 113,
+      "end_offset": 124
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

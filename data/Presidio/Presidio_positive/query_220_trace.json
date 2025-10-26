@@ -1,0 +1,76 @@
+{
+  "query_id": "220",
+  "timestamp": "2025-10-22T16:12:43.177888",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Latest guidelines for managing COPD in a 72-year-old male, follow-up needed for John Smith, patient ID 67890, seen at Elm Street Clinic on 08/15/2022?",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: Elm Street Clinic | DATE: 08/15/2022 | MEDICAL_RECORD_NUMBER: 67890",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Latest guidelines for managing COPD in a [REDACTED_DATE] male, follow-up needed for [REDACTED_NAME], patient ID 67890, seen at [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 41,
+      "end": 52,
+      "score": 0.85,
+      "text": "72-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 80,
+      "end": 90,
+      "score": 0.85,
+      "text": "John Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 118,
+      "end": 135,
+      "score": 0.85,
+      "text": "Elm Street Clinic",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 139,
+      "end": 149,
+      "score": 0.6,
+      "text": "08/15/2022",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "67890",
+        "start": 103,
+        "end": 108
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

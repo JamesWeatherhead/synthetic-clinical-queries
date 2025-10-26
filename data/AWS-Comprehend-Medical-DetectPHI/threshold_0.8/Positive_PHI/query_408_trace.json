@@ -1,0 +1,70 @@
+{
+  "query_id": "408",
+  "timestamp": "2025-10-23T09:56:22.774399",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the latest recommendations for managing bipolar disorder in a 32-year-old female, Emily R., who is a patient at St. Vincent's Clinic and was last seen on October 10, 2022?",
+  "ground_truth_phi": "NAME: Emily R. | GEOGRAPHIC_LOCATION: St. Vincent's Clinic | DATE: October 10, 2022",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "32",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997597336769104,
+      "begin_offset": 71,
+      "end_offset": 73
+    },
+    {
+      "text": "Emily R",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9764665365219116,
+      "begin_offset": 91,
+      "end_offset": 98
+    },
+    {
+      "text": "St. Vincent's Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9172413945198059,
+      "begin_offset": 121,
+      "end_offset": 141
+    },
+    {
+      "text": "October 10, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999991774559021,
+      "begin_offset": 163,
+      "end_offset": 179
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

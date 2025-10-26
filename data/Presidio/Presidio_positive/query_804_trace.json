@@ -1,0 +1,67 @@
+{
+  "query_id": "804",
+  "timestamp": "2025-10-22T16:12:46.253522",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "rec. management for pt w/ hx of COPD & asthma, refer to notes for Dave B., seen at NYU Med. Center on 07/07/2023. concerned about interactions w/ albuterol. contact: 212-555-1234.",
+  "ground_truth_phi": "NAME: Dave B. | GEOGRAPHIC_LOCATION: NYU Med. Center | DATE: 07/07/2023 | PHONE_NUMBER: 212-555-1234",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "rec. management for pt w/ hx of COPD & asthma, refer to notes for [REDACTED_NAME], seen at NYU Med. Center on [REDACTED_DATE]. concerned about interactions w/ albuterol. contact: [REDACTED_PHONE_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 66,
+      "end": 73,
+      "score": 0.85,
+      "text": "Dave B.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 102,
+      "end": 112,
+      "score": 0.6,
+      "text": "07/07/2023",
+      "recognizer": "DateRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 166,
+      "end": 178,
+      "score": 0.4,
+      "text": "212-555-1234",
+      "recognizer": "PhoneRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "NYU Med. Center",
+        "start": 83,
+        "end": 98
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  }
+}

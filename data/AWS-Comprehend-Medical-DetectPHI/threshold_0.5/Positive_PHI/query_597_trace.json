@@ -1,0 +1,66 @@
+{
+  "query_id": "597",
+  "timestamp": "2025-10-23T09:56:42.837116",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "eval for pt w/ hx of COPD, Mary Johnson, admitted to UCSF on Feb 15, 2023. need guidance on inhaler use. MRN: 982-12-34.",
+  "ground_truth_phi": "NAME: Mary Johnson | GEOGRAPHIC_LOCATION: UCSF | DATE: Feb 15, 2023 | MEDICAL_RECORD_NUMBER: 982-12-34",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Mary Johnson",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9975058436393738,
+      "begin_offset": 27,
+      "end_offset": 39
+    },
+    {
+      "text": "UCSF",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9464638829231262,
+      "begin_offset": 53,
+      "end_offset": 57
+    },
+    {
+      "text": "Feb 15, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9984394907951355,
+      "begin_offset": 61,
+      "end_offset": 73
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "982-12-34"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 3
+}

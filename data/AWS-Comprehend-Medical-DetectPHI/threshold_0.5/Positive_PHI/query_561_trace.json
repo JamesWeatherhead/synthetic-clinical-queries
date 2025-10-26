@@ -1,0 +1,79 @@
+{
+  "query_id": "561",
+  "timestamp": "2025-10-23T09:56:39.080084",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for managing hypertension in a 70-year-old male, Robert W., treated at Stanford Health on December 1st, 2022, with insurance ID ZX-987654?",
+  "ground_truth_phi": "NAME: Robert W. | GEOGRAPHIC_LOCATION: Stanford Health | DATE: December 1st, 2022 | HEALTH_PLAN_BENEFICIARY_NUMBER: ZX-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "70",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995108842849731,
+      "begin_offset": 42,
+      "end_offset": 44
+    },
+    {
+      "text": "Robert W",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9535955190658569,
+      "begin_offset": 60,
+      "end_offset": 68
+    },
+    {
+      "text": "Stanford Health",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9781869053840637,
+      "begin_offset": 82,
+      "end_offset": 97
+    },
+    {
+      "text": "December 1st, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999673366546631,
+      "begin_offset": 101,
+      "end_offset": 119
+    },
+    {
+      "text": "987654",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6897386908531189,
+      "begin_offset": 142,
+      "end_offset": 148
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

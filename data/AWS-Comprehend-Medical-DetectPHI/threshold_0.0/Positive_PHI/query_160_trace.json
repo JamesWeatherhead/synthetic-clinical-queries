@@ -1,0 +1,70 @@
+{
+  "query_id": "160",
+  "timestamp": "2025-10-23T09:55:53.258226",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Latest treatment recommendations for a 52-year-old female with chronic migraines, scheduled for review by Dr. Emily Clark at St. Mary's Hospital on April 22, 2023.",
+  "ground_truth_phi": "NAME: Dr. Emily Clark | GEOGRAPHIC_LOCATION: St. Mary's Hospital | DATE: April 22, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "52",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997074007987976,
+      "begin_offset": 39,
+      "end_offset": 41
+    },
+    {
+      "text": "Emily Clark",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9988552331924438,
+      "begin_offset": 110,
+      "end_offset": 121
+    },
+    {
+      "text": "St. Mary's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.992724597454071,
+      "begin_offset": 125,
+      "end_offset": 144
+    },
+    {
+      "text": "April 22, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995679259300232,
+      "begin_offset": 148,
+      "end_offset": 162
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

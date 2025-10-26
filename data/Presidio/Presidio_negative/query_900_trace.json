@@ -1,0 +1,63 @@
+{
+  "query_id": "900",
+  "timestamp": "2025-10-22T16:24:25.306012",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the diagnostic criteria for Cushing's syndrome in a 33-year-old female with a BMI of 30, who had a dexamethasone suppression test last week?",
+  "presidio_output": "What are the diagnostic criteria for [REDACTED_NAME]'s syndrome in a [REDACTED_DATE] female with a BMI of [REDACTED_DATE], who had a dexamethasone suppression test [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 37,
+      "end": 44,
+      "score": 0.85,
+      "text": "Cushing",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 61,
+      "end": 72,
+      "score": 0.85,
+      "text": "33-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 94,
+      "end": 96,
+      "score": 0.85,
+      "text": "30",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 139,
+      "end": 148,
+      "score": 0.85,
+      "text": "last week",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 4,
+    "false_redactions_by_type": {
+      "NAME": 1,
+      "DATE": 3
+    },
+    "status": "OVER_REDACTED"
+  }
+}

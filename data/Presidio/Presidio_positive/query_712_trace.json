@@ -1,0 +1,85 @@
+{
+  "query_id": "712",
+  "timestamp": "2025-10-22T16:12:45.785283",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Management strategies for a 52-year-old female with lupus, Sarah D., seen at Cedars-Sinai clinic on April 22nd, 2023, with insurance ID: ABC123.",
+  "ground_truth_phi": "NAME: Sarah D. | GEOGRAPHIC_LOCATION: Cedars-Sinai clinic | DATE: April 22nd, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: ABC123",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Management strategies for a [REDACTED_DATE] female with lupus, [REDACTED_NAME], seen at [REDACTED_GEOGRAPHIC_LOCATION] clinic on [REDACTED_DATE], with insurance ID: ABC123.",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 28,
+      "end": 39,
+      "score": 0.85,
+      "text": "52-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 59,
+      "end": 67,
+      "score": 0.85,
+      "text": "Sarah D.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 77,
+      "end": 89,
+      "score": 0.85,
+      "text": "Cedars-Sinai",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 100,
+      "end": 111,
+      "score": 0.85,
+      "text": "April 22nd,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 112,
+      "end": 116,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+        "value": "ABC123",
+        "start": 137,
+        "end": 143
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.2000",
+    "f1_score": "0.3158"
+  }
+}

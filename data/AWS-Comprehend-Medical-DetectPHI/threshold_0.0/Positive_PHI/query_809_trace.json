@@ -1,0 +1,70 @@
+{
+  "query_id": "809",
+  "timestamp": "2025-10-23T09:57:03.806436",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidance on managing a 54-year-old male, Ethan W., with chronic heart failure seen at NewYork-Presbyterian Hospital on April 20th, 2023?",
+  "ground_truth_phi": "NAME: Ethan W. | GEOGRAPHIC_LOCATION: NewYork-Presbyterian Hospital | DATE: April 20th, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "54",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9952270984649658,
+      "begin_offset": 23,
+      "end_offset": 25
+    },
+    {
+      "text": "Ethan",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6273074150085449,
+      "begin_offset": 41,
+      "end_offset": 46
+    },
+    {
+      "text": "NewYork-Presbyterian Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8004550337791443,
+      "begin_offset": 86,
+      "end_offset": 115
+    },
+    {
+      "text": "April 20th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999792754650116,
+      "begin_offset": 119,
+      "end_offset": 135
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

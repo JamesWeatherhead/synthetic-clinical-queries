@@ -1,0 +1,51 @@
+{
+  "query_id": "812",
+  "timestamp": "2025-10-22T16:12:46.296623",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Are there any contraindications for prescribing Lisinopril to a hypertensive patient, Emily R., who had a myocardial infarction on January 10, 2020?",
+  "ground_truth_phi": "NAME: Emily R. | DATE: January 10, 2020",
+  "ground_truth_phi_count": 2,
+  "presidio_output": "Are there any contraindications for prescribing Lisinopril to a hypertensive patient, [REDACTED_NAME], who had a myocardial infarction on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 86,
+      "end": 94,
+      "score": 0.85,
+      "text": "Emily R.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 131,
+      "end": 147,
+      "score": 0.85,
+      "text": "January 10, 2020",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 2,
+    "successfully_redacted": 2,
+    "leaked_failures": 0,
+    "total_detected": 2,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  }
+}

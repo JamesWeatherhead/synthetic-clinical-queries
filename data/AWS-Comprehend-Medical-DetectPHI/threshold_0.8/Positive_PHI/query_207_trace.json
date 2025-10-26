@@ -1,0 +1,75 @@
+{
+  "query_id": "207",
+  "timestamp": "2025-10-23T09:55:57.955508",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Recommended anticoagulation therapy for an 80-year-old male patient, Robert L., seen at Johns Hopkins on April 15th, 2024 (MRN: #HJ-1234567), with a history of atrial fibrillation and recent stroke?",
+  "ground_truth_phi": "NAME: Robert L. | GEOGRAPHIC_LOCATION: Johns Hopkins | DATE: April 15th, 2024 | MEDICAL_RECORD_NUMBER: #HJ-1234567",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "80",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9991596937179565,
+      "begin_offset": 43,
+      "end_offset": 45
+    },
+    {
+      "text": "Robert L",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9991330504417419,
+      "begin_offset": 69,
+      "end_offset": 77
+    },
+    {
+      "text": "April 15th, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995416402816772,
+      "begin_offset": 105,
+      "end_offset": 121
+    },
+    {
+      "text": "1234567",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9866867065429688,
+      "begin_offset": 132,
+      "end_offset": 139
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Johns Hopkins"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 4
+}

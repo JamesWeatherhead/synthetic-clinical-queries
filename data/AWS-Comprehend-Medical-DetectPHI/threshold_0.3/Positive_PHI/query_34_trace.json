@@ -1,0 +1,75 @@
+{
+  "query_id": "34",
+  "timestamp": "2025-10-23T09:55:40.064909",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the side effects of metoprolol for a 63-year-old female, Maria S., treated at our Miami office on January 1st, 2023, for hypertension (medical insurance policy number QW-987654)?",
+  "ground_truth_phi": "NAME: Maria S. | GEOGRAPHIC_LOCATION: Miami | DATE: January 1st, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: QW-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "63",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9967094659805298,
+      "begin_offset": 46,
+      "end_offset": 48
+    },
+    {
+      "text": "Maria S",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9845770001411438,
+      "begin_offset": 66,
+      "end_offset": 73
+    },
+    {
+      "text": "Miami",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6111567616462708,
+      "begin_offset": 91,
+      "end_offset": 96
+    },
+    {
+      "text": "January 1st, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999182224273682,
+      "begin_offset": 107,
+      "end_offset": 124
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+        "value": "QW-987654"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 4
+}

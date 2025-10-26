@@ -1,0 +1,54 @@
+{
+  "query_id": "269",
+  "timestamp": "2025-10-22T16:24:24.598791",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What is the differential diagnosis for a 45-year-old male presenting with a positive Chaddock reflex and a history of epilepsy, managed since 2020?",
+  "presidio_output": "What is the differential diagnosis for a [REDACTED_DATE] male presenting with a positive [REDACTED_NAME] reflex and a history of epilepsy, managed since [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 41,
+      "end": 52,
+      "score": 0.85,
+      "text": "45-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 85,
+      "end": 93,
+      "score": 0.85,
+      "text": "Chaddock",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 142,
+      "end": 146,
+      "score": 0.85,
+      "text": "2020",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 3,
+    "false_redactions_by_type": {
+      "DATE": 2,
+      "NAME": 1
+    },
+    "status": "OVER_REDACTED"
+  }
+}

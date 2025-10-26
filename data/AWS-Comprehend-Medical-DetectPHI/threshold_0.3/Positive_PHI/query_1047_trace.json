@@ -1,0 +1,79 @@
+{
+  "query_id": "1047",
+  "timestamp": "2025-10-23T09:57:33.005981",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Contraindications for prescribing lithium to a 35-year-old male diagnosed with bipolar disorder, Peter Johnson, treated at St. Mary's Clinic on October 15th, 2022 (MRN: PJ-112233).",
+  "ground_truth_phi": "NAME: Peter Johnson | GEOGRAPHIC_LOCATION: St. Mary's Clinic | DATE: October 15th, 2022 | MEDICAL_RECORD_NUMBER: PJ-112233",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "35",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9809294939041138,
+      "begin_offset": 47,
+      "end_offset": 49
+    },
+    {
+      "text": "Peter Johnson",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9979693293571472,
+      "begin_offset": 97,
+      "end_offset": 110
+    },
+    {
+      "text": "St. Mary's Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9911211729049683,
+      "begin_offset": 123,
+      "end_offset": 140
+    },
+    {
+      "text": "October 15th, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999662637710571,
+      "begin_offset": 144,
+      "end_offset": 162
+    },
+    {
+      "text": "112233",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7010383605957031,
+      "begin_offset": 172,
+      "end_offset": 178
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 5
+}

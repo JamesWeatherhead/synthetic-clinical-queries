@@ -1,0 +1,76 @@
+{
+  "query_id": "27",
+  "timestamp": "2025-10-22T16:12:42.159817",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommendations for the use of biologics in a 52-year-old female, Karen L., diagnosed with rheumatoid arthritis, seen at Cleveland Clinic on September 14, 2023 (Insurance: AA-987654)?",
+  "ground_truth_phi": "NAME: Karen L. | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: September 14, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: AA-987654",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Recommendations for the use of biologics in a [REDACTED_DATE] female, [REDACTED_NAME], diagnosed with rheumatoid arthritis, seen at Cleveland Clinic on [REDACTED_DATE] (Insurance: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 46,
+      "end": 57,
+      "score": 0.85,
+      "text": "52-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 66,
+      "end": 74,
+      "score": 0.85,
+      "text": "Karen L.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 141,
+      "end": 159,
+      "score": 0.85,
+      "text": "September 14, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 172,
+      "end": 181,
+      "score": 0.7,
+      "text": "AA-987654",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Cleveland Clinic",
+        "start": 121,
+        "end": 137
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

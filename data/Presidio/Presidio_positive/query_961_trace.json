@@ -1,0 +1,85 @@
+{
+  "query_id": "961",
+  "timestamp": "2025-10-22T16:12:47.096804",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommended treatment for a 52-year-old male with chronic Hepatitis C, Robert Smith, who was diagnosed on February 14th, 2023 at St. Mary's Clinic (MRN: 12345-678)?",
+  "ground_truth_phi": "NAME: Robert Smith | DATE: February 14th, 2023 | GEOGRAPHIC_LOCATION: St. Mary's Clinic | MEDICAL_RECORD_NUMBER: 12345-678",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Recommended treatment for a [REDACTED_DATE] male with chronic Hepatitis C, [REDACTED_NAME], who was diagnosed on [REDACTED_DATE], [REDACTED_DATE] at [REDACTED_GEOGRAPHIC_LOCATION] Clinic (MRN: 12345-678)?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 28,
+      "end": 39,
+      "score": 0.85,
+      "text": "52-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 71,
+      "end": 83,
+      "score": 0.85,
+      "text": "Robert Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 106,
+      "end": 119,
+      "score": 0.85,
+      "text": "February 14th",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 121,
+      "end": 125,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 129,
+      "end": 139,
+      "score": 0.85,
+      "text": "St. Mary's",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "12345-678",
+        "start": 153,
+        "end": 162
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.2000",
+    "f1_score": "0.3158"
+  }
+}

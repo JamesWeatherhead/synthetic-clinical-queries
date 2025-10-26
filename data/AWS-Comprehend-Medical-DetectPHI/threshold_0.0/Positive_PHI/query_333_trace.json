@@ -1,0 +1,79 @@
+{
+  "query_id": "333",
+  "timestamp": "2025-10-23T09:56:14.536492",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Standard care protocols for a 40-year-old male with acute appendicitis, John Doerr, admitted to Houston General Hospital on February 18th, 2023 (contact: john.doerr@example.com)?",
+  "ground_truth_phi": "NAME: John Doerr | GEOGRAPHIC_LOCATION: Houston General Hospital | DATE: February 18th, 2023 | EMAIL_ADDRESS: john.doerr@example.com",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "40",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9895328283309937,
+      "begin_offset": 30,
+      "end_offset": 32
+    },
+    {
+      "text": "John Doerr",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9944041967391968,
+      "begin_offset": 72,
+      "end_offset": 82
+    },
+    {
+      "text": "Houston General Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9810019135475159,
+      "begin_offset": 96,
+      "end_offset": 120
+    },
+    {
+      "text": "February 18th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999526739120483,
+      "begin_offset": 124,
+      "end_offset": 143
+    },
+    {
+      "text": "john.doerr@example.com",
+      "aws_type": "EMAIL",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999617338180542,
+      "begin_offset": 154,
+      "end_offset": 176
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

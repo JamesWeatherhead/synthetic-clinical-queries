@@ -1,0 +1,85 @@
+{
+  "query_id": "446",
+  "timestamp": "2025-10-22T16:12:44.364428",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Contraindications for prescribing ACE inhibitors to a 60-year-old female named Maria Gonzalez, seen at Cleveland Clinic last month (phone: 216-555-1234)?",
+  "ground_truth_phi": "NAME: Maria Gonzalez | GEOGRAPHIC_LOCATION: Cleveland Clinic | PHONE_NUMBER: 216-555-1234",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Contraindications for prescribing ACE inhibitors to a [REDACTED_DATE] female named [REDACTED_NAME], seen at Cleveland Clinic [REDACTED_DATE] (phone: [REDACTED_UK_NHS])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "UK_NHS",
+      "hipaa_category": "UK_NHS",
+      "start": 139,
+      "end": 151,
+      "score": 1.0,
+      "text": "216-555-1234",
+      "recognizer": "NhsRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 54,
+      "end": 65,
+      "score": 0.85,
+      "text": "60-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 79,
+      "end": 93,
+      "score": 0.85,
+      "text": "Maria Gonzalez",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 120,
+      "end": 130,
+      "score": 0.85,
+      "text": "last month",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 139,
+      "end": 151,
+      "score": 0.75,
+      "text": "216-555-1234",
+      "recognizer": "PhoneRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Cleveland Clinic",
+        "start": 103,
+        "end": 119
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.6667",
+    "precision": "0.4000",
+    "f1_score": "0.5000"
+  }
+}

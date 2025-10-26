@@ -1,0 +1,88 @@
+{
+  "query_id": "122",
+  "timestamp": "2025-10-23T09:55:49.029054",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Updated COPD management guidelines for 65-year-old male, Jack B., who has been taking Spiriva and was seen at Mayo Clinic in Rochester, MN on July 20th, 2022 (insurance ID: 789456123)?",
+  "ground_truth_phi": "NAME: Jack B. | GEOGRAPHIC_LOCATION: Mayo Clinic in Rochester, MN | DATE: July 20th, 2022 | HEALTH_PLAN_BENEFICIARY_NUMBER: 789456123",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "65",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9974095225334167,
+      "begin_offset": 39,
+      "end_offset": 41
+    },
+    {
+      "text": "Jack B",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9837063550949097,
+      "begin_offset": 57,
+      "end_offset": 63
+    },
+    {
+      "text": "Mayo Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9893452525138855,
+      "begin_offset": 110,
+      "end_offset": 121
+    },
+    {
+      "text": "Rochester",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.5873147249221802,
+      "begin_offset": 125,
+      "end_offset": 134
+    },
+    {
+      "text": "July 20th, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999678134918213,
+      "begin_offset": 142,
+      "end_offset": 157
+    },
+    {
+      "text": "789456123",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9906076192855835,
+      "begin_offset": 173,
+      "end_offset": 182
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "0.8333",
+    "f1_score": "0.9091"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 6
+}

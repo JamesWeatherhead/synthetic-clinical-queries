@@ -1,0 +1,70 @@
+{
+  "query_id": "1037",
+  "timestamp": "2025-10-23T09:57:31.862010",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "guideline for antihypertensive med in pts w/ hx of T2DM, see case of Emily T. at NY Presbyterian visited on Dec 12th, 2022, (phone: 212-555-1234)?",
+  "ground_truth_phi": "NAME: Emily T. | GEOGRAPHIC_LOCATION: NY Presbyterian | DATE: Dec 12th, 2022 | PHONE_NUMBER: 212-555-1234",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Emily T.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8121369481086731,
+      "begin_offset": 69,
+      "end_offset": 77
+    },
+    {
+      "text": "NY Presbyterian",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.5878194570541382,
+      "begin_offset": 81,
+      "end_offset": 96
+    },
+    {
+      "text": "Dec 12th, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9748468399047852,
+      "begin_offset": 108,
+      "end_offset": 122
+    },
+    {
+      "text": "212-555-1234",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995056390762329,
+      "begin_offset": 132,
+      "end_offset": 144
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

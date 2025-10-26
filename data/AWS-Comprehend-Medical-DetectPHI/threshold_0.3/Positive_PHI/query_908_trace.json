@@ -1,0 +1,79 @@
+{
+  "query_id": "908",
+  "timestamp": "2025-10-23T09:57:14.110599",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for the treatment of acute pancreatitis in a 60-year-old male, David K., seen on August 9th, 2022 at Mount Sinai Medical Center (Phone: 555-123-4567)?",
+  "ground_truth_phi": "NAME: David K. | DATE: August 9th, 2022 | GEOGRAPHIC_LOCATION: Mount Sinai Medical Center | PHONE_NUMBER: 555-123-4567",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "60",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9994964599609375,
+      "begin_offset": 56,
+      "end_offset": 58
+    },
+    {
+      "text": "David K",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9981525540351868,
+      "begin_offset": 74,
+      "end_offset": 81
+    },
+    {
+      "text": "August 9th, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998406171798706,
+      "begin_offset": 92,
+      "end_offset": 108
+    },
+    {
+      "text": "Mount Sinai Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9992167949676514,
+      "begin_offset": 112,
+      "end_offset": 138
+    },
+    {
+      "text": "555-123-4567",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9985411167144775,
+      "begin_offset": 147,
+      "end_offset": 159
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

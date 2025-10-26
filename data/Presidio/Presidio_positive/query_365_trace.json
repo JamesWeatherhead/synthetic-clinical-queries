@@ -1,0 +1,85 @@
+{
+  "query_id": "365",
+  "timestamp": "2025-10-22T16:12:43.949590",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What is the standard treatment protocol for a 57-year-old female with stage IV colon cancer, Annette B., diagnosed at Riverside Hospital, with symptoms starting on January 15th, 2023 (MRN: 87654321)?",
+  "ground_truth_phi": "NAME: Annette B. | GEOGRAPHIC_LOCATION: Riverside Hospital | DATE: January 15th, 2023 | MEDICAL_RECORD_NUMBER: 87654321",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What is the standard treatment protocol for a [REDACTED_DATE] female with stage IV colon cancer, [REDACTED_NAME], diagnosed at Riverside Hospital, with symptoms starting on [REDACTED_DATE] ([REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 184,
+      "end": 197,
+      "score": 0.9,
+      "text": "MRN: 87654321",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 46,
+      "end": 57,
+      "score": 0.85,
+      "text": "57-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 93,
+      "end": 103,
+      "score": 0.85,
+      "text": "Annette B.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 164,
+      "end": 177,
+      "score": 0.85,
+      "text": "January 15th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 178,
+      "end": 182,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Riverside Hospital",
+        "start": 118,
+        "end": 136
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.2000",
+    "f1_score": "0.3158"
+  }
+}

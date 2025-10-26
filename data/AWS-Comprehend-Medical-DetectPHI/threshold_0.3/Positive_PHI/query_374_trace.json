@@ -1,0 +1,70 @@
+{
+  "query_id": "374",
+  "timestamp": "2025-10-23T09:56:19.181597",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What is the protocol for post-operative care of a 56-year-old female, Samantha R., following a knee replacement at Cedars-Sinai on January 3rd, 2023?",
+  "ground_truth_phi": "NAME: Samantha R. | GEOGRAPHIC_LOCATION: Cedars-Sinai | DATE: January 3rd, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "56",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9959069490432739,
+      "begin_offset": 50,
+      "end_offset": 52
+    },
+    {
+      "text": "Samantha R",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9883071780204773,
+      "begin_offset": 70,
+      "end_offset": 80
+    },
+    {
+      "text": "Cedars-Sinai",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7532437443733215,
+      "begin_offset": 115,
+      "end_offset": 127
+    },
+    {
+      "text": "January 3rd, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999517202377319,
+      "begin_offset": 131,
+      "end_offset": 148
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

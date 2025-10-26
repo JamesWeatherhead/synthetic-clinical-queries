@@ -1,0 +1,67 @@
+{
+  "query_id": "920",
+  "timestamp": "2025-10-22T16:12:46.851859",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommendations for anticoagulation therapy in a patient with atrial fibrillation, Michael R. who was admitted to Johns Hopkins on September 15th, 2023, phone number 410-555-1234?",
+  "ground_truth_phi": "NAME: Michael R. | GEOGRAPHIC_LOCATION: Johns Hopkins | DATE: September 15th, 2023 | PHONE_NUMBER: 410-555-1234",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Recommendations for anticoagulation therapy in a patient with atrial fibrillation, [REDACTED_NAME] who was admitted to Johns Hopkins on [REDACTED_DATE], phone number [REDACTED_PHONE_NUMBER]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 83,
+      "end": 93,
+      "score": 0.85,
+      "text": "Michael R.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 131,
+      "end": 151,
+      "score": 0.85,
+      "text": "September 15th, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 166,
+      "end": 178,
+      "score": 0.75,
+      "text": "410-555-1234",
+      "recognizer": "PhoneRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Johns Hopkins",
+        "start": 114,
+        "end": 127
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  }
+}

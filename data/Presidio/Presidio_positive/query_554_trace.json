@@ -1,0 +1,73 @@
+{
+  "query_id": "554",
+  "timestamp": "2025-10-22T16:12:44.959742",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guidelines for the management of a 50-year-old male with newly diagnosed atrial fibrillation, Paul A., who was seen at the Cleveland Clinic on March 12th, 2023 (Health Plan ID: 54321-XYZ)?",
+  "ground_truth_phi": "NAME: Paul A. | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: March 12th, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: 54321-XYZ",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Guidelines for the management of a [REDACTED_DATE] male with newly diagnosed atrial fibrillation, [REDACTED_NAME], who was seen at the Cleveland Clinic on [REDACTED_DATE] (Health Plan ID: 54321-XYZ)?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 35,
+      "end": 46,
+      "score": 0.85,
+      "text": "50-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 94,
+      "end": 101,
+      "score": 0.85,
+      "text": "Paul A.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 143,
+      "end": 159,
+      "score": 0.85,
+      "text": "March 12th, 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Cleveland Clinic",
+        "start": 123,
+        "end": 139
+      },
+      {
+        "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+        "value": "54321-XYZ",
+        "start": 177,
+        "end": 186
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 3,
+    "recall": "0.5000",
+    "precision": "0.6667",
+    "f1_score": "0.5714"
+  }
+}

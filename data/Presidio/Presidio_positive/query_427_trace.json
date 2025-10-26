@@ -1,0 +1,78 @@
+{
+  "query_id": "427",
+  "timestamp": "2025-10-22T16:12:44.276733",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "f/u on tx plan for Sarah L., 58yo female w/ hx of RA, seen at Mt. Sinai on Feb 15th 2023, evaluate need for biologics. her insurance: HP-789123.",
+  "ground_truth_phi": "NAME: Sarah L. | GEOGRAPHIC_LOCATION: Mt. Sinai | DATE: Feb 15th 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: HP-789123",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "f/u on [REDACTED_GEOGRAPHIC_LOCATION] plan for [REDACTED_NAME], 58yo female w/ hx of RA, seen at [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE], evaluate need for biologics. her insurance: [REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 7,
+      "end": 9,
+      "score": 0.85,
+      "text": "tx",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 19,
+      "end": 27,
+      "score": 0.85,
+      "text": "Sarah L.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 62,
+      "end": 71,
+      "score": 0.85,
+      "text": "Mt. Sinai",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 75,
+      "end": 88,
+      "score": 0.85,
+      "text": "Feb 15th 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 134,
+      "end": 143,
+      "score": 0.7,
+      "text": "HP-789123",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  }
+}

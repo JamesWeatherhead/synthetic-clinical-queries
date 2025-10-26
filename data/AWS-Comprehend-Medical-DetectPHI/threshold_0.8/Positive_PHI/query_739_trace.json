@@ -1,0 +1,57 @@
+{
+  "query_id": "739",
+  "timestamp": "2025-10-23T09:56:56.268821",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "pt w/ hx of asthma, seen by Dr. Jane Doe on 02/20/2024 at UCSF, s/p albuterol, current rx incl. Advair. Recommendations?",
+  "ground_truth_phi": "NAME: Dr. Jane Doe | DATE: 02/20/2024 | GEOGRAPHIC_LOCATION: UCSF",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "Jane Doe",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.990365743637085,
+      "begin_offset": 32,
+      "end_offset": 40
+    },
+    {
+      "text": "02/20/2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999923706054688,
+      "begin_offset": 44,
+      "end_offset": 54
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UCSF"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 2,
+    "leaked_failures": 1,
+    "total_detected": 2,
+    "true_positives": 2,
+    "recall": "0.6667",
+    "precision": "1.0000",
+    "f1_score": "0.8000"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 2
+}

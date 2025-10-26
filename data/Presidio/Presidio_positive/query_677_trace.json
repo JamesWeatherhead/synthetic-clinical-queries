@@ -1,0 +1,69 @@
+{
+  "query_id": "677",
+  "timestamp": "2025-10-22T16:12:45.608568",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Current treatment guidelines for managing hypertension in a 55-year-old male, John Smith, who resides in Chicago and was last hospitalized on July 7, 2023?",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: Chicago | DATE: July 7, 2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Current treatment guidelines for managing hypertension in a [REDACTED_DATE] male, [REDACTED_NAME], who resides in [REDACTED_GEOGRAPHIC_LOCATION] and was last hospitalized on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 60,
+      "end": 71,
+      "score": 0.85,
+      "text": "55-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 78,
+      "end": 88,
+      "score": 0.85,
+      "text": "John Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 105,
+      "end": 112,
+      "score": 0.85,
+      "text": "Chicago",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 142,
+      "end": 154,
+      "score": 0.85,
+      "text": "July 7, 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  }
+}

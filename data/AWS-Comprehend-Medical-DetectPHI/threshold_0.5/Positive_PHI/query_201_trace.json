@@ -1,0 +1,61 @@
+{
+  "query_id": "201",
+  "timestamp": "2025-10-23T09:55:57.022084",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the best practices for managing a diabetic foot ulcer in a 70-year-old female, Sarah L., who was seen at our Chicago clinic last month?",
+  "ground_truth_phi": "NAME: Sarah L. | GEOGRAPHIC_LOCATION: Chicago",
+  "ground_truth_phi_count": 2,
+  "aws_entities_detected": [
+    {
+      "text": "70",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9972829818725586,
+      "begin_offset": 68,
+      "end_offset": 70
+    },
+    {
+      "text": "Sarah L",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9910894632339478,
+      "begin_offset": 88,
+      "end_offset": 95
+    },
+    {
+      "text": "Chicago clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9760347604751587,
+      "begin_offset": 118,
+      "end_offset": 132
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 2,
+    "successfully_detected": 2,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "true_positives": 2,
+    "recall": "1.0000",
+    "precision": "0.6667",
+    "f1_score": "0.8000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

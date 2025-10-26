@@ -1,0 +1,44 @@
+{
+  "query_id": "116",
+  "timestamp": "2025-10-22T16:24:24.405552",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the potential interactions between lisinopril and ibuprofen in a 72-year-old patient with a history of severe asthma, diagnosed last year?",
+  "presidio_output": "What are the potential interactions between lisinopril and ibuprofen in a [REDACTED_DATE] patient with a history of severe asthma, diagnosed [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 74,
+      "end": 85,
+      "score": 0.85,
+      "text": "72-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 137,
+      "end": 146,
+      "score": 0.85,
+      "text": "last year",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 2,
+    "false_redactions_by_type": {
+      "DATE": 2
+    },
+    "status": "OVER_REDACTED"
+  }
+}

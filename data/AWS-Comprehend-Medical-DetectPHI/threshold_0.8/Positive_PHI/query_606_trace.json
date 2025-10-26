@@ -1,0 +1,79 @@
+{
+  "query_id": "606",
+  "timestamp": "2025-10-23T09:56:43.869439",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the best treatment options for a 60-year-old female with stage IV lung cancer, Jane R., identified during a scan at UCLA Medical Center on April 1st, 2022 (MRN: UCLA-987654)?",
+  "ground_truth_phi": "NAME: Jane R. | GEOGRAPHIC_LOCATION: UCLA Medical Center | DATE: April 1st, 2022 | MEDICAL_RECORD_NUMBER: UCLA-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "60",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9986485838890076,
+      "begin_offset": 42,
+      "end_offset": 44
+    },
+    {
+      "text": "Jane R",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9658976793289185,
+      "begin_offset": 88,
+      "end_offset": 94
+    },
+    {
+      "text": "UCLA Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9898726940155029,
+      "begin_offset": 125,
+      "end_offset": 144
+    },
+    {
+      "text": "April 1st, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999020099639893,
+      "begin_offset": 148,
+      "end_offset": 163
+    },
+    {
+      "text": "987654",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8383994102478027,
+      "begin_offset": 175,
+      "end_offset": 181
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 5
+}

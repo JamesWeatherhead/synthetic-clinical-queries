@@ -1,0 +1,73 @@
+{
+  "query_id": "666",
+  "timestamp": "2025-10-22T16:12:45.559043",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Management of hypertension in 56-year-old male, Michael Brown, who visited Cleveland Clinic on July 15, 2023, with MRN: 789-45-123?",
+  "ground_truth_phi": "NAME: Michael Brown | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: July 15, 2023 | MEDICAL_RECORD_NUMBER: 789-45-123",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Management of hypertension in [REDACTED_DATE] male, [REDACTED_NAME], who visited Cleveland Clinic on [REDACTED_DATE], with MRN: 789-45-123?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 30,
+      "end": 41,
+      "score": 0.85,
+      "text": "56-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 48,
+      "end": 61,
+      "score": 0.85,
+      "text": "Michael Brown",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 95,
+      "end": 108,
+      "score": 0.85,
+      "text": "July 15, 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Cleveland Clinic",
+        "start": 75,
+        "end": 91
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "789-45-123",
+        "start": 120,
+        "end": 130
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 3,
+    "recall": "0.5000",
+    "precision": "0.6667",
+    "f1_score": "0.5714"
+  }
+}

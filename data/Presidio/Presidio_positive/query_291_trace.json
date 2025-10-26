@@ -1,0 +1,69 @@
+{
+  "query_id": "291",
+  "timestamp": "2025-10-22T16:12:43.560333",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guidelines for managing hypertension for a 58-year-old male, Robert H., who lives in the Milwaukee area and visited on the 15th of January 2022?",
+  "ground_truth_phi": "NAME: Robert H. | GEOGRAPHIC_LOCATION: Milwaukee | DATE: 15th of January 2022",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Guidelines for managing hypertension for a [REDACTED_DATE] male, [REDACTED_NAME], who lives in the [REDACTED_GEOGRAPHIC_LOCATION] area and visited on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 43,
+      "end": 54,
+      "score": 0.85,
+      "text": "58-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 61,
+      "end": 70,
+      "score": 0.85,
+      "text": "Robert H.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 89,
+      "end": 98,
+      "score": 0.85,
+      "text": "Milwaukee",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 119,
+      "end": 143,
+      "score": 0.85,
+      "text": "the 15th of January 2022",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "0.5000",
+    "f1_score": "0.6667"
+  }
+}

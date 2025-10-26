@@ -1,0 +1,75 @@
+{
+  "query_id": "400",
+  "timestamp": "2025-10-23T09:56:22.008992",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the risks of prescribing gabapentin to a 60-year-old female, Mary L., who has been treated at St. Vincent's Hospital since April 12th, 2023 (MRN: APL-876-98)?",
+  "ground_truth_phi": "NAME: Mary L. | GEOGRAPHIC_LOCATION: St. Vincent's Hospital | DATE: April 12th, 2023 | MEDICAL_RECORD_NUMBER: APL-876-98",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "60",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9913391470909119,
+      "begin_offset": 50,
+      "end_offset": 52
+    },
+    {
+      "text": "Mary L",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9974119067192078,
+      "begin_offset": 70,
+      "end_offset": 76
+    },
+    {
+      "text": "St. Vincent's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.992243230342865,
+      "begin_offset": 103,
+      "end_offset": 125
+    },
+    {
+      "text": "April 12th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998904466629028,
+      "begin_offset": 132,
+      "end_offset": 148
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "APL-876-98"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

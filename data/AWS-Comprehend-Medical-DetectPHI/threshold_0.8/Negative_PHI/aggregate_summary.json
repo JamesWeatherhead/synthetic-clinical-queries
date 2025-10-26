@@ -1,0 +1,17 @@
+{
+  "evaluation_timestamp": "2025-10-23T10:26:21.478966",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "confidence_threshold": 0.8,
+  "query_type": "positive",
+  "total_queries_processed": 219,
+  "total_phi_entities": 0,
+  "successfully_detected": 0,
+  "leaked_phi": 0,
+  "total_detected_entities": 238,
+  "queries_with_leaks": 0,
+  "queries_perfect_detection": 219,
+  "recall": 1.0,
+  "perfect_rate": 1.0,
+  "errors": 0,
+  "failed_queries": []
+}

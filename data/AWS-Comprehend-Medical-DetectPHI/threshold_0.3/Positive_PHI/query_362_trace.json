@@ -1,0 +1,70 @@
+{
+  "query_id": "362",
+  "timestamp": "2025-10-23T09:56:17.799765",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What is the best practice for treating a pt w/ hx of COPD and asthma, check notes of Sam T., admitted to St. Luke's on 10/11/23. Also, consider his insurance ID AX-987654.",
+  "ground_truth_phi": "NAME: Sam T. | GEOGRAPHIC_LOCATION: St. Luke's | DATE: 10/11/23 | HEALTH_PLAN_BENEFICIARY_NUMBER: AX-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Sam T",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8607919812202454,
+      "begin_offset": 85,
+      "end_offset": 90
+    },
+    {
+      "text": "St. Luke's",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.951960027217865,
+      "begin_offset": 105,
+      "end_offset": 115
+    },
+    {
+      "text": "10/11/23",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999934434890747,
+      "begin_offset": 119,
+      "end_offset": 127
+    },
+    {
+      "text": "987654",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8892431855201721,
+      "begin_offset": 164,
+      "end_offset": 170
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

@@ -1,0 +1,61 @@
+{
+  "query_id": "874",
+  "timestamp": "2025-10-23T09:57:10.476007",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "tx options for pt dx'd w/ CHF & COPD, consult notes for Richard M. from Chicago on Sept 15 2022. what are the side efects of current meds?",
+  "ground_truth_phi": "NAME: Richard M. | GEOGRAPHIC_LOCATION: Chicago | DATE: Sept 15 2022",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "Richard M.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9395912885665894,
+      "begin_offset": 56,
+      "end_offset": 66
+    },
+    {
+      "text": "Chicago",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9953258037567139,
+      "begin_offset": 72,
+      "end_offset": 79
+    },
+    {
+      "text": "Sept 15 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999344527721405,
+      "begin_offset": 83,
+      "end_offset": 95
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

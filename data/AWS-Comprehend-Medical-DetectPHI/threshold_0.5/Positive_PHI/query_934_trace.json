@@ -1,0 +1,88 @@
+{
+  "query_id": "934",
+  "timestamp": "2025-10-23T09:57:18.174958",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Recommendations for managing a 46yo female with newly diagnosed SLE, Anne O. seen at Mt. Sinai Hospital in NY, on July 7, 2023 (Email: anne.o@med.com)?",
+  "ground_truth_phi": "NAME: Anne O. | GEOGRAPHIC_LOCATION: Mt. Sinai Hospital in NY | DATE: July 7, 2023 | EMAIL_ADDRESS: anne.o@med.com",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "46yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995099306106567,
+      "begin_offset": 31,
+      "end_offset": 35
+    },
+    {
+      "text": "Anne",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.943827748298645,
+      "begin_offset": 69,
+      "end_offset": 73
+    },
+    {
+      "text": "Mt. Sinai Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9915773868560791,
+      "begin_offset": 85,
+      "end_offset": 103
+    },
+    {
+      "text": "NY",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9980826377868652,
+      "begin_offset": 107,
+      "end_offset": 109
+    },
+    {
+      "text": "July 7, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999761581420898,
+      "begin_offset": 114,
+      "end_offset": 126
+    },
+    {
+      "text": "anne.o@med.com",
+      "aws_type": "EMAIL",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999903440475464,
+      "begin_offset": 135,
+      "end_offset": 149
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "0.8333",
+    "f1_score": "0.9091"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 6
+}

@@ -1,0 +1,67 @@
+{
+  "query_id": "592",
+  "timestamp": "2025-10-22T16:12:45.167876",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Post-op care protocol for pt w/ hip replacement, seen at Jefferson Clinic under Dr. Andrew L. on Jun 2, 2023. MRN: #JCL12345. worried about poss. infection.",
+  "ground_truth_phi": "GEOGRAPHIC_LOCATION: Jefferson Clinic | NAME: Dr. Andrew L. | DATE: Jun 2, 2023 | MEDICAL_RECORD_NUMBER: #JCL12345",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Post-op care protocol for pt w/ hip replacement, seen at Jefferson Clinic under Dr. [REDACTED_NAME] on [REDACTED_DATE]. MRN: #[REDACTED_NRP]. worried about poss. infection.",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 84,
+      "end": 93,
+      "score": 0.85,
+      "text": "Andrew L.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 97,
+      "end": 108,
+      "score": 0.85,
+      "text": "Jun 2, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "NRP",
+      "hipaa_category": "NRP",
+      "start": 116,
+      "end": 124,
+      "score": 0.85,
+      "text": "JCL12345",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Jefferson Clinic",
+        "start": 57,
+        "end": 73
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "0.3333",
+    "f1_score": "0.4615"
+  }
+}

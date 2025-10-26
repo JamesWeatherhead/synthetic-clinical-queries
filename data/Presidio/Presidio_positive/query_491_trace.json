@@ -1,0 +1,76 @@
+{
+  "query_id": "491",
+  "timestamp": "2025-10-22T16:12:44.627129",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Updated treatment protocols for multiple myeloma in a 60-year-old male, Michael Thompson, treated at Johns Hopkins on May 5th, 2024 (MRN: 98765432)?",
+  "ground_truth_phi": "NAME: Michael Thompson | GEOGRAPHIC_LOCATION: Johns Hopkins | DATE: May 5th, 2024 | MEDICAL_RECORD_NUMBER: 98765432",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Updated treatment protocols for multiple myeloma in a [REDACTED_DATE] male, [REDACTED_NAME], treated at Johns Hopkins on [REDACTED_DATE] ([REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 133,
+      "end": 146,
+      "score": 0.9,
+      "text": "MRN: 98765432",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 54,
+      "end": 65,
+      "score": 0.85,
+      "text": "60-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 72,
+      "end": 88,
+      "score": 0.85,
+      "text": "Michael Thompson",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 118,
+      "end": 131,
+      "score": 0.85,
+      "text": "May 5th, 2024",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Johns Hopkins",
+        "start": 101,
+        "end": 114
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.5000",
+    "f1_score": "0.6000"
+  }
+}

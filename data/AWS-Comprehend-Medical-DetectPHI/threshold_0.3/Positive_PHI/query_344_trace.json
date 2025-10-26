@@ -1,0 +1,70 @@
+{
+  "query_id": "344",
+  "timestamp": "2025-10-23T09:56:15.704302",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Management of osteoporosis in postmenopausal women, noting patient Maria G., seen at Green Valley Clinic on July 20th, 2023, MRN GV-994411.",
+  "ground_truth_phi": "NAME: Maria G. | GEOGRAPHIC_LOCATION: Green Valley Clinic | DATE: July 20th, 2023 | MEDICAL_RECORD_NUMBER: GV-994411",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Maria G",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.996894121170044,
+      "begin_offset": 67,
+      "end_offset": 74
+    },
+    {
+      "text": "Green Valley Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9991216063499451,
+      "begin_offset": 85,
+      "end_offset": 104
+    },
+    {
+      "text": "July 20th",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999114274978638,
+      "begin_offset": 108,
+      "end_offset": 117
+    },
+    {
+      "text": "994411",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.31210559606552124,
+      "begin_offset": 132,
+      "end_offset": 138
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 4
+}

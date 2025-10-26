@@ -1,0 +1,79 @@
+{
+  "query_id": "759",
+  "timestamp": "2025-10-23T09:56:58.196788",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "rec. mgmt for 45yo female w/ lupus & hx of DVT. pt is Sarah L., seen at Stanford Clinic on Feb 20th 2023. her email is sarah.l@example.com.",
+  "ground_truth_phi": "NAME: Sarah L. | GEOGRAPHIC_LOCATION: Stanford Clinic | DATE: Feb 20th 2023 | EMAIL_ADDRESS: sarah.l@example.com",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "45yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9987187385559082,
+      "begin_offset": 14,
+      "end_offset": 18
+    },
+    {
+      "text": "Sarah L",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9876603484153748,
+      "begin_offset": 54,
+      "end_offset": 61
+    },
+    {
+      "text": "Stanford Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9875707626342773,
+      "begin_offset": 72,
+      "end_offset": 87
+    },
+    {
+      "text": "Feb 20th 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9973024129867554,
+      "begin_offset": 91,
+      "end_offset": 104
+    },
+    {
+      "text": "sarah.l@example.com",
+      "aws_type": "EMAIL",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999786615371704,
+      "begin_offset": 119,
+      "end_offset": 138
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

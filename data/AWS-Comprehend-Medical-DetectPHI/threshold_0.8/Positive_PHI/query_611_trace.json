@@ -1,0 +1,61 @@
+{
+  "query_id": "611",
+  "timestamp": "2025-10-23T09:56:44.508897",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for treating 6-year-old with ADHD and asthma, Anna L., last seen at the Children's Hospital of Philadelphia on September 12, 2023?",
+  "ground_truth_phi": "NAME: Anna L. | GEOGRAPHIC_LOCATION: Children's Hospital of Philadelphia | DATE: September 12, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "Anna L",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9928056597709656,
+      "begin_offset": 57,
+      "end_offset": 63
+    },
+    {
+      "text": "Children's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9941042065620422,
+      "begin_offset": 83,
+      "end_offset": 102
+    },
+    {
+      "text": "September 12, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999934196472168,
+      "begin_offset": 122,
+      "end_offset": 140
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 3
+}

@@ -1,0 +1,70 @@
+{
+  "query_id": "997",
+  "timestamp": "2025-10-23T09:57:26.887001",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Recommended follow-up care for a 58-year-old male patient, Robert L., seen in Dallas on March 22nd, 2024 after coronary artery bypass graft surgery?",
+  "ground_truth_phi": "NAME: Robert L. | GEOGRAPHIC_LOCATION: Dallas | DATE: March 22nd, 2024",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "58",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999642372131348,
+      "begin_offset": 33,
+      "end_offset": 35
+    },
+    {
+      "text": "Robert L",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9989773035049438,
+      "begin_offset": 59,
+      "end_offset": 67
+    },
+    {
+      "text": "Dallas",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9933125376701355,
+      "begin_offset": 78,
+      "end_offset": 84
+    },
+    {
+      "text": "March 22nd, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999544620513916,
+      "begin_offset": 88,
+      "end_offset": 104
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

@@ -1,0 +1,70 @@
+{
+  "query_id": "338",
+  "timestamp": "2025-10-23T09:56:15.061238",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Contraindications for initiating therapy with SGLT2 inhibitors in a 55-year-old female, Sarah Johnson, with type 2 diabetes and CKD, first diagnosed at St. Luke's Hospital on January 20th, 2021.",
+  "ground_truth_phi": "NAME: Sarah Johnson | GEOGRAPHIC_LOCATION: St. Luke's Hospital | DATE: January 20th, 2021",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "55",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9978621602058411,
+      "begin_offset": 68,
+      "end_offset": 70
+    },
+    {
+      "text": "Sarah Johnson",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9940193891525269,
+      "begin_offset": 88,
+      "end_offset": 101
+    },
+    {
+      "text": "St. Luke's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9891191720962524,
+      "begin_offset": 152,
+      "end_offset": 171
+    },
+    {
+      "text": "January 20th, 2021",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999319314956665,
+      "begin_offset": 175,
+      "end_offset": 193
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

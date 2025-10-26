@@ -1,0 +1,70 @@
+{
+  "query_id": "544",
+  "timestamp": "2025-10-23T09:56:37.361826",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Recommended dosage adjustments for metformin in patients like James P., treated for diabetes at New York Presbyterian Hospital on January 9th, 2024?",
+  "ground_truth_phi": "NAME: James P. | DATE: January 9th, 2024 | GEOGRAPHIC_LOCATION: New York Presbyterian Hospital",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "James P",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9599059820175171,
+      "begin_offset": 62,
+      "end_offset": 69
+    },
+    {
+      "text": "New York",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9765817523002625,
+      "begin_offset": 96,
+      "end_offset": 104
+    },
+    {
+      "text": "Presbyterian Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9400656223297119,
+      "begin_offset": 105,
+      "end_offset": 126
+    },
+    {
+      "text": "January 9th, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999490976333618,
+      "begin_offset": 130,
+      "end_offset": 147
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

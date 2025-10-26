@@ -1,0 +1,88 @@
+{
+  "query_id": "840",
+  "timestamp": "2025-10-23T09:57:07.182820",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Recommendations for anticoagulation therapy in a 72yo male, Thomas Lee, with atrial fibrillation, last consulted with Dr. Rebecca Green at SF General on 03/15/2022. Email for records: thomas.lee45@email.com.",
+  "ground_truth_phi": "NAME: Thomas Lee | NAME: Dr. Rebecca Green | GEOGRAPHIC_LOCATION: SF General | DATE: 03/15/2022 | EMAIL_ADDRESS: thomas.lee45@email.com",
+  "ground_truth_phi_count": 5,
+  "aws_entities_detected": [
+    {
+      "text": "72yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9987579584121704,
+      "begin_offset": 49,
+      "end_offset": 53
+    },
+    {
+      "text": "Thomas Lee",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9988941550254822,
+      "begin_offset": 60,
+      "end_offset": 70
+    },
+    {
+      "text": "Rebecca Green",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9974179267883301,
+      "begin_offset": 122,
+      "end_offset": 135
+    },
+    {
+      "text": "SF General",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.5172300934791565,
+      "begin_offset": 139,
+      "end_offset": 149
+    },
+    {
+      "text": "03/15/2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999681711196899,
+      "begin_offset": 153,
+      "end_offset": 163
+    },
+    {
+      "text": "thomas.lee45@email.com",
+      "aws_type": "EMAIL",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999436140060425,
+      "begin_offset": 184,
+      "end_offset": 206
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 5,
+    "successfully_detected": 5,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "0.8333",
+    "f1_score": "0.9091"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 6
+}

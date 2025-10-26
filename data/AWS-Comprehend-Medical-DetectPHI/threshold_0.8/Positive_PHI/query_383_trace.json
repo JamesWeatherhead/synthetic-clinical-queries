@@ -1,0 +1,66 @@
+{
+  "query_id": "383",
+  "timestamp": "2025-10-23T09:56:20.076513",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "rec. tx for pt w/ hx of HTN & CAD, see notes for Michael J., seen at UCSF on Feb 2nd 2022. concerned about drug interactions w/ lisinopril. his plan is HP-987654.",
+  "ground_truth_phi": "NAME: Michael J. | GEOGRAPHIC_LOCATION: UCSF | DATE: Feb 2nd 2022 | HEALTH_PLAN_BENEFICIARY_NUMBER: HP-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Michael J",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9942352175712585,
+      "begin_offset": 49,
+      "end_offset": 58
+    },
+    {
+      "text": "UCSF",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.949277937412262,
+      "begin_offset": 69,
+      "end_offset": 73
+    },
+    {
+      "text": "Feb 2nd 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9967838525772095,
+      "begin_offset": 77,
+      "end_offset": 89
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+        "value": "HP-987654"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 3
+}

@@ -1,0 +1,103 @@
+{
+  "query_id": "965",
+  "timestamp": "2025-10-22T16:12:47.109904",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "need guidance on tx for 49yo female dx'd w/ stage II breast ca in 2021, Jane A., seen at Cleveland Clinic on Apr. 2nd, 2023. her policy number is XYZ-987654.",
+  "ground_truth_phi": "NAME: Jane A. | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: Apr. 2nd, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: XYZ-987654",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "need guidance on [REDACTED_GEOGRAPHIC_LOCATION] for 49yo female dx'd w/ stage II breast ca in [REDACTED_DATE], [REDACTED_NAME], seen at Cleveland Clinic on [REDACTED_DATE], [REDACTED_DATE]. her policy number is [REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 17,
+      "end": 19,
+      "score": 0.85,
+      "text": "tx",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 66,
+      "end": 70,
+      "score": 0.85,
+      "text": "2021",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 72,
+      "end": 79,
+      "score": 0.85,
+      "text": "Jane A.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 109,
+      "end": 117,
+      "score": 0.85,
+      "text": "Apr. 2nd",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 119,
+      "end": 123,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 146,
+      "end": 156,
+      "score": 0.7,
+      "text": "XYZ-987654",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "US_DRIVER_LICENSE",
+      "hipaa_category": "US_DRIVER_LICENSE",
+      "start": 150,
+      "end": 156,
+      "score": 0.4,
+      "text": "987654",
+      "recognizer": "UsLicenseRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Cleveland Clinic",
+        "start": 89,
+        "end": 105
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 7,
+    "recall": "0.7500",
+    "precision": "0.2857",
+    "f1_score": "0.4138"
+  }
+}

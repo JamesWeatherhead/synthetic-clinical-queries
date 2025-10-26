@@ -1,0 +1,45 @@
+{
+  "query_id": "732",
+  "timestamp": "2025-10-22T16:24:25.138351",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the treatment options for a 62-year-old male with a PSA level of 4.5 and a Gleason score of 7?",
+  "presidio_output": "What are the treatment options for a [REDACTED_DATE] male with a PSA level of 4.5 and a [REDACTED_NAME] score of 7?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 37,
+      "end": 48,
+      "score": 0.85,
+      "text": "62-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 84,
+      "end": 91,
+      "score": 0.85,
+      "text": "Gleason",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 2,
+    "false_redactions_by_type": {
+      "DATE": 1,
+      "NAME": 1
+    },
+    "status": "OVER_REDACTED"
+  }
+}

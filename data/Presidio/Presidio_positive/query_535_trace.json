@@ -1,0 +1,85 @@
+{
+  "query_id": "535",
+  "timestamp": "2025-10-22T16:12:44.854058",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Best treatment protocol for a 60-year-old female with recurrent ovarian cancer, last treated by Dr. Elizabeth K. in Houston, TX on December 12th, 2022 (MRN: 123-45-6789)?",
+  "ground_truth_phi": "NAME: Elizabeth K. | GEOGRAPHIC_LOCATION: Houston, TX | DATE: December 12th, 2022 | MEDICAL_RECORD_NUMBER: 123-45-6789",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Best treatment protocol for a [REDACTED_DATE] female with recurrent ovarian cancer, last treated by Dr. [REDACTED_NAME] in [REDACTED_GEOGRAPHIC_LOCATION], [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE] (MRN: 123-45-6789)?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 30,
+      "end": 41,
+      "score": 0.85,
+      "text": "60-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 100,
+      "end": 112,
+      "score": 0.85,
+      "text": "Elizabeth K.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 116,
+      "end": 123,
+      "score": 0.85,
+      "text": "Houston",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 125,
+      "end": 127,
+      "score": 0.85,
+      "text": "TX",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 131,
+      "end": 150,
+      "score": 0.85,
+      "text": "December 12th, 2022",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "123-45-6789",
+        "start": 157,
+        "end": 168
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.4000",
+    "f1_score": "0.5217"
+  }
+}

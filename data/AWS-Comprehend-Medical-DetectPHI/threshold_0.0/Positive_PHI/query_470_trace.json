@@ -1,0 +1,70 @@
+{
+  "query_id": "470",
+  "timestamp": "2025-10-23T09:56:29.113675",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the latest treatment options for a 60-year-old male diagnosed with early-stage Alzheimer's, John Smith, who was admitted to Cedar Sinai on April 12, 2023?",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: Cedar Sinai | DATE: April 12, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "60",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9993141889572144,
+      "begin_offset": 44,
+      "end_offset": 46
+    },
+    {
+      "text": "John Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9971410036087036,
+      "begin_offset": 101,
+      "end_offset": 111
+    },
+    {
+      "text": "Cedar Sinai",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9928465485572815,
+      "begin_offset": 133,
+      "end_offset": 144
+    },
+    {
+      "text": "April 12, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998471736907959,
+      "begin_offset": 148,
+      "end_offset": 162
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

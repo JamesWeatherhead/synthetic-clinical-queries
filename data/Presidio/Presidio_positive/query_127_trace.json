@@ -1,0 +1,67 @@
+{
+  "query_id": "127",
+  "timestamp": "2025-10-22T16:12:42.718965",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "alternative antibiotics for pt w/ MRSA, seen by Dr. Adams at Chicago Med, 2/14/2022, due to allergy to vancomycin (SSN: 987-65-4321)?",
+  "ground_truth_phi": "NAME: Dr. Adams | GEOGRAPHIC_LOCATION: Chicago Med | DATE: 2/14/2022 | SOCIAL_SECURITY_NUMBER: 987-65-4321",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "alternative antibiotics for pt w/ MRSA, seen by Dr. [REDACTED_NAME] at Chicago Med, [REDACTED_DATE], due to allergy to vancomycin (SSN: [REDACTED_US_ITIN])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 52,
+      "end": 57,
+      "score": 0.85,
+      "text": "Adams",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 74,
+      "end": 83,
+      "score": 0.85,
+      "text": "2/14/2022",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "US_ITIN",
+      "hipaa_category": "US_ITIN",
+      "start": 120,
+      "end": 131,
+      "score": 0.5,
+      "text": "987-65-4321",
+      "recognizer": "UsItinRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Chicago Med",
+        "start": 61,
+        "end": 72
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "0.6667",
+    "f1_score": "0.7059"
+  }
+}

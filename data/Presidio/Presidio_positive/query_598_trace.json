@@ -1,0 +1,76 @@
+{
+  "query_id": "598",
+  "timestamp": "2025-10-22T16:12:45.194373",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommendations for the treatment of atrial fibrillation in a 67-year-old male, John Smith, seen at NY Presbyterian Hospital, with a follow-up scheduled on December 1st, 2024.",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: NY Presbyterian Hospital | DATE: December 1st, 2024",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Recommendations for the treatment of atrial fibrillation in a [REDACTED_DATE] male, [REDACTED_NAME], seen at NY Presbyterian Hospital, with a follow-up scheduled on [REDACTED_DATE].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 62,
+      "end": 73,
+      "score": 0.85,
+      "text": "67-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 80,
+      "end": 90,
+      "score": 0.85,
+      "text": "John Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 156,
+      "end": 169,
+      "score": 0.85,
+      "text": "December 1st,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 170,
+      "end": 174,
+      "score": 0.85,
+      "text": "2024",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "NY Presbyterian Hospital",
+        "start": 100,
+        "end": 124
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.6667",
+    "precision": "0.2500",
+    "f1_score": "0.3636"
+  }
+}

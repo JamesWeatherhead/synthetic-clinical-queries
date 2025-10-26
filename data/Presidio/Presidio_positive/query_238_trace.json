@@ -1,0 +1,67 @@
+{
+  "query_id": "238",
+  "timestamp": "2025-10-22T16:12:43.257698",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "best approach for post-op care in pt w/ hx of AFib, case similar to Mary K., admitted to Georgetown Med on Nov 11th '23 (Acct#: GRM-998877). worried about DVT risk.",
+  "ground_truth_phi": "NAME: Mary K. | GEOGRAPHIC_LOCATION: Georgetown Med | DATE: Nov 11th '23 | ACCOUNT_NUMBER: GRM-998877",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "best approach for post-op care in pt w/ hx of AFib, case similar to [REDACTED_NAME], admitted to Georgetown Med on [REDACTED_DATE] (Acct#: [REDACTED_MEDICAL_RECORD_NUMBER]). worried about DVT risk.",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 68,
+      "end": 75,
+      "score": 0.85,
+      "text": "Mary K.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 107,
+      "end": 119,
+      "score": 0.85,
+      "text": "Nov 11th '23",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 128,
+      "end": 138,
+      "score": 0.7,
+      "text": "GRM-998877",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Georgetown Med",
+        "start": 89,
+        "end": 103
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  }
+}

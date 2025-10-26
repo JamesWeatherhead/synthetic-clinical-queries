@@ -1,0 +1,79 @@
+{
+  "query_id": "921",
+  "timestamp": "2025-10-23T09:57:15.877515",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Current treatment options for a 67-year-old female diagnosed with non-Hodgkin lymphoma, referred to Dr. Susan Lee at UCLA Medical Center on April 17, 2023 (MRN: 987654321)?",
+  "ground_truth_phi": "NAME: Susan Lee | GEOGRAPHIC_LOCATION: UCLA Medical Center | DATE: April 17, 2023 | MEDICAL_RECORD_NUMBER: 987654321",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "67",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998425245285034,
+      "begin_offset": 32,
+      "end_offset": 34
+    },
+    {
+      "text": "Susan Lee",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999556839466095,
+      "begin_offset": 104,
+      "end_offset": 113
+    },
+    {
+      "text": "UCLA Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9906802773475647,
+      "begin_offset": 117,
+      "end_offset": 136
+    },
+    {
+      "text": "April 17, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998977184295654,
+      "begin_offset": 140,
+      "end_offset": 154
+    },
+    {
+      "text": "987654321",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9944157600402832,
+      "begin_offset": 161,
+      "end_offset": 170
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

@@ -1,0 +1,79 @@
+{
+  "query_id": "850",
+  "timestamp": "2025-10-23T09:57:08.336874",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What is the prognosis for a 70-year-old female with advanced ovarian cancer, initially diagnosed by Dr. Thomas Nguyen in San Francisco on September 10th, 2023 (Account Number: 9876543210)?",
+  "ground_truth_phi": "NAME: Thomas Nguyen | GEOGRAPHIC_LOCATION: San Francisco | DATE: September 10th, 2023 | ACCOUNT_NUMBER: 9876543210",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "70",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9994069337844849,
+      "begin_offset": 28,
+      "end_offset": 30
+    },
+    {
+      "text": "Thomas Nguyen",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996551275253296,
+      "begin_offset": 104,
+      "end_offset": 117
+    },
+    {
+      "text": "San Francisco",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9905166029930115,
+      "begin_offset": 121,
+      "end_offset": 134
+    },
+    {
+      "text": "September 10th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996895790100098,
+      "begin_offset": 138,
+      "end_offset": 158
+    },
+    {
+      "text": "9876543210",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9991635084152222,
+      "begin_offset": 176,
+      "end_offset": 186
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

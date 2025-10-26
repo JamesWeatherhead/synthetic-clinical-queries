@@ -1,0 +1,70 @@
+{
+  "query_id": "95",
+  "timestamp": "2025-10-23T09:55:46.474846",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Are there any contraindications for a 32-year-old female with a family history of breast cancer, Amy Turner, given in the consultation notes from Downtown Clinic dated September 12, 2023?",
+  "ground_truth_phi": "NAME: Amy Turner | GEOGRAPHIC_LOCATION: Downtown Clinic | DATE: September 12, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "32",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.996991753578186,
+      "begin_offset": 38,
+      "end_offset": 40
+    },
+    {
+      "text": "Amy Turner",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9963778853416443,
+      "begin_offset": 97,
+      "end_offset": 107
+    },
+    {
+      "text": "Downtown Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9985951781272888,
+      "begin_offset": 146,
+      "end_offset": 161
+    },
+    {
+      "text": "September 12, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999591112136841,
+      "begin_offset": 168,
+      "end_offset": 186
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

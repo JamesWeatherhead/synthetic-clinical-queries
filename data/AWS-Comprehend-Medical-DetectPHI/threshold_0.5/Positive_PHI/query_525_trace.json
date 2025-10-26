@@ -1,0 +1,79 @@
+{
+  "query_id": "525",
+  "timestamp": "2025-10-23T09:56:35.329187",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the current treatment options for a 60-year-old female with advanced ovarian cancer, Maria Sanchez, diagnosed at UCLA Medical Center on August 15th, 2023 (MRN: 1234-5678)?",
+  "ground_truth_phi": "NAME: Maria Sanchez | GEOGRAPHIC_LOCATION: UCLA Medical Center | DATE: August 15th, 2023 | MEDICAL_RECORD_NUMBER: 1234-5678",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "60",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995459914207458,
+      "begin_offset": 45,
+      "end_offset": 47
+    },
+    {
+      "text": "Maria Sanchez",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9984424710273743,
+      "begin_offset": 94,
+      "end_offset": 107
+    },
+    {
+      "text": "UCLA Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9889267683029175,
+      "begin_offset": 122,
+      "end_offset": 141
+    },
+    {
+      "text": "August 15th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999549388885498,
+      "begin_offset": 145,
+      "end_offset": 162
+    },
+    {
+      "text": "1234-5678",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6416816711425781,
+      "begin_offset": 169,
+      "end_offset": 178
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

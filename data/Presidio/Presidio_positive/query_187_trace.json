@@ -1,0 +1,60 @@
+{
+  "query_id": "187",
+  "timestamp": "2025-10-22T16:12:43.008753",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Need guidelines for handling a 50yo pt w/ hx of MI & HBP seen by Dr. Roberts in San Fran on Feb 2nd 2021, worried about statin interaction?",
+  "ground_truth_phi": "NAME: Dr. Roberts | GEOGRAPHIC_LOCATION: San Fran | DATE: Feb 2nd 2021",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Need guidelines for handling a 50yo pt w/ hx of MI & HBP seen by Dr. [REDACTED_NAME] in [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE], worried about statin interaction?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 69,
+      "end": 76,
+      "score": 0.85,
+      "text": "Roberts",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 80,
+      "end": 88,
+      "score": 0.85,
+      "text": "San Fran",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 92,
+      "end": 104,
+      "score": 0.85,
+      "text": "Feb 2nd 2021",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "recall": "1.0000",
+    "precision": "0.6667",
+    "f1_score": "0.8000"
+  }
+}

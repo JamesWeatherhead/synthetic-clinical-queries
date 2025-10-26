@@ -1,0 +1,70 @@
+{
+  "query_id": "688",
+  "timestamp": "2025-10-23T09:56:51.660637",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "best practice for treating HTN in a patient w/ hx of MI, noted in file for John S., reviewed on 10/11/2022 at St. Luke's Hospital. Ensure no interaction w/ his current meds. Also check insurance #XY-654321.",
+  "ground_truth_phi": "NAME: John S. | DATE: 10/11/2022 | GEOGRAPHIC_LOCATION: St. Luke's Hospital | HEALTH_PLAN_BENEFICIARY_NUMBER: #XY-654321",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "John S",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9867392778396606,
+      "begin_offset": 75,
+      "end_offset": 81
+    },
+    {
+      "text": "10/11/2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999966621398926,
+      "begin_offset": 96,
+      "end_offset": 106
+    },
+    {
+      "text": "St. Luke's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9936540126800537,
+      "begin_offset": 110,
+      "end_offset": 129
+    },
+    {
+      "text": "654321",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9499048590660095,
+      "begin_offset": 199,
+      "end_offset": 205
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

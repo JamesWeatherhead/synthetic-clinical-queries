@@ -1,0 +1,76 @@
+{
+  "query_id": "5",
+  "timestamp": "2025-10-22T16:12:42.013055",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Can I prescribe lisinopril to a hypertensive patient with a creatinine level of 2.1, David S., evaluated at Elm Clinic on Jan 15th, 2023 (MRN: 998877)?",
+  "ground_truth_phi": "NAME: David S. | GEOGRAPHIC_LOCATION: Elm Clinic | DATE: Jan 15th, 2023 | MEDICAL_RECORD_NUMBER: 998877",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Can I prescribe lisinopril to a hypertensive patient with a creatinine level of 2.1, [REDACTED_NAME], evaluated at Elm Clinic on [REDACTED_DATE] ([REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 138,
+      "end": 149,
+      "score": 0.9,
+      "text": "MRN: 998877",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 85,
+      "end": 93,
+      "score": 0.85,
+      "text": "David S.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 122,
+      "end": 131,
+      "score": 0.85,
+      "text": "Jan 15th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 132,
+      "end": 136,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Elm Clinic",
+        "start": 108,
+        "end": 118
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.2500",
+    "f1_score": "0.3750"
+  }
+}

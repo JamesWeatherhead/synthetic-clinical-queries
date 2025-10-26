@@ -1,0 +1,70 @@
+{
+  "query_id": "22",
+  "timestamp": "2025-10-23T09:55:38.909493",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best practices for anticoagulation therapy in a 71yo female, Mary S., with AFib, treated at UCSF, admitted on Jan 8th, 2023 (MRN: UCSF-12345)?",
+  "ground_truth_phi": "NAME: Mary S. | GEOGRAPHIC_LOCATION: UCSF | DATE: Jan 8th, 2023 | MEDICAL_RECORD_NUMBER: UCSF-12345",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "71yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.981196403503418,
+      "begin_offset": 48,
+      "end_offset": 52
+    },
+    {
+      "text": "Mary S",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9928481578826904,
+      "begin_offset": 61,
+      "end_offset": 67
+    },
+    {
+      "text": "Jan 8th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998639822006226,
+      "begin_offset": 110,
+      "end_offset": 123
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UCSF"
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "UCSF-12345"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 2,
+    "leaked_failures": 2,
+    "total_detected": 3,
+    "true_positives": 2,
+    "recall": "0.5000",
+    "precision": "0.6667",
+    "f1_score": "0.5714"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 3
+}

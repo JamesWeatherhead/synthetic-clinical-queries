@@ -1,0 +1,52 @@
+{
+  "query_id": "298",
+  "timestamp": "2025-10-23T09:56:10.672904",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "pt w/ hx of CHF and AFib, worried about choosing between apixaban and warfarin for anticoagulation, noted in pt chart on 17-Feb-2023 at our Austin branch.",
+  "ground_truth_phi": "DATE: 17-Feb-2023 | GEOGRAPHIC_LOCATION: Austin",
+  "ground_truth_phi_count": 2,
+  "aws_entities_detected": [
+    {
+      "text": "17-Feb-2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9631977677345276,
+      "begin_offset": 121,
+      "end_offset": 132
+    },
+    {
+      "text": "Austin branch",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8055654764175415,
+      "begin_offset": 140,
+      "end_offset": 153
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 2,
+    "successfully_detected": 2,
+    "leaked_failures": 0,
+    "total_detected": 2,
+    "true_positives": 2,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 2,
+  "aws_entities_filtered_count": 2
+}

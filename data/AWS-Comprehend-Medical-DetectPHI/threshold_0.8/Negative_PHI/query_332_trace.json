@@ -1,0 +1,43 @@
+{
+  "query_id": "332",
+  "timestamp": "2025-10-23T10:23:34.365035",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the common side effects of amoxicillin in a 30-year-old male with no prior history of drug allergies, based on recent clinical trials?",
+  "ground_truth_phi": "",
+  "ground_truth_phi_count": 0,
+  "aws_entities_detected": [
+    {
+      "text": "30",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9865929484367371,
+      "begin_offset": 53,
+      "end_offset": 55
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 0,
+    "successfully_detected": 0,
+    "leaked_failures": 0,
+    "total_detected": 1,
+    "true_positives": 0,
+    "recall": "1.0000",
+    "precision": "0.0000",
+    "f1_score": "0.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 1,
+  "aws_entities_filtered_count": 1
+}

@@ -1,0 +1,67 @@
+{
+  "query_id": "591",
+  "timestamp": "2025-10-22T16:12:45.161048",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Updated COPD treatment guidelines for a 64yo female, Margaret Brown, last admitted to Roosevelt Hospital on March 20th, 2022 (MRN: 32345321).",
+  "ground_truth_phi": "NAME: Margaret Brown | GEOGRAPHIC_LOCATION: Roosevelt Hospital | DATE: March 20th, 2022 | MEDICAL_RECORD_NUMBER: 32345321",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Updated COPD treatment guidelines for a 64yo female, [REDACTED_NAME], last admitted to Roosevelt Hospital on [REDACTED_DATE] ([REDACTED_MEDICAL_RECORD_NUMBER]).",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 126,
+      "end": 139,
+      "score": 0.9,
+      "text": "MRN: 32345321",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 53,
+      "end": 67,
+      "score": 0.85,
+      "text": "Margaret Brown",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 108,
+      "end": 124,
+      "score": 0.85,
+      "text": "March 20th, 2022",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Roosevelt Hospital",
+        "start": 86,
+        "end": 104
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "0.6667",
+    "f1_score": "0.7059"
+  }
+}

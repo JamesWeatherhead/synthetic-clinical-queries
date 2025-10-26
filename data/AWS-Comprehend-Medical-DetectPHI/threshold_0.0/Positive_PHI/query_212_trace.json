@@ -1,0 +1,70 @@
+{
+  "query_id": "212",
+  "timestamp": "2025-10-23T09:55:58.622129",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "best tx for pt w/ hx of HIV, refer to case of Michael B., treated at UCSF on 5/22/2022. concerned about drug interactions with his current meds. his email is michael.b@example.com.",
+  "ground_truth_phi": "NAME: Michael B. | GEOGRAPHIC_LOCATION: UCSF | DATE: 5/22/2022 | EMAIL_ADDRESS: michael.b@example.com",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Michael B",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9944472312927246,
+      "begin_offset": 46,
+      "end_offset": 55
+    },
+    {
+      "text": "UCSF",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.47568944096565247,
+      "begin_offset": 69,
+      "end_offset": 73
+    },
+    {
+      "text": "5/22/2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999849796295166,
+      "begin_offset": 77,
+      "end_offset": 86
+    },
+    {
+      "text": "michael.b@example.com",
+      "aws_type": "EMAIL",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999213218688965,
+      "begin_offset": 158,
+      "end_offset": 179
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

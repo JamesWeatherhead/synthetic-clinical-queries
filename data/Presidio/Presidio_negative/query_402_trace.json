@@ -1,0 +1,45 @@
+{
+  "query_id": "402",
+  "timestamp": "2025-10-22T16:24:24.740784",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Efficacy of rivaroxaban in preventing DVT in patients with a high CHA2DS2-VASc score and a history of MI in 2020?",
+  "presidio_output": "Efficacy of rivaroxaban in preventing DVT in patients with a high CHA2DS2-VASc score and a history of [REDACTED_GEOGRAPHIC_LOCATION] in [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 102,
+      "end": 104,
+      "score": 0.85,
+      "text": "MI",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 108,
+      "end": 112,
+      "score": 0.85,
+      "text": "2020",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 2,
+    "false_redactions_by_type": {
+      "GEOGRAPHIC_LOCATION": 1,
+      "DATE": 1
+    },
+    "status": "OVER_REDACTED"
+  }
+}

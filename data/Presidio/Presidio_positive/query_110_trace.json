@@ -1,0 +1,67 @@
+{
+  "query_id": "110",
+  "timestamp": "2025-10-22T16:12:42.641097",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Current treatment guidelines for a 70yo male with atrial fibrillation and a recent stroke, patient name Robert L., admitted at UCLA Medical Center on December 15th, 2023.",
+  "ground_truth_phi": "NAME: Robert L. | GEOGRAPHIC_LOCATION: UCLA Medical Center | DATE: December 15th, 2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Current treatment guidelines for a 70yo male with atrial fibrillation and a recent stroke, patient name [REDACTED_NAME], admitted at UCLA Medical Center on [REDACTED_DATE].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 104,
+      "end": 113,
+      "score": 0.85,
+      "text": "Robert L.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 150,
+      "end": 164,
+      "score": 0.85,
+      "text": "December 15th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 165,
+      "end": 169,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UCLA Medical Center",
+        "start": 127,
+        "end": 146
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.6667",
+    "precision": "0.3333",
+    "f1_score": "0.4444"
+  }
+}

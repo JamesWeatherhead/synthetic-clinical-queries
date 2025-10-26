@@ -1,0 +1,70 @@
+{
+  "query_id": "588",
+  "timestamp": "2025-10-23T09:56:41.943237",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "mgmt recs for pt w/ ESRD & hx of CHF, details in notes for Carla M., admitted at Clevland Clinic on 12/11/2023, MedRec# CM-112233.",
+  "ground_truth_phi": "NAME: Carla M. | GEOGRAPHIC_LOCATION: Clevland Clinic | DATE: 12/11/2023 | MEDICAL_RECORD_NUMBER: CM-112233",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Carla M",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8354673981666565,
+      "begin_offset": 59,
+      "end_offset": 66
+    },
+    {
+      "text": "Clevland Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9919553399085999,
+      "begin_offset": 81,
+      "end_offset": 96
+    },
+    {
+      "text": "12/11/2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999983549118042,
+      "begin_offset": 100,
+      "end_offset": 110
+    },
+    {
+      "text": "112233",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8492690920829773,
+      "begin_offset": 123,
+      "end_offset": 129
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

@@ -1,0 +1,79 @@
+{
+  "query_id": "334",
+  "timestamp": "2025-10-23T09:56:14.659259",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Tx options for 75yo female DX'd w/ osteoporosis, Mary A., evaluated at Johns Hopkins on 9/15/2023. Also, her phone number is 410-555-1234.",
+  "ground_truth_phi": "NAME: Mary A. | GEOGRAPHIC_LOCATION: Johns Hopkins | DATE: 9/15/2023 | PHONE_NUMBER: 410-555-1234",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "75yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9990960359573364,
+      "begin_offset": 15,
+      "end_offset": 19
+    },
+    {
+      "text": "Mary A",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9540889859199524,
+      "begin_offset": 49,
+      "end_offset": 55
+    },
+    {
+      "text": "Johns Hopkins",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6457605957984924,
+      "begin_offset": 71,
+      "end_offset": 84
+    },
+    {
+      "text": "9/15/2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999594688415527,
+      "begin_offset": 88,
+      "end_offset": 97
+    },
+    {
+      "text": "410-555-1234",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9697060585021973,
+      "begin_offset": 125,
+      "end_offset": 137
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

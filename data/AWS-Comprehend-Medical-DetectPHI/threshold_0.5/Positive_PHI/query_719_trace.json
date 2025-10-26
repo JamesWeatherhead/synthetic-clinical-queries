@@ -1,0 +1,75 @@
+{
+  "query_id": "719",
+  "timestamp": "2025-10-23T09:56:54.648987",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Seek guidelines on managing hypertension in a 70-year-old African American female, Mary Johnson, who was admitted to UCSF Medical Center on July 4th, 2023 (MRN: UCSF-43210).",
+  "ground_truth_phi": "NAME: Mary Johnson | GEOGRAPHIC_LOCATION: UCSF Medical Center | DATE: July 4th, 2023 | MEDICAL_RECORD_NUMBER: UCSF-43210",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "70",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9989284873008728,
+      "begin_offset": 46,
+      "end_offset": 48
+    },
+    {
+      "text": "Mary Johnson",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9972898960113525,
+      "begin_offset": 83,
+      "end_offset": 95
+    },
+    {
+      "text": "UCSF Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9902935028076172,
+      "begin_offset": 117,
+      "end_offset": 136
+    },
+    {
+      "text": "July 4th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999668598175049,
+      "begin_offset": 140,
+      "end_offset": 154
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "UCSF-43210"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 4
+}

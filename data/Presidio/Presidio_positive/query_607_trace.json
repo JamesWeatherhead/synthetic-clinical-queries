@@ -1,0 +1,76 @@
+{
+  "query_id": "607",
+  "timestamp": "2025-10-22T16:12:45.246631",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guideline recommendations for managing atrial fibrillation in a 70-year-old male, Robert K., diagnosed at NYU Langone Health on July 15th, 2023 (SSN: 555-66-7777)?",
+  "ground_truth_phi": "NAME: Robert K. | GEOGRAPHIC_LOCATION: NYU Langone Health | DATE: July 15th, 2023 | SOCIAL_SECURITY_NUMBER: 555-66-7777",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Guideline recommendations for managing atrial fibrillation in a [REDACTED_DATE] male, [REDACTED_NAME], diagnosed at NYU Langone Health on [REDACTED_DATE] (SSN: [REDACTED_SOCIAL_SECURITY_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 64,
+      "end": 75,
+      "score": 0.85,
+      "text": "70-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 82,
+      "end": 91,
+      "score": 0.85,
+      "text": "Robert K.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 128,
+      "end": 143,
+      "score": 0.85,
+      "text": "July 15th, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "US_SSN",
+      "hipaa_category": "SOCIAL_SECURITY_NUMBER",
+      "start": 150,
+      "end": 161,
+      "score": 0.85,
+      "text": "555-66-7777",
+      "recognizer": "UsSsnRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "NYU Langone Health",
+        "start": 106,
+        "end": 124
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

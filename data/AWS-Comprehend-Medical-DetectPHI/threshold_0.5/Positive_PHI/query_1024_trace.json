@@ -1,0 +1,75 @@
+{
+  "query_id": "1024",
+  "timestamp": "2025-10-23T09:57:30.429598",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Updated asthma management guidelines for a 10-year-old female patient, Emily Clark, seen at the Children’s Hospital in San Francisco last month?",
+  "ground_truth_phi": "NAME: Emily Clark | GEOGRAPHIC_LOCATION: San Francisco | DATE: last month",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "10",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9958347082138062,
+      "begin_offset": 43,
+      "end_offset": 45
+    },
+    {
+      "text": "Emily Clark",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9976640939712524,
+      "begin_offset": 71,
+      "end_offset": 82
+    },
+    {
+      "text": "Children’s Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9891637563705444,
+      "begin_offset": 96,
+      "end_offset": 115
+    },
+    {
+      "text": "San Francisco",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9953601956367493,
+      "begin_offset": 119,
+      "end_offset": 132
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "DATE",
+        "value": "last month"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 2,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 2,
+    "recall": "0.6667",
+    "precision": "0.5000",
+    "f1_score": "0.5714"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

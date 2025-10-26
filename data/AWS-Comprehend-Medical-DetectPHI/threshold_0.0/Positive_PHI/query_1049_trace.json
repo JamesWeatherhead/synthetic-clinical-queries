@@ -1,0 +1,79 @@
+{
+  "query_id": "1049",
+  "timestamp": "2025-10-23T09:57:33.252520",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the potential side effects of statins in a 66yo female patient, Linda R., who visited our practice in Dallas on July 14th, 2023 (Contact: 214-555-6789)?",
+  "ground_truth_phi": "NAME: Linda R. | GEOGRAPHIC_LOCATION: Dallas | DATE: July 14th, 2023 | PHONE_NUMBER: 214-555-6789",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "66yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.994392991065979,
+      "begin_offset": 52,
+      "end_offset": 56
+    },
+    {
+      "text": "Linda R",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.998210072517395,
+      "begin_offset": 73,
+      "end_offset": 80
+    },
+    {
+      "text": "Dallas",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9904396533966064,
+      "begin_offset": 111,
+      "end_offset": 117
+    },
+    {
+      "text": "July 14th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999079704284668,
+      "begin_offset": 121,
+      "end_offset": 136
+    },
+    {
+      "text": "214-555-6789",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999024868011475,
+      "begin_offset": 147,
+      "end_offset": 159
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

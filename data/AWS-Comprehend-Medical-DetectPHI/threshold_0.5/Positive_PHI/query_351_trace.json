@@ -1,0 +1,79 @@
+{
+  "query_id": "351",
+  "timestamp": "2025-10-23T09:56:16.611551",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for managing atrial fibrillation in a 62-year-old male, Robert L., seen at Northwestern Medical Center on July 10th, 2021 (Contact: robert.l@example.com)?",
+  "ground_truth_phi": "NAME: Robert L. | GEOGRAPHIC_LOCATION: Northwestern Medical Center | DATE: July 10th, 2021 | EMAIL_ADDRESS: robert.l@example.com",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "62",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999016523361206,
+      "begin_offset": 49,
+      "end_offset": 51
+    },
+    {
+      "text": "Robert L",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9984264373779297,
+      "begin_offset": 67,
+      "end_offset": 75
+    },
+    {
+      "text": "Northwestern Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9908825755119324,
+      "begin_offset": 86,
+      "end_offset": 113
+    },
+    {
+      "text": "July 10th, 2021",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999957799911499,
+      "begin_offset": 117,
+      "end_offset": 132
+    },
+    {
+      "text": "robert.l@example.com",
+      "aws_type": "EMAIL",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999650716781616,
+      "begin_offset": 143,
+      "end_offset": 163
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

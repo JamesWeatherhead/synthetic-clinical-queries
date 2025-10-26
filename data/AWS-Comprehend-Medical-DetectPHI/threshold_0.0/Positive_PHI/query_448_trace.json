@@ -1,0 +1,70 @@
+{
+  "query_id": "448",
+  "timestamp": "2025-10-23T09:56:26.656102",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the guidelines for insulin management in a 50-year-old male with Type 1 Diabetes, Paul Winters, who was seen at UCSF Medical Center on September 10th, 2023?",
+  "ground_truth_phi": "NAME: Paul Winters | GEOGRAPHIC_LOCATION: UCSF Medical Center | DATE: September 10th, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "50",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.998684823513031,
+      "begin_offset": 52,
+      "end_offset": 54
+    },
+    {
+      "text": "Paul Winters",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9974855184555054,
+      "begin_offset": 91,
+      "end_offset": 103
+    },
+    {
+      "text": "UCSF Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.989216685295105,
+      "begin_offset": 121,
+      "end_offset": 140
+    },
+    {
+      "text": "September 10th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999080896377563,
+      "begin_offset": 144,
+      "end_offset": 164
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

@@ -1,0 +1,87 @@
+{
+  "query_id": "528",
+  "timestamp": "2025-10-22T16:12:44.816300",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Best practices for monitoring a 40-year-old female post-kidney transplant, Jennifer A., seen in Dallas, TX on July 20th, 2024?",
+  "ground_truth_phi": "NAME: Jennifer A. | GEOGRAPHIC_LOCATION: Dallas, TX | DATE: July 20th, 2024",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Best practices for monitoring a [REDACTED_DATE] female post-kidney transplant, [REDACTED_NAME], seen in [REDACTED_GEOGRAPHIC_LOCATION], [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 32,
+      "end": 43,
+      "score": 0.85,
+      "text": "40-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 75,
+      "end": 86,
+      "score": 0.85,
+      "text": "Jennifer A.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 96,
+      "end": 102,
+      "score": 0.85,
+      "text": "Dallas",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 104,
+      "end": 106,
+      "score": 0.85,
+      "text": "TX",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 110,
+      "end": 120,
+      "score": 0.85,
+      "text": "July 20th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 121,
+      "end": 125,
+      "score": 0.85,
+      "text": "2024",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "recall": "1.0000",
+    "precision": "0.1667",
+    "f1_score": "0.2857"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "query_id": "524",
+  "timestamp": "2025-10-22T16:12:44.791030",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Treatment guidelines for 55yo male with recurrent UTIs, patient named Robert K., treated at Kaiser Permanente on March 2nd, 2023 (MRN: 123456-789)?",
+  "ground_truth_phi": "NAME: Robert K. | GEOGRAPHIC_LOCATION: Kaiser Permanente | DATE: March 2nd, 2023 | MEDICAL_RECORD_NUMBER: 123456-789",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Treatment guidelines for 55yo male with recurrent UTIs, patient named [REDACTED_NAME], treated at Kaiser Permanente on [REDACTED_DATE] ([REDACTED_MEDICAL_RECORD_NUMBER]-789)?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 130,
+      "end": 141,
+      "score": 0.9,
+      "text": "MRN: 123456",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 70,
+      "end": 79,
+      "score": 0.85,
+      "text": "Robert K.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 113,
+      "end": 123,
+      "score": 0.85,
+      "text": "March 2nd,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 124,
+      "end": 128,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Kaiser Permanente",
+        "start": 92,
+        "end": 109
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.2500",
+    "f1_score": "0.3750"
+  }
+}

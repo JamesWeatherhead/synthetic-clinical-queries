@@ -1,0 +1,87 @@
+{
+  "query_id": "656",
+  "timestamp": "2025-10-22T16:12:45.475152",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Best treatment options for a 60-year-old male with newly diagnosed liver cirrhosis, David B., who was admitted to Cedars-Sinai on January 12th, 2023 (MRN: 789654123)?",
+  "ground_truth_phi": "NAME: David B. | GEOGRAPHIC_LOCATION: Cedars-Sinai | DATE: January 12th, 2023 | MEDICAL_RECORD_NUMBER: 789654123",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Best treatment options for a [REDACTED_DATE] male with newly diagnosed liver cirrhosis, [REDACTED_NAME], who was admitted to [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE] ([REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 150,
+      "end": 164,
+      "score": 0.9,
+      "text": "MRN: 789654123",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 29,
+      "end": 40,
+      "score": 0.85,
+      "text": "60-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 84,
+      "end": 92,
+      "score": 0.85,
+      "text": "David B.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 114,
+      "end": 126,
+      "score": 0.85,
+      "text": "Cedars-Sinai",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 130,
+      "end": 148,
+      "score": 0.85,
+      "text": "January 12th, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 155,
+      "end": 164,
+      "score": 0.85,
+      "text": "789654123",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "recall": "1.0000",
+    "precision": "0.6667",
+    "f1_score": "0.8000"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "query_id": "682",
+  "timestamp": "2025-10-23T09:56:51.151078",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "concerns about drug interactions for pt Joan A. w/ hx of diabetes, s/p heart transplant, seen at St. Luke's on 11/11/2021, using insurance ID HP-202301?",
+  "ground_truth_phi": "NAME: Joan A. | GEOGRAPHIC_LOCATION: St. Luke's | DATE: 11/11/2021 | HEALTH_PLAN_BENEFICIARY_NUMBER: HP-202301",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Joan A.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7237696647644043,
+      "begin_offset": 40,
+      "end_offset": 47
+    },
+    {
+      "text": "St. Luke's",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9445766806602478,
+      "begin_offset": 97,
+      "end_offset": 107
+    },
+    {
+      "text": "11/11/2021",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999935626983643,
+      "begin_offset": 111,
+      "end_offset": 121
+    },
+    {
+      "text": "202301",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8084883093833923,
+      "begin_offset": 145,
+      "end_offset": 151
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

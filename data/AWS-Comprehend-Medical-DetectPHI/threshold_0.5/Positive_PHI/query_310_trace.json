@@ -1,0 +1,70 @@
+{
+  "query_id": "310",
+  "timestamp": "2025-10-23T09:56:12.637049",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Treatment options for a 40-year-old female, Emily Roberts, with advanced melanoma, currently being treated at Johns Hopkins since July 12th, 2023?",
+  "ground_truth_phi": "NAME: Emily Roberts | GEOGRAPHIC_LOCATION: Johns Hopkins | DATE: July 12th, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "40",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.997776210308075,
+      "begin_offset": 24,
+      "end_offset": 26
+    },
+    {
+      "text": "Emily Roberts",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9968671202659607,
+      "begin_offset": 44,
+      "end_offset": 57
+    },
+    {
+      "text": "Johns Hopkins",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8601482510566711,
+      "begin_offset": 110,
+      "end_offset": 123
+    },
+    {
+      "text": "July 12th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999579191207886,
+      "begin_offset": 130,
+      "end_offset": 145
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

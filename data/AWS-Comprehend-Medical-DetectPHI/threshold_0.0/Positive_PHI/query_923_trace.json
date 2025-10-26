@@ -1,0 +1,79 @@
+{
+  "query_id": "923",
+  "timestamp": "2025-10-23T09:57:16.217256",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Risk factors for stroke in a 60-year-old male with a history of TIA, last evaluated at Boston General Hospital by Dr. Emily Carter on Feb 1st, 2023. Contact: (617) 555-7890.",
+  "ground_truth_phi": "NAME: Emily Carter | GEOGRAPHIC_LOCATION: Boston General Hospital | DATE: Feb 1st, 2023 | PHONE_NUMBER: (617) 555-7890",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "60",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997084736824036,
+      "begin_offset": 29,
+      "end_offset": 31
+    },
+    {
+      "text": "Boston General Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9717679619789124,
+      "begin_offset": 87,
+      "end_offset": 110
+    },
+    {
+      "text": "Emily Carter",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9976755976676941,
+      "begin_offset": 118,
+      "end_offset": 130
+    },
+    {
+      "text": "Feb 1st, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9955801367759705,
+      "begin_offset": 134,
+      "end_offset": 147
+    },
+    {
+      "text": "(617) 555-7890",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9046066403388977,
+      "begin_offset": 158,
+      "end_offset": 172
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

@@ -1,0 +1,78 @@
+{
+  "query_id": "80",
+  "timestamp": "2025-10-22T16:12:42.463630",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the treatment options for a 64-year-old female with a newly diagnosed glioblastoma, similar to Mary Smith, who was treated at Cedar Sinai on January 15th, 2023?",
+  "ground_truth_phi": "NAME: Mary Smith | GEOGRAPHIC_LOCATION: Cedar Sinai | DATE: January 15th, 2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "What are the treatment options for a [REDACTED_DATE] female with a newly diagnosed glioblastoma, similar to [REDACTED_NAME], who was treated at [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE], [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 37,
+      "end": 48,
+      "score": 0.85,
+      "text": "64-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 104,
+      "end": 114,
+      "score": 0.85,
+      "text": "Mary Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 135,
+      "end": 146,
+      "score": 0.85,
+      "text": "Cedar Sinai",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 150,
+      "end": 162,
+      "score": 0.85,
+      "text": "January 15th",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 164,
+      "end": 168,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.4000",
+    "f1_score": "0.5714"
+  }
+}

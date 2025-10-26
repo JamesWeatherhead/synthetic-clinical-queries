@@ -1,0 +1,66 @@
+{
+  "query_id": "528",
+  "timestamp": "2025-10-23T09:56:35.710542",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best practices for monitoring a 40-year-old female post-kidney transplant, Jennifer A., seen in Dallas, TX on July 20th, 2024?",
+  "ground_truth_phi": "NAME: Jennifer A. | GEOGRAPHIC_LOCATION: Dallas, TX | DATE: July 20th, 2024",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "40",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9395044445991516,
+      "begin_offset": 32,
+      "end_offset": 34
+    },
+    {
+      "text": "Jennifer A",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.912102222442627,
+      "begin_offset": 75,
+      "end_offset": 85
+    },
+    {
+      "text": "July 20th, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999828338623047,
+      "begin_offset": 110,
+      "end_offset": 125
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Dallas, TX"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "true_positives": 2,
+    "recall": "0.6667",
+    "precision": "0.6667",
+    "f1_score": "0.6667"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 3
+}

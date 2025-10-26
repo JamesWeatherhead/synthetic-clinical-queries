@@ -1,0 +1,63 @@
+{
+  "query_id": "113",
+  "timestamp": "2025-10-22T16:24:24.400030",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What is the 5-year survival rate for a 60-year-old Asian female diagnosed with early-stage non-small cell lung cancer in 2022?",
+  "presidio_output": "What is the [REDACTED_DATE] survival rate for a [REDACTED_DATE] [REDACTED_NRP] female diagnosed with early-stage non-small cell lung cancer in [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 12,
+      "end": 18,
+      "score": 0.85,
+      "text": "5-year",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 39,
+      "end": 50,
+      "score": 0.85,
+      "text": "60-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "NRP",
+      "hipaa_category": "NRP",
+      "start": 51,
+      "end": 56,
+      "score": 0.85,
+      "text": "Asian",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 121,
+      "end": 125,
+      "score": 0.85,
+      "text": "2022",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 4,
+    "false_redactions_by_type": {
+      "DATE": 3,
+      "NRP": 1
+    },
+    "status": "OVER_REDACTED"
+  }
+}

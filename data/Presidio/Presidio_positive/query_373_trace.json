@@ -1,0 +1,69 @@
+{
+  "query_id": "373",
+  "timestamp": "2025-10-22T16:12:44.001232",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommendations for managing severe asthma in a 22-year-old male, Robert G., treated at Northwestern Memorial Hospital on Nov 12, 2023. He uses inhaler QVAR.",
+  "ground_truth_phi": "NAME: Robert G. | GEOGRAPHIC_LOCATION: Northwestern Memorial Hospital | DATE: Nov 12, 2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Recommendations for managing severe asthma in a [REDACTED_DATE] male, [REDACTED_NAME], treated at [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE]. He uses inhaler QVAR.",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 48,
+      "end": 59,
+      "score": 0.85,
+      "text": "22-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 66,
+      "end": 75,
+      "score": 0.85,
+      "text": "Robert G.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 88,
+      "end": 118,
+      "score": 0.85,
+      "text": "Northwestern Memorial Hospital",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 122,
+      "end": 134,
+      "score": 0.85,
+      "text": "Nov 12, 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  }
+}

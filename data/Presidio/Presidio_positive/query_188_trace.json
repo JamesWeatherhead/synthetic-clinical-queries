@@ -1,0 +1,85 @@
+{
+  "query_id": "188",
+  "timestamp": "2025-10-22T16:12:43.016055",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Is there a preferred treatment protocol for a 45-year-old female with MS, Amy Johnson, who was admitted to New York-Presbyterian Hospital on June 15th, 2023 (MRN: 789456123)?",
+  "ground_truth_phi": "NAME: Amy Johnson | GEOGRAPHIC_LOCATION: New York-Presbyterian Hospital | DATE: June 15th, 2023 | MEDICAL_RECORD_NUMBER: 789456123",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Is there a preferred treatment protocol for a [REDACTED_DATE] female with MS, [REDACTED_NAME], who was admitted to New York-Presbyterian Hospital on [REDACTED_DATE] ([REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 158,
+      "end": 172,
+      "score": 0.9,
+      "text": "MRN: 789456123",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 46,
+      "end": 57,
+      "score": 0.85,
+      "text": "45-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 74,
+      "end": 85,
+      "score": 0.85,
+      "text": "Amy Johnson",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 141,
+      "end": 151,
+      "score": 0.85,
+      "text": "June 15th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 152,
+      "end": 156,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "New York-Presbyterian Hospital",
+        "start": 107,
+        "end": 137
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.2000",
+    "f1_score": "0.3158"
+  }
+}

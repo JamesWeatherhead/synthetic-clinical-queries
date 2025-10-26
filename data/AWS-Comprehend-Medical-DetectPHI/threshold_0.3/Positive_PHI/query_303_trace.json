@@ -1,0 +1,79 @@
+{
+  "query_id": "303",
+  "timestamp": "2025-10-23T09:56:11.586809",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Latest treatment protocols for a 55-year-old male with hypertension, Matthew K., seen at Redwood Medical Center on April 9th, 2023 (MRN: RM-123456)?",
+  "ground_truth_phi": "NAME: Matthew K. | GEOGRAPHIC_LOCATION: Redwood Medical Center | DATE: April 9th, 2023 | MEDICAL_RECORD_NUMBER: RM-123456",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "55",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999640941619873,
+      "begin_offset": 33,
+      "end_offset": 35
+    },
+    {
+      "text": "Matthew K",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9959333539009094,
+      "begin_offset": 69,
+      "end_offset": 78
+    },
+    {
+      "text": "Redwood Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9992577433586121,
+      "begin_offset": 89,
+      "end_offset": 111
+    },
+    {
+      "text": "April 9th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996732473373413,
+      "begin_offset": 115,
+      "end_offset": 130
+    },
+    {
+      "text": "123456",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.5626515746116638,
+      "begin_offset": 140,
+      "end_offset": 146
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

@@ -1,0 +1,79 @@
+{
+  "query_id": "978",
+  "timestamp": "2025-10-23T09:57:24.067728",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the latest ADA guidelines for a patient with Type 1 Diabetes, specifically a 30-year-old female, Emily R., monitored at UCLA Medical Center with MRN: UCLA-T1D-2023?",
+  "ground_truth_phi": "NAME: Emily R. | GEOGRAPHIC_LOCATION: UCLA Medical Center | MEDICAL_RECORD_NUMBER: UCLA-T1D-2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "30",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9967286586761475,
+      "begin_offset": 86,
+      "end_offset": 88
+    },
+    {
+      "text": "Emily R",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9681826233863831,
+      "begin_offset": 106,
+      "end_offset": 113
+    },
+    {
+      "text": "UCLA Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9895097017288208,
+      "begin_offset": 129,
+      "end_offset": 148
+    },
+    {
+      "text": "UCLA",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8827343583106995,
+      "begin_offset": 159,
+      "end_offset": 163
+    },
+    {
+      "text": "T1D-2023",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9583577513694763,
+      "begin_offset": 164,
+      "end_offset": 172
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

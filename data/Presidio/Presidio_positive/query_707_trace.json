@@ -1,0 +1,76 @@
+{
+  "query_id": "707",
+  "timestamp": "2025-10-22T16:12:45.756751",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the guidelines for managing atrial fibrillation in a 70-year-old female, Mary Johnson, who presented to UCLA Medical Center on December 1st, 2022 (MRN: 982-23-4567)?",
+  "ground_truth_phi": "NAME: Mary Johnson | GEOGRAPHIC_LOCATION: UCLA Medical Center | DATE: December 1st, 2022 | MEDICAL_RECORD_NUMBER: 982-23-4567",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What are the guidelines for managing atrial fibrillation in a [REDACTED_DATE] female, [REDACTED_NAME], who presented to UCLA Medical Center on [REDACTED_DATE] (MRN: [REDACTED_SOCIAL_SECURITY_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 62,
+      "end": 73,
+      "score": 0.85,
+      "text": "70-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 82,
+      "end": 94,
+      "score": 0.85,
+      "text": "Mary Johnson",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 136,
+      "end": 154,
+      "score": 0.85,
+      "text": "December 1st, 2022",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "US_SSN",
+      "hipaa_category": "SOCIAL_SECURITY_NUMBER",
+      "start": 161,
+      "end": 172,
+      "score": 0.5,
+      "text": "982-23-4567",
+      "recognizer": "UsSsnRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UCLA Medical Center",
+        "start": 113,
+        "end": 132
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "query_id": "623",
+  "timestamp": "2025-10-22T16:12:45.324495",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the drug interaction risks for a 35-year-old male patient on metoprolol and Lisinopril, with a recent prescription of Paxlovid, identified as Daniel H. from our Dallas clinic, seen on July 20, 2021?",
+  "ground_truth_phi": "NAME: Daniel H. | GEOGRAPHIC_LOCATION: Dallas clinic | DATE: July 20, 2021",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "What are the drug interaction risks for a [REDACTED_DATE] male patient on metoprolol and Lisinopril, with a recent prescription of [REDACTED_GEOGRAPHIC_LOCATION], identified as [REDACTED_NAME] from our [REDACTED_GEOGRAPHIC_LOCATION] clinic, seen on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 42,
+      "end": 53,
+      "score": 0.85,
+      "text": "35-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 127,
+      "end": 135,
+      "score": 0.85,
+      "text": "Paxlovid",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 151,
+      "end": 160,
+      "score": 0.85,
+      "text": "Daniel H.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 170,
+      "end": 176,
+      "score": 0.85,
+      "text": "Dallas",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 193,
+      "end": 206,
+      "score": 0.85,
+      "text": "July 20, 2021",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.4000",
+    "f1_score": "0.5714"
+  }
+}

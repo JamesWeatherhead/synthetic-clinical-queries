@@ -1,0 +1,79 @@
+{
+  "query_id": "810",
+  "timestamp": "2025-10-23T09:57:03.931863",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Treatment guidelines for a 72-year-old female, Nancy L., diagnosed with Alzheimer's, admitted to Cleveland Clinic on February 5th, 2023 (MRN: CLV-123456)?",
+  "ground_truth_phi": "NAME: Nancy L. | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: February 5th, 2023 | MEDICAL_RECORD_NUMBER: CLV-123456",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "72",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999752938747406,
+      "begin_offset": 27,
+      "end_offset": 29
+    },
+    {
+      "text": "Nancy L",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.985059380531311,
+      "begin_offset": 47,
+      "end_offset": 54
+    },
+    {
+      "text": "Cleveland Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9980812072753906,
+      "begin_offset": 97,
+      "end_offset": 113
+    },
+    {
+      "text": "February 5th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999297857284546,
+      "begin_offset": 117,
+      "end_offset": 135
+    },
+    {
+      "text": "123456",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8345893621444702,
+      "begin_offset": 146,
+      "end_offset": 152
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 5
+}

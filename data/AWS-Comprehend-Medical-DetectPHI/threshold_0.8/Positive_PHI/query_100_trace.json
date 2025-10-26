@@ -1,0 +1,79 @@
+{
+  "query_id": "100",
+  "timestamp": "2025-10-23T09:55:46.986211",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the current treatment options for a 65-year-old male, John Smith, with BPH seen at Glenview Clinic on Dec 15, 2022 (MRN: 87342GH)?",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: Glenview Clinic | DATE: Dec 15, 2022 | MEDICAL_RECORD_NUMBER: 87342GH",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "65",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997649788856506,
+      "begin_offset": 45,
+      "end_offset": 47
+    },
+    {
+      "text": "John Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9992891550064087,
+      "begin_offset": 63,
+      "end_offset": 73
+    },
+    {
+      "text": "Glenview Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9936188459396362,
+      "begin_offset": 92,
+      "end_offset": 107
+    },
+    {
+      "text": "Dec 15, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.998839795589447,
+      "begin_offset": 111,
+      "end_offset": 123
+    },
+    {
+      "text": "87342GH",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.876292884349823,
+      "begin_offset": 130,
+      "end_offset": 137
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

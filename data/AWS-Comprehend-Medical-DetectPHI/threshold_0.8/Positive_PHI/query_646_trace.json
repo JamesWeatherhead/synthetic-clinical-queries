@@ -1,0 +1,66 @@
+{
+  "query_id": "646",
+  "timestamp": "2025-10-23T09:56:47.914603",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "best practices for managing hypertension in a pt, review John Smith's case at UCLA Med Ctr from 01/12/2024, w/ hx of PAD, taking lisinopril, insur ID HS-998877.",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: UCLA Med Ctr | DATE: 01/12/2024 | HEALTH_PLAN_BENEFICIARY_NUMBER: HS-998877",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "John Smith's",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.988825261592865,
+      "begin_offset": 57,
+      "end_offset": 69
+    },
+    {
+      "text": "UCLA Med Ctr",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.802020251750946,
+      "begin_offset": 78,
+      "end_offset": 90
+    },
+    {
+      "text": "01/12/2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999762773513794,
+      "begin_offset": 96,
+      "end_offset": 106
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+        "value": "HS-998877"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 3
+}

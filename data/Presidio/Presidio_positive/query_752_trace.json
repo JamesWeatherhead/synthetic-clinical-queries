@@ -1,0 +1,73 @@
+{
+  "query_id": "752",
+  "timestamp": "2025-10-22T16:12:45.968914",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Contraindications for prescribing warfarin to 72-year-old Alice B. with hx of stroke, currently at Cedar Sinai Medical Center, visited Jan 15, 2024 (MRN: #CSM987654)?",
+  "ground_truth_phi": "NAME: Alice B. | GEOGRAPHIC_LOCATION: Cedar Sinai Medical Center | DATE: Jan 15, 2024 | MEDICAL_RECORD_NUMBER: #CSM987654",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Contraindications for prescribing warfarin to [REDACTED_DATE] [REDACTED_NAME] with hx of stroke, currently at Cedar Sinai Medical Center, visited [REDACTED_DATE] (MRN: #CSM987654)?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 46,
+      "end": 57,
+      "score": 0.85,
+      "text": "72-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 58,
+      "end": 66,
+      "score": 0.85,
+      "text": "Alice B.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 135,
+      "end": 147,
+      "score": 0.85,
+      "text": "Jan 15, 2024",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Cedar Sinai Medical Center",
+        "start": 99,
+        "end": 125
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "#CSM987654",
+        "start": 154,
+        "end": 164
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 3,
+    "recall": "0.5000",
+    "precision": "0.6667",
+    "f1_score": "0.5714"
+  }
+}

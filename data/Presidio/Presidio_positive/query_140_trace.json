@@ -1,0 +1,78 @@
+{
+  "query_id": "140",
+  "timestamp": "2025-10-22T16:12:42.787200",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the treatment options for a 60-year-old male diagnosed with stage 3 colon cancer, John Smith, who was admitted to Cedars-Sinai on March 12, 2023 (MRN: CS-987654)?",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: Cedars-Sinai | DATE: March 12, 2023 | MEDICAL_RECORD_NUMBER: CS-987654",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What are the treatment options for a [REDACTED_DATE] male diagnosed with stage 3 colon cancer, [REDACTED_NAME], who was admitted to [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE] (MRN: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 37,
+      "end": 48,
+      "score": 0.85,
+      "text": "60-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 91,
+      "end": 101,
+      "score": 0.85,
+      "text": "John Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 123,
+      "end": 135,
+      "score": 0.85,
+      "text": "Cedars-Sinai",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 139,
+      "end": 153,
+      "score": 0.85,
+      "text": "March 12, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 160,
+      "end": 169,
+      "score": 0.7,
+      "text": "CS-987654",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "query_id": "144",
+  "timestamp": "2025-10-22T16:12:42.809317",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Current best practices for managing a 47-year-old male with persistent depressive disorder, Jack Taylor, who was seen at the Chicago downtown clinic on December 15, 2022 (phone: 312-555-1234)?",
+  "ground_truth_phi": "NAME: Jack Taylor | GEOGRAPHIC_LOCATION: Chicago downtown clinic | DATE: December 15, 2022 | PHONE_NUMBER: 312-555-1234",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Current best practices for managing a [REDACTED_DATE] male with persistent depressive disorder, [REDACTED_NAME], who was seen at the [REDACTED_GEOGRAPHIC_LOCATION] downtown clinic on [REDACTED_DATE] (phone: [REDACTED_UK_NHS])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "UK_NHS",
+      "hipaa_category": "UK_NHS",
+      "start": 178,
+      "end": 190,
+      "score": 1.0,
+      "text": "312-555-1234",
+      "recognizer": "NhsRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 38,
+      "end": 49,
+      "score": 0.85,
+      "text": "47-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 92,
+      "end": 103,
+      "score": 0.85,
+      "text": "Jack Taylor",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 125,
+      "end": 132,
+      "score": 0.85,
+      "text": "Chicago",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 152,
+      "end": 169,
+      "score": 0.85,
+      "text": "December 15, 2022",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 178,
+      "end": 190,
+      "score": 0.75,
+      "text": "312-555-1234",
+      "recognizer": "PhoneRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "recall": "1.0000",
+    "precision": "0.5000",
+    "f1_score": "0.6667"
+  }
+}

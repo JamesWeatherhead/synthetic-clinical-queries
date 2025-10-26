@@ -1,0 +1,61 @@
+{
+  "query_id": "317",
+  "timestamp": "2025-10-23T09:56:13.237544",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Need latest tx guidelines for pt w/ CHF & HTN, seen by Dr. L. Wang at NYU Langone on Sep 8th 2022. Also, check for poss. drug interactions.",
+  "ground_truth_phi": "NAME: L. Wang | GEOGRAPHIC_LOCATION: NYU Langone | DATE: Sep 8th 2022",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "L. Wang",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997298121452332,
+      "begin_offset": 59,
+      "end_offset": 66
+    },
+    {
+      "text": "NYU Langone",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9221999049186707,
+      "begin_offset": 70,
+      "end_offset": 81
+    },
+    {
+      "text": "Sep 8th 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9456061124801636,
+      "begin_offset": 85,
+      "end_offset": 97
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

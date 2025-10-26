@@ -1,0 +1,73 @@
+{
+  "query_id": "716",
+  "timestamp": "2025-10-22T16:12:45.805942",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the current treatment options for a 62-year-old male with newly diagnosed ALS, John Smith, who presented to Johns Hopkins University Hospital on April 15th, 2024 (MRN: 12345-JHU)?",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: Johns Hopkins University Hospital | DATE: April 15th, 2024 | MEDICAL_RECORD_NUMBER: 12345-JHU",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What are the current treatment options for a [REDACTED_DATE] male with newly diagnosed ALS, [REDACTED_NAME], who presented to Johns Hopkins University Hospital on [REDACTED_DATE] (MRN: 12345-JHU)?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 45,
+      "end": 56,
+      "score": 0.85,
+      "text": "62-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 88,
+      "end": 98,
+      "score": 0.85,
+      "text": "John Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 154,
+      "end": 170,
+      "score": 0.85,
+      "text": "April 15th, 2024",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Johns Hopkins University Hospital",
+        "start": 117,
+        "end": 150
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "12345-JHU",
+        "start": 177,
+        "end": 186
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 3,
+    "recall": "0.5000",
+    "precision": "0.6667",
+    "f1_score": "0.5714"
+  }
+}

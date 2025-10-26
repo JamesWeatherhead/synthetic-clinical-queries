@@ -1,0 +1,79 @@
+{
+  "query_id": "571",
+  "timestamp": "2025-10-23T09:56:39.984873",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Latest treatment guidelines for GERD in a 35-year-old male patient, James B., who was admitted to St. John's Hospital ICU on September 12, 2024?",
+  "ground_truth_phi": "NAME: James B. | GEOGRAPHIC_LOCATION: St. John's Hospital | DATE: September 12, 2024",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "35",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996193647384644,
+      "begin_offset": 42,
+      "end_offset": 44
+    },
+    {
+      "text": "James B",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9974932670593262,
+      "begin_offset": 68,
+      "end_offset": 75
+    },
+    {
+      "text": "St. John's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9757083654403687,
+      "begin_offset": 98,
+      "end_offset": 117
+    },
+    {
+      "text": "ICU",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9981405735015869,
+      "begin_offset": 118,
+      "end_offset": 121
+    },
+    {
+      "text": "September 12, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999942421913147,
+      "begin_offset": 125,
+      "end_offset": 143
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.6000",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

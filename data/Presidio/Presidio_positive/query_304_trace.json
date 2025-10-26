@@ -1,0 +1,67 @@
+{
+  "query_id": "304",
+  "timestamp": "2025-10-22T16:12:43.639031",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommendations for the follow-up of a 67-year-old male post-stroke patient, Samuel P., treated at Mercy Healthcare on January 15th, 2024. Do we have associated guidelines?",
+  "ground_truth_phi": "NAME: Samuel P. | GEOGRAPHIC_LOCATION: Mercy Healthcare | DATE: January 15th, 2024",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Recommendations for the follow-up of a [REDACTED_DATE] male post-stroke patient, [REDACTED_NAME], treated at Mercy Healthcare on [REDACTED_DATE]. Do we have associated guidelines?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 39,
+      "end": 50,
+      "score": 0.85,
+      "text": "67-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 77,
+      "end": 86,
+      "score": 0.85,
+      "text": "Samuel P.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 119,
+      "end": 137,
+      "score": 0.85,
+      "text": "January 15th, 2024",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Mercy Healthcare",
+        "start": 99,
+        "end": 115
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.6667",
+    "precision": "0.6667",
+    "f1_score": "0.6667"
+  }
+}

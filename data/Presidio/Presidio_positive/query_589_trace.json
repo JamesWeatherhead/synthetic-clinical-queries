@@ -1,0 +1,78 @@
+{
+  "query_id": "589",
+  "timestamp": "2025-10-22T16:12:45.149227",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the contraindications for prescribing Warfarin to a 73-year-old male, John Q., who was seen at Johns Hopkins Hospital, Baltimore, last month (MRN: JQ-54321)?",
+  "ground_truth_phi": "NAME: John Q. | GEOGRAPHIC_LOCATION: Johns Hopkins Hospital, Baltimore | DATE: last month | MEDICAL_RECORD_NUMBER: JQ-54321",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What are the contraindications for prescribing Warfarin to a [REDACTED_DATE] male, [REDACTED_NAME], who was seen at Johns Hopkins Hospital, [REDACTED_GEOGRAPHIC_LOCATION], [REDACTED_DATE] (MRN: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 61,
+      "end": 72,
+      "score": 0.85,
+      "text": "73-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 79,
+      "end": 86,
+      "score": 0.85,
+      "text": "John Q.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 128,
+      "end": 137,
+      "score": 0.85,
+      "text": "Baltimore",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 139,
+      "end": 149,
+      "score": 0.85,
+      "text": "last month",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 156,
+      "end": 164,
+      "score": 0.7,
+      "text": "JQ-54321",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.6000",
+    "f1_score": "0.7500"
+  }
+}

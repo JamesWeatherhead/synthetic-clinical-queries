@@ -1,0 +1,70 @@
+{
+  "query_id": "482",
+  "timestamp": "2025-10-23T09:56:30.511226",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Recommended treatment for a 32yo female, Sarah Lee, with newly diagnosed cervical cancer, and residing at 123 Main St., Springfield, seen on April 4th, 2023?",
+  "ground_truth_phi": "NAME: Sarah Lee | GEOGRAPHIC_LOCATION: 123 Main St., Springfield | DATE: April 4th, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "32yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9987970590591431,
+      "begin_offset": 28,
+      "end_offset": 32
+    },
+    {
+      "text": "Sarah Lee",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9933710098266602,
+      "begin_offset": 41,
+      "end_offset": 50
+    },
+    {
+      "text": "Springfield",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.34855836629867554,
+      "begin_offset": 120,
+      "end_offset": 131
+    },
+    {
+      "text": "April 4th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997016787528992,
+      "begin_offset": 141,
+      "end_offset": 156
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

@@ -1,0 +1,85 @@
+{
+  "query_id": "880",
+  "timestamp": "2025-10-22T16:12:46.656163",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "rec'd care plan for a pt w/ hx of COPD, dx'd by Dr. Smith at Washington Hospital on 03/19/2023. Include any new COPD tx options published in 2023. MRN: WH-123456.",
+  "ground_truth_phi": "NAME: Dr. Smith | GEOGRAPHIC_LOCATION: Washington Hospital | DATE: 03/19/2023 | MEDICAL_RECORD_NUMBER: WH-123456",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "rec'd care plan for a pt w/ hx of COPD, dx'd by Dr. [REDACTED_NAME] at Washington Hospital on [REDACTED_NAME]. Include any new COPD tx options published in [REDACTED_DATE]. MRN: [REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 52,
+      "end": 57,
+      "score": 0.85,
+      "text": "Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 84,
+      "end": 94,
+      "score": 0.85,
+      "text": "03/19/2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 141,
+      "end": 145,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 152,
+      "end": 161,
+      "score": 0.7,
+      "text": "WH-123456",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 84,
+      "end": 94,
+      "score": 0.6,
+      "text": "03/19/2023",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Washington Hospital",
+        "start": 61,
+        "end": 80
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.4000",
+    "f1_score": "0.5217"
+  }
+}

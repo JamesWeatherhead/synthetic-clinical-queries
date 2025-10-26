@@ -1,0 +1,79 @@
+{
+  "query_id": "83",
+  "timestamp": "2025-10-23T09:55:44.987168",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "mgmt for CHF pt, 81yo male, John W., admitted to UCLA on Feb 14 2022. worried about rx interaction w/ meds, ins policy no. HS-987654.",
+  "ground_truth_phi": "NAME: John W. | GEOGRAPHIC_LOCATION: UCLA | DATE: Feb 14 2022 | HEALTH_PLAN_BENEFICIARY_NUMBER: HS-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "81yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.998063862323761,
+      "begin_offset": 17,
+      "end_offset": 21
+    },
+    {
+      "text": "John W",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9133812785148621,
+      "begin_offset": 28,
+      "end_offset": 34
+    },
+    {
+      "text": "UCLA",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.997219443321228,
+      "begin_offset": 49,
+      "end_offset": 53
+    },
+    {
+      "text": "Feb 14 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9977732300758362,
+      "begin_offset": 57,
+      "end_offset": 68
+    },
+    {
+      "text": "987654",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7970127463340759,
+      "begin_offset": 126,
+      "end_offset": 132
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

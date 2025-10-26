@@ -1,0 +1,97 @@
+{
+  "query_id": "925",
+  "timestamp": "2025-10-23T09:57:16.598923",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Updated asthma management guidelines for a 40-year-old male, Michael P., under the care of Dr. Alice K. Smith, seen at New York Presbyterian on July 18th, 2023 (Email: michael.p@example.com).",
+  "ground_truth_phi": "NAME: Michael P. | NAME: Alice K. Smith | GEOGRAPHIC_LOCATION: New York Presbyterian | DATE: July 18th, 2023 | EMAIL_ADDRESS: michael.p@example.com",
+  "ground_truth_phi_count": 5,
+  "aws_entities_detected": [
+    {
+      "text": "40",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.998786985874176,
+      "begin_offset": 43,
+      "end_offset": 45
+    },
+    {
+      "text": "Michael P",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9383556842803955,
+      "begin_offset": 61,
+      "end_offset": 70
+    },
+    {
+      "text": "Alice K. Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9664715528488159,
+      "begin_offset": 95,
+      "end_offset": 109
+    },
+    {
+      "text": "New York",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9945441484451294,
+      "begin_offset": 119,
+      "end_offset": 127
+    },
+    {
+      "text": "Presbyterian",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7271103262901306,
+      "begin_offset": 128,
+      "end_offset": 140
+    },
+    {
+      "text": "July 18th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999662637710571,
+      "begin_offset": 144,
+      "end_offset": 159
+    },
+    {
+      "text": "michael.p@example.com",
+      "aws_type": "EMAIL",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999732971191406,
+      "begin_offset": 168,
+      "end_offset": 189
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 5,
+    "successfully_detected": 5,
+    "leaked_failures": 0,
+    "total_detected": 7,
+    "true_positives": 6,
+    "recall": "1.0000",
+    "precision": "0.8571",
+    "f1_score": "0.9231"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 7,
+  "aws_entities_filtered_count": 7
+}

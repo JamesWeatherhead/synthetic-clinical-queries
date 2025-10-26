@@ -1,0 +1,70 @@
+{
+  "query_id": "495",
+  "timestamp": "2025-10-23T09:56:32.037923",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the latest ADA guidelines for managing a 55-year-old male with type 1 diabetes, Robert Smith, who presented at St. Mary's Hospital on March 15th, 2023?",
+  "ground_truth_phi": "NAME: Robert Smith | GEOGRAPHIC_LOCATION: St. Mary's Hospital | DATE: March 15th, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "55",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9966834187507629,
+      "begin_offset": 50,
+      "end_offset": 52
+    },
+    {
+      "text": "Robert Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9978756904602051,
+      "begin_offset": 89,
+      "end_offset": 101
+    },
+    {
+      "text": "St. Mary's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9933679699897766,
+      "begin_offset": 120,
+      "end_offset": 139
+    },
+    {
+      "text": "March 15th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999459981918335,
+      "begin_offset": 143,
+      "end_offset": 159
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

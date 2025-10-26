@@ -1,0 +1,66 @@
+{
+  "query_id": "915",
+  "timestamp": "2025-10-23T09:57:15.025594",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Query: Tx options for pt w/ hx of CAD & DM, records show visit to Dr. Lopez at Stanford Health on 04/12/2022 (Acct#: SH-456789). Check for possible drug interactions.",
+  "ground_truth_phi": "NAME: Dr. Lopez | GEOGRAPHIC_LOCATION: Stanford Health | DATE: 04/12/2022 | ACCOUNT_NUMBER: SH-456789",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Lopez",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9991318583488464,
+      "begin_offset": 70,
+      "end_offset": 75
+    },
+    {
+      "text": "Stanford Health",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.975411057472229,
+      "begin_offset": 79,
+      "end_offset": 94
+    },
+    {
+      "text": "04/12/2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999716281890869,
+      "begin_offset": 98,
+      "end_offset": 108
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "ACCOUNT_NUMBER",
+        "value": "SH-456789"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 3
+}

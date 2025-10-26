@@ -1,0 +1,63 @@
+{
+  "query_id": "21",
+  "timestamp": "2025-10-22T16:24:24.296008",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Common side effects of lisinopril in a 55-year-old African American male with a long history of hypertension diagnosed in 2018?",
+  "presidio_output": "Common side effects of [REDACTED_DATE] in a [REDACTED_DATE] [REDACTED_NRP] male with a long history of hypertension diagnosed in [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 23,
+      "end": 33,
+      "score": 0.85,
+      "text": "lisinopril",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 39,
+      "end": 50,
+      "score": 0.85,
+      "text": "55-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "NRP",
+      "hipaa_category": "NRP",
+      "start": 51,
+      "end": 67,
+      "score": 0.85,
+      "text": "African American",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 122,
+      "end": 126,
+      "score": 0.85,
+      "text": "2018",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 4,
+    "false_redactions_by_type": {
+      "DATE": 3,
+      "NRP": 1
+    },
+    "status": "OVER_REDACTED"
+  }
+}

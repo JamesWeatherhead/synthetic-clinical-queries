@@ -1,0 +1,52 @@
+{
+  "query_id": "642",
+  "timestamp": "2025-10-23T10:23:41.777481",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Management strategies for a 72-year-old female with COPD and a recent exacerbation last month according to GOLD guidelines.",
+  "ground_truth_phi": "",
+  "ground_truth_phi_count": 0,
+  "aws_entities_detected": [
+    {
+      "text": "72",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9979965090751648,
+      "begin_offset": 28,
+      "end_offset": 30
+    },
+    {
+      "text": "GOLD guidelines",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.4018465578556061,
+      "begin_offset": 107,
+      "end_offset": 122
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 0,
+    "successfully_detected": 0,
+    "leaked_failures": 0,
+    "total_detected": 2,
+    "true_positives": 0,
+    "recall": "1.0000",
+    "precision": "0.0000",
+    "f1_score": "0.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 2,
+  "aws_entities_filtered_count": 2
+}

@@ -1,0 +1,79 @@
+{
+  "query_id": "674",
+  "timestamp": "2025-10-23T09:56:50.285370",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "tx options for pt w/ hx of COPD & CHF, ref. James T. in ward 7B at St. Luke’s, seen on Feb 15th 2023, MRN #ST-112233?",
+  "ground_truth_phi": "NAME: James T. | GEOGRAPHIC_LOCATION: St. Luke’s | DATE: Feb 15th 2023 | MEDICAL_RECORD_NUMBER: #ST-112233",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "James T.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9182377457618713,
+      "begin_offset": 44,
+      "end_offset": 52
+    },
+    {
+      "text": "St. Luke’s",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.989688515663147,
+      "begin_offset": 67,
+      "end_offset": 77
+    },
+    {
+      "text": "Feb 15th",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9541478157043457,
+      "begin_offset": 87,
+      "end_offset": 95
+    },
+    {
+      "text": "2023",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.620172917842865,
+      "begin_offset": 96,
+      "end_offset": 100
+    },
+    {
+      "text": "112233",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6588830947875977,
+      "begin_offset": 110,
+      "end_offset": 116
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 5
+}

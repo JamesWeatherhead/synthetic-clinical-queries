@@ -1,0 +1,79 @@
+{
+  "query_id": "801",
+  "timestamp": "2025-10-23T09:57:03.030833",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What is the preferred treatment for stage 4 prostate cancer in a 70-year-old male, Robert L., who underwent surgery at Johns Hopkins on 03/14/2023 (MRN: 56789)?",
+  "ground_truth_phi": "NAME: Robert L. | GEOGRAPHIC_LOCATION: Johns Hopkins | DATE: 03/14/2023 | MEDICAL_RECORD_NUMBER: 56789",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "70",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995884299278259,
+      "begin_offset": 65,
+      "end_offset": 67
+    },
+    {
+      "text": "Robert L",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9986794590950012,
+      "begin_offset": 83,
+      "end_offset": 91
+    },
+    {
+      "text": "Johns Hopkins",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7613962888717651,
+      "begin_offset": 119,
+      "end_offset": 132
+    },
+    {
+      "text": "03/14/2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999758005142212,
+      "begin_offset": 136,
+      "end_offset": 146
+    },
+    {
+      "text": "56789",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.5798611044883728,
+      "begin_offset": 153,
+      "end_offset": 158
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

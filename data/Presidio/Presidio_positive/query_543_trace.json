@@ -1,0 +1,82 @@
+{
+  "query_id": "543",
+  "timestamp": "2025-10-22T16:12:44.895264",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Current best practices for managing hypertension in a 72-year-old male named Robert S., patient ID #567-89-012, treated at Beth Israel Hospital on August 1st, 2023?",
+  "ground_truth_phi": "NAME: Robert S. | DATE: August 1st, 2023 | GEOGRAPHIC_LOCATION: Beth Israel Hospital | MEDICAL_RECORD_NUMBER: #567-89-012",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Current best practices for managing hypertension in a [REDACTED_DATE] male named [REDACTED_NAME], patient ID #567-89-012, treated at Beth Israel Hospital on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 54,
+      "end": 65,
+      "score": 0.85,
+      "text": "72-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 77,
+      "end": 86,
+      "score": 0.85,
+      "text": "Robert S.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 147,
+      "end": 158,
+      "score": 0.85,
+      "text": "August 1st,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 159,
+      "end": 163,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Beth Israel Hospital",
+        "start": 123,
+        "end": 143
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "#567-89-012",
+        "start": 99,
+        "end": 110
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 4,
+    "recall": "0.5000",
+    "precision": "0.2500",
+    "f1_score": "0.3333"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "query_id": "704",
+  "timestamp": "2025-10-23T09:56:53.053626",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "pt w/ hx of COPD & HTN, Alex R., f/u at Sunrise Clinic on Feb 14th 2024. Questions about ACE inhibitors. ref# 784-55-2943.",
+  "ground_truth_phi": "NAME: Alex R. | GEOGRAPHIC_LOCATION: Sunrise Clinic | DATE: Feb 14th 2024 | SOCIAL_SECURITY_NUMBER: 784-55-2943",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Alex R",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9518516063690186,
+      "begin_offset": 24,
+      "end_offset": 30
+    },
+    {
+      "text": "Sunrise Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9986401200294495,
+      "begin_offset": 40,
+      "end_offset": 54
+    },
+    {
+      "text": "Feb 14th 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9955345392227173,
+      "begin_offset": 58,
+      "end_offset": 71
+    },
+    {
+      "text": "784-55-2943",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9885778427124023,
+      "begin_offset": 110,
+      "end_offset": 121
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

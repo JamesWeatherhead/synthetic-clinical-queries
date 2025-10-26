@@ -1,0 +1,64 @@
+{
+  "query_id": "356",
+  "timestamp": "2025-10-22T16:12:43.907899",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Follow-up care for 50yo male John D., post-op knee replacement at County General on 04/23/24 (Insurance: ABC234567)?",
+  "ground_truth_phi": "NAME: John D. | GEOGRAPHIC_LOCATION: County General | DATE: 04/23/24 | HEALTH_PLAN_BENEFICIARY_NUMBER: ABC234567",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Follow-up care for 50yo male [REDACTED_NAME], post-op knee replacement at County General on [REDACTED_DATE] (Insurance: ABC234567)?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 29,
+      "end": 36,
+      "score": 0.85,
+      "text": "John D.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 84,
+      "end": 92,
+      "score": 0.6,
+      "text": "04/23/24",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "County General",
+        "start": 66,
+        "end": 80
+      },
+      {
+        "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+        "value": "ABC234567",
+        "start": 105,
+        "end": 114
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 2,
+    "recall": "0.5000",
+    "precision": "1.0000",
+    "f1_score": "0.6667"
+  }
+}

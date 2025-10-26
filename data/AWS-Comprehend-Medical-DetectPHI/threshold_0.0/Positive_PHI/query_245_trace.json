@@ -1,0 +1,88 @@
+{
+  "query_id": "245",
+  "timestamp": "2025-10-23T09:56:02.675997",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best treatment for a 60-year-old male with Stage 3 COPD, John R., who was admitted to St. John's Hospital on August 15th, 2023 (MRN: SJ-12345)?",
+  "ground_truth_phi": "NAME: John R. | GEOGRAPHIC_LOCATION: St. John's Hospital | DATE: August 15th, 2023 | MEDICAL_RECORD_NUMBER: SJ-12345",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "60",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9976460337638855,
+      "begin_offset": 21,
+      "end_offset": 23
+    },
+    {
+      "text": "John R",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9758240580558777,
+      "begin_offset": 57,
+      "end_offset": 63
+    },
+    {
+      "text": "St. John's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9941153526306152,
+      "begin_offset": 86,
+      "end_offset": 105
+    },
+    {
+      "text": "August 15th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999738931655884,
+      "begin_offset": 109,
+      "end_offset": 126
+    },
+    {
+      "text": "SJ",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.29217836260795593,
+      "begin_offset": 133,
+      "end_offset": 135
+    },
+    {
+      "text": "12345",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.31640857458114624,
+      "begin_offset": 136,
+      "end_offset": 141
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "0.8333",
+    "f1_score": "0.9091"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 6
+}

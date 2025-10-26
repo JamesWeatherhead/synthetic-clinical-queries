@@ -1,0 +1,70 @@
+{
+  "query_id": "401",
+  "timestamp": "2025-10-23T09:56:22.136269",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best practices for managing hypertension in a 55-year-old male patient, Robert Smith (phone: 123-456-7890), with a new diagnosis on February 20, 2024?",
+  "ground_truth_phi": "NAME: Robert Smith | PHONE_NUMBER: 123-456-7890 | DATE: February 20, 2024",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "55",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995642304420471,
+      "begin_offset": 46,
+      "end_offset": 48
+    },
+    {
+      "text": "Robert Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9965818524360657,
+      "begin_offset": 72,
+      "end_offset": 84
+    },
+    {
+      "text": "123-456-7890",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998418092727661,
+      "begin_offset": 93,
+      "end_offset": 105
+    },
+    {
+      "text": "February 20, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999343156814575,
+      "begin_offset": 132,
+      "end_offset": 149
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

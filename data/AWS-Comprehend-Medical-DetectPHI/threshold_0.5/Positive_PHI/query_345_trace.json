@@ -1,0 +1,70 @@
+{
+  "query_id": "345",
+  "timestamp": "2025-10-23T09:56:15.886367",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the current treatment protocols for acute lymphoblastic leukemia in a 10-year-old, William P., presenting at St. Joseph's Hospital on January 15, 2024?",
+  "ground_truth_phi": "NAME: William P. | GEOGRAPHIC_LOCATION: St. Joseph's Hospital | DATE: January 15, 2024",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "10",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9503750801086426,
+      "begin_offset": 79,
+      "end_offset": 81
+    },
+    {
+      "text": "William P",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.950571596622467,
+      "begin_offset": 92,
+      "end_offset": 101
+    },
+    {
+      "text": "St. Joseph's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9889734387397766,
+      "begin_offset": 118,
+      "end_offset": 139
+    },
+    {
+      "text": "January 15, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999722242355347,
+      "begin_offset": 143,
+      "end_offset": 159
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

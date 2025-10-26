@@ -1,0 +1,76 @@
+{
+  "query_id": "904",
+  "timestamp": "2025-10-22T16:12:46.776698",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "protocol for T2DM pt, mrn 22334455, Jane D., seen at Johns Hopkins on Feb 20 2024. Consideration for new tx regimen plz.",
+  "ground_truth_phi": "NAME: Jane D. | GEOGRAPHIC_LOCATION: Johns Hopkins | DATE: Feb 20 2024 | MEDICAL_RECORD_NUMBER: 22334455",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "protocol for T2DM pt, [REDACTED_MEDICAL_RECORD_NUMBER], [REDACTED_NAME], seen at Johns Hopkins on [REDACTED_DATE]. Consideration for new [REDACTED_GEOGRAPHIC_LOCATION] regimen plz.",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 22,
+      "end": 34,
+      "score": 0.9,
+      "text": "mrn 22334455",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 36,
+      "end": 43,
+      "score": 0.85,
+      "text": "Jane D.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 70,
+      "end": 81,
+      "score": 0.85,
+      "text": "Feb 20 2024",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 105,
+      "end": 107,
+      "score": 0.85,
+      "text": "tx",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Johns Hopkins",
+        "start": 53,
+        "end": 66
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.5000",
+    "f1_score": "0.6000"
+  }
+}

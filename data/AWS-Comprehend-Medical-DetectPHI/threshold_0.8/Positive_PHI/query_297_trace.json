@@ -1,0 +1,79 @@
+{
+  "query_id": "297",
+  "timestamp": "2025-10-23T09:56:10.545871",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for managing hypertension in a 50-year-old diabetic patient, Sarah White, who was discharged from Miami General on October 12, 2022 (Policy No: 789-456-123)?",
+  "ground_truth_phi": "NAME: Sarah White | GEOGRAPHIC_LOCATION: Miami General | DATE: October 12, 2022 | HEALTH_PLAN_BENEFICIARY_NUMBER: 789-456-123",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "50",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9993519186973572,
+      "begin_offset": 42,
+      "end_offset": 44
+    },
+    {
+      "text": "Sarah White",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9968968629837036,
+      "begin_offset": 72,
+      "end_offset": 83
+    },
+    {
+      "text": "Miami General",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.908361554145813,
+      "begin_offset": 109,
+      "end_offset": 122
+    },
+    {
+      "text": "October 12, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999526739120483,
+      "begin_offset": 126,
+      "end_offset": 142
+    },
+    {
+      "text": "789-456-123",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8334574699401855,
+      "begin_offset": 155,
+      "end_offset": 166
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

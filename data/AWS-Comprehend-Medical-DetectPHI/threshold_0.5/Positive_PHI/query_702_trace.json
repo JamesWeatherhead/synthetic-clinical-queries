@@ -1,0 +1,70 @@
+{
+  "query_id": "702",
+  "timestamp": "2025-10-23T09:56:52.914057",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best practices for managing chronic back pain in a 55-year-old female, Susan L., who was last treated on October 21st, 2023 (MRN: SL-112233)?",
+  "ground_truth_phi": "NAME: Susan L. | DATE: October 21st, 2023 | MEDICAL_RECORD_NUMBER: SL-112233",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "55",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9993191957473755,
+      "begin_offset": 51,
+      "end_offset": 53
+    },
+    {
+      "text": "Susan L",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9984626770019531,
+      "begin_offset": 71,
+      "end_offset": 78
+    },
+    {
+      "text": "October 21st, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999983549118042,
+      "begin_offset": 105,
+      "end_offset": 123
+    },
+    {
+      "text": "112233",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6258413791656494,
+      "begin_offset": 133,
+      "end_offset": 139
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

@@ -1,0 +1,70 @@
+{
+  "query_id": "173",
+  "timestamp": "2025-10-23T09:55:54.350921",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for prescribing anticoagulants to patients with atrial fibrillation like Margaret W., seen at Stanford Clinic on February 12, 2023 (MRN: #SC987654)?",
+  "ground_truth_phi": "NAME: Margaret W. | GEOGRAPHIC_LOCATION: Stanford Clinic | DATE: February 12, 2023 | MEDICAL_RECORD_NUMBER: #SC987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Margaret W",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8966437578201294,
+      "begin_offset": 84,
+      "end_offset": 94
+    },
+    {
+      "text": "Stanford Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9884093999862671,
+      "begin_offset": 105,
+      "end_offset": 120
+    },
+    {
+      "text": "February 12, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999732971191406,
+      "begin_offset": 124,
+      "end_offset": 141
+    },
+    {
+      "text": "SC987654",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9951959252357483,
+      "begin_offset": 149,
+      "end_offset": 157
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

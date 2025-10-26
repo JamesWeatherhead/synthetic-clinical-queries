@@ -1,0 +1,70 @@
+{
+  "query_id": "204",
+  "timestamp": "2025-10-23T09:55:57.559659",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for treating hypertension in a 65-year-old male, Tom B., who has an appointment at the Houston Heart Institute on February 10th, 2023?",
+  "ground_truth_phi": "NAME: Tom B. | GEOGRAPHIC_LOCATION: Houston Heart Institute | DATE: February 10th, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "65",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996298551559448,
+      "begin_offset": 42,
+      "end_offset": 44
+    },
+    {
+      "text": "Tom B",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9648196697235107,
+      "begin_offset": 60,
+      "end_offset": 65
+    },
+    {
+      "text": "Houston Heart Institute",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9950898885726929,
+      "begin_offset": 98,
+      "end_offset": 121
+    },
+    {
+      "text": "February 10th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999257326126099,
+      "begin_offset": 125,
+      "end_offset": 144
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

@@ -1,0 +1,67 @@
+{
+  "query_id": "740",
+  "timestamp": "2025-10-22T16:12:45.907505",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Current CDC guidelines on the management of a 30-year-old HIV-positive male, Michael T., who was seen at Cedars-Sinai Medical Center last month.",
+  "ground_truth_phi": "NAME: Michael T. | GEOGRAPHIC_LOCATION: Cedars-Sinai Medical Center",
+  "ground_truth_phi_count": 2,
+  "presidio_output": "Current CDC guidelines on the management of a [REDACTED_DATE] HIV-positive male, [REDACTED_NAME], who was seen at Cedars-Sinai Medical Center [REDACTED_DATE].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 46,
+      "end": 57,
+      "score": 0.85,
+      "text": "30-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 77,
+      "end": 87,
+      "score": 0.85,
+      "text": "Michael T.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 133,
+      "end": 143,
+      "score": 0.85,
+      "text": "last month",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Cedars-Sinai Medical Center",
+        "start": 105,
+        "end": 132
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 2,
+    "successfully_redacted": 1,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.5000",
+    "precision": "0.3333",
+    "f1_score": "0.4000"
+  }
+}

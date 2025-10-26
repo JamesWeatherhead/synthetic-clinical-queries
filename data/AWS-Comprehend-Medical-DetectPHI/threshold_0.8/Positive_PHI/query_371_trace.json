@@ -1,0 +1,70 @@
+{
+  "query_id": "371",
+  "timestamp": "2025-10-23T09:56:18.813016",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Please provide the current guidelines on the management of COPD in a 68-year-old female named Mary L. who was admitted to Stanford Health Care on February 5, 2022.",
+  "ground_truth_phi": "NAME: Mary L. | GEOGRAPHIC_LOCATION: Stanford Health Care | DATE: February 5, 2022",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "68",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9992417097091675,
+      "begin_offset": 69,
+      "end_offset": 71
+    },
+    {
+      "text": "Mary L.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9863064289093018,
+      "begin_offset": 94,
+      "end_offset": 101
+    },
+    {
+      "text": "Stanford Health Care",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9828243255615234,
+      "begin_offset": 122,
+      "end_offset": 142
+    },
+    {
+      "text": "February 5, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999558925628662,
+      "begin_offset": 146,
+      "end_offset": 162
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

@@ -1,0 +1,79 @@
+{
+  "query_id": "125",
+  "timestamp": "2025-10-23T09:55:49.781985",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Management of a 55-year-old female with chronic atrial fibrillation, seen by Dr. Smith at Cedars-Sinai, Los Angeles on August 12th, 2023 (MRN: 123-456-789)?",
+  "ground_truth_phi": "NAME: Dr. Smith | GEOGRAPHIC_LOCATION: Cedars-Sinai, Los Angeles | DATE: August 12th, 2023 | MEDICAL_RECORD_NUMBER: 123-456-789",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "55",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997565150260925,
+      "begin_offset": 16,
+      "end_offset": 18
+    },
+    {
+      "text": "Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9972699284553528,
+      "begin_offset": 81,
+      "end_offset": 86
+    },
+    {
+      "text": "Cedars-Sinai, Los Angeles",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9345938563346863,
+      "begin_offset": 90,
+      "end_offset": 115
+    },
+    {
+      "text": "August 12th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999592304229736,
+      "begin_offset": 119,
+      "end_offset": 136
+    },
+    {
+      "text": "123-456-789",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9980210065841675,
+      "begin_offset": 143,
+      "end_offset": 154
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

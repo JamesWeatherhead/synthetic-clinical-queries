@@ -1,0 +1,61 @@
+{
+  "query_id": "59",
+  "timestamp": "2025-10-23T09:55:42.677045",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Is there an interaction between warfarin and amiodarone for Jane Doe, DOB: 06/12/1950, seen at Cleveland Clinic?",
+  "ground_truth_phi": "NAME: Jane Doe | DATE: 06/12/1950 | GEOGRAPHIC_LOCATION: Cleveland Clinic",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "Jane Doe",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8858598470687866,
+      "begin_offset": 60,
+      "end_offset": 68
+    },
+    {
+      "text": "06/12/1950",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999597072601318,
+      "begin_offset": 75,
+      "end_offset": 85
+    },
+    {
+      "text": "Cleveland Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9986121654510498,
+      "begin_offset": 95,
+      "end_offset": 111
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

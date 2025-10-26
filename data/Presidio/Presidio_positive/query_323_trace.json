@@ -1,0 +1,76 @@
+{
+  "query_id": "323",
+  "timestamp": "2025-10-22T16:12:43.724643",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Can you provide the standard postoperative care for a 35-year-old male named Richard B. who underwent surgery at Johns Hopkins on May 10th, 2023 (MRN: RH-654321)?",
+  "ground_truth_phi": "NAME: Richard B. | GEOGRAPHIC_LOCATION: Johns Hopkins | DATE: May 10th, 2023 | MEDICAL_RECORD_NUMBER: RH-654321",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Can you provide the standard postoperative care for a [REDACTED_DATE] male named [REDACTED_NAME] who underwent surgery at Johns Hopkins on [REDACTED_DATE] (MRN: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 54,
+      "end": 65,
+      "score": 0.85,
+      "text": "35-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 77,
+      "end": 87,
+      "score": 0.85,
+      "text": "Richard B.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 130,
+      "end": 144,
+      "score": 0.85,
+      "text": "May 10th, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 151,
+      "end": 160,
+      "score": 0.7,
+      "text": "RH-654321",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Johns Hopkins",
+        "start": 113,
+        "end": 126
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "query_id": "483",
+  "timestamp": "2025-10-22T16:12:44.581522",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guidelines for prescribing statins to Joe Brown, a 67-year-old male with a history of angina, seen at the Dallas Health Center on June 10th, 2022 (MRN: 987654321)?",
+  "ground_truth_phi": "NAME: Joe Brown | GEOGRAPHIC_LOCATION: Dallas Health Center | DATE: June 10th, 2022 | MEDICAL_RECORD_NUMBER: 987654321",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Guidelines for prescribing statins to [REDACTED_NAME], a [REDACTED_DATE] male with a history of angina, seen at the Dallas Health Center on [REDACTED_DATE] ([REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 147,
+      "end": 161,
+      "score": 0.9,
+      "text": "MRN: 987654321",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 38,
+      "end": 47,
+      "score": 0.85,
+      "text": "Joe Brown",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 51,
+      "end": 62,
+      "score": 0.85,
+      "text": "67-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 130,
+      "end": 145,
+      "score": 0.85,
+      "text": "June 10th, 2022",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Dallas Health Center",
+        "start": 106,
+        "end": 126
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.5000",
+    "f1_score": "0.6000"
+  }
+}

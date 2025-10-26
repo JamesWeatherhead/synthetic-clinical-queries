@@ -1,0 +1,78 @@
+{
+  "query_id": "1012",
+  "timestamp": "2025-10-22T16:12:47.363398",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the guidelines for treating hypertension in a 60-year-old female, Ann T., who visited our San Francisco clinic on 02/14/2024 (Insurance#: HBP-234987)?",
+  "ground_truth_phi": "NAME: Ann T. | GEOGRAPHIC_LOCATION: San Francisco clinic | DATE: 02/14/2024 | HEALTH_PLAN_BENEFICIARY_NUMBER: HBP-234987",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What are the guidelines for treating hypertension in a [REDACTED_DATE] female, [REDACTED_NAME], who visited our [REDACTED_GEOGRAPHIC_LOCATION] clinic on [REDACTED_DATE] (Insurance#: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 55,
+      "end": 66,
+      "score": 0.85,
+      "text": "60-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 75,
+      "end": 81,
+      "score": 0.85,
+      "text": "Ann T.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 99,
+      "end": 112,
+      "score": 0.85,
+      "text": "San Francisco",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 123,
+      "end": 133,
+      "score": 0.85,
+      "text": "02/14/2024",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 147,
+      "end": 157,
+      "score": 0.7,
+      "text": "HBP-234987",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.6000",
+    "f1_score": "0.7500"
+  }
+}

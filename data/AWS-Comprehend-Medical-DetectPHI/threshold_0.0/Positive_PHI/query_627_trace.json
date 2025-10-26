@@ -1,0 +1,88 @@
+{
+  "query_id": "627",
+  "timestamp": "2025-10-23T09:56:45.918285",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best practices for post-op care in pt, 50yo M, dx'd w/ prostate cancer, seen by Dr. John Smith at Huntington Hospital on Feb 22nd @ 9AM, needing follow-up via telehealth (Phone: 555-123-4567).",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: Huntington Hospital | DATE: Feb 22nd | PHONE_NUMBER: 555-123-4567",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "50yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9947667121887207,
+      "begin_offset": 39,
+      "end_offset": 43
+    },
+    {
+      "text": "John Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997374415397644,
+      "begin_offset": 84,
+      "end_offset": 94
+    },
+    {
+      "text": "Huntington Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9921728372573853,
+      "begin_offset": 98,
+      "end_offset": 117
+    },
+    {
+      "text": "Feb 22nd",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9974684715270996,
+      "begin_offset": 121,
+      "end_offset": 129
+    },
+    {
+      "text": "telehealth",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6765262484550476,
+      "begin_offset": 159,
+      "end_offset": 169
+    },
+    {
+      "text": "555-123-4567",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9986316561698914,
+      "begin_offset": 178,
+      "end_offset": 190
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.6667",
+    "f1_score": "0.8000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 6
+}

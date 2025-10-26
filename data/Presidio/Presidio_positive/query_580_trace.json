@@ -1,0 +1,85 @@
+{
+  "query_id": "580",
+  "timestamp": "2025-10-22T16:12:45.101315",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the treatment options for a 62-year-old woman with newly diagnosed multiple myeloma, Jane Smith, who was admitted to Mount Sinai Hospital on November 15th, 2023 (MRN: MS-764839)?",
+  "ground_truth_phi": "NAME: Jane Smith | GEOGRAPHIC_LOCATION: Mount Sinai Hospital | DATE: November 15th, 2023 | MEDICAL_RECORD_NUMBER: MS-764839",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What are the treatment options for a [REDACTED_DATE] woman with newly diagnosed multiple myeloma, [REDACTED_NAME], who was admitted to Mount Sinai Hospital on [REDACTED_DATE] (MRN: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 37,
+      "end": 48,
+      "score": 0.85,
+      "text": "62-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 94,
+      "end": 104,
+      "score": 0.85,
+      "text": "Jane Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 150,
+      "end": 164,
+      "score": 0.85,
+      "text": "November 15th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 165,
+      "end": 169,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 176,
+      "end": 185,
+      "score": 0.7,
+      "text": "MS-764839",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Mount Sinai Hospital",
+        "start": 126,
+        "end": 146
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.4000",
+    "f1_score": "0.5217"
+  }
+}

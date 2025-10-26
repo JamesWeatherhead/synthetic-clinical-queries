@@ -1,0 +1,70 @@
+{
+  "query_id": "974",
+  "timestamp": "2025-10-23T09:57:23.414129",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best practices for monitoring INR in 76yo male post-aortic valve replacement, pt name: John D., operated at Houston Heart Center on 08/12/2022, s/p warfarin therapy?",
+  "ground_truth_phi": "NAME: John D. | GEOGRAPHIC_LOCATION: Houston Heart Center | DATE: 08/12/2022",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "76yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.908916175365448,
+      "begin_offset": 37,
+      "end_offset": 41
+    },
+    {
+      "text": "John D",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9647916555404663,
+      "begin_offset": 87,
+      "end_offset": 93
+    },
+    {
+      "text": "Houston Heart Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9985193610191345,
+      "begin_offset": 108,
+      "end_offset": 128
+    },
+    {
+      "text": "08/12/2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999752044677734,
+      "begin_offset": 132,
+      "end_offset": 142
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

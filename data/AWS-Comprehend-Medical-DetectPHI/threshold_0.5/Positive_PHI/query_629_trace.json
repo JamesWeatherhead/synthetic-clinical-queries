@@ -1,0 +1,57 @@
+{
+  "query_id": "629",
+  "timestamp": "2025-10-23T09:56:46.050962",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "For a 42-year-old male with a history of asthma and diabetes, Peter M., what are the contraindications of using Advair, especially considering his prescription record (MRN: PM-998877)?",
+  "ground_truth_phi": "NAME: Peter M. | MEDICAL_RECORD_NUMBER: PM-998877",
+  "ground_truth_phi_count": 2,
+  "aws_entities_detected": [
+    {
+      "text": "42",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999340832233429,
+      "begin_offset": 6,
+      "end_offset": 8
+    },
+    {
+      "text": "998877",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6020569205284119,
+      "begin_offset": 176,
+      "end_offset": 182
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "NAME",
+        "value": "Peter M."
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 2,
+    "successfully_detected": 1,
+    "leaked_failures": 1,
+    "total_detected": 2,
+    "true_positives": 1,
+    "recall": "0.5000",
+    "precision": "0.5000",
+    "f1_score": "0.5000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 2
+}

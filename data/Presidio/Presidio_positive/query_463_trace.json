@@ -1,0 +1,76 @@
+{
+  "query_id": "463",
+  "timestamp": "2025-10-22T16:12:44.460819",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guidelines for managing chronic migraines in a 42-year-old female, Amanda P., who presented at Bayview Clinic on April 20th, 2022, and has a prescription plan under ID: RX-87654321.",
+  "ground_truth_phi": "NAME: Amanda P. | GEOGRAPHIC_LOCATION: Bayview Clinic | DATE: April 20th, 2022 | UNIQUE_IDENTIFIER: RX-87654321",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Guidelines for managing chronic migraines in a [REDACTED_DATE] female, [REDACTED_NAME], who presented at Bayview Clinic on [REDACTED_DATE], and has a prescription plan under ID: [REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 47,
+      "end": 58,
+      "score": 0.85,
+      "text": "42-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 67,
+      "end": 76,
+      "score": 0.85,
+      "text": "Amanda P.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 113,
+      "end": 129,
+      "score": 0.85,
+      "text": "April 20th, 2022",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 169,
+      "end": 180,
+      "score": 0.7,
+      "text": "RX-87654321",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Bayview Clinic",
+        "start": 95,
+        "end": 109
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

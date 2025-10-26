@@ -1,0 +1,60 @@
+{
+  "query_id": "869",
+  "timestamp": "2025-10-22T16:12:46.601019",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Is there any evidence for the use of biologics in severe asthma for a patient like John Smith, seen at our New York City clinic on Dec 10, 2023?",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: New York City | DATE: Dec 10, 2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Is there any evidence for the use of biologics in severe asthma for a patient like [REDACTED_NAME], seen at our [REDACTED_GEOGRAPHIC_LOCATION] clinic on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 83,
+      "end": 93,
+      "score": 0.85,
+      "text": "John Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 107,
+      "end": 120,
+      "score": 0.85,
+      "text": "New York City",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 131,
+      "end": 143,
+      "score": 0.85,
+      "text": "Dec 10, 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  }
+}

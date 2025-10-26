@@ -1,0 +1,88 @@
+{
+  "query_id": "602",
+  "timestamp": "2025-10-23T09:56:43.347434",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best practices for prescribing anticoagulants for a 72yo male, Mr. D. Jones, who suffered a stroke in July 2021 and is currently at St. Joseph's Medical Center (MRN: SJMC-56789).",
+  "ground_truth_phi": "NAME: Mr. D. Jones | GEOGRAPHIC_LOCATION: St. Joseph's Medical Center | DATE: July 2021 | MEDICAL_RECORD_NUMBER: SJMC-56789",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "72yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9975408315658569,
+      "begin_offset": 52,
+      "end_offset": 56
+    },
+    {
+      "text": "D. Jones",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9994370341300964,
+      "begin_offset": 67,
+      "end_offset": 75
+    },
+    {
+      "text": "July 2021",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999717473983765,
+      "begin_offset": 102,
+      "end_offset": 111
+    },
+    {
+      "text": "St. Joseph's Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9726452231407166,
+      "begin_offset": 132,
+      "end_offset": 159
+    },
+    {
+      "text": "SJMC",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8831954598426819,
+      "begin_offset": 166,
+      "end_offset": 170
+    },
+    {
+      "text": "56789",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.5337796807289124,
+      "begin_offset": 171,
+      "end_offset": 176
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "0.8333",
+    "f1_score": "0.9091"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 6
+}

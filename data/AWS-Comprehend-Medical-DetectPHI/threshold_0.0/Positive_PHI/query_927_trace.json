@@ -1,0 +1,61 @@
+{
+  "query_id": "927",
+  "timestamp": "2025-10-23T09:57:16.927146",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Evidence-based practices for treating chronic migraines in adolescents, particularly in patients like Ryan T. from Chicago, who was treated on January 5th, 2022?",
+  "ground_truth_phi": "NAME: Ryan T. | GEOGRAPHIC_LOCATION: Chicago | DATE: January 5th, 2022",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "Ryan T.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.5382938385009766,
+      "begin_offset": 102,
+      "end_offset": 109
+    },
+    {
+      "text": "Chicago",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9933484196662903,
+      "begin_offset": 115,
+      "end_offset": 122
+    },
+    {
+      "text": "January 5th, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999969482421875,
+      "begin_offset": 143,
+      "end_offset": 160
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

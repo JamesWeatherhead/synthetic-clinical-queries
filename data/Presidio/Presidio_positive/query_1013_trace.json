@@ -1,0 +1,67 @@
+{
+  "query_id": "1013",
+  "timestamp": "2025-10-22T16:12:47.369218",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Prognosis for a 55yo male with liver cirrhosis, John Smith, admitted at UCSF on September 10th, 2023 (Contact: 415-555-1234)?",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: UCSF | DATE: September 10th, 2023 | PHONE_NUMBER: 415-555-1234",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Prognosis for a 55yo male with liver cirrhosis, [REDACTED_NAME], admitted at UCSF on [REDACTED_DATE] (Contact: [REDACTED_PHONE_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 48,
+      "end": 58,
+      "score": 0.85,
+      "text": "John Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 80,
+      "end": 100,
+      "score": 0.85,
+      "text": "September 10th, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 111,
+      "end": 123,
+      "score": 0.4,
+      "text": "415-555-1234",
+      "recognizer": "PhoneRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UCSF",
+        "start": 72,
+        "end": 76
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  }
+}

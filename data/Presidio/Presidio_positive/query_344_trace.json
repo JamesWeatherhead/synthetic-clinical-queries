@@ -1,0 +1,76 @@
+{
+  "query_id": "344",
+  "timestamp": "2025-10-22T16:12:43.831798",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Management of osteoporosis in postmenopausal women, noting patient Maria G., seen at Green Valley Clinic on July 20th, 2023, MRN GV-994411.",
+  "ground_truth_phi": "NAME: Maria G. | GEOGRAPHIC_LOCATION: Green Valley Clinic | DATE: July 20th, 2023 | MEDICAL_RECORD_NUMBER: GV-994411",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Management of osteoporosis in postmenopausal women, noting patient [REDACTED_NAME], seen at Green Valley Clinic on [REDACTED_DATE], MRN [REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 67,
+      "end": 75,
+      "score": 0.85,
+      "text": "Maria G.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 108,
+      "end": 118,
+      "score": 0.85,
+      "text": "July 20th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 119,
+      "end": 123,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 129,
+      "end": 138,
+      "score": 0.7,
+      "text": "GV-994411",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Green Valley Clinic",
+        "start": 85,
+        "end": 104
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.5000",
+    "f1_score": "0.6000"
+  }
+}

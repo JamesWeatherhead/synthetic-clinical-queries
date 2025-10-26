@@ -1,0 +1,79 @@
+{
+  "query_id": "260",
+  "timestamp": "2025-10-23T09:56:05.297047",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Recommended immunotherapy for a 60-year-old male with advanced melanoma, Michael Brown, treated at St. Joseph's Hospital on July 15th, 2023 (MRN: 98234-AB).",
+  "ground_truth_phi": "NAME: Michael Brown | GEOGRAPHIC_LOCATION: St. Joseph's Hospital | DATE: July 15th, 2023 | MEDICAL_RECORD_NUMBER: 98234-AB",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "60",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9994344115257263,
+      "begin_offset": 32,
+      "end_offset": 34
+    },
+    {
+      "text": "Michael Brown",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9948965907096863,
+      "begin_offset": 73,
+      "end_offset": 86
+    },
+    {
+      "text": "St. Joseph's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9895897507667542,
+      "begin_offset": 99,
+      "end_offset": 120
+    },
+    {
+      "text": "July 15th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999359846115112,
+      "begin_offset": 124,
+      "end_offset": 139
+    },
+    {
+      "text": "98234",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.1477017104625702,
+      "begin_offset": 146,
+      "end_offset": 151
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

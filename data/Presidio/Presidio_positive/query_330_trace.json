@@ -1,0 +1,82 @@
+{
+  "query_id": "330",
+  "timestamp": "2025-10-22T16:12:43.749872",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the latest treatment options for a 60-year-old male, Robert S., with metastatic lung cancer, who was seen at Emory University Hospital on January 5th, 2023 (MRN: 12345-EMH)?",
+  "ground_truth_phi": "NAME: Robert S. | GEOGRAPHIC_LOCATION: Emory University Hospital | DATE: January 5th, 2023 | MEDICAL_RECORD_NUMBER: 12345-EMH",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What are the latest treatment options for a [REDACTED_DATE] male, [REDACTED_NAME], with metastatic lung cancer, who was seen at Emory University Hospital on [REDACTED_DATE] (MRN: 12345-EMH)?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 44,
+      "end": 55,
+      "score": 0.85,
+      "text": "60-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 62,
+      "end": 71,
+      "score": 0.85,
+      "text": "Robert S.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 147,
+      "end": 159,
+      "score": 0.85,
+      "text": "January 5th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 160,
+      "end": 164,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Emory University Hospital",
+        "start": 118,
+        "end": 143
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "12345-EMH",
+        "start": 171,
+        "end": 180
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 4,
+    "recall": "0.5000",
+    "precision": "0.2500",
+    "f1_score": "0.3333"
+  }
+}

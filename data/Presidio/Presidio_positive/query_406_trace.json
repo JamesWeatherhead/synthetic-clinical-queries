@@ -1,0 +1,78 @@
+{
+  "query_id": "406",
+  "timestamp": "2025-10-22T16:12:44.173461",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommendations for treating pediatric asthma in a 10-year-old male patient, Jeremy B., evaluated at Children's Hospital Los Angeles on September 21, 2022, MRN: CH-203948.",
+  "ground_truth_phi": "NAME: Jeremy B. | GEOGRAPHIC_LOCATION: Children's Hospital Los Angeles | DATE: September 21, 2022 | MEDICAL_RECORD_NUMBER: CH-203948",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Recommendations for treating pediatric asthma in a [REDACTED_DATE] male patient, [REDACTED_NAME], evaluated at Children's Hospital [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE], MRN: [REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 51,
+      "end": 62,
+      "score": 0.85,
+      "text": "10-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 77,
+      "end": 86,
+      "score": 0.85,
+      "text": "Jeremy B.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 121,
+      "end": 132,
+      "score": 0.85,
+      "text": "Los Angeles",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 136,
+      "end": 154,
+      "score": 0.85,
+      "text": "September 21, 2022",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 161,
+      "end": 170,
+      "score": 0.7,
+      "text": "CH-203948",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.6000",
+    "f1_score": "0.7500"
+  }
+}

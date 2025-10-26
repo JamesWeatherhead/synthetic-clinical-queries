@@ -1,0 +1,67 @@
+{
+  "query_id": "91",
+  "timestamp": "2025-10-22T16:12:42.525157",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Contraindications for using enalapril in a patient with CKD, John Williams, admitted to Mount Sinai on July 22nd, 2022, and having MRN 8765-4321?",
+  "ground_truth_phi": "NAME: John Williams | GEOGRAPHIC_LOCATION: Mount Sinai | DATE: July 22nd, 2022 | MEDICAL_RECORD_NUMBER: 8765-4321",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Contraindications for using enalapril in a patient with CKD, [REDACTED_NAME], admitted to [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE], and having MRN 8765-4321?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 61,
+      "end": 74,
+      "score": 0.85,
+      "text": "John Williams",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 88,
+      "end": 99,
+      "score": 0.85,
+      "text": "Mount Sinai",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 103,
+      "end": 118,
+      "score": 0.85,
+      "text": "July 22nd, 2022",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "8765-4321",
+        "start": 135,
+        "end": 144
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  }
+}

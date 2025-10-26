@@ -1,0 +1,76 @@
+{
+  "query_id": "208",
+  "timestamp": "2025-10-22T16:12:43.121412",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guidelines for treating HTN in pt, Mary K., age 72, admitted to Stanford on Feb 18, 2022. Concerns about Lisinopril interactions. MRN: SK-9988776.",
+  "ground_truth_phi": "NAME: Mary K. | GEOGRAPHIC_LOCATION: Stanford | DATE: Feb 18, 2022 | MEDICAL_RECORD_NUMBER: SK-9988776",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Guidelines for treating HTN in pt, [REDACTED_NAME], [REDACTED_DATE], admitted to Stanford on [REDACTED_DATE]. Concerns about Lisinopril interactions. MRN: [REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 35,
+      "end": 42,
+      "score": 0.85,
+      "text": "Mary K.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 44,
+      "end": 50,
+      "score": 0.85,
+      "text": "age 72",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 76,
+      "end": 88,
+      "score": 0.85,
+      "text": "Feb 18, 2022",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 135,
+      "end": 145,
+      "score": 0.7,
+      "text": "SK-9988776",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Stanford",
+        "start": 64,
+        "end": 72
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

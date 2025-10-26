@@ -1,0 +1,75 @@
+{
+  "query_id": "748",
+  "timestamp": "2025-10-23T09:56:57.159130",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "tx rec for 82yo male, hx of CHF & COPD, Smith J., visited UCLA Med Ctr on 04/21/2023. Concerns about prescribing carvedilol. His insurance # is NP-1234AB.",
+  "ground_truth_phi": "NAME: Smith J. | GEOGRAPHIC_LOCATION: UCLA Med Ctr | DATE: 04/21/2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: NP-1234AB",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "82yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9941462278366089,
+      "begin_offset": 11,
+      "end_offset": 15
+    },
+    {
+      "text": "Smith J",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9300673007965088,
+      "begin_offset": 40,
+      "end_offset": 47
+    },
+    {
+      "text": "UCLA Med Ctr",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8361591696739197,
+      "begin_offset": 58,
+      "end_offset": 70
+    },
+    {
+      "text": "04/21/2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999880790710449,
+      "begin_offset": 74,
+      "end_offset": 84
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+        "value": "NP-1234AB"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 4
+}

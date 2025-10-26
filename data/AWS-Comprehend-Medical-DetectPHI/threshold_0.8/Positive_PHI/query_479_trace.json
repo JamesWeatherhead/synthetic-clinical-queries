@@ -1,0 +1,70 @@
+{
+  "query_id": "479",
+  "timestamp": "2025-10-23T09:56:30.132693",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Comparative effectiveness of telmisartan versus amlodipine in managing hypertension for a 72-year-old female, with records from Dr. Robert S. at Hope Medical Center on 05/22/2023?",
+  "ground_truth_phi": "NAME: Dr. Robert S. | GEOGRAPHIC_LOCATION: Hope Medical Center | DATE: 05/22/2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "72",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9885560870170593,
+      "begin_offset": 90,
+      "end_offset": 92
+    },
+    {
+      "text": "Robert S.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9975684285163879,
+      "begin_offset": 132,
+      "end_offset": 141
+    },
+    {
+      "text": "Hope Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.993848979473114,
+      "begin_offset": 145,
+      "end_offset": 164
+    },
+    {
+      "text": "05/22/2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999467134475708,
+      "begin_offset": 168,
+      "end_offset": 178
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

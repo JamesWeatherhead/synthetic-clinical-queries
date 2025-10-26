@@ -1,0 +1,79 @@
+{
+  "query_id": "700",
+  "timestamp": "2025-10-23T09:56:52.663733",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Comparative Efficacy of apixaban vs. warfarin for stroke prevention in a 72yo male c h/o AFib, John D., seen @ UCSF Med Ctr on 02/14/22 (contact: 555-123-4567)?",
+  "ground_truth_phi": "NAME: John D. | GEOGRAPHIC_LOCATION: UCSF Med Ctr | DATE: 02/14/22 | PHONE_NUMBER: 555-123-4567",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "72yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996999502182007,
+      "begin_offset": 73,
+      "end_offset": 77
+    },
+    {
+      "text": "John D",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8569419980049133,
+      "begin_offset": 95,
+      "end_offset": 101
+    },
+    {
+      "text": "UCSF Med Ctr",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8718810081481934,
+      "begin_offset": 111,
+      "end_offset": 123
+    },
+    {
+      "text": "02/14/22",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999738931655884,
+      "begin_offset": 127,
+      "end_offset": 135
+    },
+    {
+      "text": "555-123-4567",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9977273344993591,
+      "begin_offset": 146,
+      "end_offset": 158
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

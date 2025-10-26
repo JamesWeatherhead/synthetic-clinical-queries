@@ -1,0 +1,79 @@
+{
+  "query_id": "340",
+  "timestamp": "2025-10-23T09:56:15.189327",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best practices for managing chronic hypertension in a 60-year-old male patient, Henry R., seen at Elm Clinic on October 10, 2023 (MRN: 789654321)?",
+  "ground_truth_phi": "NAME: Henry R. | GEOGRAPHIC_LOCATION: Elm Clinic | DATE: October 10, 2023 | MEDICAL_RECORD_NUMBER: 789654321",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "60",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9988619089126587,
+      "begin_offset": 54,
+      "end_offset": 56
+    },
+    {
+      "text": "Henry R",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9812856912612915,
+      "begin_offset": 80,
+      "end_offset": 87
+    },
+    {
+      "text": "Elm Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9985381364822388,
+      "begin_offset": 98,
+      "end_offset": 108
+    },
+    {
+      "text": "October 10, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999821186065674,
+      "begin_offset": 112,
+      "end_offset": 128
+    },
+    {
+      "text": "789654321",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9936704635620117,
+      "begin_offset": 135,
+      "end_offset": 144
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

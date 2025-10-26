@@ -1,0 +1,85 @@
+{
+  "query_id": "86",
+  "timestamp": "2025-10-22T16:12:42.491023",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guidelines for managing chronic migraine in a 35-year-old female, Jane E., with a history of hypertension, seen at UCSF on March 5th, 2022. Email her case details to jane.e@example.com.",
+  "ground_truth_phi": "NAME: Jane E. | GEOGRAPHIC_LOCATION: UCSF | DATE: March 5th, 2022 | EMAIL_ADDRESS: jane.e@example.com",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Guidelines for managing chronic migraine in a [REDACTED_DATE] female, [REDACTED_NAME], with a history of hypertension, seen at UCSF on [REDACTED_DATE]. Email her case details to [REDACTED_EMAIL_ADDRESS].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "EMAIL_ADDRESS",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "start": 166,
+      "end": 184,
+      "score": 1.0,
+      "text": "jane.e@example.com",
+      "recognizer": "EmailRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 46,
+      "end": 57,
+      "score": 0.85,
+      "text": "35-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 66,
+      "end": 73,
+      "score": 0.85,
+      "text": "Jane E.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 123,
+      "end": 138,
+      "score": 0.85,
+      "text": "March 5th, 2022",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "URL",
+      "hipaa_category": "WEB_URL",
+      "start": 173,
+      "end": 184,
+      "score": 0.5,
+      "text": "example.com",
+      "recognizer": "UrlRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UCSF",
+        "start": 115,
+        "end": 119
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.6000",
+    "f1_score": "0.6667"
+  }
+}

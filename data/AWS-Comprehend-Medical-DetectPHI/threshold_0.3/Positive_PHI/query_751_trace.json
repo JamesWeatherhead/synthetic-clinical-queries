@@ -1,0 +1,79 @@
+{
+  "query_id": "751",
+  "timestamp": "2025-10-23T09:56:57.405383",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best practices for managing hypertension in a 65-year-old male, William R. seen at St. Mary's Hospital on July 10th, 2023 (MRN: #SMH12345)?",
+  "ground_truth_phi": "NAME: William R. | GEOGRAPHIC_LOCATION: St. Mary's Hospital | DATE: July 10th, 2023 | MEDICAL_RECORD_NUMBER: #SMH12345",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "65",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9991494417190552,
+      "begin_offset": 46,
+      "end_offset": 48
+    },
+    {
+      "text": "William R.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9364948868751526,
+      "begin_offset": 64,
+      "end_offset": 74
+    },
+    {
+      "text": "St. Mary's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9921773076057434,
+      "begin_offset": 83,
+      "end_offset": 102
+    },
+    {
+      "text": "July 10th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999567270278931,
+      "begin_offset": 106,
+      "end_offset": 121
+    },
+    {
+      "text": "SMH12345",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9871068596839905,
+      "begin_offset": 129,
+      "end_offset": 137
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

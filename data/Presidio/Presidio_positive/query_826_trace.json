@@ -1,0 +1,67 @@
+{
+  "query_id": "826",
+  "timestamp": "2025-10-22T16:12:46.373584",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommended treatment options for a 62-year-old male with newly diagnosed multiple myeloma, referred by Dr. Alice Smith at St. Francis Hospital on January 15, 2023.",
+  "ground_truth_phi": "NAME: Dr. Alice Smith | GEOGRAPHIC_LOCATION: St. Francis Hospital | DATE: January 15, 2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Recommended treatment options for a [REDACTED_DATE] male with newly diagnosed multiple myeloma, referred by Dr. [REDACTED_NAME] at St. Francis Hospital on [REDACTED_DATE].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 36,
+      "end": 47,
+      "score": 0.85,
+      "text": "62-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 108,
+      "end": 119,
+      "score": 0.85,
+      "text": "Alice Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 147,
+      "end": 163,
+      "score": 0.85,
+      "text": "January 15, 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "St. Francis Hospital",
+        "start": 123,
+        "end": 143
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.6667",
+    "precision": "0.3333",
+    "f1_score": "0.4444"
+  }
+}

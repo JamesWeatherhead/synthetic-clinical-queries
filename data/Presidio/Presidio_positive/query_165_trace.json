@@ -1,0 +1,67 @@
+{
+  "query_id": "165",
+  "timestamp": "2025-10-22T16:12:42.914762",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommendations for managing hypertension in a 52-year-old female patient, Emily R., with recent admission to St. John's Hospital on October 10th, 2022?",
+  "ground_truth_phi": "NAME: Emily R. | GEOGRAPHIC_LOCATION: St. John's Hospital | DATE: October 10th, 2022",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Recommendations for managing hypertension in a [REDACTED_DATE] female patient, [REDACTED_NAME], with recent admission to St. John's Hospital on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 47,
+      "end": 58,
+      "score": 0.85,
+      "text": "52-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 75,
+      "end": 83,
+      "score": 0.85,
+      "text": "Emily R.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 133,
+      "end": 151,
+      "score": 0.85,
+      "text": "October 10th, 2022",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "St. John's Hospital",
+        "start": 110,
+        "end": 129
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.6667",
+    "precision": "0.6667",
+    "f1_score": "0.6667"
+  }
+}

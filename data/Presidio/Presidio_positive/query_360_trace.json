@@ -1,0 +1,76 @@
+{
+  "query_id": "360",
+  "timestamp": "2025-10-22T16:12:43.928819",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the current treatment options for a 65-year-old male, Robert Brown, with stage 3 chronic kidney disease diagnosed at Cleveland Clinic on April 12, 2022 (MRN: RB-123456)?",
+  "ground_truth_phi": "NAME: Robert Brown | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: April 12, 2022 | MEDICAL_RECORD_NUMBER: RB-123456",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What are the current treatment options for a [REDACTED_DATE] male, [REDACTED_NAME], with stage 3 chronic kidney disease diagnosed at Cleveland Clinic on [REDACTED_DATE] (MRN: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 45,
+      "end": 56,
+      "score": 0.85,
+      "text": "65-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 63,
+      "end": 75,
+      "score": 0.85,
+      "text": "Robert Brown",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 146,
+      "end": 160,
+      "score": 0.85,
+      "text": "April 12, 2022",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 167,
+      "end": 176,
+      "score": 0.7,
+      "text": "RB-123456",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Cleveland Clinic",
+        "start": 126,
+        "end": 142
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

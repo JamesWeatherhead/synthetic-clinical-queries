@@ -1,0 +1,79 @@
+{
+  "query_id": "675",
+  "timestamp": "2025-10-23T09:56:50.410105",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Treatment guidelines for pediatric asthma in a 10-year-old boy, seen by Dr. Emily Richards, in San Diego on April 3rd, 2023, with insurance number IN-789012.",
+  "ground_truth_phi": "NAME: Emily Richards | GEOGRAPHIC_LOCATION: San Diego | DATE: April 3rd, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: IN-789012",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "10",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9862493276596069,
+      "begin_offset": 47,
+      "end_offset": 49
+    },
+    {
+      "text": "Emily Richards",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9988893866539001,
+      "begin_offset": 76,
+      "end_offset": 90
+    },
+    {
+      "text": "San Diego",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9743613600730896,
+      "begin_offset": 95,
+      "end_offset": 104
+    },
+    {
+      "text": "April 3rd, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9993337988853455,
+      "begin_offset": 108,
+      "end_offset": 123
+    },
+    {
+      "text": "IN-789012",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9140944480895996,
+      "begin_offset": 147,
+      "end_offset": 156
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

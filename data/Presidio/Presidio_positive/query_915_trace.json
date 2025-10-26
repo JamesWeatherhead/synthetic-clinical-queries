@@ -1,0 +1,67 @@
+{
+  "query_id": "915",
+  "timestamp": "2025-10-22T16:12:46.825393",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Query: Tx options for pt w/ hx of CAD & DM, records show visit to Dr. Lopez at Stanford Health on 04/12/2022 (Acct#: SH-456789). Check for possible drug interactions.",
+  "ground_truth_phi": "NAME: Dr. Lopez | GEOGRAPHIC_LOCATION: Stanford Health | DATE: 04/12/2022 | ACCOUNT_NUMBER: SH-456789",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Query: Tx options for pt w/ hx of CAD & DM, records show visit to Dr. [REDACTED_NAME] at Stanford Health on [REDACTED_DATE] (Acct#: [REDACTED_MEDICAL_RECORD_NUMBER]). Check for possible drug interactions.",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 70,
+      "end": 75,
+      "score": 0.85,
+      "text": "Lopez",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 117,
+      "end": 126,
+      "score": 0.7,
+      "text": "SH-456789",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 98,
+      "end": 108,
+      "score": 0.6,
+      "text": "04/12/2022",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Stanford Health",
+        "start": 79,
+        "end": 94
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "0.6667",
+    "f1_score": "0.7059"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "query_id": "97",
+  "timestamp": "2025-10-22T16:24:24.377434",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What is the latest treatment protocol for a patient from Boston with a score of 12 on the Wells criteria and a family history of cardiovascular disease?",
+  "presidio_output": "What is the latest treatment protocol for a patient from [REDACTED_GEOGRAPHIC_LOCATION] with a score of 12 on the Wells criteria and a family history of cardiovascular disease?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 57,
+      "end": 63,
+      "score": 0.85,
+      "text": "Boston",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 1,
+    "false_redactions_by_type": {
+      "GEOGRAPHIC_LOCATION": 1
+    },
+    "status": "OVER_REDACTED"
+  }
+}

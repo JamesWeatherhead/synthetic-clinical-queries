@@ -1,0 +1,79 @@
+{
+  "query_id": "535",
+  "timestamp": "2025-10-23T09:56:36.495236",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best treatment protocol for a 60-year-old female with recurrent ovarian cancer, last treated by Dr. Elizabeth K. in Houston, TX on December 12th, 2022 (MRN: 123-45-6789)?",
+  "ground_truth_phi": "NAME: Elizabeth K. | GEOGRAPHIC_LOCATION: Houston, TX | DATE: December 12th, 2022 | MEDICAL_RECORD_NUMBER: 123-45-6789",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "60",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9977746605873108,
+      "begin_offset": 30,
+      "end_offset": 32
+    },
+    {
+      "text": "Elizabeth K.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9978334307670593,
+      "begin_offset": 100,
+      "end_offset": 112
+    },
+    {
+      "text": "Houston, TX",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6448033452033997,
+      "begin_offset": 116,
+      "end_offset": 127
+    },
+    {
+      "text": "December 12th, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999985933303833,
+      "begin_offset": 131,
+      "end_offset": 150
+    },
+    {
+      "text": "123-45-6789",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9922873973846436,
+      "begin_offset": 157,
+      "end_offset": 168
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

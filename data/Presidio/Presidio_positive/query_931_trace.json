@@ -1,0 +1,76 @@
+{
+  "query_id": "931",
+  "timestamp": "2025-10-22T16:12:46.925940",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Updated asthma management guidelines for a 6yo male, Robert Smith, who was admitted to Children's Hospital in Houston on April 15th, 2023 (MRN: CH12345)?",
+  "ground_truth_phi": "NAME: Robert Smith | GEOGRAPHIC_LOCATION: Children's Hospital in Houston | DATE: April 15th, 2023 | MEDICAL_RECORD_NUMBER: CH12345",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Updated asthma management guidelines for a 6yo male, [REDACTED_NAME], who was admitted to Children's Hospital in [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE] (MRN: CH12345)?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 53,
+      "end": 65,
+      "score": 0.85,
+      "text": "Robert Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 110,
+      "end": 117,
+      "score": 0.85,
+      "text": "Houston",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 121,
+      "end": 132,
+      "score": 0.85,
+      "text": "April 15th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 133,
+      "end": 137,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "CH12345",
+        "start": 144,
+        "end": 151
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.2500",
+    "f1_score": "0.3750"
+  }
+}

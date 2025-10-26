@@ -1,0 +1,78 @@
+{
+  "query_id": "149",
+  "timestamp": "2025-10-22T16:12:42.842675",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the side effects of chemotherapy for an 8-year-old girl called Emma R., treated at Children’s Clinic on March 20th, 2023, with MRN CC-456789?",
+  "ground_truth_phi": "NAME: Emma R. | GEOGRAPHIC_LOCATION: Children's Clinic | DATE: March 20th, 2023 | MEDICAL_RECORD_NUMBER: CC-456789",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What are the side effects of chemotherapy for an [REDACTED_DATE] girl called [REDACTED_NAME], treated at Children’s Clinic on [REDACTED_DATE], with MRN [REDACTED_MEDICAL_RECORD_NUMBER]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 49,
+      "end": 59,
+      "score": 0.85,
+      "text": "8-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 72,
+      "end": 79,
+      "score": 0.85,
+      "text": "Emma R.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 113,
+      "end": 124,
+      "score": 0.85,
+      "text": "March 20th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 125,
+      "end": 129,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 140,
+      "end": 149,
+      "score": 0.7,
+      "text": "CC-456789",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.4000",
+    "f1_score": "0.5714"
+  }
+}

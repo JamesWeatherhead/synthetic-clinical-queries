@@ -1,0 +1,78 @@
+{
+  "query_id": "352",
+  "timestamp": "2025-10-22T16:12:43.881271",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "How to manage hypertension in a 55yo male with a recent MI, James R., admitted to Cedar Sinai on 2023-04-25 (Insurance: HPB-654321)?",
+  "ground_truth_phi": "NAME: James R. | GEOGRAPHIC_LOCATION: Cedar Sinai | DATE: 2023-04-25 | HEALTH_PLAN_BENEFICIARY_NUMBER: HPB-654321",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "How to manage hypertension in a 55yo male with a recent [REDACTED_GEOGRAPHIC_LOCATION], [REDACTED_NAME], admitted to [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE] (Insurance: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 56,
+      "end": 58,
+      "score": 0.85,
+      "text": "MI",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 60,
+      "end": 68,
+      "score": 0.85,
+      "text": "James R.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 82,
+      "end": 93,
+      "score": 0.85,
+      "text": "Cedar Sinai",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 97,
+      "end": 107,
+      "score": 0.85,
+      "text": "2023-04-25",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 120,
+      "end": 130,
+      "score": 0.7,
+      "text": "HPB-654321",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  }
+}

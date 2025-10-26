@@ -1,0 +1,61 @@
+{
+  "query_id": "958",
+  "timestamp": "2025-10-23T09:57:21.443500",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the side effects of Lisinopril in elderly patients, considering a case similar to Robert L., admitted to NYU Langone on July 10th, 2023?",
+  "ground_truth_phi": "NAME: Robert L. | GEOGRAPHIC_LOCATION: NYU Langone | DATE: July 10th, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "Robert L",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9944463968276978,
+      "begin_offset": 91,
+      "end_offset": 99
+    },
+    {
+      "text": "NYU Langone",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9207738637924194,
+      "begin_offset": 114,
+      "end_offset": 125
+    },
+    {
+      "text": "July 10th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999760389328003,
+      "begin_offset": 129,
+      "end_offset": 144
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

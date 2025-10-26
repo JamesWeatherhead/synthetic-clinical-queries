@@ -1,0 +1,79 @@
+{
+  "query_id": "267",
+  "timestamp": "2025-10-23T09:56:06.344763",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Mgmt plan for pt, 62yo F, dx'd w/ COPD, ref'd to pulm. clinic, Dr. Steven P. at UCLA Med Ctr on 07/18/2023. Ensure PT ID #SP-112233 is noted.",
+  "ground_truth_phi": "NAME: Steven P. | GEOGRAPHIC_LOCATION: UCLA Med Ctr | DATE: 07/18/2023 | UNIQUE_IDENTIFIER: #SP-112233",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "62yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9963107705116272,
+      "begin_offset": 18,
+      "end_offset": 22
+    },
+    {
+      "text": "Steven P.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9532063603401184,
+      "begin_offset": 67,
+      "end_offset": 76
+    },
+    {
+      "text": "UCLA Med Ctr",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9071502685546875,
+      "begin_offset": 80,
+      "end_offset": 92
+    },
+    {
+      "text": "07/18/2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999603033065796,
+      "begin_offset": 96,
+      "end_offset": 106
+    },
+    {
+      "text": "112233",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.969963014125824,
+      "begin_offset": 125,
+      "end_offset": 131
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

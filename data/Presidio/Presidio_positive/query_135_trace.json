@@ -1,0 +1,73 @@
+{
+  "query_id": "135",
+  "timestamp": "2025-10-22T16:12:42.761128",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Contraindications for prescribing rivaroxaban in a 69-year-old male, John Smith, admitted to City Hospital on April 14, 2022 (MRN: 12345)?",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: City Hospital | DATE: April 14, 2022 | MEDICAL_RECORD_NUMBER: 12345",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Contraindications for prescribing rivaroxaban in a [REDACTED_DATE] male, [REDACTED_NAME], admitted to City Hospital on [REDACTED_DATE] (MRN: 12345)?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 51,
+      "end": 62,
+      "score": 0.85,
+      "text": "69-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 69,
+      "end": 79,
+      "score": 0.85,
+      "text": "John Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 110,
+      "end": 124,
+      "score": 0.85,
+      "text": "April 14, 2022",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "City Hospital",
+        "start": 93,
+        "end": 106
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "12345",
+        "start": 131,
+        "end": 136
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 3,
+    "recall": "0.5000",
+    "precision": "0.6667",
+    "f1_score": "0.5714"
+  }
+}

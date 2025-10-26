@@ -1,0 +1,58 @@
+{
+  "query_id": "372",
+  "timestamp": "2025-10-22T16:12:43.994369",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the contraindications for prescribing warfarin to a patient with atrial fibrillation, specifically John D., who presented to UCLA Medical Center last Friday?",
+  "ground_truth_phi": "NAME: John D. | GEOGRAPHIC_LOCATION: UCLA Medical Center | DATE: last Friday",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "What are the contraindications for prescribing warfarin to a patient with atrial fibrillation, specifically [REDACTED_NAME], who presented to UCLA Medical Center [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 108,
+      "end": 115,
+      "score": 0.85,
+      "text": "John D.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 154,
+      "end": 165,
+      "score": 0.85,
+      "text": "last Friday",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UCLA Medical Center",
+        "start": 134,
+        "end": 153
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 2,
+    "recall": "0.6667",
+    "precision": "1.0000",
+    "f1_score": "0.8000"
+  }
+}

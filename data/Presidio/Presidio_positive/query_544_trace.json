@@ -1,0 +1,67 @@
+{
+  "query_id": "544",
+  "timestamp": "2025-10-22T16:12:44.900837",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommended dosage adjustments for metformin in patients like James P., treated for diabetes at New York Presbyterian Hospital on January 9th, 2024?",
+  "ground_truth_phi": "NAME: James P. | DATE: January 9th, 2024 | GEOGRAPHIC_LOCATION: New York Presbyterian Hospital",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Recommended dosage adjustments for metformin in patients like [REDACTED_NAME], treated for diabetes at New York Presbyterian Hospital on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 62,
+      "end": 70,
+      "score": 0.85,
+      "text": "James P.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 130,
+      "end": 142,
+      "score": 0.85,
+      "text": "January 9th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 143,
+      "end": 147,
+      "score": 0.85,
+      "text": "2024",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "New York Presbyterian Hospital",
+        "start": 96,
+        "end": 126
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.6667",
+    "precision": "0.3333",
+    "f1_score": "0.4444"
+  }
+}

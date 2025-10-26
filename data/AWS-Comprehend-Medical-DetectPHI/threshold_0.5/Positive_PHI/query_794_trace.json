@@ -1,0 +1,70 @@
+{
+  "query_id": "794",
+  "timestamp": "2025-10-23T09:57:02.394024",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the treatment options for a 72-year-old male with BPH, named Robert Johnson, who had surgery at Riverside Medical Center on January 20, 2022?",
+  "ground_truth_phi": "NAME: Robert Johnson | GEOGRAPHIC_LOCATION: Riverside Medical Center | DATE: January 20, 2022",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "72",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996635913848877,
+      "begin_offset": 37,
+      "end_offset": 39
+    },
+    {
+      "text": "Robert Johnson",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.998440682888031,
+      "begin_offset": 70,
+      "end_offset": 84
+    },
+    {
+      "text": "Riverside Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9977771639823914,
+      "begin_offset": 105,
+      "end_offset": 129
+    },
+    {
+      "text": "January 20, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999966025352478,
+      "begin_offset": 133,
+      "end_offset": 149
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

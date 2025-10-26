@@ -1,0 +1,69 @@
+{
+  "query_id": "508",
+  "timestamp": "2025-10-22T16:12:44.716752",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommendations for post-operative care for a 55-year-old male recovering from knee replacement surgery, operated at Boston Medical Center by Dr. Thomas K. on July 21st, 2022?",
+  "ground_truth_phi": "GEOGRAPHIC_LOCATION: Boston Medical Center | NAME: Dr. Thomas K. | DATE: July 21st, 2022",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Recommendations for post-operative care for a [REDACTED_DATE] male recovering from knee replacement surgery, operated at [REDACTED_GEOGRAPHIC_LOCATION] by Dr. [REDACTED_NAME] on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 46,
+      "end": 57,
+      "score": 0.85,
+      "text": "55-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 117,
+      "end": 138,
+      "score": 0.85,
+      "text": "Boston Medical Center",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 146,
+      "end": 155,
+      "score": 0.85,
+      "text": "Thomas K.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 159,
+      "end": 174,
+      "score": 0.85,
+      "text": "July 21st, 2022",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "0.5000",
+    "f1_score": "0.6667"
+  }
+}

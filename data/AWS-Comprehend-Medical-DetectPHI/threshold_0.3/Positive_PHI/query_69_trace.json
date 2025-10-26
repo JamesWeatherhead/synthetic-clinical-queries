@@ -1,0 +1,70 @@
+{
+  "query_id": "69",
+  "timestamp": "2025-10-23T09:55:43.444596",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "5-yr survival rate for pt w/ stage IV melanoma, Jane D., visited on 02/14/2024 in Boston General Hospital (MRN: BG-998877)?",
+  "ground_truth_phi": "NAME: Jane D. | DATE: 02/14/2024 | GEOGRAPHIC_LOCATION: Boston General Hospital | MEDICAL_RECORD_NUMBER: BG-998877",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Jane D",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8721514940261841,
+      "begin_offset": 48,
+      "end_offset": 54
+    },
+    {
+      "text": "02/14/2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999938011169434,
+      "begin_offset": 68,
+      "end_offset": 78
+    },
+    {
+      "text": "Boston General Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.937361478805542,
+      "begin_offset": 82,
+      "end_offset": 105
+    },
+    {
+      "text": "998877",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.5826867818832397,
+      "begin_offset": 115,
+      "end_offset": 121
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

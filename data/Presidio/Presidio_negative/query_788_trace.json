@@ -1,0 +1,45 @@
+{
+  "query_id": "788",
+  "timestamp": "2025-10-22T16:24:25.190241",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Management strategies for a 50-year-old male with a BMI of 32 and a Chaddock reflex observed during the physical exam?",
+  "presidio_output": "Management strategies for a [REDACTED_DATE] male with a BMI of 32 and a [REDACTED_NAME] reflex observed during the physical exam?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 28,
+      "end": 39,
+      "score": 0.85,
+      "text": "50-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 68,
+      "end": 76,
+      "score": 0.85,
+      "text": "Chaddock",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 2,
+    "false_redactions_by_type": {
+      "DATE": 1,
+      "NAME": 1
+    },
+    "status": "OVER_REDACTED"
+  }
+}

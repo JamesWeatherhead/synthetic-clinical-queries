@@ -1,0 +1,61 @@
+{
+  "query_id": "11",
+  "timestamp": "2025-10-23T09:55:37.620397",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Contraindications for prescribing aspirin to a patient with a history of GI bleeding, specifically for Mary Johnson, seen at New Orleans Health Center on April 24th, 2022?",
+  "ground_truth_phi": "NAME: Mary Johnson | GEOGRAPHIC_LOCATION: New Orleans Health Center | DATE: April 24th, 2022",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "Mary Johnson",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9986520409584045,
+      "begin_offset": 103,
+      "end_offset": 115
+    },
+    {
+      "text": "New Orleans Health Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9927871823310852,
+      "begin_offset": 125,
+      "end_offset": 150
+    },
+    {
+      "text": "April 24th, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999102354049683,
+      "begin_offset": 154,
+      "end_offset": 170
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

@@ -1,0 +1,87 @@
+{
+  "query_id": "337",
+  "timestamp": "2025-10-22T16:12:43.783876",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "guidelines for anticoagulation in afib pt, 52yo male, w/ hx of stroke, seen by Dr. Steven J. in Atlanta on 04/12/2023, medical records show ID: 987654",
+  "ground_truth_phi": "NAME: Steven J. | GEOGRAPHIC_LOCATION: Atlanta | DATE: 04/12/2023 | MEDICAL_RECORD_NUMBER: 987654",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "guidelines for anticoagulation in afib pt, 52yo male, w/ hx of stroke, seen by Dr. [REDACTED_NAME] in [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_GEOGRAPHIC_LOCATION], medical records show [REDACTED_UNIQUE_IDENTIFIER]",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "UNIQUE_IDENTIFIER",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "start": 140,
+      "end": 150,
+      "score": 0.9,
+      "text": "ID: 987654",
+      "recognizer": "UniqueIdentifierRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 83,
+      "end": 92,
+      "score": 0.85,
+      "text": "Steven J.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 96,
+      "end": 103,
+      "score": 0.85,
+      "text": "Atlanta",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 107,
+      "end": 117,
+      "score": 0.85,
+      "text": "04/12/2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 107,
+      "end": 117,
+      "score": 0.6,
+      "text": "04/12/2023",
+      "recognizer": "DateRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 144,
+      "end": 150,
+      "score": 0.5,
+      "text": "987654",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "recall": "1.0000",
+    "precision": "0.6667",
+    "f1_score": "0.8000"
+  }
+}

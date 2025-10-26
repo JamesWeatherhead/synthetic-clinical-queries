@@ -1,0 +1,66 @@
+{
+  "query_id": "343",
+  "timestamp": "2025-10-23T09:56:15.585061",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the recent ADA recommendations for managing diabetic neuropathy in patients like John D. who visited our New York office on April 7, 2023 (Health ID: HD-112233)?",
+  "ground_truth_phi": "NAME: John D. | GEOGRAPHIC_LOCATION: New York | DATE: April 7, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: HD-112233",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "John D.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7213783264160156,
+      "begin_offset": 90,
+      "end_offset": 97
+    },
+    {
+      "text": "New York",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9817011952400208,
+      "begin_offset": 114,
+      "end_offset": 122
+    },
+    {
+      "text": "April 7, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998119473457336,
+      "begin_offset": 133,
+      "end_offset": 146
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+        "value": "HD-112233"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 3
+}

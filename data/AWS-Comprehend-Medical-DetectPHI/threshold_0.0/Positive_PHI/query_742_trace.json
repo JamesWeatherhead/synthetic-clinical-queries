@@ -1,0 +1,79 @@
+{
+  "query_id": "742",
+  "timestamp": "2025-10-23T09:56:56.646304",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the post-op care recommendations for a 5-year-old female following tonsillectomy, Emily Johnson, admitted to UCSF Children's Hospital on September 1st, 2023 (Contact: 415-555-1234)?",
+  "ground_truth_phi": "NAME: Emily Johnson | GEOGRAPHIC_LOCATION: UCSF Children's Hospital | DATE: September 1st, 2023 | PHONE_NUMBER: 415-555-1234",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "5",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9779711365699768,
+      "begin_offset": 48,
+      "end_offset": 49
+    },
+    {
+      "text": "Emily Johnson",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9973809123039246,
+      "begin_offset": 91,
+      "end_offset": 104
+    },
+    {
+      "text": "UCSF Children's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9878425598144531,
+      "begin_offset": 118,
+      "end_offset": 142
+    },
+    {
+      "text": "September 1st, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996421337127686,
+      "begin_offset": 146,
+      "end_offset": 165
+    },
+    {
+      "text": "415-555-1234",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9673936367034912,
+      "begin_offset": 176,
+      "end_offset": 188
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

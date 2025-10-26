@@ -1,0 +1,78 @@
+{
+  "query_id": "575",
+  "timestamp": "2025-10-22T16:12:45.070006",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Management of chronic atrial fibrillation in a 70-year-old male, Martin L., admitted to Mount Sinai on July 15, 2023 (MRN: 12345678)?",
+  "ground_truth_phi": "NAME: Martin L. | GEOGRAPHIC_LOCATION: Mount Sinai | DATE: July 15, 2023 | MEDICAL_RECORD_NUMBER: 12345678",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Management of chronic atrial fibrillation in a [REDACTED_DATE] male, [REDACTED_NAME], admitted to [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE] ([REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 118,
+      "end": 131,
+      "score": 0.9,
+      "text": "MRN: 12345678",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 47,
+      "end": 58,
+      "score": 0.85,
+      "text": "70-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 65,
+      "end": 74,
+      "score": 0.85,
+      "text": "Martin L.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 88,
+      "end": 99,
+      "score": 0.85,
+      "text": "Mount Sinai",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 103,
+      "end": 116,
+      "score": 0.85,
+      "text": "July 15, 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.6000",
+    "f1_score": "0.7500"
+  }
+}

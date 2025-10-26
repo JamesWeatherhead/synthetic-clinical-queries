@@ -1,0 +1,45 @@
+{
+  "query_id": "67",
+  "timestamp": "2025-10-22T16:24:24.350505",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What is the prognosis for a 60-year-old male diagnosed with Lou Gehrig’s disease and a family history of Parkinson's?",
+  "presidio_output": "What is the prognosis for a [REDACTED_DATE] male diagnosed with [REDACTED_NAME]’s disease and a family history of Parkinson's?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 28,
+      "end": 39,
+      "score": 0.85,
+      "text": "60-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 60,
+      "end": 70,
+      "score": 0.85,
+      "text": "Lou Gehrig",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 2,
+    "false_redactions_by_type": {
+      "DATE": 1,
+      "NAME": 1
+    },
+    "status": "OVER_REDACTED"
+  }
+}

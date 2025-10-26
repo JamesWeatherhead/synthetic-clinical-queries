@@ -1,0 +1,79 @@
+{
+  "query_id": "274",
+  "timestamp": "2025-10-23T09:56:07.394780",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guideline updates for a patient with Type 1 Diabetes, age 16, Alex K., who had a check-up at Stanford Children's Health on March 3rd, 2023 (Email: alex.k@example.com)?",
+  "ground_truth_phi": "NAME: Alex K. | GEOGRAPHIC_LOCATION: Stanford Children's Health | DATE: March 3rd, 2023 | EMAIL_ADDRESS: alex.k@example.com",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "16",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9926553964614868,
+      "begin_offset": 58,
+      "end_offset": 60
+    },
+    {
+      "text": "Alex K",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9800726175308228,
+      "begin_offset": 62,
+      "end_offset": 68
+    },
+    {
+      "text": "Stanford Children's Health",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9869076013565063,
+      "begin_offset": 93,
+      "end_offset": 119
+    },
+    {
+      "text": "March 3rd, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999700784683228,
+      "begin_offset": 123,
+      "end_offset": 138
+    },
+    {
+      "text": "alex.k@example.com",
+      "aws_type": "EMAIL",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999975323677063,
+      "begin_offset": 147,
+      "end_offset": 165
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

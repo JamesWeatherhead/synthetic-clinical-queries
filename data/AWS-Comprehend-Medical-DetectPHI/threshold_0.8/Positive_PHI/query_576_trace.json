@@ -1,0 +1,61 @@
+{
+  "query_id": "576",
+  "timestamp": "2025-10-23T09:56:40.618787",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Contraindications for using tramadol in a patient with a seizure disorder, Jane S., treated at Baylor Clinic in Houston, Texas.",
+  "ground_truth_phi": "NAME: Jane S. | GEOGRAPHIC_LOCATION: Baylor Clinic | GEOGRAPHIC_LOCATION: Houston, Texas",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "Jane S",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.977780282497406,
+      "begin_offset": 75,
+      "end_offset": 81
+    },
+    {
+      "text": "Baylor Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9857962727546692,
+      "begin_offset": 95,
+      "end_offset": 108
+    },
+    {
+      "text": "Houston, Texas",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9850783348083496,
+      "begin_offset": 112,
+      "end_offset": 126
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

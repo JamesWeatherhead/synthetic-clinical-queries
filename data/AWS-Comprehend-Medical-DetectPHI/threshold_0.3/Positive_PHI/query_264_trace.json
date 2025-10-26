@@ -1,0 +1,70 @@
+{
+  "query_id": "264",
+  "timestamp": "2025-10-23T09:56:05.938658",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Appropriate antibiotic therapy for 8yo with CF and recurrent Pseudomonas infection, seen by Dr. Smith at our Chicago office on Jan 5th.",
+  "ground_truth_phi": "NAME: Dr. Smith | GEOGRAPHIC_LOCATION: Chicago office | DATE: Jan 5th",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "8yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8407007455825806,
+      "begin_offset": 35,
+      "end_offset": 38
+    },
+    {
+      "text": "Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998927116394043,
+      "begin_offset": 96,
+      "end_offset": 101
+    },
+    {
+      "text": "Chicago",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9131897687911987,
+      "begin_offset": 109,
+      "end_offset": 116
+    },
+    {
+      "text": "Jan 5th",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9993239641189575,
+      "begin_offset": 127,
+      "end_offset": 134
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

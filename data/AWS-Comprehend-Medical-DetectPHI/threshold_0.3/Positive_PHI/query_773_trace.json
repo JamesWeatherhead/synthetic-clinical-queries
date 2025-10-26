@@ -1,0 +1,79 @@
+{
+  "query_id": "773",
+  "timestamp": "2025-10-23T09:57:00.244042",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Contraindications for aspirin in an 88-year-old male with a history of GI bleeding, noted under the care of Dr. Emily White at Memorial Clinic, San Francisco, on Jan 21st, 2021?",
+  "ground_truth_phi": "NAME: Dr. Emily White | GEOGRAPHIC_LOCATION: Memorial Clinic, San Francisco | DATE: Jan 21st, 2021",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "88",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.982193112373352,
+      "begin_offset": 36,
+      "end_offset": 38
+    },
+    {
+      "text": "Emily White",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9955818057060242,
+      "begin_offset": 112,
+      "end_offset": 123
+    },
+    {
+      "text": "Memorial Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9985516667366028,
+      "begin_offset": 127,
+      "end_offset": 142
+    },
+    {
+      "text": "San Francisco",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7614021301269531,
+      "begin_offset": 144,
+      "end_offset": 157
+    },
+    {
+      "text": "Jan 21st, 2021",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999880313873291,
+      "begin_offset": 162,
+      "end_offset": 176
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

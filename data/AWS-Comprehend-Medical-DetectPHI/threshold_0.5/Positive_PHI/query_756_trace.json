@@ -1,0 +1,79 @@
+{
+  "query_id": "756",
+  "timestamp": "2025-10-23T09:56:57.933074",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the treatment options for a 70-year-old male with ALS, Robert Smith, who resides in Atlanta, GA, and has an appointment on March 15th, 2024 (SSN: 123-45-6789)?",
+  "ground_truth_phi": "NAME: Robert Smith | GEOGRAPHIC_LOCATION: Atlanta, GA | DATE: March 15th, 2024 | SOCIAL_SECURITY_NUMBER: 123-45-6789",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "70",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9994681477546692,
+      "begin_offset": 37,
+      "end_offset": 39
+    },
+    {
+      "text": "Robert Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9977872371673584,
+      "begin_offset": 64,
+      "end_offset": 76
+    },
+    {
+      "text": "Atlanta",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.869452953338623,
+      "begin_offset": 93,
+      "end_offset": 100
+    },
+    {
+      "text": "March 15th, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998966455459595,
+      "begin_offset": 132,
+      "end_offset": 148
+    },
+    {
+      "text": "123-45-6789",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9976295232772827,
+      "begin_offset": 155,
+      "end_offset": 166
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

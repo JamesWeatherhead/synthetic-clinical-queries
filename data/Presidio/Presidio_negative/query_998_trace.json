@@ -1,0 +1,54 @@
+{
+  "query_id": "998",
+  "timestamp": "2025-10-22T16:24:25.410961",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Early warning signs of dementia in a 75-year-old Hispanic male with a history of hypertension, seen at the clinic last month?",
+  "presidio_output": "Early warning signs of dementia in a [REDACTED_DATE] [REDACTED_NRP] male with a history of hypertension, seen at the clinic [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 37,
+      "end": 48,
+      "score": 0.85,
+      "text": "75-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "NRP",
+      "hipaa_category": "NRP",
+      "start": 49,
+      "end": 57,
+      "score": 0.85,
+      "text": "Hispanic",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 114,
+      "end": 124,
+      "score": 0.85,
+      "text": "last month",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 3,
+    "false_redactions_by_type": {
+      "DATE": 2,
+      "NRP": 1
+    },
+    "status": "OVER_REDACTED"
+  }
+}

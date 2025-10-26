@@ -1,0 +1,67 @@
+{
+  "query_id": "228",
+  "timestamp": "2025-10-22T16:12:43.208616",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "pt seen at Stanford 4/3/2023, dx'd w/ CHF, put on amiodarone, what are the monitoring guidelines? insurance is QX-789012.",
+  "ground_truth_phi": "GEOGRAPHIC_LOCATION: Stanford | DATE: 4/3/2023 | UNIQUE_IDENTIFIER: QX-789012",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "pt seen at Stanford [REDACTED_DATE], [REDACTED_GEOGRAPHIC_LOCATION] w/ CHF, put on amiodarone, what are the monitoring guidelines? insurance is [REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 30,
+      "end": 34,
+      "score": 0.85,
+      "text": "dx'd",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 111,
+      "end": 120,
+      "score": 0.7,
+      "text": "QX-789012",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 20,
+      "end": 28,
+      "score": 0.6,
+      "text": "4/3/2023",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Stanford",
+        "start": 11,
+        "end": 19
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.6667",
+    "precision": "0.6667",
+    "f1_score": "0.6667"
+  }
+}

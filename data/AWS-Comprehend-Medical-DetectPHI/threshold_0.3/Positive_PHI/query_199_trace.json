@@ -1,0 +1,79 @@
+{
+  "query_id": "199",
+  "timestamp": "2025-10-23T09:55:56.765475",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Concerns about prescribing lithium for pt w/ bipolar disorder & past hx of renal issues, specifically for Alice B., reviewed at UCSF on Jan 20th '23 (MRN: USF-987654)?",
+  "ground_truth_phi": "NAME: Alice B. | GEOGRAPHIC_LOCATION: UCSF | DATE: Jan 20th '23 | MEDICAL_RECORD_NUMBER: USF-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Alice B",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9776296615600586,
+      "begin_offset": 106,
+      "end_offset": 113
+    },
+    {
+      "text": "UCSF",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8929993510246277,
+      "begin_offset": 128,
+      "end_offset": 132
+    },
+    {
+      "text": "Jan 20th",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998937845230103,
+      "begin_offset": 136,
+      "end_offset": 144
+    },
+    {
+      "text": "'23",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.785481870174408,
+      "begin_offset": 145,
+      "end_offset": 148
+    },
+    {
+      "text": "USF-987654",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6582013964653015,
+      "begin_offset": 155,
+      "end_offset": 165
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

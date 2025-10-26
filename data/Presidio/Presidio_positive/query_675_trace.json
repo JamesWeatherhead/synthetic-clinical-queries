@@ -1,0 +1,87 @@
+{
+  "query_id": "675",
+  "timestamp": "2025-10-22T16:12:45.597185",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Treatment guidelines for pediatric asthma in a 10-year-old boy, seen by Dr. Emily Richards, in San Diego on April 3rd, 2023, with insurance number IN-789012.",
+  "ground_truth_phi": "NAME: Emily Richards | GEOGRAPHIC_LOCATION: San Diego | DATE: April 3rd, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: IN-789012",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Treatment guidelines for pediatric asthma in a [REDACTED_DATE] boy, seen by Dr. [REDACTED_NAME], in [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE], with insurance number [REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 47,
+      "end": 58,
+      "score": 0.85,
+      "text": "10-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 76,
+      "end": 90,
+      "score": 0.85,
+      "text": "Emily Richards",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 95,
+      "end": 104,
+      "score": 0.85,
+      "text": "San Diego",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 108,
+      "end": 118,
+      "score": 0.85,
+      "text": "April 3rd,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 119,
+      "end": 123,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 147,
+      "end": 156,
+      "score": 0.7,
+      "text": "IN-789012",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "recall": "1.0000",
+    "precision": "0.5000",
+    "f1_score": "0.6667"
+  }
+}

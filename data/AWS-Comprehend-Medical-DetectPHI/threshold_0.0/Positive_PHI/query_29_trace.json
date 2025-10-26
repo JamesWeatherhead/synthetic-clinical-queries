@@ -1,0 +1,79 @@
+{
+  "query_id": "29",
+  "timestamp": "2025-10-23T09:55:39.424972",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "tx protocol for 59yo male w/ hx of HTN & DM, observed at John's Hopkins on Feb 1, 2023 (MRN: JH-123456). pt reportd rxns to Lisinopril.",
+  "ground_truth_phi": "GEOGRAPHIC_LOCATION: John's Hopkins | DATE: Feb 1, 2023 | MEDICAL_RECORD_NUMBER: JH-123456",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "59yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9980825185775757,
+      "begin_offset": 16,
+      "end_offset": 20
+    },
+    {
+      "text": "John's Hopkins",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8005245327949524,
+      "begin_offset": 57,
+      "end_offset": 71
+    },
+    {
+      "text": "Feb 1, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.99930739402771,
+      "begin_offset": 75,
+      "end_offset": 86
+    },
+    {
+      "text": "JH",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9775868058204651,
+      "begin_offset": 93,
+      "end_offset": 95
+    },
+    {
+      "text": "123456",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8467885851860046,
+      "begin_offset": 96,
+      "end_offset": 102
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

@@ -1,0 +1,70 @@
+{
+  "query_id": "592",
+  "timestamp": "2025-10-23T09:56:42.447340",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Post-op care protocol for pt w/ hip replacement, seen at Jefferson Clinic under Dr. Andrew L. on Jun 2, 2023. MRN: #JCL12345. worried about poss. infection.",
+  "ground_truth_phi": "GEOGRAPHIC_LOCATION: Jefferson Clinic | NAME: Dr. Andrew L. | DATE: Jun 2, 2023 | MEDICAL_RECORD_NUMBER: #JCL12345",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Jefferson Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9962062835693359,
+      "begin_offset": 57,
+      "end_offset": 73
+    },
+    {
+      "text": "Andrew L.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997838139533997,
+      "begin_offset": 84,
+      "end_offset": 93
+    },
+    {
+      "text": "Jun 2, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9979997277259827,
+      "begin_offset": 97,
+      "end_offset": 108
+    },
+    {
+      "text": "JCL12345",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8573900461196899,
+      "begin_offset": 116,
+      "end_offset": 124
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

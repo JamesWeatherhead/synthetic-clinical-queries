@@ -1,0 +1,61 @@
+{
+  "query_id": "609",
+  "timestamp": "2025-10-23T09:56:44.251393",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Current treatments for osteoarthritis in a 65-year-old male, John D., who is covered by insurance policy number HP-1234-5678?",
+  "ground_truth_phi": "NAME: John D. | HEALTH_PLAN_BENEFICIARY_NUMBER: HP-1234-5678",
+  "ground_truth_phi_count": 2,
+  "aws_entities_detected": [
+    {
+      "text": "65",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9992223978042603,
+      "begin_offset": 43,
+      "end_offset": 45
+    },
+    {
+      "text": "John D",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9801969528198242,
+      "begin_offset": 61,
+      "end_offset": 67
+    },
+    {
+      "text": "1234-5678",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.47667625546455383,
+      "begin_offset": 115,
+      "end_offset": 124
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 2,
+    "successfully_detected": 2,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "true_positives": 2,
+    "recall": "1.0000",
+    "precision": "0.6667",
+    "f1_score": "0.8000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

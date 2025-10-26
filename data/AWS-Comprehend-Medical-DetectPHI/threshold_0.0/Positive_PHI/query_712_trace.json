@@ -1,0 +1,79 @@
+{
+  "query_id": "712",
+  "timestamp": "2025-10-23T09:56:53.928635",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Management strategies for a 52-year-old female with lupus, Sarah D., seen at Cedars-Sinai clinic on April 22nd, 2023, with insurance ID: ABC123.",
+  "ground_truth_phi": "NAME: Sarah D. | GEOGRAPHIC_LOCATION: Cedars-Sinai clinic | DATE: April 22nd, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: ABC123",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "52",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9984649419784546,
+      "begin_offset": 28,
+      "end_offset": 30
+    },
+    {
+      "text": "Sarah",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6555916666984558,
+      "begin_offset": 59,
+      "end_offset": 64
+    },
+    {
+      "text": "Cedars-Sinai clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9968172311782837,
+      "begin_offset": 77,
+      "end_offset": 96
+    },
+    {
+      "text": "April 22nd, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9994699358940125,
+      "begin_offset": 100,
+      "end_offset": 116
+    },
+    {
+      "text": "ABC123",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.711731493473053,
+      "begin_offset": 137,
+      "end_offset": 143
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

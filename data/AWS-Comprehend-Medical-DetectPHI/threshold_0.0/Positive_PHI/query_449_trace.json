@@ -1,0 +1,79 @@
+{
+  "query_id": "449",
+  "timestamp": "2025-10-23T09:56:26.789494",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Latest treatment options for metastatic melanoma in a 67-year-old patient, Margaret A., currently receiving care at Johns Hopkins on 03/21/2024 (email: margaret67@example.com)?",
+  "ground_truth_phi": "NAME: Margaret A. | GEOGRAPHIC_LOCATION: Johns Hopkins | DATE: 03/21/2024 | EMAIL_ADDRESS: margaret67@example.com",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "67",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996854066848755,
+      "begin_offset": 54,
+      "end_offset": 56
+    },
+    {
+      "text": "Margaret A",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8298231959342957,
+      "begin_offset": 75,
+      "end_offset": 85
+    },
+    {
+      "text": "Johns Hopkins",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9140785932540894,
+      "begin_offset": 116,
+      "end_offset": 129
+    },
+    {
+      "text": "03/21/2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999861717224121,
+      "begin_offset": 133,
+      "end_offset": 143
+    },
+    {
+      "text": "margaret67@example.com",
+      "aws_type": "EMAIL",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999968409538269,
+      "begin_offset": 152,
+      "end_offset": 174
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

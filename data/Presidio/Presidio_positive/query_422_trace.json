@@ -1,0 +1,67 @@
+{
+  "query_id": "422",
+  "timestamp": "2025-10-22T16:12:44.257336",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "guidelines for managing COPD in a 70yo male, Frank L., presented at Mass General on 10/22/2022 (SSN: 987-65-4320). Include recs on inhaler usage.",
+  "ground_truth_phi": "NAME: Frank L. | GEOGRAPHIC_LOCATION: Mass General | DATE: 10/22/2022 | SOCIAL_SECURITY_NUMBER: 987-65-4320",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "guidelines for managing COPD in a 70yo male, [REDACTED_NAME], presented at Mass General on [REDACTED_DATE] (SSN: [REDACTED_US_ITIN]). Include recs on inhaler usage.",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 45,
+      "end": 53,
+      "score": 0.85,
+      "text": "Frank L.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 84,
+      "end": 94,
+      "score": 0.6,
+      "text": "10/22/2022",
+      "recognizer": "DateRecognizer"
+    },
+    {
+      "entity_type": "US_ITIN",
+      "hipaa_category": "US_ITIN",
+      "start": 101,
+      "end": 112,
+      "score": 0.5,
+      "text": "987-65-4320",
+      "recognizer": "UsItinRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Mass General",
+        "start": 68,
+        "end": 80
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  }
+}

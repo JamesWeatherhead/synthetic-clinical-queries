@@ -1,0 +1,76 @@
+{
+  "query_id": "230",
+  "timestamp": "2025-10-22T16:12:43.215051",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the contraindications for using warfarin in a 60-year-old male, Robert S., admitted to Cedars-Sinai Medical Center on July 10, 2023, with MRN 998877666?",
+  "ground_truth_phi": "NAME: Robert S. | GEOGRAPHIC_LOCATION: Cedars-Sinai Medical Center | DATE: July 10, 2023 | MEDICAL_RECORD_NUMBER: 998877666",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What are the contraindications for using warfarin in a [REDACTED_DATE] male, [REDACTED_NAME], admitted to Cedars-Sinai Medical Center on [REDACTED_DATE], with [REDACTED_MEDICAL_RECORD_NUMBER]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 147,
+      "end": 160,
+      "score": 0.9,
+      "text": "MRN 998877666",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 55,
+      "end": 66,
+      "score": 0.85,
+      "text": "60-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 73,
+      "end": 82,
+      "score": 0.85,
+      "text": "Robert S.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 127,
+      "end": 140,
+      "score": 0.85,
+      "text": "July 10, 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Cedars-Sinai Medical Center",
+        "start": 96,
+        "end": 123
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.5000",
+    "f1_score": "0.6000"
+  }
+}

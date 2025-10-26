@@ -1,0 +1,61 @@
+{
+  "query_id": "196",
+  "timestamp": "2025-10-23T09:55:56.411389",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Are there any interactions between atorvastatin and the medications prescribed to John Doe, who is treated in Dallas and has a follow-up on September 10th, 2023?",
+  "ground_truth_phi": "NAME: John Doe | GEOGRAPHIC_LOCATION: Dallas | DATE: September 10th, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "John Doe",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9953086972236633,
+      "begin_offset": 82,
+      "end_offset": 90
+    },
+    {
+      "text": "Dallas",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9501026272773743,
+      "begin_offset": 110,
+      "end_offset": 116
+    },
+    {
+      "text": "September 10th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998345375061035,
+      "begin_offset": 140,
+      "end_offset": 160
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

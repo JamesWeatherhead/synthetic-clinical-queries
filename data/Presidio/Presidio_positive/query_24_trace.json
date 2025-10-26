@@ -1,0 +1,69 @@
+{
+  "query_id": "24",
+  "timestamp": "2025-10-22T16:12:42.143672",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Updated ADA guidelines for managing Type 1 Diabetes in children, specifically for John D., treated at Children's Hospital Los Angeles on March 15, 2024 (MRN: CHLA-556677)?",
+  "ground_truth_phi": "NAME: John D. | GEOGRAPHIC_LOCATION: Children's Hospital Los Angeles | DATE: March 15, 2024 | MEDICAL_RECORD_NUMBER: CHLA-556677",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Updated ADA guidelines for managing Type 1 Diabetes in children, specifically for [REDACTED_NAME], treated at Children's Hospital [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE] (MRN: CHLA-[REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 82,
+      "end": 89,
+      "score": 0.85,
+      "text": "John D.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 122,
+      "end": 133,
+      "score": 0.85,
+      "text": "Los Angeles",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 137,
+      "end": 151,
+      "score": 0.85,
+      "text": "March 15, 2024",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 163,
+      "end": 169,
+      "score": 0.5,
+      "text": "556677",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "0.5000",
+    "f1_score": "0.6667"
+  }
+}

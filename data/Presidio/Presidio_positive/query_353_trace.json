@@ -1,0 +1,87 @@
+{
+  "query_id": "353",
+  "timestamp": "2025-10-22T16:12:43.888191",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Optimal treatment for chronic kidney disease in a 48-year-old male, Michael T., seen at Elm Street Clinic on October 5th, 2023 (Phone: 555-123-4567)?",
+  "ground_truth_phi": "NAME: Michael T. | GEOGRAPHIC_LOCATION: Elm Street Clinic | DATE: October 5th, 2023 | PHONE_NUMBER: 555-123-4567",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Optimal treatment for chronic kidney disease in a [REDACTED_DATE] male, [REDACTED_NAME], seen at [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE] (Phone: [REDACTED_PHONE_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 50,
+      "end": 61,
+      "score": 0.85,
+      "text": "48-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 68,
+      "end": 78,
+      "score": 0.85,
+      "text": "Michael T.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 88,
+      "end": 105,
+      "score": 0.85,
+      "text": "Elm Street Clinic",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 109,
+      "end": 121,
+      "score": 0.85,
+      "text": "October 5th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 122,
+      "end": 126,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 135,
+      "end": 147,
+      "score": 0.75,
+      "text": "555-123-4567",
+      "recognizer": "PhoneRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "recall": "1.0000",
+    "precision": "0.5000",
+    "f1_score": "0.6667"
+  }
+}

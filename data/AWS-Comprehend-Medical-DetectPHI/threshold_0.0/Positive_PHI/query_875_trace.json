@@ -1,0 +1,79 @@
+{
+  "query_id": "875",
+  "timestamp": "2025-10-23T09:57:10.605385",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for anticoagulation therapy in a 75-year-old male, Michael J., with atrial fibrillation seen at UCLA Medical Center on July 10th, 2023 (MRN: 89234-5678)?",
+  "ground_truth_phi": "NAME: Michael J. | GEOGRAPHIC_LOCATION: UCLA Medical Center | DATE: July 10th, 2023 | MEDICAL_RECORD_NUMBER: 89234-5678",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "75",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9992030262947083,
+      "begin_offset": 44,
+      "end_offset": 46
+    },
+    {
+      "text": "Michael J",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9950490593910217,
+      "begin_offset": 62,
+      "end_offset": 71
+    },
+    {
+      "text": "UCLA Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9877819418907166,
+      "begin_offset": 107,
+      "end_offset": 126
+    },
+    {
+      "text": "July 10th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999681711196899,
+      "begin_offset": 130,
+      "end_offset": 145
+    },
+    {
+      "text": "89234",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.22370946407318115,
+      "begin_offset": 152,
+      "end_offset": 157
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

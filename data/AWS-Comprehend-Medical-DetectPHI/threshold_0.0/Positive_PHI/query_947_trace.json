@@ -1,0 +1,61 @@
+{
+  "query_id": "947",
+  "timestamp": "2025-10-23T09:57:19.868309",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best practices for managing hypertension in a 72-year-old male with a history of heart failure, recently seen by Dr. John Miller at UCLA Medical Center.",
+  "ground_truth_phi": "NAME: John Miller | GEOGRAPHIC_LOCATION: UCLA Medical Center",
+  "ground_truth_phi_count": 2,
+  "aws_entities_detected": [
+    {
+      "text": "72",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9991626739501953,
+      "begin_offset": 46,
+      "end_offset": 48
+    },
+    {
+      "text": "John Miller",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997721314430237,
+      "begin_offset": 117,
+      "end_offset": 128
+    },
+    {
+      "text": "UCLA Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.993515133857727,
+      "begin_offset": 132,
+      "end_offset": 151
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 2,
+    "successfully_detected": 2,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "true_positives": 2,
+    "recall": "1.0000",
+    "precision": "0.6667",
+    "f1_score": "0.8000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

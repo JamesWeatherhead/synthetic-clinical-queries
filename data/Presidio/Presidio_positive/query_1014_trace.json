@@ -1,0 +1,69 @@
+{
+  "query_id": "1014",
+  "timestamp": "2025-10-22T16:12:47.375078",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Treatment options for a 30-year-old female diagnosed with lupus, seen at Cedar Sinai on March 8, 2022 (ID#: LUP-98765)?",
+  "ground_truth_phi": "GEOGRAPHIC_LOCATION: Cedar Sinai | DATE: March 8, 2022 | UNIQUE_IDENTIFIER: LUP-98765",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Treatment options for a [REDACTED_DATE] female diagnosed with lupus, seen at [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE] (ID#: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 24,
+      "end": 35,
+      "score": 0.85,
+      "text": "30-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 73,
+      "end": 84,
+      "score": 0.85,
+      "text": "Cedar Sinai",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 88,
+      "end": 101,
+      "score": 0.85,
+      "text": "March 8, 2022",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 108,
+      "end": 117,
+      "score": 0.7,
+      "text": "LUP-98765",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  }
+}

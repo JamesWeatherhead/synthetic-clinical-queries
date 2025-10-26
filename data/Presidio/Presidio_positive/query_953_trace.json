@@ -1,0 +1,67 @@
+{
+  "query_id": "953",
+  "timestamp": "2025-10-22T16:12:47.047438",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guidelines for the use of Rivaroxaban in a 55yo female, Linda T., admitted to UCSF Medical Center on August 19, 2024 (SSN: 987-65-4321)?",
+  "ground_truth_phi": "NAME: Linda T. | GEOGRAPHIC_LOCATION: UCSF Medical Center | DATE: August 19, 2024 | SOCIAL_SECURITY_NUMBER: 987-65-4321",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Guidelines for the use of Rivaroxaban in a 55yo female, [REDACTED_NAME], admitted to UCSF Medical Center on [REDACTED_DATE] (SSN: [REDACTED_US_ITIN])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 56,
+      "end": 64,
+      "score": 0.85,
+      "text": "Linda T.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 101,
+      "end": 116,
+      "score": 0.85,
+      "text": "August 19, 2024",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "US_ITIN",
+      "hipaa_category": "US_ITIN",
+      "start": 123,
+      "end": 134,
+      "score": 0.5,
+      "text": "987-65-4321",
+      "recognizer": "UsItinRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UCSF Medical Center",
+        "start": 78,
+        "end": 97
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  }
+}

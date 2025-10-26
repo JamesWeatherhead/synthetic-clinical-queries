@@ -1,0 +1,88 @@
+{
+  "query_id": "25",
+  "timestamp": "2025-10-23T09:55:39.161290",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Management guidelines for a 65-year-old male with metastatic prostate cancer, Robert Smith, treated at Valley Clinic, New York, on April 12, 2023 (MRN: VC-1029384)?",
+  "ground_truth_phi": "NAME: Robert Smith | GEOGRAPHIC_LOCATION: Valley Clinic, New York | DATE: April 12, 2023 | MEDICAL_RECORD_NUMBER: VC-1029384",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "65",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999818742275238,
+      "begin_offset": 28,
+      "end_offset": 30
+    },
+    {
+      "text": "Robert Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9979838132858276,
+      "begin_offset": 78,
+      "end_offset": 90
+    },
+    {
+      "text": "Valley Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9985750913619995,
+      "begin_offset": 103,
+      "end_offset": 116
+    },
+    {
+      "text": "New York",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9621610641479492,
+      "begin_offset": 118,
+      "end_offset": 126
+    },
+    {
+      "text": "April 12, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998847246170044,
+      "begin_offset": 131,
+      "end_offset": 145
+    },
+    {
+      "text": "1029384",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9756836295127869,
+      "begin_offset": 155,
+      "end_offset": 162
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "0.8333",
+    "f1_score": "0.9091"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 6
+}

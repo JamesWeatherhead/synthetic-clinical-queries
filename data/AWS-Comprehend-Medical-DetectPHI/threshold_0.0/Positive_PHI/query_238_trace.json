@@ -1,0 +1,70 @@
+{
+  "query_id": "238",
+  "timestamp": "2025-10-23T09:56:01.626876",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "best approach for post-op care in pt w/ hx of AFib, case similar to Mary K., admitted to Georgetown Med on Nov 11th '23 (Acct#: GRM-998877). worried about DVT risk.",
+  "ground_truth_phi": "NAME: Mary K. | GEOGRAPHIC_LOCATION: Georgetown Med | DATE: Nov 11th '23 | ACCOUNT_NUMBER: GRM-998877",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Mary K",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9982032775878906,
+      "begin_offset": 68,
+      "end_offset": 74
+    },
+    {
+      "text": "Georgetown Med",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.796258807182312,
+      "begin_offset": 89,
+      "end_offset": 103
+    },
+    {
+      "text": "Nov 11th '23",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9984250068664551,
+      "begin_offset": 107,
+      "end_offset": 119
+    },
+    {
+      "text": "998877",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6219093203544617,
+      "begin_offset": 132,
+      "end_offset": 138
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

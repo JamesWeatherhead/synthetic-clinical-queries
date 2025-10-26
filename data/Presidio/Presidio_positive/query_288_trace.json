@@ -1,0 +1,78 @@
+{
+  "query_id": "288",
+  "timestamp": "2025-10-22T16:12:43.539931",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guidelines for managing COPD exacerbation in a 70-year-old from 789 Maple St., New Orleans, discharged on March 5th, 2024?",
+  "ground_truth_phi": "GEOGRAPHIC_LOCATION: 789 Maple St., New Orleans | DATE: March 5th, 2024",
+  "ground_truth_phi_count": 2,
+  "presidio_output": "Guidelines for managing COPD exacerbation in a [REDACTED_DATE] from 789 [REDACTED_GEOGRAPHIC_LOCATION], [REDACTED_GEOGRAPHIC_LOCATION], discharged on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 47,
+      "end": 58,
+      "score": 0.85,
+      "text": "70-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 68,
+      "end": 77,
+      "score": 0.85,
+      "text": "Maple St.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 79,
+      "end": 90,
+      "score": 0.85,
+      "text": "New Orleans",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 106,
+      "end": 116,
+      "score": 0.85,
+      "text": "March 5th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 117,
+      "end": 121,
+      "score": 0.85,
+      "text": "2024",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 2,
+    "successfully_redacted": 2,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.0000",
+    "f1_score": "0.0000"
+  }
+}

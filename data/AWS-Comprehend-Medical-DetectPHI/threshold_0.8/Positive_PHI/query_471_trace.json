@@ -1,0 +1,70 @@
+{
+  "query_id": "471",
+  "timestamp": "2025-10-23T09:56:29.240388",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Are there any recent studies on the efficacy of Paxlovid for a 56-year-old female with COPD, a patient named Mary J., who visited our clinic in Chicago on February 14, 2024?",
+  "ground_truth_phi": "NAME: Mary J. | GEOGRAPHIC_LOCATION: Chicago | DATE: February 14, 2024",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "56",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9992813467979431,
+      "begin_offset": 63,
+      "end_offset": 65
+    },
+    {
+      "text": "Mary J",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9944932460784912,
+      "begin_offset": 109,
+      "end_offset": 115
+    },
+    {
+      "text": "Chicago",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9977450370788574,
+      "begin_offset": 144,
+      "end_offset": 151
+    },
+    {
+      "text": "February 14, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999617338180542,
+      "begin_offset": 155,
+      "end_offset": 172
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 4
+}

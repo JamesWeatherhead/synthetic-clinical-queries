@@ -1,0 +1,45 @@
+{
+  "query_id": "713",
+  "timestamp": "2025-10-22T16:24:25.107354",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guidelines for managing hypertension in a 70-year-old African American male with a family history of cardiovascular disease.",
+  "presidio_output": "Guidelines for managing hypertension in a [REDACTED_DATE] [REDACTED_NRP] male with a family history of cardiovascular disease.",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 42,
+      "end": 53,
+      "score": 0.85,
+      "text": "70-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "NRP",
+      "hipaa_category": "NRP",
+      "start": 54,
+      "end": 70,
+      "score": 0.85,
+      "text": "African American",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 2,
+    "false_redactions_by_type": {
+      "DATE": 1,
+      "NRP": 1
+    },
+    "status": "OVER_REDACTED"
+  }
+}

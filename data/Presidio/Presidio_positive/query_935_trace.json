@@ -1,0 +1,78 @@
+{
+  "query_id": "935",
+  "timestamp": "2025-10-22T16:12:46.956212",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Effective regimens for a 72yo male with COPD, Henry B., who was treated at St. Joseph's Hospital in Phoenix on March 30th, 2023 (Phone: 602-555-1234)?",
+  "ground_truth_phi": "NAME: Henry B. | GEOGRAPHIC_LOCATION: St. Joseph's Hospital in Phoenix | DATE: March 30th, 2023 | PHONE_NUMBER: 602-555-1234",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Effective regimens for a 72yo male with COPD, [REDACTED_NAME], who was treated at St. Joseph's Hospital in [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE] (Phone: [REDACTED_PHONE_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 46,
+      "end": 54,
+      "score": 0.85,
+      "text": "Henry B.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 100,
+      "end": 107,
+      "score": 0.85,
+      "text": "Phoenix",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 111,
+      "end": 122,
+      "score": 0.85,
+      "text": "March 30th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 123,
+      "end": 127,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 136,
+      "end": 148,
+      "score": 0.75,
+      "text": "602-555-1234",
+      "recognizer": "PhoneRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.4000",
+    "f1_score": "0.5714"
+  }
+}

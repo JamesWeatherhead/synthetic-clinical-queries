@@ -1,0 +1,70 @@
+{
+  "query_id": "349",
+  "timestamp": "2025-10-23T09:56:16.351589",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for managing hypertension in a 60-year-old male, patient ID #AB-987654, last seen at Johns Hopkins Hospital on March 10th, 2023?",
+  "ground_truth_phi": "UNIQUE_IDENTIFIER: patient ID #AB-987654 | GEOGRAPHIC_LOCATION: Johns Hopkins Hospital | DATE: March 10th, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "60",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9994122982025146,
+      "begin_offset": 42,
+      "end_offset": 44
+    },
+    {
+      "text": "987654",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.919685423374176,
+      "begin_offset": 75,
+      "end_offset": 81
+    },
+    {
+      "text": "Johns Hopkins Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9736421704292297,
+      "begin_offset": 96,
+      "end_offset": 118
+    },
+    {
+      "text": "March 10th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999675750732422,
+      "begin_offset": 122,
+      "end_offset": 138
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

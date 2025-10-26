@@ -1,0 +1,69 @@
+{
+  "query_id": "46",
+  "timestamp": "2025-10-22T16:12:42.272899",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Best practices for managing a 70-year-old female with Alzheimer's disease, Ellen L., who was last seen in San Francisco clinic on Jan 10, 2024?",
+  "ground_truth_phi": "NAME: Ellen L. | GEOGRAPHIC_LOCATION: San Francisco clinic | DATE: Jan 10, 2024",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Best practices for managing a [REDACTED_DATE] female with Alzheimer's disease, [REDACTED_NAME], who was last seen in [REDACTED_GEOGRAPHIC_LOCATION] clinic on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 30,
+      "end": 41,
+      "score": 0.85,
+      "text": "70-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 75,
+      "end": 83,
+      "score": 0.85,
+      "text": "Ellen L.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 106,
+      "end": 119,
+      "score": 0.85,
+      "text": "San Francisco",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 130,
+      "end": 142,
+      "score": 0.85,
+      "text": "Jan 10, 2024",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "0.5000",
+    "f1_score": "0.6667"
+  }
+}

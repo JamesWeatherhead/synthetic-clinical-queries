@@ -1,0 +1,76 @@
+{
+  "query_id": "481",
+  "timestamp": "2025-10-22T16:12:44.568710",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the latest ADA guidelines for managing Type 1 Diabetes in children, specifically a 12-year-old named Emily Johnson, who was treated at Children's Hospital of Philadelphia on March 8th, 2022?",
+  "ground_truth_phi": "NAME: Emily Johnson | GEOGRAPHIC_LOCATION: Children's Hospital of Philadelphia | DATE: March 8th, 2022",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "What are the latest ADA guidelines for managing Type 1 Diabetes in children, specifically a [REDACTED_DATE] named [REDACTED_NAME], who was treated at Children's Hospital of Philadelphia on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 92,
+      "end": 103,
+      "score": 0.85,
+      "text": "12-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 110,
+      "end": 123,
+      "score": 0.85,
+      "text": "Emily Johnson",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 183,
+      "end": 193,
+      "score": 0.85,
+      "text": "March 8th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 194,
+      "end": 198,
+      "score": 0.85,
+      "text": "2022",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Children's Hospital of Philadelphia",
+        "start": 144,
+        "end": 179
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.6667",
+    "precision": "0.2500",
+    "f1_score": "0.3636"
+  }
+}

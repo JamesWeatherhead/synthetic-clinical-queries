@@ -1,0 +1,76 @@
+{
+  "query_id": "782",
+  "timestamp": "2025-10-22T16:12:46.150019",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Tx rec for a 52yo male w/ HTN, John S., seen at Denver Gen on Jul 19, 2022, worried about Rx interaction w/ Losartan. His plan ID: TR-567899.",
+  "ground_truth_phi": "NAME: John S. | GEOGRAPHIC_LOCATION: Denver Gen | DATE: Jul 19, 2022 | HEALTH_PLAN_BENEFICIARY_NUMBER: TR-567899",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "[REDACTED_GEOGRAPHIC_LOCATION] rec for a 52yo male w/ HTN, [REDACTED_NAME], seen at Denver Gen on [REDACTED_DATE], worried about Rx interaction w/ Losartan. His plan ID: [REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 0,
+      "end": 2,
+      "score": 0.85,
+      "text": "Tx",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 31,
+      "end": 38,
+      "score": 0.85,
+      "text": "John S.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 62,
+      "end": 74,
+      "score": 0.85,
+      "text": "Jul 19, 2022",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 131,
+      "end": 140,
+      "score": 0.7,
+      "text": "TR-567899",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Denver Gen",
+        "start": 48,
+        "end": 58
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

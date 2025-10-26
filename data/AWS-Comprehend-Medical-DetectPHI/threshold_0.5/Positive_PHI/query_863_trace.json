@@ -1,0 +1,79 @@
+{
+  "query_id": "863",
+  "timestamp": "2025-10-23T09:57:09.619716",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Current ADA recommendations for managing hypoglycemia in a 58yo diabetic female named Mary Wilson, who was admitted to NYU Hospital on 08/15/2023 with MRN 123-45-6789?",
+  "ground_truth_phi": "NAME: Mary Wilson | GEOGRAPHIC_LOCATION: NYU Hospital | DATE: 08/15/2023 | MEDICAL_RECORD_NUMBER: 123-45-6789",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "58yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9962892532348633,
+      "begin_offset": 59,
+      "end_offset": 63
+    },
+    {
+      "text": "Mary Wilson",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9993496537208557,
+      "begin_offset": 86,
+      "end_offset": 97
+    },
+    {
+      "text": "NYU Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9568353295326233,
+      "begin_offset": 119,
+      "end_offset": 131
+    },
+    {
+      "text": "08/15/2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999605417251587,
+      "begin_offset": 135,
+      "end_offset": 145
+    },
+    {
+      "text": "123-45-6789",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9986158609390259,
+      "begin_offset": 155,
+      "end_offset": 166
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

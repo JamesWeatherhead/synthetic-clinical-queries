@@ -1,0 +1,61 @@
+{
+  "query_id": "969",
+  "timestamp": "2025-10-23T09:57:22.890492",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "policies on managing hypertensive crises in pts w/ hx of stroke, as seen with John D., at Brooklyn Methodist Hospital, Aug 10th 2022.",
+  "ground_truth_phi": "NAME: John D. | GEOGRAPHIC_LOCATION: Brooklyn Methodist Hospital | DATE: Aug 10th 2022",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "John D",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9550999999046326,
+      "begin_offset": 78,
+      "end_offset": 84
+    },
+    {
+      "text": "Brooklyn Methodist Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9841905236244202,
+      "begin_offset": 90,
+      "end_offset": 117
+    },
+    {
+      "text": "Aug 10th 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9994496703147888,
+      "begin_offset": 119,
+      "end_offset": 132
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

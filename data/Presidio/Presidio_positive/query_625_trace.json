@@ -1,0 +1,85 @@
+{
+  "query_id": "625",
+  "timestamp": "2025-10-22T16:12:45.337518",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the latest treatment protocols for a 63-year-old female with hypertension and chronic migraines, Rebecca L., who was seen at Cleveland Clinic on March 10th, 2023 (MRN: CL-456789)?",
+  "ground_truth_phi": "NAME: Rebecca L. | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: March 10th, 2023 | MEDICAL_RECORD_NUMBER: CL-456789",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What are the latest treatment protocols for a [REDACTED_DATE] female with hypertension and chronic migraines, [REDACTED_NAME], who was seen at Cleveland Clinic on [REDACTED_DATE] (MRN: [REDACTED_NAME])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 46,
+      "end": 57,
+      "score": 0.85,
+      "text": "63-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 106,
+      "end": 116,
+      "score": 0.85,
+      "text": "Rebecca L.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 154,
+      "end": 170,
+      "score": 0.85,
+      "text": "March 10th, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 177,
+      "end": 186,
+      "score": 0.85,
+      "text": "CL-456789",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 177,
+      "end": 186,
+      "score": 0.7,
+      "text": "CL-456789",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Cleveland Clinic",
+        "start": 134,
+        "end": 150
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.6000",
+    "f1_score": "0.6667"
+  }
+}

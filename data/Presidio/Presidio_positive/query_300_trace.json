@@ -1,0 +1,85 @@
+{
+  "query_id": "300",
+  "timestamp": "2025-10-22T16:12:43.613191",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guidelines for the management of atrial fibrillation in a 60-year-old male, Richard H., treated at Springdale Clinic on July 14th, 2023 (MRN: SP-987654)?",
+  "ground_truth_phi": "NAME: Richard H. | GEOGRAPHIC_LOCATION: Springdale Clinic | DATE: July 14th, 2023 | MEDICAL_RECORD_NUMBER: SP-987654",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Guidelines for the management of atrial fibrillation in a [REDACTED_DATE] male, [REDACTED_NAME], treated at Springdale Clinic on [REDACTED_DATE] (MRN: [REDACTED_NAME])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 58,
+      "end": 69,
+      "score": 0.85,
+      "text": "60-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 76,
+      "end": 86,
+      "score": 0.85,
+      "text": "Richard H.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 120,
+      "end": 135,
+      "score": 0.85,
+      "text": "July 14th, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 142,
+      "end": 151,
+      "score": 0.85,
+      "text": "SP-987654",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 142,
+      "end": 151,
+      "score": 0.7,
+      "text": "SP-987654",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Springdale Clinic",
+        "start": 99,
+        "end": 116
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.6000",
+    "f1_score": "0.6667"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "query_id": "400",
+  "timestamp": "2025-10-22T16:12:44.146372",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the risks of prescribing gabapentin to a 60-year-old female, Mary L., who has been treated at St. Vincent's Hospital since April 12th, 2023 (MRN: APL-876-98)?",
+  "ground_truth_phi": "NAME: Mary L. | GEOGRAPHIC_LOCATION: St. Vincent's Hospital | DATE: April 12th, 2023 | MEDICAL_RECORD_NUMBER: APL-876-98",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What are the risks of prescribing gabapentin to a [REDACTED_DATE] female, [REDACTED_NAME], who has been treated at [REDACTED_GEOGRAPHIC_LOCATION] since [REDACTED_DATE] (MRN: APL-876-98)?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 50,
+      "end": 61,
+      "score": 0.85,
+      "text": "60-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 70,
+      "end": 77,
+      "score": 0.85,
+      "text": "Mary L.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 103,
+      "end": 125,
+      "score": 0.85,
+      "text": "St. Vincent's Hospital",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 132,
+      "end": 148,
+      "score": 0.85,
+      "text": "April 12th, 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "APL-876-98",
+        "start": 155,
+        "end": 165
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

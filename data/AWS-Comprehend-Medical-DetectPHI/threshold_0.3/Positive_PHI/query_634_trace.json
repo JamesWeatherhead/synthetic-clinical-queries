@@ -1,0 +1,79 @@
+{
+  "query_id": "634",
+  "timestamp": "2025-10-23T09:56:46.749528",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Comparative effectiveness of atorvastatin vs simvastatin in reducing LDL levels in John Smith, a 58-year-old male patient treated at Texas Health Presbyterian Hospital on 08/22/2023 (MRN: TX108765).",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: Texas Health Presbyterian Hospital | DATE: 08/22/2023 | MEDICAL_RECORD_NUMBER: TX108765",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "John Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9927575588226318,
+      "begin_offset": 83,
+      "end_offset": 93
+    },
+    {
+      "text": "58",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999604225158691,
+      "begin_offset": 97,
+      "end_offset": 99
+    },
+    {
+      "text": "Texas Health Presbyterian Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9870774745941162,
+      "begin_offset": 133,
+      "end_offset": 167
+    },
+    {
+      "text": "08/22/2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999051094055176,
+      "begin_offset": 171,
+      "end_offset": 181
+    },
+    {
+      "text": "TX108765",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9392127990722656,
+      "begin_offset": 188,
+      "end_offset": 196
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

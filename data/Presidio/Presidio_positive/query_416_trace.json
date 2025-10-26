@@ -1,0 +1,87 @@
+{
+  "query_id": "416",
+  "timestamp": "2025-10-22T16:12:44.231000",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guidelines for managing hypertension in a 52-year-old female, Nancy Johnson, who lives in Chicago, seen on September 7th, 2022 (MRN: CHI-789012)?",
+  "ground_truth_phi": "NAME: Nancy Johnson | GEOGRAPHIC_LOCATION: Chicago | DATE: September 7th, 2022 | MEDICAL_RECORD_NUMBER: CHI-789012",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Guidelines for managing hypertension in a [REDACTED_DATE] female, [REDACTED_NAME], who lives in [REDACTED_GEOGRAPHIC_LOCATION], seen on [REDACTED_DATE] (MRN: [REDACTED_NAME])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 42,
+      "end": 53,
+      "score": 0.85,
+      "text": "52-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 62,
+      "end": 75,
+      "score": 0.85,
+      "text": "Nancy Johnson",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 90,
+      "end": 97,
+      "score": 0.85,
+      "text": "Chicago",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 107,
+      "end": 126,
+      "score": 0.85,
+      "text": "September 7th, 2022",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 133,
+      "end": 143,
+      "score": 0.85,
+      "text": "CHI-789012",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 133,
+      "end": 143,
+      "score": 0.7,
+      "text": "CHI-789012",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "recall": "1.0000",
+    "precision": "0.6667",
+    "f1_score": "0.8000"
+  }
+}

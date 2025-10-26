@@ -1,0 +1,94 @@
+{
+  "query_id": "925",
+  "timestamp": "2025-10-22T16:12:46.890338",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Updated asthma management guidelines for a 40-year-old male, Michael P., under the care of Dr. Alice K. Smith, seen at New York Presbyterian on July 18th, 2023 (Email: michael.p@example.com).",
+  "ground_truth_phi": "NAME: Michael P. | NAME: Alice K. Smith | GEOGRAPHIC_LOCATION: New York Presbyterian | DATE: July 18th, 2023 | EMAIL_ADDRESS: michael.p@example.com",
+  "ground_truth_phi_count": 5,
+  "presidio_output": "Updated asthma management guidelines for a [REDACTED_DATE] male, [REDACTED_NAME], under the care of Dr. [REDACTED_NAME], seen at New York Presbyterian on [REDACTED_DATE] (Email: [REDACTED_EMAIL_ADDRESS]).",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "EMAIL_ADDRESS",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "start": 168,
+      "end": 189,
+      "score": 1.0,
+      "text": "michael.p@example.com",
+      "recognizer": "EmailRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 43,
+      "end": 54,
+      "score": 0.85,
+      "text": "40-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 61,
+      "end": 71,
+      "score": 0.85,
+      "text": "Michael P.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 95,
+      "end": 109,
+      "score": 0.85,
+      "text": "Alice K. Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 144,
+      "end": 159,
+      "score": 0.85,
+      "text": "July 18th, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "URL",
+      "hipaa_category": "WEB_URL",
+      "start": 178,
+      "end": 189,
+      "score": 0.5,
+      "text": "example.com",
+      "recognizer": "UrlRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "New York Presbyterian",
+        "start": 119,
+        "end": 140
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 5,
+    "successfully_redacted": 4,
+    "leaked_failures": 1,
+    "total_detected": 6,
+    "recall": "0.8000",
+    "precision": "0.6667",
+    "f1_score": "0.7273"
+  }
+}

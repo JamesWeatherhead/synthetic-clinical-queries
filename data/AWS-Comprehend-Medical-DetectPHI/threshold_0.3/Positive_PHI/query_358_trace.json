@@ -1,0 +1,61 @@
+{
+  "query_id": "358",
+  "timestamp": "2025-10-23T09:56:17.410997",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Rec. tx for pt w/ hx of HTN & COPD, Richard Brown, seen at Elm St. Clinic on 08/15/23. Concerns about beta blockers affecting asthma.",
+  "ground_truth_phi": "NAME: Richard Brown | GEOGRAPHIC_LOCATION: Elm St. Clinic | DATE: 08/15/23",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "Richard Brown",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.995792031288147,
+      "begin_offset": 36,
+      "end_offset": 49
+    },
+    {
+      "text": "Elm St. Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.997654914855957,
+      "begin_offset": 59,
+      "end_offset": 73
+    },
+    {
+      "text": "08/15/23",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999922513961792,
+      "begin_offset": 77,
+      "end_offset": 85
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

@@ -1,0 +1,70 @@
+{
+  "query_id": "641",
+  "timestamp": "2025-10-23T09:56:47.378762",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the current ADA guidelines for managing a 54-year-old patient with Type 1 Diabetes, Mary S., seen at the Dallas clinic on April 1st, 2023?",
+  "ground_truth_phi": "NAME: Mary S. | GEOGRAPHIC_LOCATION: Dallas clinic | DATE: April 1st, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "54",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9982568621635437,
+      "begin_offset": 51,
+      "end_offset": 53
+    },
+    {
+      "text": "Mary S",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9883602857589722,
+      "begin_offset": 93,
+      "end_offset": 99
+    },
+    {
+      "text": "Dallas clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.998190701007843,
+      "begin_offset": 114,
+      "end_offset": 127
+    },
+    {
+      "text": "April 1st, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998370409011841,
+      "begin_offset": 131,
+      "end_offset": 146
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

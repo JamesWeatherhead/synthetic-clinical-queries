@@ -1,0 +1,88 @@
+{
+  "query_id": "1004",
+  "timestamp": "2025-10-23T09:57:27.744091",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "urgent tx recs for pt, male, 50yo, w/ hx of HTN & on lisinopril; pt John Doe, last visit at City Hospital, LA, on Feb 14, 2023. MRN #LA-987654.",
+  "ground_truth_phi": "NAME: John Doe | GEOGRAPHIC_LOCATION: City Hospital, LA | DATE: Feb 14, 2023 | MEDICAL_RECORD_NUMBER: LA-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "50yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.998307466506958,
+      "begin_offset": 29,
+      "end_offset": 33
+    },
+    {
+      "text": "John Doe",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9851255416870117,
+      "begin_offset": 68,
+      "end_offset": 76
+    },
+    {
+      "text": "City Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9969673752784729,
+      "begin_offset": 92,
+      "end_offset": 105
+    },
+    {
+      "text": "LA",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7357414364814758,
+      "begin_offset": 107,
+      "end_offset": 109
+    },
+    {
+      "text": "Feb 14, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9918939471244812,
+      "begin_offset": 114,
+      "end_offset": 126
+    },
+    {
+      "text": "987654",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.5836215019226074,
+      "begin_offset": 136,
+      "end_offset": 142
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "0.8333",
+    "f1_score": "0.9091"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 7,
+  "aws_entities_filtered_count": 6
+}

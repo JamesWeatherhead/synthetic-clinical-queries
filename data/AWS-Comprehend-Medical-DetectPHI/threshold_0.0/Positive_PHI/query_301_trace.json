@@ -1,0 +1,70 @@
+{
+  "query_id": "301",
+  "timestamp": "2025-10-23T09:56:11.201336",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the current contraindications for prescribing losartan to 52-year-old female patients, similar to Beth A. at Good Samaritan Hospital, treated on August 22, 2022?",
+  "ground_truth_phi": "NAME: Beth A. | GEOGRAPHIC_LOCATION: Good Samaritan Hospital | DATE: August 22, 2022",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "52",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9258643388748169,
+      "begin_offset": 67,
+      "end_offset": 69
+    },
+    {
+      "text": "Beth A.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9784954190254211,
+      "begin_offset": 107,
+      "end_offset": 114
+    },
+    {
+      "text": "Good Samaritan Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.16734947264194489,
+      "begin_offset": 118,
+      "end_offset": 141
+    },
+    {
+      "text": "August 22, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999916553497314,
+      "begin_offset": 154,
+      "end_offset": 169
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

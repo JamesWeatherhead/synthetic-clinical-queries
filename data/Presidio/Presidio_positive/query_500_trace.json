@@ -1,0 +1,87 @@
+{
+  "query_id": "500",
+  "timestamp": "2025-10-22T16:12:44.673473",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommendations for treating heart failure in a 63-year-old male, Jake Thompson, who was admitted to Cedar Sinai on April 12th, 2023 with an EF of 30% (contact: 555-123-4567)?",
+  "ground_truth_phi": "NAME: Jake Thompson | GEOGRAPHIC_LOCATION: Cedar Sinai | DATE: April 12th, 2023 | PHONE_NUMBER: 555-123-4567",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Recommendations for treating heart failure in a [REDACTED_DATE] male, [REDACTED_NAME], who was admitted to [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE] with an [REDACTED_GEOGRAPHIC_LOCATION] of 30% (contact: [REDACTED_PHONE_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 48,
+      "end": 59,
+      "score": 0.85,
+      "text": "63-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 66,
+      "end": 79,
+      "score": 0.85,
+      "text": "Jake Thompson",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 101,
+      "end": 112,
+      "score": 0.85,
+      "text": "Cedar Sinai",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 116,
+      "end": 132,
+      "score": 0.85,
+      "text": "April 12th, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 141,
+      "end": 143,
+      "score": 0.85,
+      "text": "EF",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 161,
+      "end": 173,
+      "score": 0.4,
+      "text": "555-123-4567",
+      "recognizer": "PhoneRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "recall": "1.0000",
+    "precision": "0.6667",
+    "f1_score": "0.8000"
+  }
+}

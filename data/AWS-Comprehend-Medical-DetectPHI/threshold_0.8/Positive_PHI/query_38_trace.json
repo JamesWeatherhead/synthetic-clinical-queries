@@ -1,0 +1,70 @@
+{
+  "query_id": "38",
+  "timestamp": "2025-10-23T09:55:40.447350",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "rec. mx for pt w/ CAD & hx of MI, reviewed by Dr. Smith at Baylor Med. Center on Feb 2nd 2021. considering Plavix. Contact info is smith.example@baylor.edu.",
+  "ground_truth_phi": "NAME: Dr. Smith | GEOGRAPHIC_LOCATION: Baylor Med. Center | DATE: Feb 2nd 2021 | EMAIL_ADDRESS: smith.example@baylor.edu",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9981312155723572,
+      "begin_offset": 50,
+      "end_offset": 55
+    },
+    {
+      "text": "Baylor Med. Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9525832533836365,
+      "begin_offset": 59,
+      "end_offset": 77
+    },
+    {
+      "text": "Feb 2nd 2021",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9956947565078735,
+      "begin_offset": 81,
+      "end_offset": 93
+    },
+    {
+      "text": "smith.example@baylor.edu",
+      "aws_type": "EMAIL",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995840191841125,
+      "begin_offset": 131,
+      "end_offset": 155
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

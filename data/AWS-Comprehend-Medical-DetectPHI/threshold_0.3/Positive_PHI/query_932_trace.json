@@ -1,0 +1,75 @@
+{
+  "query_id": "932",
+  "timestamp": "2025-10-23T09:57:17.783189",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best practices for managing chronic migraines in a 32-year-old female, Patricia L., whose diagnosis was confirmed at White Plains Medical Center on January 10, 2024 (Insurance ID: WP-98765)?",
+  "ground_truth_phi": "NAME: Patricia L. | GEOGRAPHIC_LOCATION: White Plains Medical Center | DATE: January 10, 2024 | HEALTH_PLAN_BENEFICIARY_NUMBER: WP-98765",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "32",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998005032539368,
+      "begin_offset": 51,
+      "end_offset": 53
+    },
+    {
+      "text": "Patricia L",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9961624145507812,
+      "begin_offset": 71,
+      "end_offset": 81
+    },
+    {
+      "text": "White Plains Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9871134757995605,
+      "begin_offset": 117,
+      "end_offset": 144
+    },
+    {
+      "text": "January 10, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999580383300781,
+      "begin_offset": 148,
+      "end_offset": 164
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+        "value": "WP-98765"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 4
+}

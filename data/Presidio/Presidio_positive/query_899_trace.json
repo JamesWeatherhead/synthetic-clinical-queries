@@ -1,0 +1,76 @@
+{
+  "query_id": "899",
+  "timestamp": "2025-10-22T16:12:46.757386",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "mgmt for 70yo male, hx of CHF, admitted to JFK Medical Center on Jan 1st '23, pt name John D. his insurance policy # is ABC-987654.",
+  "ground_truth_phi": "NAME: John D. | GEOGRAPHIC_LOCATION: JFK Medical Center | DATE: Jan 1st '23 | HEALTH_PLAN_BENEFICIARY_NUMBER: ABC-987654",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "mgmt for 70yo male, hx of CHF, admitted to JFK Medical Center on [REDACTED_DATE], pt name [REDACTED_NAME] his insurance policy # is [REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 65,
+      "end": 76,
+      "score": 0.85,
+      "text": "Jan 1st '23",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 86,
+      "end": 93,
+      "score": 0.85,
+      "text": "John D.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 120,
+      "end": 130,
+      "score": 0.7,
+      "text": "ABC-987654",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "US_DRIVER_LICENSE",
+      "hipaa_category": "US_DRIVER_LICENSE",
+      "start": 124,
+      "end": 130,
+      "score": 0.4,
+      "text": "987654",
+      "recognizer": "UsLicenseRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "JFK Medical Center",
+        "start": 43,
+        "end": 61
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

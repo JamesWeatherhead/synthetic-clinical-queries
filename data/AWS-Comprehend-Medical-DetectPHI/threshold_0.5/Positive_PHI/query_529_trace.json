@@ -1,0 +1,70 @@
+{
+  "query_id": "529",
+  "timestamp": "2025-10-23T09:56:35.838591",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Risk factors for cardiovascular disease in a 50-year-old male, patient of Dr. Steven Harrison, who visited our Newark clinic on December 1, 2022?",
+  "ground_truth_phi": "NAME: Dr. Steven Harrison | GEOGRAPHIC_LOCATION: Newark | DATE: December 1, 2022",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "50",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996143579483032,
+      "begin_offset": 45,
+      "end_offset": 47
+    },
+    {
+      "text": "Steven Harrison",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9992088675498962,
+      "begin_offset": 78,
+      "end_offset": 93
+    },
+    {
+      "text": "Newark clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9969803690910339,
+      "begin_offset": 111,
+      "end_offset": 124
+    },
+    {
+      "text": "December 1, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999934434890747,
+      "begin_offset": 128,
+      "end_offset": 144
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

@@ -1,0 +1,70 @@
+{
+  "query_id": "477",
+  "timestamp": "2025-10-23T09:56:30.008175",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "5-year survival rates for a 65yo male pt, John D., seen at General Hospital, diagnosed w/ metastatic lung ca on 11/10/2022?",
+  "ground_truth_phi": "NAME: John D. | GEOGRAPHIC_LOCATION: General Hospital | DATE: 11/10/2022",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "65yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9800350666046143,
+      "begin_offset": 28,
+      "end_offset": 32
+    },
+    {
+      "text": "John D",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9449424743652344,
+      "begin_offset": 42,
+      "end_offset": 48
+    },
+    {
+      "text": "General Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9704402685165405,
+      "begin_offset": 59,
+      "end_offset": 75
+    },
+    {
+      "text": "11/10/2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999703168869019,
+      "begin_offset": 112,
+      "end_offset": 122
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

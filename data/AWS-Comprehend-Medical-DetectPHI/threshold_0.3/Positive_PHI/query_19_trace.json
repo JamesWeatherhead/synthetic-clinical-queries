@@ -1,0 +1,79 @@
+{
+  "query_id": "19",
+  "timestamp": "2025-10-23T09:55:38.652022",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Current best practices for managing chronic heart failure in a 58-year-old male, Michael T., admitted to Stanford Hospital on July 12th, 2024, under MRN S-987654?",
+  "ground_truth_phi": "NAME: Michael T. | GEOGRAPHIC_LOCATION: Stanford Hospital | DATE: July 12th, 2024 | MEDICAL_RECORD_NUMBER: S-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "58",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999237060546875,
+      "begin_offset": 63,
+      "end_offset": 65
+    },
+    {
+      "text": "Michael T",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9959881901741028,
+      "begin_offset": 81,
+      "end_offset": 90
+    },
+    {
+      "text": "Stanford Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9759269952774048,
+      "begin_offset": 105,
+      "end_offset": 122
+    },
+    {
+      "text": "July 12th, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999387264251709,
+      "begin_offset": 126,
+      "end_offset": 141
+    },
+    {
+      "text": "S-987654",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9456911683082581,
+      "begin_offset": 153,
+      "end_offset": 161
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

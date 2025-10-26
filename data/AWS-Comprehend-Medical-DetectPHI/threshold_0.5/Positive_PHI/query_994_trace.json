@@ -1,0 +1,79 @@
+{
+  "query_id": "994",
+  "timestamp": "2025-10-23T09:57:26.364177",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the contraindications for using warfarin in an 85-year-old male named George B., who was admitted to Mount Sinai Hospital on April 10th, 2023 (MRN: MS-00112233)?",
+  "ground_truth_phi": "NAME: George B. | GEOGRAPHIC_LOCATION: Mount Sinai Hospital | DATE: April 10th, 2023 | MEDICAL_RECORD_NUMBER: MS-00112233",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "85",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9980005621910095,
+      "begin_offset": 56,
+      "end_offset": 58
+    },
+    {
+      "text": "George B",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9934804439544678,
+      "begin_offset": 79,
+      "end_offset": 87
+    },
+    {
+      "text": "Mount Sinai Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9977343082427979,
+      "begin_offset": 110,
+      "end_offset": 130
+    },
+    {
+      "text": "April 10th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998444318771362,
+      "begin_offset": 134,
+      "end_offset": 150
+    },
+    {
+      "text": "00112233",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9950841069221497,
+      "begin_offset": 160,
+      "end_offset": 168
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

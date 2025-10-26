@@ -1,0 +1,79 @@
+{
+  "query_id": "1026",
+  "timestamp": "2025-10-23T09:57:30.700028",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Current treatment options for late-stage Alzheimer's in a 75-year-old female, Mary P., residing in Houston, diagnosed on May 10th, 2024 (SSN: 123-45-6789)?",
+  "ground_truth_phi": "NAME: Mary P. | GEOGRAPHIC_LOCATION: Houston | DATE: May 10th, 2024 | SOCIAL_SECURITY_NUMBER: 123-45-6789",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "75",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999083280563354,
+      "begin_offset": 58,
+      "end_offset": 60
+    },
+    {
+      "text": "Mary P",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9251624345779419,
+      "begin_offset": 78,
+      "end_offset": 84
+    },
+    {
+      "text": "Houston",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9987013339996338,
+      "begin_offset": 99,
+      "end_offset": 106
+    },
+    {
+      "text": "May 10th, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998552799224854,
+      "begin_offset": 121,
+      "end_offset": 135
+    },
+    {
+      "text": "123-45-6789",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9963024854660034,
+      "begin_offset": 142,
+      "end_offset": 153
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

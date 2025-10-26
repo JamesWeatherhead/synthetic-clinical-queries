@@ -1,0 +1,79 @@
+{
+  "query_id": "813",
+  "timestamp": "2025-10-23T09:57:04.313304",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the latest guidelines for the treatment of rheumatoid arthritis in a 35-year-old female, Maria Garcia, seen at Stanford Health on March 15th, 2021 (MRN: SG-789012)?",
+  "ground_truth_phi": "NAME: Maria Garcia | GEOGRAPHIC_LOCATION: Stanford Health | DATE: March 15th, 2021 | MEDICAL_RECORD_NUMBER: SG-789012",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "35",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9988490343093872,
+      "begin_offset": 78,
+      "end_offset": 80
+    },
+    {
+      "text": "Maria Garcia",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9987560510635376,
+      "begin_offset": 98,
+      "end_offset": 110
+    },
+    {
+      "text": "Stanford Health",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9752907156944275,
+      "begin_offset": 120,
+      "end_offset": 135
+    },
+    {
+      "text": "March 15th, 2021",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999974250793457,
+      "begin_offset": 139,
+      "end_offset": 155
+    },
+    {
+      "text": "789012",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9216790199279785,
+      "begin_offset": 165,
+      "end_offset": 171
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

@@ -1,0 +1,35 @@
+{
+  "query_id": "838",
+  "timestamp": "2025-10-22T16:24:25.241031",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Updated treatment guidelines for a 70-year-old female with a history of diabetes and hypertension, considering her recent HbA1c levels?",
+  "presidio_output": "Updated treatment guidelines for a [REDACTED_DATE] female with a history of diabetes and hypertension, considering her recent HbA1c levels?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 35,
+      "end": 46,
+      "score": 0.85,
+      "text": "70-year-old",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 1,
+    "false_redactions_by_type": {
+      "DATE": 1
+    },
+    "status": "OVER_REDACTED"
+  }
+}

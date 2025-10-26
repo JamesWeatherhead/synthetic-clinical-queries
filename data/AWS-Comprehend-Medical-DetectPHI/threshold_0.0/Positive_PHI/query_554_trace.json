@@ -1,0 +1,79 @@
+{
+  "query_id": "554",
+  "timestamp": "2025-10-23T09:56:38.403989",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for the management of a 50-year-old male with newly diagnosed atrial fibrillation, Paul A., who was seen at the Cleveland Clinic on March 12th, 2023 (Health Plan ID: 54321-XYZ)?",
+  "ground_truth_phi": "NAME: Paul A. | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: March 12th, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: 54321-XYZ",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "50",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9964840412139893,
+      "begin_offset": 35,
+      "end_offset": 37
+    },
+    {
+      "text": "Paul A",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9106771945953369,
+      "begin_offset": 94,
+      "end_offset": 100
+    },
+    {
+      "text": "Cleveland Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9988566637039185,
+      "begin_offset": 123,
+      "end_offset": 139
+    },
+    {
+      "text": "March 12th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998922348022461,
+      "begin_offset": 143,
+      "end_offset": 159
+    },
+    {
+      "text": "54321",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.3471408486366272,
+      "begin_offset": 177,
+      "end_offset": 182
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

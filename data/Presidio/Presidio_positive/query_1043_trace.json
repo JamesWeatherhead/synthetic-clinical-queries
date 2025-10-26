@@ -1,0 +1,85 @@
+{
+  "query_id": "1043",
+  "timestamp": "2025-10-22T16:12:47.533741",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Updated treatment protocols for COPD in a 70-year-old patient, Michael Lee, treated at Cleveland Clinic in January 2024 (phone: 216-555-1234)?",
+  "ground_truth_phi": "NAME: Michael Lee | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: January 2024 | PHONE_NUMBER: 216-555-1234",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Updated treatment protocols for COPD in a [REDACTED_DATE] patient, [REDACTED_NAME], treated at Cleveland Clinic in [REDACTED_DATE] (phone: [REDACTED_UK_NHS])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "UK_NHS",
+      "hipaa_category": "UK_NHS",
+      "start": 128,
+      "end": 140,
+      "score": 1.0,
+      "text": "216-555-1234",
+      "recognizer": "NhsRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 42,
+      "end": 53,
+      "score": 0.85,
+      "text": "70-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 63,
+      "end": 74,
+      "score": 0.85,
+      "text": "Michael Lee",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 107,
+      "end": 119,
+      "score": 0.85,
+      "text": "January 2024",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 128,
+      "end": 140,
+      "score": 0.75,
+      "text": "216-555-1234",
+      "recognizer": "PhoneRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Cleveland Clinic",
+        "start": 87,
+        "end": 103
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.6000",
+    "f1_score": "0.6667"
+  }
+}

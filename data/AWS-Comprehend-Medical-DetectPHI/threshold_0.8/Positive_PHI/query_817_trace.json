@@ -1,0 +1,70 @@
+{
+  "query_id": "817",
+  "timestamp": "2025-10-23T09:57:04.811949",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Can you provide the latest treatment guidelines for atrial fibrillation in a 68-year-old male, Richard B., treated at St. Francis Hospital on July 22nd, 2023?",
+  "ground_truth_phi": "NAME: Richard B. | GEOGRAPHIC_LOCATION: St. Francis Hospital | DATE: July 22nd, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "68",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997109770774841,
+      "begin_offset": 77,
+      "end_offset": 79
+    },
+    {
+      "text": "Richard B",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9921443462371826,
+      "begin_offset": 95,
+      "end_offset": 104
+    },
+    {
+      "text": "St. Francis Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9861810803413391,
+      "begin_offset": 118,
+      "end_offset": 138
+    },
+    {
+      "text": "July 22nd, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999744892120361,
+      "begin_offset": 142,
+      "end_offset": 157
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

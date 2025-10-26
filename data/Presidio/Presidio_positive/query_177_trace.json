@@ -1,0 +1,82 @@
+{
+  "query_id": "177",
+  "timestamp": "2025-10-22T16:12:42.970445",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Effective treatment options for a 38-year-old female, Amanda C., presenting with severe asthma exacerbation, attended in San Francisco General Hospital on September 9th, 2023, insurance ID 9875-4321.",
+  "ground_truth_phi": "NAME: Amanda C. | GEOGRAPHIC_LOCATION: San Francisco General Hospital | DATE: September 9th, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: 9875-4321",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Effective treatment options for a [REDACTED_DATE] female, [REDACTED_NAME], presenting with severe asthma exacerbation, attended in San Francisco General Hospital on [REDACTED_DATE], insurance ID 9875-4321.",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 34,
+      "end": 45,
+      "score": 0.85,
+      "text": "38-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 54,
+      "end": 63,
+      "score": 0.85,
+      "text": "Amanda C.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 155,
+      "end": 169,
+      "score": 0.85,
+      "text": "September 9th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 170,
+      "end": 174,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "San Francisco General Hospital",
+        "start": 121,
+        "end": 151
+      },
+      {
+        "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+        "value": "9875-4321",
+        "start": 189,
+        "end": 198
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 4,
+    "recall": "0.5000",
+    "precision": "0.2500",
+    "f1_score": "0.3333"
+  }
+}

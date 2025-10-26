@@ -1,0 +1,48 @@
+{
+  "query_id": "57",
+  "timestamp": "2025-10-23T09:55:42.566467",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "s/p THA, pt Sarah L., Methodist Hospital, post-op fever day 2, what are best practices?",
+  "ground_truth_phi": "NAME: Sarah L. | GEOGRAPHIC_LOCATION: Methodist Hospital",
+  "ground_truth_phi_count": 2,
+  "aws_entities_detected": [
+    {
+      "text": "Sarah L",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9972302317619324,
+      "begin_offset": 12,
+      "end_offset": 19
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Methodist Hospital"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 2,
+    "successfully_detected": 1,
+    "leaked_failures": 1,
+    "total_detected": 1,
+    "true_positives": 1,
+    "recall": "0.5000",
+    "precision": "1.0000",
+    "f1_score": "0.6667"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 2,
+  "aws_entities_filtered_count": 1
+}

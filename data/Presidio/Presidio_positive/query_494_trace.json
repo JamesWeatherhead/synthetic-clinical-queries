@@ -1,0 +1,96 @@
+{
+  "query_id": "494",
+  "timestamp": "2025-10-22T16:12:44.647367",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the side effects of incobotulinumtoxinA in a 50-year-old male patient, Peter A., who was seen at Mt. Sinai hospital on February 1st, 2023 (email: peter.a@example.com)?",
+  "ground_truth_phi": "NAME: Peter A. | GEOGRAPHIC_LOCATION: Mt. Sinai hospital | DATE: February 1st, 2023 | EMAIL_ADDRESS: peter.a@example.com",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What are the side effects of incobotulinumtoxinA in a [REDACTED_DATE] male patient, [REDACTED_NAME], who was seen at [REDACTED_GEOGRAPHIC_LOCATION] hospital on [REDACTED_DATE], [REDACTED_DATE] (email: [REDACTED_EMAIL_ADDRESS])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "EMAIL_ADDRESS",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "start": 155,
+      "end": 174,
+      "score": 1.0,
+      "text": "peter.a@example.com",
+      "recognizer": "EmailRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 54,
+      "end": 65,
+      "score": 0.85,
+      "text": "50-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 80,
+      "end": 88,
+      "score": 0.85,
+      "text": "Peter A.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 106,
+      "end": 115,
+      "score": 0.85,
+      "text": "Mt. Sinai",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 128,
+      "end": 140,
+      "score": 0.85,
+      "text": "February 1st",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 142,
+      "end": 146,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "URL",
+      "hipaa_category": "WEB_URL",
+      "start": 163,
+      "end": 174,
+      "score": 0.5,
+      "text": "example.com",
+      "recognizer": "UrlRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 7,
+    "recall": "1.0000",
+    "precision": "0.2857",
+    "f1_score": "0.4444"
+  }
+}

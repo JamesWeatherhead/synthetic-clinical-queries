@@ -1,0 +1,67 @@
+{
+  "query_id": "700",
+  "timestamp": "2025-10-22T16:12:45.710239",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Comparative Efficacy of apixaban vs. warfarin for stroke prevention in a 72yo male c h/o AFib, John D., seen @ UCSF Med Ctr on 02/14/22 (contact: 555-123-4567)?",
+  "ground_truth_phi": "NAME: John D. | GEOGRAPHIC_LOCATION: UCSF Med Ctr | DATE: 02/14/22 | PHONE_NUMBER: 555-123-4567",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Comparative Efficacy of apixaban vs. warfarin for stroke prevention in a 72yo male c h/o AFib, [REDACTED_NAME], seen @ UCSF Med Ctr on [REDACTED_DATE] (contact: [REDACTED_PHONE_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 95,
+      "end": 102,
+      "score": 0.85,
+      "text": "John D.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 127,
+      "end": 135,
+      "score": 0.6,
+      "text": "02/14/22",
+      "recognizer": "DateRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 146,
+      "end": 158,
+      "score": 0.4,
+      "text": "555-123-4567",
+      "recognizer": "PhoneRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UCSF Med Ctr",
+        "start": 111,
+        "end": 123
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  }
+}

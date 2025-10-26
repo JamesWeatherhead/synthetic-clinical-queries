@@ -1,0 +1,70 @@
+{
+  "query_id": "686",
+  "timestamp": "2025-10-23T09:56:51.524505",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for managing hyperthyroidism in a 60-year-old female patient, Elizabeth White, who had radioactive iodine treatment at Johns Hopkins on April 15, 2023?",
+  "ground_truth_phi": "NAME: Elizabeth White | GEOGRAPHIC_LOCATION: Johns Hopkins | DATE: April 15, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "60",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997133612632751,
+      "begin_offset": 45,
+      "end_offset": 47
+    },
+    {
+      "text": "Elizabeth White",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9976267218589783,
+      "begin_offset": 73,
+      "end_offset": 88
+    },
+    {
+      "text": "Johns Hopkins",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7645778656005859,
+      "begin_offset": 130,
+      "end_offset": 143
+    },
+    {
+      "text": "April 15, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997699856758118,
+      "begin_offset": 147,
+      "end_offset": 161
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

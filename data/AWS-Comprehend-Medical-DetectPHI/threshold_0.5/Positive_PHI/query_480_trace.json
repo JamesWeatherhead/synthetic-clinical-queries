@@ -1,0 +1,79 @@
+{
+  "query_id": "480",
+  "timestamp": "2025-10-23T09:56:30.259595",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Recommendations for anticoagulant therapy in a 55-year-old male, Robert Smith, with atrial fibrillation seen at St. Joseph's Clinic on January 15th, 2023 (HICN: B123456789)?",
+  "ground_truth_phi": "NAME: Robert Smith | GEOGRAPHIC_LOCATION: St. Joseph's Clinic | DATE: January 15th, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: B123456789",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "55",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998019337654114,
+      "begin_offset": 47,
+      "end_offset": 49
+    },
+    {
+      "text": "Robert Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9988995790481567,
+      "begin_offset": 65,
+      "end_offset": 77
+    },
+    {
+      "text": "St. Joseph's Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9863126873970032,
+      "begin_offset": 112,
+      "end_offset": 131
+    },
+    {
+      "text": "January 15th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998288154602051,
+      "begin_offset": 135,
+      "end_offset": 153
+    },
+    {
+      "text": "B123456789",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9710567593574524,
+      "begin_offset": 161,
+      "end_offset": 171
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

@@ -1,0 +1,64 @@
+{
+  "query_id": "602",
+  "timestamp": "2025-10-22T16:12:45.212886",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Best practices for prescribing anticoagulants for a 72yo male, Mr. D. Jones, who suffered a stroke in July 2021 and is currently at St. Joseph's Medical Center (MRN: SJMC-56789).",
+  "ground_truth_phi": "NAME: Mr. D. Jones | GEOGRAPHIC_LOCATION: St. Joseph's Medical Center | DATE: July 2021 | MEDICAL_RECORD_NUMBER: SJMC-56789",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Best practices for prescribing anticoagulants for a 72yo male, Mr. [REDACTED_NAME], who suffered a stroke in [REDACTED_DATE] and is currently at St. Joseph's Medical Center (MRN: SJMC-56789).",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 67,
+      "end": 75,
+      "score": 0.85,
+      "text": "D. Jones",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 102,
+      "end": 111,
+      "score": 0.85,
+      "text": "July 2021",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "St. Joseph's Medical Center",
+        "start": 132,
+        "end": 159
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "SJMC-56789",
+        "start": 166,
+        "end": 176
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 2,
+    "recall": "0.5000",
+    "precision": "0.5000",
+    "f1_score": "0.5000"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "query_id": "91",
+  "timestamp": "2025-10-23T09:55:45.888609",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Contraindications for using enalapril in a patient with CKD, John Williams, admitted to Mount Sinai on July 22nd, 2022, and having MRN 8765-4321?",
+  "ground_truth_phi": "NAME: John Williams | GEOGRAPHIC_LOCATION: Mount Sinai | DATE: July 22nd, 2022 | MEDICAL_RECORD_NUMBER: 8765-4321",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "John Williams",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.998968243598938,
+      "begin_offset": 61,
+      "end_offset": 74
+    },
+    {
+      "text": "Mount Sinai",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9901822209358215,
+      "begin_offset": 88,
+      "end_offset": 99
+    },
+    {
+      "text": "July 22nd, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999591112136841,
+      "begin_offset": 103,
+      "end_offset": 118
+    },
+    {
+      "text": "8765-4321",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.3581581115722656,
+      "begin_offset": 135,
+      "end_offset": 144
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

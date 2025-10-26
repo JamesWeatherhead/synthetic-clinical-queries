@@ -1,0 +1,61 @@
+{
+  "query_id": "447",
+  "timestamp": "2025-10-23T09:56:26.518855",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Management of recurrent UTIs in a patient like Peter R., who lives in Brooklyn, NY, and was treated on 06/30/2024 (MRN: BRK-1234)?",
+  "ground_truth_phi": "NAME: Peter R. | GEOGRAPHIC_LOCATION: Brooklyn, NY | DATE: 06/30/2024 | MEDICAL_RECORD_NUMBER: BRK-1234",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Peter R",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9711810350418091,
+      "begin_offset": 47,
+      "end_offset": 54
+    },
+    {
+      "text": "06/30/2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999516010284424,
+      "begin_offset": 103,
+      "end_offset": 113
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Brooklyn, NY"
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "BRK-1234"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 2,
+    "leaked_failures": 2,
+    "total_detected": 2,
+    "true_positives": 2,
+    "recall": "0.5000",
+    "precision": "1.0000",
+    "f1_score": "0.6667"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 2
+}

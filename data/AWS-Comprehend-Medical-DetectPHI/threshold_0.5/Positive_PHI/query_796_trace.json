@@ -1,0 +1,70 @@
+{
+  "query_id": "796",
+  "timestamp": "2025-10-23T09:57:02.641003",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the guidelines for treating a 34-year-old female with bipolar disorder, Jennifer S., currently living in Brooklyn, NY, seen on February 10, 2023?",
+  "ground_truth_phi": "NAME: Jennifer S. | GEOGRAPHIC_LOCATION: Brooklyn, NY | DATE: February 10, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "34",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9868001937866211,
+      "begin_offset": 39,
+      "end_offset": 41
+    },
+    {
+      "text": "Jennifer S",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.960628092288971,
+      "begin_offset": 81,
+      "end_offset": 91
+    },
+    {
+      "text": "Brooklyn, NY",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.513329803943634,
+      "begin_offset": 114,
+      "end_offset": 126
+    },
+    {
+      "text": "February 10, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999614953994751,
+      "begin_offset": 136,
+      "end_offset": 153
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

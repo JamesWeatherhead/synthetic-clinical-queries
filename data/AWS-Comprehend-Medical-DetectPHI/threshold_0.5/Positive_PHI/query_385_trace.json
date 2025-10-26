@@ -1,0 +1,70 @@
+{
+  "query_id": "385",
+  "timestamp": "2025-10-23T09:56:20.325811",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the latest treatment options for a 62-year-old male with stage 4 lung cancer, David Smith, seen at Johns Hopkins Hospital on December 12, 2022?",
+  "ground_truth_phi": "NAME: David Smith | GEOGRAPHIC_LOCATION: Johns Hopkins Hospital | DATE: December 12, 2022",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "62",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997488856315613,
+      "begin_offset": 44,
+      "end_offset": 46
+    },
+    {
+      "text": "David Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9991280436515808,
+      "begin_offset": 87,
+      "end_offset": 98
+    },
+    {
+      "text": "Johns Hopkins Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9476984739303589,
+      "begin_offset": 108,
+      "end_offset": 130
+    },
+    {
+      "text": "December 12, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999853372573853,
+      "begin_offset": 134,
+      "end_offset": 151
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

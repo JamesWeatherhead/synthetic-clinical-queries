@@ -1,0 +1,78 @@
+{
+  "query_id": "689",
+  "timestamp": "2025-10-22T16:12:45.666337",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What is the latest treatment for a 58-year-old male, David Martin, diagnosed with multiple myeloma at Memorial Sloan Kettering on March 7, 2022 (MRN: MSK-112233)?",
+  "ground_truth_phi": "NAME: David Martin | GEOGRAPHIC_LOCATION: Memorial Sloan Kettering | DATE: March 7, 2022 | MEDICAL_RECORD_NUMBER: MSK-112233",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What is the latest treatment for a [REDACTED_DATE] male, [REDACTED_NAME], diagnosed with multiple myeloma at [REDACTED_NAME] on [REDACTED_DATE] (MRN: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 35,
+      "end": 46,
+      "score": 0.85,
+      "text": "58-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 53,
+      "end": 65,
+      "score": 0.85,
+      "text": "David Martin",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 102,
+      "end": 126,
+      "score": 0.85,
+      "text": "Memorial Sloan Kettering",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 130,
+      "end": 143,
+      "score": 0.85,
+      "text": "March 7, 2022",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 150,
+      "end": 160,
+      "score": 0.7,
+      "text": "MSK-112233",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  }
+}

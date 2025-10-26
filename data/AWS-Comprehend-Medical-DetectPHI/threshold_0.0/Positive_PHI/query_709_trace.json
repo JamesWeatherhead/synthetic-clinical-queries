@@ -1,0 +1,79 @@
+{
+  "query_id": "709",
+  "timestamp": "2025-10-23T09:56:53.549479",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "guidelines for tx of 52yo F w/ hx of epilepsy. prev. admitted at Cedars-Sinai on Aug 7th, 2023. doc noted similar case as Lauren P. insurance ID LP-987654.",
+  "ground_truth_phi": "GEOGRAPHIC_LOCATION: Cedars-Sinai | DATE: Aug 7th, 2023 | NAME: Lauren P. | HEALTH_PLAN_BENEFICIARY_NUMBER: LP-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "52yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996041655540466,
+      "begin_offset": 21,
+      "end_offset": 25
+    },
+    {
+      "text": "Cedars-Sinai",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9829824566841125,
+      "begin_offset": 65,
+      "end_offset": 77
+    },
+    {
+      "text": "Aug 7th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995205402374268,
+      "begin_offset": 81,
+      "end_offset": 94
+    },
+    {
+      "text": "Lauren",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.706055223941803,
+      "begin_offset": 122,
+      "end_offset": 128
+    },
+    {
+      "text": "987654",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9600791335105896,
+      "begin_offset": 148,
+      "end_offset": 154
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

@@ -1,0 +1,84 @@
+{
+  "query_id": "280",
+  "timestamp": "2025-10-23T09:56:08.048526",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the side effects of albuterol in a 10-year-old patient, Timmy Smith, who was treated at Children's Hospital Boston on November 10th, 2023 (MRN: CH-12345)?",
+  "ground_truth_phi": "NAME: Timmy Smith | GEOGRAPHIC_LOCATION: Children's Hospital Boston | DATE: November 10th, 2023 | MEDICAL_RECORD_NUMBER: CH-12345",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "10",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8939559459686279,
+      "begin_offset": 44,
+      "end_offset": 46
+    },
+    {
+      "text": "Timmy Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9967048764228821,
+      "begin_offset": 65,
+      "end_offset": 76
+    },
+    {
+      "text": "Children's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9657078981399536,
+      "begin_offset": 97,
+      "end_offset": 116
+    },
+    {
+      "text": "Boston",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8890321850776672,
+      "begin_offset": 117,
+      "end_offset": 123
+    },
+    {
+      "text": "November 10th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999649524688721,
+      "begin_offset": 127,
+      "end_offset": 146
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "CH-12345"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "true_positives": 5,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

@@ -1,0 +1,69 @@
+{
+  "query_id": "418",
+  "timestamp": "2025-10-22T16:12:44.237028",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "tx options for pt w/ SLE, Lisa M., seen at Cedar Sinai on Jan 12, 2023, concern about cyclophosphamide side efects, insurer ID #CS-456789.",
+  "ground_truth_phi": "NAME: Lisa M. | GEOGRAPHIC_LOCATION: Cedar Sinai | DATE: Jan 12, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: #CS-456789",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "tx options for pt w/ SLE, [REDACTED_NAME], seen at [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE], concern about cyclophosphamide side efects, insurer ID #[REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 26,
+      "end": 33,
+      "score": 0.85,
+      "text": "Lisa M.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 43,
+      "end": 54,
+      "score": 0.85,
+      "text": "Cedar Sinai",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 58,
+      "end": 70,
+      "score": 0.85,
+      "text": "Jan 12, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 128,
+      "end": 137,
+      "score": 0.7,
+      "text": "CS-456789",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "query_id": "955",
+  "timestamp": "2025-10-22T16:24:25.362413",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Effectiveness of dapagliflozin in heart failure with reduced ejection fraction (HFrEF) in elderly patients, based on findings from the DAPA-HF trial?",
+  "presidio_output": "Effectiveness of dapagliflozin in heart failure with reduced ejection fraction (HFrEF) in elderly patients, based on findings from the [REDACTED_NRP]-HF trial?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "NRP",
+      "hipaa_category": "NRP",
+      "start": 135,
+      "end": 139,
+      "score": 0.85,
+      "text": "DAPA",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 1,
+    "false_redactions_by_type": {
+      "NRP": 1
+    },
+    "status": "OVER_REDACTED"
+  }
+}

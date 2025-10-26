@@ -1,0 +1,75 @@
+{
+  "query_id": "388",
+  "timestamp": "2025-10-23T09:56:20.708490",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the potential interactions between warfarin and antibiotics for a 65-year-old female patient, Maria K., who visited UCLA Medical Center on January 15, 2024 (Insurance ID: 54321-7890)?",
+  "ground_truth_phi": "NAME: Maria K. | GEOGRAPHIC_LOCATION: UCLA Medical Center | DATE: January 15, 2024 | HEALTH_PLAN_BENEFICIARY_NUMBER: 54321-7890",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "65",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9962244033813477,
+      "begin_offset": 75,
+      "end_offset": 77
+    },
+    {
+      "text": "Maria K",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9941033720970154,
+      "begin_offset": 103,
+      "end_offset": 110
+    },
+    {
+      "text": "UCLA Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9855664968490601,
+      "begin_offset": 125,
+      "end_offset": 144
+    },
+    {
+      "text": "January 15, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999505281448364,
+      "begin_offset": 148,
+      "end_offset": 164
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+        "value": "54321-7890"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 4
+}

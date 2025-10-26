@@ -1,0 +1,66 @@
+{
+  "query_id": "814",
+  "timestamp": "2025-10-23T09:57:04.428005",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Recommendations for managing a 40yo male with a history of stroke, Dr. Bob L. sent an email on May 5th, 2023 regarding this case.",
+  "ground_truth_phi": "NAME: Dr. Bob L. | DATE: May 5th, 2023 | EMAIL_ADDRESS: email",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "40yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.998301088809967,
+      "begin_offset": 31,
+      "end_offset": 35
+    },
+    {
+      "text": "Bob L.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.806350827217102,
+      "begin_offset": 71,
+      "end_offset": 77
+    },
+    {
+      "text": "May 5th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999394416809082,
+      "begin_offset": 95,
+      "end_offset": 108
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "EMAIL_ADDRESS",
+        "value": "email"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "true_positives": 2,
+    "recall": "0.6667",
+    "precision": "0.6667",
+    "f1_score": "0.6667"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

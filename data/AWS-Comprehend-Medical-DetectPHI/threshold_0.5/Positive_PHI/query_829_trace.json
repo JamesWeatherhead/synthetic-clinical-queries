@@ -1,0 +1,70 @@
+{
+  "query_id": "829",
+  "timestamp": "2025-10-23T09:57:05.928908",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "efficacy of warfarin vs. apixaban for a pt w/ hx of DVT, seen by Dr. Lee in Chicago on Nov 5, 2022, who has Medicare #AB-987654?",
+  "ground_truth_phi": "NAME: Dr. Lee | GEOGRAPHIC_LOCATION: Chicago | DATE: Nov 5, 2022 | HEALTH_PLAN_BENEFICIARY_NUMBER: Medicare #AB-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Lee",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998482465744019,
+      "begin_offset": 69,
+      "end_offset": 72
+    },
+    {
+      "text": "Chicago",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9948658347129822,
+      "begin_offset": 76,
+      "end_offset": 83
+    },
+    {
+      "text": "Nov 5, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996032118797302,
+      "begin_offset": 87,
+      "end_offset": 98
+    },
+    {
+      "text": "987654",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.5945632457733154,
+      "begin_offset": 121,
+      "end_offset": 127
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

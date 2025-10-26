@@ -1,0 +1,51 @@
+{
+  "query_id": "82",
+  "timestamp": "2025-10-22T16:12:42.470325",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommended antibiotics for treating a urinary tract infection in a 23-year-old pregnant woman with penicillin allergy, identified as patient ID: 897-65-4321?",
+  "ground_truth_phi": "UNIQUE_IDENTIFIER: patient ID: 897-65-4321",
+  "ground_truth_phi_count": 1,
+  "presidio_output": "Recommended antibiotics for treating a urinary tract infection in a [REDACTED_DATE] pregnant woman with penicillin allergy, identified as patient ID: [REDACTED_SOCIAL_SECURITY_NUMBER]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 68,
+      "end": 79,
+      "score": 0.85,
+      "text": "23-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "US_SSN",
+      "hipaa_category": "SOCIAL_SECURITY_NUMBER",
+      "start": 146,
+      "end": 157,
+      "score": 0.5,
+      "text": "897-65-4321",
+      "recognizer": "UsSsnRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 1,
+    "successfully_redacted": 1,
+    "leaked_failures": 0,
+    "total_detected": 2,
+    "recall": "1.0000",
+    "precision": "0.0000",
+    "f1_score": "0.0000"
+  }
+}

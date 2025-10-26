@@ -1,0 +1,35 @@
+{
+  "query_id": "970",
+  "timestamp": "2025-10-22T16:24:25.383930",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Approach to a 40yo female with a recent diagnosis of Crohn's disease, with lab results showing an ESR of 30 mm/hr.",
+  "presidio_output": "Approach to a 40yo female with a recent diagnosis of [REDACTED_NAME]'s disease, with lab results showing an ESR of 30 mm/hr.",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 53,
+      "end": 58,
+      "score": 0.85,
+      "text": "Crohn",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 1,
+    "false_redactions_by_type": {
+      "NAME": 1
+    },
+    "status": "OVER_REDACTED"
+  }
+}

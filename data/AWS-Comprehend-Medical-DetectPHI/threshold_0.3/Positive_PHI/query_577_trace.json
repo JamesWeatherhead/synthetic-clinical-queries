@@ -1,0 +1,88 @@
+{
+  "query_id": "577",
+  "timestamp": "2025-10-23T09:56:40.754541",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best practices for managing post-operative infection in a 55-year-old female, Elizabeth T., who underwent surgery at UCLA Medical Center on March 14, 2023 (MRN: UCLA-098765)?",
+  "ground_truth_phi": "NAME: Elizabeth T. | GEOGRAPHIC_LOCATION: UCLA Medical Center | DATE: March 14, 2023 | MEDICAL_RECORD_NUMBER: UCLA-098765",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "55",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9990448355674744,
+      "begin_offset": 58,
+      "end_offset": 60
+    },
+    {
+      "text": "Elizabeth T",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.993786096572876,
+      "begin_offset": 78,
+      "end_offset": 89
+    },
+    {
+      "text": "UCLA Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9928574562072754,
+      "begin_offset": 117,
+      "end_offset": 136
+    },
+    {
+      "text": "March 14, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999975323677063,
+      "begin_offset": 140,
+      "end_offset": 154
+    },
+    {
+      "text": "UCLA",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.4919223487377167,
+      "begin_offset": 161,
+      "end_offset": 165
+    },
+    {
+      "text": "098765",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.891348659992218,
+      "begin_offset": 166,
+      "end_offset": 172
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "0.8333",
+    "f1_score": "0.9091"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 6
+}

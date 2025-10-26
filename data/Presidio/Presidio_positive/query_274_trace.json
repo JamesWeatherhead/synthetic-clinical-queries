@@ -1,0 +1,85 @@
+{
+  "query_id": "274",
+  "timestamp": "2025-10-22T16:12:43.464995",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guideline updates for a patient with Type 1 Diabetes, age 16, Alex K., who had a check-up at Stanford Children's Health on March 3rd, 2023 (Email: alex.k@example.com)?",
+  "ground_truth_phi": "NAME: Alex K. | GEOGRAPHIC_LOCATION: Stanford Children's Health | DATE: March 3rd, 2023 | EMAIL_ADDRESS: alex.k@example.com",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Guideline updates for a patient with Type 1 Diabetes, [REDACTED_DATE], [REDACTED_NAME], who had a check-up at Stanford Children's Health on [REDACTED_DATE] (Email: [REDACTED_EMAIL_ADDRESS])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "EMAIL_ADDRESS",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "start": 147,
+      "end": 165,
+      "score": 1.0,
+      "text": "alex.k@example.com",
+      "recognizer": "EmailRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 54,
+      "end": 60,
+      "score": 0.85,
+      "text": "age 16",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 62,
+      "end": 69,
+      "score": 0.85,
+      "text": "Alex K.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 123,
+      "end": 138,
+      "score": 0.85,
+      "text": "March 3rd, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "URL",
+      "hipaa_category": "WEB_URL",
+      "start": 154,
+      "end": 165,
+      "score": 0.5,
+      "text": "example.com",
+      "recognizer": "UrlRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Stanford Children's Health",
+        "start": 93,
+        "end": 119
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.6000",
+    "f1_score": "0.6667"
+  }
+}

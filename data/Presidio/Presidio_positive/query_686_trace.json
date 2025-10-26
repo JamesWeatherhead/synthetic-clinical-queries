@@ -1,0 +1,67 @@
+{
+  "query_id": "686",
+  "timestamp": "2025-10-22T16:12:45.652458",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guidelines for managing hyperthyroidism in a 60-year-old female patient, Elizabeth White, who had radioactive iodine treatment at Johns Hopkins on April 15, 2023?",
+  "ground_truth_phi": "NAME: Elizabeth White | GEOGRAPHIC_LOCATION: Johns Hopkins | DATE: April 15, 2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Guidelines for managing hyperthyroidism in a [REDACTED_DATE] female patient, [REDACTED_NAME], who had radioactive iodine treatment at Johns Hopkins on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 45,
+      "end": 56,
+      "score": 0.85,
+      "text": "60-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 73,
+      "end": 88,
+      "score": 0.85,
+      "text": "Elizabeth White",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 147,
+      "end": 161,
+      "score": 0.85,
+      "text": "April 15, 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Johns Hopkins",
+        "start": 130,
+        "end": 143
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.6667",
+    "precision": "0.6667",
+    "f1_score": "0.6667"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "query_id": "666",
+  "timestamp": "2025-10-23T09:56:49.673406",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Management of hypertension in 56-year-old male, Michael Brown, who visited Cleveland Clinic on July 15, 2023, with MRN: 789-45-123?",
+  "ground_truth_phi": "NAME: Michael Brown | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: July 15, 2023 | MEDICAL_RECORD_NUMBER: 789-45-123",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "56",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9825294017791748,
+      "begin_offset": 30,
+      "end_offset": 32
+    },
+    {
+      "text": "Michael Brown",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9964284300804138,
+      "begin_offset": 48,
+      "end_offset": 61
+    },
+    {
+      "text": "Cleveland Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9937269687652588,
+      "begin_offset": 75,
+      "end_offset": 91
+    },
+    {
+      "text": "July 15, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999654293060303,
+      "begin_offset": 95,
+      "end_offset": 108
+    },
+    {
+      "text": "789-45-123",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.29572728276252747,
+      "begin_offset": 120,
+      "end_offset": 130
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

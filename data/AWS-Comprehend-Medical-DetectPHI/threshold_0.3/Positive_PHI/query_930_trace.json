@@ -1,0 +1,52 @@
+{
+  "query_id": "930",
+  "timestamp": "2025-10-23T09:57:17.450785",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Current treatment protocols for managing pediatric asthma in children under 12, referencing a patient, Lily A., with the id number MRN: 998877?",
+  "ground_truth_phi": "NAME: Lily A. | MEDICAL_RECORD_NUMBER: 998877",
+  "ground_truth_phi_count": 2,
+  "aws_entities_detected": [
+    {
+      "text": "Lily A",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8832346796989441,
+      "begin_offset": 103,
+      "end_offset": 109
+    },
+    {
+      "text": "998877",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7783297896385193,
+      "begin_offset": 136,
+      "end_offset": 142
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 2,
+    "successfully_detected": 2,
+    "leaked_failures": 0,
+    "total_detected": 2,
+    "true_positives": 2,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 2,
+  "aws_entities_filtered_count": 2
+}

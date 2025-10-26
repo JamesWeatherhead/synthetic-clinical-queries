@@ -1,0 +1,70 @@
+{
+  "query_id": "598",
+  "timestamp": "2025-10-23T09:56:42.971402",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Recommendations for the treatment of atrial fibrillation in a 67-year-old male, John Smith, seen at NY Presbyterian Hospital, with a follow-up scheduled on December 1st, 2024.",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: NY Presbyterian Hospital | DATE: December 1st, 2024",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "67",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997479319572449,
+      "begin_offset": 62,
+      "end_offset": 64
+    },
+    {
+      "text": "John Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9978982210159302,
+      "begin_offset": 80,
+      "end_offset": 90
+    },
+    {
+      "text": "NY Presbyterian Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8934944868087769,
+      "begin_offset": 100,
+      "end_offset": 124
+    },
+    {
+      "text": "December 1st, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999510049819946,
+      "begin_offset": 156,
+      "end_offset": 174
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

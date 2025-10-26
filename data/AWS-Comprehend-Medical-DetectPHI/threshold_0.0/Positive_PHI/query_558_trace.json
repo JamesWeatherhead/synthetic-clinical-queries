@@ -1,0 +1,70 @@
+{
+  "query_id": "558",
+  "timestamp": "2025-10-23T09:56:38.830085",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "rec. pos-op care for pt, Jane D., 68yo F w/ hx of CHF, s/p CABG, seen at Cleveland Clinic on Feb 14, 2022. Need info on wound care protocols.",
+  "ground_truth_phi": "NAME: Jane D. | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: Feb 14, 2022",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "Jane D",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6265084743499756,
+      "begin_offset": 25,
+      "end_offset": 31
+    },
+    {
+      "text": "68yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995598196983337,
+      "begin_offset": 34,
+      "end_offset": 38
+    },
+    {
+      "text": "Cleveland Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9978764057159424,
+      "begin_offset": 73,
+      "end_offset": 89
+    },
+    {
+      "text": "Feb 14, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9982299208641052,
+      "begin_offset": 93,
+      "end_offset": 105
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

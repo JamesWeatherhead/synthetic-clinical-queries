@@ -1,0 +1,61 @@
+{
+  "query_id": "259",
+  "timestamp": "2025-10-23T09:56:05.099488",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Current best practices for managing hypertensive crisis in a 70yo female, recently admitted to Cedars-Sinai Hospital, contact: 123-456-7890?",
+  "ground_truth_phi": "GEOGRAPHIC_LOCATION: Cedars-Sinai Hospital | PHONE_NUMBER: 123-456-7890",
+  "ground_truth_phi_count": 2,
+  "aws_entities_detected": [
+    {
+      "text": "70yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9649112224578857,
+      "begin_offset": 61,
+      "end_offset": 65
+    },
+    {
+      "text": "Cedars-Sinai Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9769704341888428,
+      "begin_offset": 95,
+      "end_offset": 116
+    },
+    {
+      "text": "123-456-7890",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996365308761597,
+      "begin_offset": 127,
+      "end_offset": 139
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 2,
+    "successfully_detected": 2,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "true_positives": 2,
+    "recall": "1.0000",
+    "precision": "0.6667",
+    "f1_score": "0.8000"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

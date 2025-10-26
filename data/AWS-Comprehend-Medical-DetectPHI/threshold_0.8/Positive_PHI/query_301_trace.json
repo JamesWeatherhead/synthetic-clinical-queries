@@ -1,0 +1,66 @@
+{
+  "query_id": "301",
+  "timestamp": "2025-10-23T09:56:11.201336",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the current contraindications for prescribing losartan to 52-year-old female patients, similar to Beth A. at Good Samaritan Hospital, treated on August 22, 2022?",
+  "ground_truth_phi": "NAME: Beth A. | GEOGRAPHIC_LOCATION: Good Samaritan Hospital | DATE: August 22, 2022",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "52",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9258643388748169,
+      "begin_offset": 67,
+      "end_offset": 69
+    },
+    {
+      "text": "Beth A.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9784954190254211,
+      "begin_offset": 107,
+      "end_offset": 114
+    },
+    {
+      "text": "August 22, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999916553497314,
+      "begin_offset": 154,
+      "end_offset": 169
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Good Samaritan Hospital"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "true_positives": 2,
+    "recall": "0.6667",
+    "precision": "0.6667",
+    "f1_score": "0.6667"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 3
+}

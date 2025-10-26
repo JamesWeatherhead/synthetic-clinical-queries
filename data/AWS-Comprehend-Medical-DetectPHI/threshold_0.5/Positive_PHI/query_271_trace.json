@@ -1,0 +1,75 @@
+{
+  "query_id": "271",
+  "timestamp": "2025-10-23T09:56:06.870834",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Clinical recommendations for a 72yo female named Mary J., diagnosed with recurrent ovarian cancer, who was treated at Cleveland Clinic on April 15th, 2022 (Insurance ID: HC-987654)?",
+  "ground_truth_phi": "NAME: Mary J. | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: April 15th, 2022 | HEALTH_PLAN_BENEFICIARY_NUMBER: HC-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "72yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999116659164429,
+      "begin_offset": 31,
+      "end_offset": 35
+    },
+    {
+      "text": "Mary J",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9959259033203125,
+      "begin_offset": 49,
+      "end_offset": 55
+    },
+    {
+      "text": "Cleveland Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.996760904788971,
+      "begin_offset": 118,
+      "end_offset": 134
+    },
+    {
+      "text": "April 15th, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999744713306427,
+      "begin_offset": 138,
+      "end_offset": 154
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+        "value": "HC-987654"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 4
+}

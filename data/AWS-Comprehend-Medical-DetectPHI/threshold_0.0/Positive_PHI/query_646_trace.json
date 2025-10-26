@@ -1,0 +1,70 @@
+{
+  "query_id": "646",
+  "timestamp": "2025-10-23T09:56:47.914603",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "best practices for managing hypertension in a pt, review John Smith's case at UCLA Med Ctr from 01/12/2024, w/ hx of PAD, taking lisinopril, insur ID HS-998877.",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: UCLA Med Ctr | DATE: 01/12/2024 | HEALTH_PLAN_BENEFICIARY_NUMBER: HS-998877",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "John Smith's",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.988825261592865,
+      "begin_offset": 57,
+      "end_offset": 69
+    },
+    {
+      "text": "UCLA Med Ctr",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.802020251750946,
+      "begin_offset": 78,
+      "end_offset": 90
+    },
+    {
+      "text": "01/12/2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999762773513794,
+      "begin_offset": 96,
+      "end_offset": 106
+    },
+    {
+      "text": "998877",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.778394877910614,
+      "begin_offset": 153,
+      "end_offset": 159
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

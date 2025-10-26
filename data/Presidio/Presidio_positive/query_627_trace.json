@@ -1,0 +1,76 @@
+{
+  "query_id": "627",
+  "timestamp": "2025-10-22T16:12:45.345450",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Best practices for post-op care in pt, 50yo M, dx'd w/ prostate cancer, seen by Dr. John Smith at Huntington Hospital on Feb 22nd @ 9AM, needing follow-up via telehealth (Phone: 555-123-4567).",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: Huntington Hospital | DATE: Feb 22nd | PHONE_NUMBER: 555-123-4567",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Best practices for post-op care in pt, [REDACTED_NAME], dx'd w/ prostate cancer, seen by Dr. [REDACTED_NAME] at Huntington Hospital on [REDACTED_DATE] @ 9AM, needing follow-up via telehealth (Phone: [REDACTED_PHONE_NUMBER]).",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 39,
+      "end": 45,
+      "score": 0.85,
+      "text": "50yo M",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 84,
+      "end": 94,
+      "score": 0.85,
+      "text": "John Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 121,
+      "end": 129,
+      "score": 0.85,
+      "text": "Feb 22nd",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 178,
+      "end": 190,
+      "score": 0.75,
+      "text": "555-123-4567",
+      "recognizer": "PhoneRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Huntington Hospital",
+        "start": 98,
+        "end": 117
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

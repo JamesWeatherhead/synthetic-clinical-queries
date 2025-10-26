@@ -1,0 +1,87 @@
+{
+  "query_id": "390",
+  "timestamp": "2025-10-22T16:12:44.093008",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guideline for treating hypertension in a 50-year-old African American male named Michael T. who resides in Los Angeles, admitted on July 15, 2023 (MRN: HLT-234567)?",
+  "ground_truth_phi": "NAME: Michael T. | GEOGRAPHIC_LOCATION: Los Angeles | DATE: July 15, 2023 | MEDICAL_RECORD_NUMBER: HLT-234567",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Guideline for treating hypertension in a [REDACTED_DATE] [REDACTED_NRP] male named [REDACTED_NAME] who resides in [REDACTED_GEOGRAPHIC_LOCATION], admitted on [REDACTED_DATE] (MRN: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 41,
+      "end": 52,
+      "score": 0.85,
+      "text": "50-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "NRP",
+      "hipaa_category": "NRP",
+      "start": 53,
+      "end": 69,
+      "score": 0.85,
+      "text": "African American",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 81,
+      "end": 91,
+      "score": 0.85,
+      "text": "Michael T.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 107,
+      "end": 118,
+      "score": 0.85,
+      "text": "Los Angeles",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 132,
+      "end": 145,
+      "score": 0.85,
+      "text": "July 15, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 152,
+      "end": 162,
+      "score": 0.7,
+      "text": "HLT-234567",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "recall": "1.0000",
+    "precision": "0.6667",
+    "f1_score": "0.8000"
+  }
+}

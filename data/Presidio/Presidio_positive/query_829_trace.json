@@ -1,0 +1,69 @@
+{
+  "query_id": "829",
+  "timestamp": "2025-10-22T16:12:46.386104",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "efficacy of warfarin vs. apixaban for a pt w/ hx of DVT, seen by Dr. Lee in Chicago on Nov 5, 2022, who has Medicare #AB-987654?",
+  "ground_truth_phi": "NAME: Dr. Lee | GEOGRAPHIC_LOCATION: Chicago | DATE: Nov 5, 2022 | HEALTH_PLAN_BENEFICIARY_NUMBER: Medicare #AB-987654",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "efficacy of warfarin vs. apixaban for a pt w/ hx of DVT, seen by Dr. [REDACTED_NAME] in [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE], who has Medicare #[REDACTED_MEDICAL_RECORD_NUMBER]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 69,
+      "end": 72,
+      "score": 0.85,
+      "text": "Lee",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 76,
+      "end": 83,
+      "score": 0.85,
+      "text": "Chicago",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 87,
+      "end": 98,
+      "score": 0.85,
+      "text": "Nov 5, 2022",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 118,
+      "end": 127,
+      "score": 0.7,
+      "text": "AB-987654",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "0.5000",
+    "f1_score": "0.6667"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "query_id": "466",
+  "timestamp": "2025-10-23T09:56:28.731611",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the updated treatment protocols for Stage IV lung cancer in a 72-year-old man, Richard P., seen at Mount Sinai Hospital on January 10th, 2022 (MRN: 98765432)?",
+  "ground_truth_phi": "NAME: Richard P. | GEOGRAPHIC_LOCATION: Mount Sinai Hospital | DATE: January 10th, 2022 | MEDICAL_RECORD_NUMBER: 98765432",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "72",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9993565678596497,
+      "begin_offset": 71,
+      "end_offset": 73
+    },
+    {
+      "text": "Richard P",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9549605846405029,
+      "begin_offset": 88,
+      "end_offset": 97
+    },
+    {
+      "text": "Mount Sinai Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9971625208854675,
+      "begin_offset": 108,
+      "end_offset": 128
+    },
+    {
+      "text": "January 10th, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999656677246094,
+      "begin_offset": 132,
+      "end_offset": 150
+    },
+    {
+      "text": "98765432",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9907901287078857,
+      "begin_offset": 157,
+      "end_offset": 165
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

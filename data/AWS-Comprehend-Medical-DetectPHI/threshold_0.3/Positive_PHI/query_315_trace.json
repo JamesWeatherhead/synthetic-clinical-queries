@@ -1,0 +1,79 @@
+{
+  "query_id": "315",
+  "timestamp": "2025-10-23T09:56:13.110737",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the treatment options for a 55-year-old male, Robert Smith, with recurrent colon cancer noted in his February 12th, 2023 visit at Cedars-Sinai Medical Center (MRN: 123-45-678)?",
+  "ground_truth_phi": "NAME: Robert Smith | DATE: February 12th, 2023 | GEOGRAPHIC_LOCATION: Cedars-Sinai Medical Center | MEDICAL_RECORD_NUMBER: 123-45-678",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "55",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998501539230347,
+      "begin_offset": 37,
+      "end_offset": 39
+    },
+    {
+      "text": "Robert Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9987649917602539,
+      "begin_offset": 55,
+      "end_offset": 67
+    },
+    {
+      "text": "February 12th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998761415481567,
+      "begin_offset": 110,
+      "end_offset": 129
+    },
+    {
+      "text": "Cedars-Sinai Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9962838292121887,
+      "begin_offset": 139,
+      "end_offset": 166
+    },
+    {
+      "text": "123-45-678",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8442628383636475,
+      "begin_offset": 173,
+      "end_offset": 183
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

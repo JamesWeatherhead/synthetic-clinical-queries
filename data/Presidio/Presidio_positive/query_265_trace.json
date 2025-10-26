@@ -1,0 +1,76 @@
+{
+  "query_id": "265",
+  "timestamp": "2025-10-22T16:12:43.413882",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the current treatment options for a 53-year-old male diagnosed with stage 3 melanoma, Peter G., who attended St. Luke's Hospital on April 12th, 2024, MRN 987654321?",
+  "ground_truth_phi": "NAME: Peter G. | GEOGRAPHIC_LOCATION: St. Luke's Hospital | DATE: April 12th, 2024 | MEDICAL_RECORD_NUMBER: 987654321",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What are the current treatment options for a [REDACTED_DATE] male diagnosed with stage 3 melanoma, [REDACTED_NAME], who attended St. Luke's Hospital on [REDACTED_DATE], [REDACTED_MEDICAL_RECORD_NUMBER]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 159,
+      "end": 172,
+      "score": 0.9,
+      "text": "MRN 987654321",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 45,
+      "end": 56,
+      "score": 0.85,
+      "text": "53-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 95,
+      "end": 103,
+      "score": 0.85,
+      "text": "Peter G.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 141,
+      "end": 157,
+      "score": 0.85,
+      "text": "April 12th, 2024",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "St. Luke's Hospital",
+        "start": 118,
+        "end": 137
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.5000",
+    "f1_score": "0.6000"
+  }
+}

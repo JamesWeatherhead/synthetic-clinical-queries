@@ -1,0 +1,76 @@
+{
+  "query_id": "282",
+  "timestamp": "2025-10-22T16:12:43.504726",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Treatment options for a 65-year-old female, Sandra L., seen at St. Luke's Hospital on April 20th, 2024, with a diagnosis of COPD and hypertension (Phone: 555-987-6543)?",
+  "ground_truth_phi": "NAME: Sandra L. | GEOGRAPHIC_LOCATION: St. Luke's Hospital | DATE: April 20th, 2024 | PHONE_NUMBER: 555-987-6543",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Treatment options for a [REDACTED_DATE] female, [REDACTED_NAME], seen at St. Luke's Hospital on [REDACTED_DATE], with a diagnosis of COPD and hypertension (Phone: [REDACTED_PHONE_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 24,
+      "end": 35,
+      "score": 0.85,
+      "text": "65-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 44,
+      "end": 53,
+      "score": 0.85,
+      "text": "Sandra L.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 86,
+      "end": 102,
+      "score": 0.85,
+      "text": "April 20th, 2024",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 154,
+      "end": 166,
+      "score": 0.75,
+      "text": "555-987-6543",
+      "recognizer": "PhoneRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "St. Luke's Hospital",
+        "start": 63,
+        "end": 82
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

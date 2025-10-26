@@ -1,0 +1,66 @@
+{
+  "query_id": "678",
+  "timestamp": "2025-10-23T09:56:50.776479",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Exercise recommendations for a 65yo woman, Maria G., post-MI, treated at Mass General on 05/09/2023. Follow-up visit scheduled for next month.",
+  "ground_truth_phi": "NAME: Maria G. | GEOGRAPHIC_LOCATION: Mass General | DATE: 05/09/2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "65yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9963879585266113,
+      "begin_offset": 31,
+      "end_offset": 35
+    },
+    {
+      "text": "Maria G",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9800961017608643,
+      "begin_offset": 43,
+      "end_offset": 50
+    },
+    {
+      "text": "05/09/2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999760389328003,
+      "begin_offset": 89,
+      "end_offset": 99
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Mass General"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "true_positives": 2,
+    "recall": "0.6667",
+    "precision": "0.6667",
+    "f1_score": "0.6667"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

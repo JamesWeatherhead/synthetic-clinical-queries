@@ -1,0 +1,76 @@
+{
+  "query_id": "432",
+  "timestamp": "2025-10-22T16:12:44.297932",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Best practices for managing asthma exacerbations in a 10-year-old boy, Jacob L., seen at St. Jude's Clinic on February 10th, 2024 (MRN: SJ-678910)?",
+  "ground_truth_phi": "NAME: Jacob L. | GEOGRAPHIC_LOCATION: St. Jude's Clinic | DATE: February 10th, 2024 | MEDICAL_RECORD_NUMBER: SJ-678910",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Best practices for managing asthma exacerbations in a [REDACTED_DATE] boy, [REDACTED_NAME], seen at St. Jude's Clinic on [REDACTED_DATE] (MRN: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 54,
+      "end": 65,
+      "score": 0.85,
+      "text": "10-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 71,
+      "end": 79,
+      "score": 0.85,
+      "text": "Jacob L.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 110,
+      "end": 129,
+      "score": 0.85,
+      "text": "February 10th, 2024",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 136,
+      "end": 145,
+      "score": 0.7,
+      "text": "SJ-678910",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "St. Jude's Clinic",
+        "start": 89,
+        "end": 106
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

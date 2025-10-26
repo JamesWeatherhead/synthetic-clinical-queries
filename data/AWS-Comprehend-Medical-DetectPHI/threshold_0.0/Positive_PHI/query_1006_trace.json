@@ -1,0 +1,70 @@
+{
+  "query_id": "1006",
+  "timestamp": "2025-10-23T09:57:28.132493",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for treating hypertension in a 60-year-old female, Mary Smith, who received care at Cedars-Sinai Medical Center on April 10th, 2023?",
+  "ground_truth_phi": "NAME: Mary Smith | GEOGRAPHIC_LOCATION: Cedars-Sinai Medical Center | DATE: April 10th, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "60",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9987865090370178,
+      "begin_offset": 42,
+      "end_offset": 44
+    },
+    {
+      "text": "Mary Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9968392848968506,
+      "begin_offset": 62,
+      "end_offset": 72
+    },
+    {
+      "text": "Cedars-Sinai Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9944031238555908,
+      "begin_offset": 95,
+      "end_offset": 122
+    },
+    {
+      "text": "April 10th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998325109481812,
+      "begin_offset": 126,
+      "end_offset": 142
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

@@ -1,0 +1,61 @@
+{
+  "query_id": "47",
+  "timestamp": "2025-10-23T09:55:41.447201",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for prescribing anticoagulants to a patient with nonvalvular atrial fibrillation, Robert W., from Miami, admitted on 5/25/2023?",
+  "ground_truth_phi": "NAME: Robert W. | GEOGRAPHIC_LOCATION: Miami | DATE: 5/25/2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "Robert W",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9933930039405823,
+      "begin_offset": 93,
+      "end_offset": 101
+    },
+    {
+      "text": "Miami",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9350981116294861,
+      "begin_offset": 109,
+      "end_offset": 114
+    },
+    {
+      "text": "5/25/2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999910593032837,
+      "begin_offset": 128,
+      "end_offset": 137
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

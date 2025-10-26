@@ -1,0 +1,79 @@
+{
+  "query_id": "785",
+  "timestamp": "2025-10-23T09:57:01.498902",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Management of post-op complications in a 55yo male, Paul R., seen at UCLA Med Center on Feb 12, 2023; insurance policy #XY-345678.",
+  "ground_truth_phi": "NAME: Paul R. | GEOGRAPHIC_LOCATION: UCLA Med Center | DATE: Feb 12, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: XY-345678",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "55yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9945313334465027,
+      "begin_offset": 41,
+      "end_offset": 45
+    },
+    {
+      "text": "Paul R",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.98736971616745,
+      "begin_offset": 52,
+      "end_offset": 58
+    },
+    {
+      "text": "UCLA Med Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9795066714286804,
+      "begin_offset": 69,
+      "end_offset": 84
+    },
+    {
+      "text": "Feb 12, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9989702701568604,
+      "begin_offset": 88,
+      "end_offset": 100
+    },
+    {
+      "text": "345678",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8925617933273315,
+      "begin_offset": 123,
+      "end_offset": 129
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

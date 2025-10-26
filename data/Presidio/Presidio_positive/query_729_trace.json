@@ -1,0 +1,76 @@
+{
+  "query_id": "729",
+  "timestamp": "2025-10-22T16:12:45.862919",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What is the difference in outcomes between CABG and PCI for a 70-year-old male, John S., treated at Johns Hopkins on February 15, 2023, Health Plan ID: HPI-987654?",
+  "ground_truth_phi": "NAME: John S. | GEOGRAPHIC_LOCATION: Johns Hopkins | DATE: February 15, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: HPI-987654",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What is the difference in outcomes between CABG and PCI for a [REDACTED_DATE] male, [REDACTED_NAME], treated at Johns Hopkins on [REDACTED_DATE], Health Plan ID: [REDACTED_MEDICAL_RECORD_NUMBER]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 62,
+      "end": 73,
+      "score": 0.85,
+      "text": "70-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 80,
+      "end": 87,
+      "score": 0.85,
+      "text": "John S.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 117,
+      "end": 134,
+      "score": 0.85,
+      "text": "February 15, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 152,
+      "end": 162,
+      "score": 0.7,
+      "text": "HPI-987654",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Johns Hopkins",
+        "start": 100,
+        "end": 113
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

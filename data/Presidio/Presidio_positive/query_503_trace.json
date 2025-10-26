@@ -1,0 +1,76 @@
+{
+  "query_id": "503",
+  "timestamp": "2025-10-22T16:12:44.685495",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Management recommendations for a 52yo male with newly diagnosed HTN, David K., seen at St. Mary's Health on Jan 15th 2023? Patient's email: david.k@example.com",
+  "ground_truth_phi": "NAME: David K. | GEOGRAPHIC_LOCATION: St. Mary's Health | DATE: Jan 15th 2023 | EMAIL_ADDRESS: david.k@example.com",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Management recommendations for a 52yo male with newly diagnosed HTN, [REDACTED_NAME], seen at St. Mary's Health on [REDACTED_DATE]? Patient's email: [REDACTED_EMAIL_ADDRESS]",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "EMAIL_ADDRESS",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "start": 140,
+      "end": 159,
+      "score": 1.0,
+      "text": "david.k@example.com",
+      "recognizer": "EmailRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 69,
+      "end": 77,
+      "score": 0.85,
+      "text": "David K.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 108,
+      "end": 121,
+      "score": 0.85,
+      "text": "Jan 15th 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "URL",
+      "hipaa_category": "WEB_URL",
+      "start": 148,
+      "end": 159,
+      "score": 0.5,
+      "text": "example.com",
+      "recognizer": "UrlRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "St. Mary's Health",
+        "start": 87,
+        "end": 104
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

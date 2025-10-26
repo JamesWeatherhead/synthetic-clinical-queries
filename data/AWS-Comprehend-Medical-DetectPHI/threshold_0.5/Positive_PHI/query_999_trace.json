@@ -1,0 +1,79 @@
+{
+  "query_id": "999",
+  "timestamp": "2025-10-23T09:57:27.082613",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "effective tx for pt w/ hx of bipolar disorder and schizophrenia, seen by Dr. Lee at NY-Presbyterian on Feb 14 2023, what are the risks of lithium therapy? lab results sent to lee@example.com",
+  "ground_truth_phi": "NAME: Dr. Lee | GEOGRAPHIC_LOCATION: NY-Presbyterian | DATE: Feb 14 2023 | EMAIL_ADDRESS: lee@example.com",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Lee",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997503161430359,
+      "begin_offset": 77,
+      "end_offset": 80
+    },
+    {
+      "text": "NY",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9134451746940613,
+      "begin_offset": 84,
+      "end_offset": 86
+    },
+    {
+      "text": "Presbyterian",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8360348343849182,
+      "begin_offset": 87,
+      "end_offset": 99
+    },
+    {
+      "text": "Feb 14 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9943841695785522,
+      "begin_offset": 103,
+      "end_offset": 114
+    },
+    {
+      "text": "lee@example.com",
+      "aws_type": "EMAIL",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9989514350891113,
+      "begin_offset": 175,
+      "end_offset": 190
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

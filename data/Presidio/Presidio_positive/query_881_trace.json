@@ -1,0 +1,67 @@
+{
+  "query_id": "881",
+  "timestamp": "2025-10-22T16:12:46.662288",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommended treatment options for a 70-year-old male with chronic atrial fibrillation, similar to Robert Q., cared for at St. Luke's Medical Center last year?",
+  "ground_truth_phi": "NAME: Robert Q. | GEOGRAPHIC_LOCATION: St. Luke's Medical Center | DATE: last year",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Recommended treatment options for a [REDACTED_DATE] male with chronic atrial fibrillation, similar to [REDACTED_NAME], cared for at St. Luke's Medical Center [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 36,
+      "end": 47,
+      "score": 0.85,
+      "text": "70-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 98,
+      "end": 107,
+      "score": 0.85,
+      "text": "Robert Q.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 148,
+      "end": 157,
+      "score": 0.85,
+      "text": "last year",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "St. Luke's Medical Center",
+        "start": 122,
+        "end": 147
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.6667",
+    "precision": "0.6667",
+    "f1_score": "0.6667"
+  }
+}

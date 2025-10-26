@@ -1,0 +1,79 @@
+{
+  "query_id": "1011",
+  "timestamp": "2025-10-23T09:57:28.655881",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Management strategy for a 70-year-old male with atrial fibrillation, admitted to St. Mary's Hospital on May 15, 2023, under Dr. Anthony Smith (MRN: AF-112233)?",
+  "ground_truth_phi": "GEOGRAPHIC_LOCATION: St. Mary's Hospital | DATE: May 15, 2023 | NAME: Dr. Anthony Smith | MEDICAL_RECORD_NUMBER: AF-112233",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "70",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9911192059516907,
+      "begin_offset": 26,
+      "end_offset": 28
+    },
+    {
+      "text": "St. Mary's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9916658997535706,
+      "begin_offset": 81,
+      "end_offset": 100
+    },
+    {
+      "text": "May 15, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999254941940308,
+      "begin_offset": 104,
+      "end_offset": 116
+    },
+    {
+      "text": "Anthony Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999669790267944,
+      "begin_offset": 128,
+      "end_offset": 141
+    },
+    {
+      "text": "112233",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6281893253326416,
+      "begin_offset": 151,
+      "end_offset": 157
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

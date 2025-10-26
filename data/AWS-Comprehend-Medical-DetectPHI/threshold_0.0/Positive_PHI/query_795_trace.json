@@ -1,0 +1,75 @@
+{
+  "query_id": "795",
+  "timestamp": "2025-10-23T09:57:02.517574",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for managing a 40-year-old female with severe asthma, who visited Dr. Anthony Brown's office in Brooklyn on October 3, 2023.",
+  "ground_truth_phi": "NAME: Dr. Anthony Brown | GEOGRAPHIC_LOCATION: Brooklyn | DATE: October 3, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "40",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9913443326950073,
+      "begin_offset": 26,
+      "end_offset": 28
+    },
+    {
+      "text": "Anthony Brown's",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9988644123077393,
+      "begin_offset": 81,
+      "end_offset": 96
+    },
+    {
+      "text": "Brooklyn",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9870858788490295,
+      "begin_offset": 107,
+      "end_offset": 115
+    },
+    {
+      "text": "October 3, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999529123306274,
+      "begin_offset": 119,
+      "end_offset": 134
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "NAME",
+        "value": "Dr. Anthony Brown"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 2,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 2,
+    "recall": "0.6667",
+    "precision": "0.5000",
+    "f1_score": "0.5714"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

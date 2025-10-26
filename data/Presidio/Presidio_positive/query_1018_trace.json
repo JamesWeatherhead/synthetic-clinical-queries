@@ -1,0 +1,67 @@
+{
+  "query_id": "1018",
+  "timestamp": "2025-10-22T16:12:47.395592",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "counseling required for pt w/ hx of schizophrenia, seen by Dr. Rebecca L., at New Hope Clinic on Apr 24 2021, her insurance is HPN-987654.",
+  "ground_truth_phi": "NAME: Rebecca L. | GEOGRAPHIC_LOCATION: New Hope Clinic | DATE: Apr 24 2021 | HEALTH_PLAN_BENEFICIARY_NUMBER: HPN-987654",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "counseling required for pt w/ hx of schizophrenia, seen by Dr. [REDACTED_NAME], at New Hope Clinic on [REDACTED_DATE], her insurance is [REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 63,
+      "end": 73,
+      "score": 0.85,
+      "text": "Rebecca L.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 97,
+      "end": 108,
+      "score": 0.85,
+      "text": "Apr 24 2021",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 127,
+      "end": 137,
+      "score": 0.7,
+      "text": "HPN-987654",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "New Hope Clinic",
+        "start": 78,
+        "end": 93
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  }
+}

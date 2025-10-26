@@ -1,0 +1,79 @@
+{
+  "query_id": "549",
+  "timestamp": "2025-10-23T09:56:37.861704",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Recommendations for post-op care following cardiac surgery in 65yo male, Michael H., seen at Cedar Sinai on 2023-11-14. His MRN is 007-654321.",
+  "ground_truth_phi": "NAME: Michael H. | GEOGRAPHIC_LOCATION: Cedar Sinai | DATE: 2023-11-14 | MEDICAL_RECORD_NUMBER: 007-654321",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "65yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9643982648849487,
+      "begin_offset": 62,
+      "end_offset": 66
+    },
+    {
+      "text": "Michael H",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9950609803199768,
+      "begin_offset": 73,
+      "end_offset": 82
+    },
+    {
+      "text": "Cedar Sinai",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9917128086090088,
+      "begin_offset": 93,
+      "end_offset": 104
+    },
+    {
+      "text": "2023-11-14",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997501969337463,
+      "begin_offset": 108,
+      "end_offset": 118
+    },
+    {
+      "text": "007-654321",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.5018707513809204,
+      "begin_offset": 131,
+      "end_offset": 141
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

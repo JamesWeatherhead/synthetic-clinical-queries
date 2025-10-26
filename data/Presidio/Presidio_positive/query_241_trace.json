@@ -1,0 +1,69 @@
+{
+  "query_id": "241",
+  "timestamp": "2025-10-22T16:12:43.277079",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "s/p CABG in pt, Jane Smith, evaluated at Cedars-Sinai on 10-04-2023, optimal post-op management plan? MRN: CSH-123456",
+  "ground_truth_phi": "NAME: Jane Smith | GEOGRAPHIC_LOCATION: Cedars-Sinai | DATE: 10-04-2023 | MEDICAL_RECORD_NUMBER: CSH-123456",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "s/p CABG in pt, [REDACTED_NAME], evaluated at [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE], optimal post-op management plan? MRN: [REDACTED_MEDICAL_RECORD_NUMBER]",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 16,
+      "end": 26,
+      "score": 0.85,
+      "text": "Jane Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 41,
+      "end": 53,
+      "score": 0.85,
+      "text": "Cedars-Sinai",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 57,
+      "end": 67,
+      "score": 0.85,
+      "text": "10-04-2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 107,
+      "end": 117,
+      "score": 0.7,
+      "text": "CSH-123456",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "query_id": "1035",
+  "timestamp": "2025-10-23T09:57:31.606182",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Contraindications for warfarin in a 54yo male, John A., who was seen at Memorial Hospital, Los Angeles, CA on 07/21/2023, with MRN: 987654321?",
+  "ground_truth_phi": "NAME: John A. | GEOGRAPHIC_LOCATION: Memorial Hospital, Los Angeles, CA | DATE: 07/21/2023 | MEDICAL_RECORD_NUMBER: 987654321",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "54yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9919084906578064,
+      "begin_offset": 36,
+      "end_offset": 40
+    },
+    {
+      "text": "John A",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9798488020896912,
+      "begin_offset": 47,
+      "end_offset": 53
+    },
+    {
+      "text": "Memorial Hospital, Los Angeles",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9975932240486145,
+      "begin_offset": 72,
+      "end_offset": 102
+    },
+    {
+      "text": "07/21/2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999688863754272,
+      "begin_offset": 110,
+      "end_offset": 120
+    },
+    {
+      "text": "987654321",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9938948750495911,
+      "begin_offset": 132,
+      "end_offset": 141
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 5
+}

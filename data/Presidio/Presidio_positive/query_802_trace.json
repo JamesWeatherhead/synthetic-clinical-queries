@@ -1,0 +1,60 @@
+{
+  "query_id": "802",
+  "timestamp": "2025-10-22T16:12:46.246105",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the latest treatment guidelines for managing multiple myeloma in a 65-year-old female, Debra K., diagnosed on April 22, 2024?",
+  "ground_truth_phi": "NAME: Debra K. | DATE: April 22, 2024",
+  "ground_truth_phi_count": 2,
+  "presidio_output": "What are the latest treatment guidelines for managing multiple myeloma in a [REDACTED_DATE] female, [REDACTED_NAME], diagnosed on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 76,
+      "end": 87,
+      "score": 0.85,
+      "text": "65-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 96,
+      "end": 104,
+      "score": 0.85,
+      "text": "Debra K.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 119,
+      "end": 133,
+      "score": 0.85,
+      "text": "April 22, 2024",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 2,
+    "successfully_redacted": 2,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "recall": "1.0000",
+    "precision": "0.6667",
+    "f1_score": "0.8000"
+  }
+}

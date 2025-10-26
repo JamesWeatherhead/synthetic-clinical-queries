@@ -1,0 +1,78 @@
+{
+  "query_id": "581",
+  "timestamp": "2025-10-22T16:12:45.108591",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommended follow-up for a 50-year-old male with a positive colonoscopy result, Robert L., from Dallas, seen on April 12th, 2024 (Health Plan: HP-998877)?",
+  "ground_truth_phi": "NAME: Robert L. | GEOGRAPHIC_LOCATION: Dallas | DATE: April 12th, 2024 | HEALTH_PLAN_BENEFICIARY_NUMBER: HP-998877",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Recommended follow-up for a [REDACTED_DATE] male with a positive colonoscopy result, [REDACTED_NAME], from [REDACTED_GEOGRAPHIC_LOCATION], seen on [REDACTED_DATE] (Health Plan: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 28,
+      "end": 39,
+      "score": 0.85,
+      "text": "50-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 81,
+      "end": 90,
+      "score": 0.85,
+      "text": "Robert L.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 97,
+      "end": 103,
+      "score": 0.85,
+      "text": "Dallas",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 113,
+      "end": 129,
+      "score": 0.85,
+      "text": "April 12th, 2024",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 144,
+      "end": 153,
+      "score": 0.7,
+      "text": "HP-998877",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  }
+}

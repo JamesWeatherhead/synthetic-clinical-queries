@@ -1,0 +1,61 @@
+{
+  "query_id": "948",
+  "timestamp": "2025-10-23T09:57:20.074487",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Updated recommendations for anticoagulation therapy in a 65-year-old African-American male with atrial fibrillation, whose MRI was done on July 22nd, 2024 at Washington Hospital Center?",
+  "ground_truth_phi": "DATE: July 22nd, 2024 | GEOGRAPHIC_LOCATION: Washington Hospital Center",
+  "ground_truth_phi_count": 2,
+  "aws_entities_detected": [
+    {
+      "text": "65",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999885082244873,
+      "begin_offset": 57,
+      "end_offset": 59
+    },
+    {
+      "text": "July 22nd, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999164342880249,
+      "begin_offset": 139,
+      "end_offset": 154
+    },
+    {
+      "text": "Washington Hospital Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998024106025696,
+      "begin_offset": 158,
+      "end_offset": 184
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 2,
+    "successfully_detected": 2,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "true_positives": 2,
+    "recall": "1.0000",
+    "precision": "0.6667",
+    "f1_score": "0.8000"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

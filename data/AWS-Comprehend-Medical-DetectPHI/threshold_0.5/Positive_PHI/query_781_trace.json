@@ -1,0 +1,79 @@
+{
+  "query_id": "781",
+  "timestamp": "2025-10-23T09:57:01.123638",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best practices for managing chronic asthma in a 12-year-old, Amanda Johnson, who visited the San Francisco Children's Hospital on April 14th, 2023 (MRN: 98765432)?",
+  "ground_truth_phi": "NAME: Amanda Johnson | GEOGRAPHIC_LOCATION: San Francisco Children's Hospital | DATE: April 14th, 2023 | MEDICAL_RECORD_NUMBER: 98765432",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "12",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9960551261901855,
+      "begin_offset": 48,
+      "end_offset": 50
+    },
+    {
+      "text": "Amanda Johnson",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9586784243583679,
+      "begin_offset": 61,
+      "end_offset": 75
+    },
+    {
+      "text": "San Francisco Children's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9861345887184143,
+      "begin_offset": 93,
+      "end_offset": 126
+    },
+    {
+      "text": "April 14th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996639490127563,
+      "begin_offset": 130,
+      "end_offset": 146
+    },
+    {
+      "text": "98765432",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9956420660018921,
+      "begin_offset": 153,
+      "end_offset": 161
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

@@ -1,0 +1,61 @@
+{
+  "query_id": "937",
+  "timestamp": "2025-10-23T09:57:18.695891",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Optimal anticoagulation therapy for pt w/ hx of DVT, seen by Dr. Lisa M. at Boston Medical Center, discharged on Sep 7, 2023?",
+  "ground_truth_phi": "NAME: Lisa M. | GEOGRAPHIC_LOCATION: Boston Medical Center | DATE: Sep 7, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "Lisa M.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9972192049026489,
+      "begin_offset": 65,
+      "end_offset": 72
+    },
+    {
+      "text": "Boston Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9887008666992188,
+      "begin_offset": 76,
+      "end_offset": 97
+    },
+    {
+      "text": "Sep 7, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9928420782089233,
+      "begin_offset": 113,
+      "end_offset": 124
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

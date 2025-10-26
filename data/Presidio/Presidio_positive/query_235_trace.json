@@ -1,0 +1,91 @@
+{
+  "query_id": "235",
+  "timestamp": "2025-10-22T16:12:43.243841",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Management guidelines for a 12-year-old with asthma exacerbation, similar to John Smith (DOB: 04/05/2012) seen in Los Angeles Children's Hospital on March 25th, 2023 (MRN: LA15234).",
+  "ground_truth_phi": "NAME: John Smith | DATE: 04/05/2012 | GEOGRAPHIC_LOCATION: Los Angeles Children's Hospital | DATE: March 25th, 2023 | MEDICAL_RECORD_NUMBER: LA15234",
+  "ground_truth_phi_count": 5,
+  "presidio_output": "Management guidelines for a [REDACTED_DATE] with asthma exacerbation, similar to [REDACTED_NAME] (DOB: [REDACTED_DATE]) seen in Los Angeles Children's Hospital on [REDACTED_DATE] (MRN: LA15234).",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 28,
+      "end": 39,
+      "score": 0.85,
+      "text": "12-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 77,
+      "end": 87,
+      "score": 0.85,
+      "text": "John Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 149,
+      "end": 160,
+      "score": 0.85,
+      "text": "March 25th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 161,
+      "end": 165,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 94,
+      "end": 104,
+      "score": 0.6,
+      "text": "04/05/2012",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Los Angeles Children's Hospital",
+        "start": 114,
+        "end": 145
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "LA15234",
+        "start": 172,
+        "end": 179
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 5,
+    "successfully_redacted": 3,
+    "leaked_failures": 2,
+    "total_detected": 5,
+    "recall": "0.6000",
+    "precision": "0.4000",
+    "f1_score": "0.4800"
+  }
+}

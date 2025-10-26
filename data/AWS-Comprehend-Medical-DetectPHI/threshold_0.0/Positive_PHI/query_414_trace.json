@@ -1,0 +1,79 @@
+{
+  "query_id": "414",
+  "timestamp": "2025-10-23T09:56:23.411943",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for post-op care in a 70-year-old female, Emily C., after right hip replacement surgery at Mount Sinai Hospital on 06/20/2023. EMR: 456123789.",
+  "ground_truth_phi": "NAME: Emily C. | GEOGRAPHIC_LOCATION: Mount Sinai Hospital | DATE: 06/20/2023 | MEDICAL_RECORD_NUMBER: 456123789",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "70",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995997548103333,
+      "begin_offset": 33,
+      "end_offset": 35
+    },
+    {
+      "text": "Emily C",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7824472188949585,
+      "begin_offset": 53,
+      "end_offset": 60
+    },
+    {
+      "text": "Mount Sinai Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9967531561851501,
+      "begin_offset": 102,
+      "end_offset": 122
+    },
+    {
+      "text": "06/20/2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998949766159058,
+      "begin_offset": 126,
+      "end_offset": 136
+    },
+    {
+      "text": "456123789",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9875054359436035,
+      "begin_offset": 143,
+      "end_offset": 152
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

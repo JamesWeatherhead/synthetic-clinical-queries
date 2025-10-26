@@ -1,0 +1,17 @@
+{
+  "evaluation_timestamp": "2025-10-22T16:24:25.455929",
+  "model": "Presidio-2.2.360",
+  "query_type": "negative",
+  "total_queries_processed": 219,
+  "queries_correctly_unchanged": 17,
+  "queries_with_false_positives": 202,
+  "total_false_redactions": 376,
+  "false_redactions_by_type": {
+    "DATE": 289,
+    "NRP": 22,
+    "NAME": 53,
+    "GEOGRAPHIC_LOCATION": 12
+  },
+  "false_positive_rate": 0.9223744292237442,
+  "specificity": 0.0776255707762557
+}

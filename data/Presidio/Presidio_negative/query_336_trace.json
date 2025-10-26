@@ -1,0 +1,44 @@
+{
+  "query_id": "336",
+  "timestamp": "2025-10-22T16:24:24.685671",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommendations for managing epilepsy in a 30-year-old female with a family history of Huntington's disease, evaluated in April 2022.",
+  "presidio_output": "Recommendations for managing epilepsy in a [REDACTED_DATE] female with a family history of Huntington's disease, evaluated in [REDACTED_DATE].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 43,
+      "end": 54,
+      "score": 0.85,
+      "text": "30-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 122,
+      "end": 132,
+      "score": 0.85,
+      "text": "April 2022",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 2,
+    "false_redactions_by_type": {
+      "DATE": 2
+    },
+    "status": "OVER_REDACTED"
+  }
+}

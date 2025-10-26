@@ -1,0 +1,78 @@
+{
+  "query_id": "735",
+  "timestamp": "2025-10-22T16:12:45.883325",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "guidelines for mngmt of htn in 65yo pt w/ COPD, seen by Dr. Edward M. at Washington HealthCenter on Apr 12, 2023. contact his family via email at edward.m@example.com",
+  "ground_truth_phi": "NAME: Dr. Edward M. | GEOGRAPHIC_LOCATION: Washington HealthCenter | DATE: Apr 12, 2023 | EMAIL_ADDRESS: edward.m@example.com",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "guidelines for mngmt of htn in 65yo pt w/ COPD, seen by Dr. [REDACTED_NAME] at [REDACTED_GEOGRAPHIC_LOCATION] HealthCenter on [REDACTED_DATE]. contact his family via email at [REDACTED_EMAIL_ADDRESS]",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "EMAIL_ADDRESS",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "start": 146,
+      "end": 166,
+      "score": 1.0,
+      "text": "edward.m@example.com",
+      "recognizer": "EmailRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 60,
+      "end": 69,
+      "score": 0.85,
+      "text": "Edward M.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 73,
+      "end": 83,
+      "score": 0.85,
+      "text": "Washington",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 100,
+      "end": 112,
+      "score": 0.85,
+      "text": "Apr 12, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "URL",
+      "hipaa_category": "WEB_URL",
+      "start": 155,
+      "end": 166,
+      "score": 0.5,
+      "text": "example.com",
+      "recognizer": "UrlRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.4000",
+    "f1_score": "0.5714"
+  }
+}

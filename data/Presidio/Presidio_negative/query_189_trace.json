@@ -1,0 +1,23 @@
+{
+  "query_id": "189",
+  "timestamp": "2025-10-22T16:24:24.505984",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Are there any known interactions between warfarin and turmeric supplements in elderly patients with a history of stroke?",
+  "presidio_output": "Are there any known interactions between warfarin and turmeric supplements in elderly patients with a history of stroke?",
+  "presidio_entities_detected": [],
+  "false_redaction_check": {
+    "has_false_redactions": false,
+    "redaction_count": 0,
+    "false_redactions_by_type": {},
+    "status": "CLEAN"
+  }
+}

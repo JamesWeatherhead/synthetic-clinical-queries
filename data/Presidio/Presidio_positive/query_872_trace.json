@@ -1,0 +1,69 @@
+{
+  "query_id": "872",
+  "timestamp": "2025-10-22T16:12:46.613768",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Considerations for prescribing lisinopril to a patient named Emily R. from Brooklyn seen on February 5th, 2024 with a diagnosis of hypertension and diabetes?",
+  "ground_truth_phi": "NAME: Emily R. | GEOGRAPHIC_LOCATION: Brooklyn | DATE: February 5th, 2024",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Considerations for prescribing lisinopril to a patient named [REDACTED_NAME] from [REDACTED_GEOGRAPHIC_LOCATION] seen on [REDACTED_DATE] with a diagnosis of hypertension and diabetes?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 61,
+      "end": 69,
+      "score": 0.85,
+      "text": "Emily R.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 75,
+      "end": 83,
+      "score": 0.85,
+      "text": "Brooklyn",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 92,
+      "end": 105,
+      "score": 0.85,
+      "text": "February 5th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 106,
+      "end": 110,
+      "score": 0.85,
+      "text": "2024",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "0.5000",
+    "f1_score": "0.6667"
+  }
+}

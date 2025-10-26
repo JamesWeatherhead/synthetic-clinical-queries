@@ -1,0 +1,96 @@
+{
+  "query_id": "38",
+  "timestamp": "2025-10-22T16:12:42.224531",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "rec. mx for pt w/ CAD & hx of MI, reviewed by Dr. Smith at Baylor Med. Center on Feb 2nd 2021. considering Plavix. Contact info is smith.example@baylor.edu.",
+  "ground_truth_phi": "NAME: Dr. Smith | GEOGRAPHIC_LOCATION: Baylor Med. Center | DATE: Feb 2nd 2021 | EMAIL_ADDRESS: smith.example@baylor.edu",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "rec. mx for pt w/ CAD & hx of [REDACTED_GEOGRAPHIC_LOCATION], reviewed by Dr. [REDACTED_NAME] at [REDACTED_GEOGRAPHIC_LOCATION] Center on [REDACTED_DATE]. considering [REDACTED_GEOGRAPHIC_LOCATION]. Contact info is [REDACTED_EMAIL_ADDRESS].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "EMAIL_ADDRESS",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "start": 131,
+      "end": 155,
+      "score": 1.0,
+      "text": "smith.example@baylor.edu",
+      "recognizer": "EmailRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 30,
+      "end": 32,
+      "score": 0.85,
+      "text": "MI",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 50,
+      "end": 55,
+      "score": 0.85,
+      "text": "Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 59,
+      "end": 70,
+      "score": 0.85,
+      "text": "Baylor Med.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 81,
+      "end": 93,
+      "score": 0.85,
+      "text": "Feb 2nd 2021",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 107,
+      "end": 113,
+      "score": 0.85,
+      "text": "Plavix",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "URL",
+      "hipaa_category": "WEB_URL",
+      "start": 145,
+      "end": 155,
+      "score": 0.5,
+      "text": "baylor.edu",
+      "recognizer": "UrlRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 7,
+    "recall": "1.0000",
+    "precision": "0.2857",
+    "f1_score": "0.4444"
+  }
+}

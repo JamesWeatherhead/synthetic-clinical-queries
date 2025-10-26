@@ -1,0 +1,79 @@
+{
+  "query_id": "976",
+  "timestamp": "2025-10-23T09:57:23.740792",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the potential drug interactions for Eliquis in a 72-year-old female, Margaret S., who was admitted to St. John's Hospital on Apr 15, 2023, and has a medical record number SJH-987654?",
+  "ground_truth_phi": "NAME: Margaret S. | GEOGRAPHIC_LOCATION: St. John's Hospital | DATE: Apr 15, 2023 | MEDICAL_RECORD_NUMBER: SJH-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "72",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9994571805000305,
+      "begin_offset": 58,
+      "end_offset": 60
+    },
+    {
+      "text": "Margaret S",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9446237087249756,
+      "begin_offset": 78,
+      "end_offset": 88
+    },
+    {
+      "text": "St. John's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9944033622741699,
+      "begin_offset": 111,
+      "end_offset": 130
+    },
+    {
+      "text": "Apr 15, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9944296479225159,
+      "begin_offset": 134,
+      "end_offset": 146
+    },
+    {
+      "text": "987654",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8162161707878113,
+      "begin_offset": 184,
+      "end_offset": 190
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 5
+}

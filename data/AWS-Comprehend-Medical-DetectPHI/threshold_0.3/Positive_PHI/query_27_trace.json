@@ -1,0 +1,79 @@
+{
+  "query_id": "27",
+  "timestamp": "2025-10-23T09:55:39.300561",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Recommendations for the use of biologics in a 52-year-old female, Karen L., diagnosed with rheumatoid arthritis, seen at Cleveland Clinic on September 14, 2023 (Insurance: AA-987654)?",
+  "ground_truth_phi": "NAME: Karen L. | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: September 14, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: AA-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "52",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9994850158691406,
+      "begin_offset": 46,
+      "end_offset": 48
+    },
+    {
+      "text": "Karen L",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.99149489402771,
+      "begin_offset": 66,
+      "end_offset": 73
+    },
+    {
+      "text": "Cleveland Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9978335499763489,
+      "begin_offset": 121,
+      "end_offset": 137
+    },
+    {
+      "text": "September 14, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998583793640137,
+      "begin_offset": 141,
+      "end_offset": 159
+    },
+    {
+      "text": "987654",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9081860780715942,
+      "begin_offset": 175,
+      "end_offset": 181
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

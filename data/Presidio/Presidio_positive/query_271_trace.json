@@ -1,0 +1,67 @@
+{
+  "query_id": "271",
+  "timestamp": "2025-10-22T16:12:43.442050",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Clinical recommendations for a 72yo female named Mary J., diagnosed with recurrent ovarian cancer, who was treated at Cleveland Clinic on April 15th, 2022 (Insurance ID: HC-987654)?",
+  "ground_truth_phi": "NAME: Mary J. | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: April 15th, 2022 | HEALTH_PLAN_BENEFICIARY_NUMBER: HC-987654",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Clinical recommendations for a 72yo female named [REDACTED_NAME], diagnosed with recurrent ovarian cancer, who was treated at Cleveland Clinic on [REDACTED_DATE] (Insurance ID: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 49,
+      "end": 56,
+      "score": 0.85,
+      "text": "Mary J.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 138,
+      "end": 154,
+      "score": 0.85,
+      "text": "April 15th, 2022",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 170,
+      "end": 179,
+      "score": 0.7,
+      "text": "HC-987654",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Cleveland Clinic",
+        "start": 118,
+        "end": 134
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  }
+}

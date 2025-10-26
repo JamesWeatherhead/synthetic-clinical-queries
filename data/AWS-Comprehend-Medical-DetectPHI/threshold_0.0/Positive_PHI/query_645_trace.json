@@ -1,0 +1,70 @@
+{
+  "query_id": "645",
+  "timestamp": "2025-10-23T09:56:47.787341",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the treatment options for COPD in a 65-year-old male named Robert Finley, residing at 123 Elm St, Springfield, with a birth date of April 15, 1958?",
+  "ground_truth_phi": "NAME: Robert Finley | GEOGRAPHIC_LOCATION: 123 Elm St, Springfield | DATE: April 15, 1958",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "65",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996090531349182,
+      "begin_offset": 45,
+      "end_offset": 47
+    },
+    {
+      "text": "Robert Finley",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9972545504570007,
+      "begin_offset": 68,
+      "end_offset": 81
+    },
+    {
+      "text": "123 Elm St, Springfield",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8379616737365723,
+      "begin_offset": 95,
+      "end_offset": 118
+    },
+    {
+      "text": "April 15, 1958",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9994803071022034,
+      "begin_offset": 141,
+      "end_offset": 155
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

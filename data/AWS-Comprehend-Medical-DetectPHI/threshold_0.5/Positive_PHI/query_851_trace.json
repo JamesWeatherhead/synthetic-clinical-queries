@@ -1,0 +1,70 @@
+{
+  "query_id": "851",
+  "timestamp": "2025-10-23T09:57:08.456288",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the potential complications for a 50-year-old male, Robert Thompson, undergoing mitral valve replacement at Houston Methodist Hospital on July 10th, 2023?",
+  "ground_truth_phi": "NAME: Robert Thompson | GEOGRAPHIC_LOCATION: Houston Methodist Hospital | DATE: July 10th, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "50",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9980498552322388,
+      "begin_offset": 43,
+      "end_offset": 45
+    },
+    {
+      "text": "Robert Thompson",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9978241920471191,
+      "begin_offset": 61,
+      "end_offset": 76
+    },
+    {
+      "text": "Houston Methodist Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9880186319351196,
+      "begin_offset": 117,
+      "end_offset": 143
+    },
+    {
+      "text": "July 10th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999680519104004,
+      "begin_offset": 147,
+      "end_offset": 162
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

@@ -1,0 +1,75 @@
+{
+  "query_id": "15",
+  "timestamp": "2025-10-23T09:55:38.152452",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the latest treatment options for a 60-year-old male with stage IV lung cancer, John Smith, who was admitted to NY Presbyterian Hospital on January 10th, 2023, under MRN 12345-JS?",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: NY Presbyterian Hospital | DATE: January 10th, 2023 | MEDICAL_RECORD_NUMBER: 12345-JS",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "60",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9994402527809143,
+      "begin_offset": 44,
+      "end_offset": 46
+    },
+    {
+      "text": "John Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9976164102554321,
+      "begin_offset": 88,
+      "end_offset": 98
+    },
+    {
+      "text": "NY Presbyterian Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8589434027671814,
+      "begin_offset": 120,
+      "end_offset": 144
+    },
+    {
+      "text": "January 10th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995369911193848,
+      "begin_offset": 148,
+      "end_offset": 166
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "12345-JS"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 4
+}

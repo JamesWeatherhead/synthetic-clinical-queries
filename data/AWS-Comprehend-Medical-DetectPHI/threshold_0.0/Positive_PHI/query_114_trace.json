@@ -1,0 +1,70 @@
+{
+  "query_id": "114",
+  "timestamp": "2025-10-23T09:55:48.256899",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "mgmt of pt w/ hx of COPD, diabetes, and HTN, Richard K., follow-up scheduled at Johns Hopkins on Aug 10, '23, MRN: 123-456-789.",
+  "ground_truth_phi": "NAME: Richard K. | GEOGRAPHIC_LOCATION: Johns Hopkins | DATE: Aug 10, '23 | MEDICAL_RECORD_NUMBER: 123-456-789",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Richard K",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.992807149887085,
+      "begin_offset": 45,
+      "end_offset": 54
+    },
+    {
+      "text": "Johns Hopkins",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7671222686767578,
+      "begin_offset": 80,
+      "end_offset": 93
+    },
+    {
+      "text": "Aug 10, '23",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998650550842285,
+      "begin_offset": 97,
+      "end_offset": 108
+    },
+    {
+      "text": "123-456-789",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.998274564743042,
+      "begin_offset": 115,
+      "end_offset": 126
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

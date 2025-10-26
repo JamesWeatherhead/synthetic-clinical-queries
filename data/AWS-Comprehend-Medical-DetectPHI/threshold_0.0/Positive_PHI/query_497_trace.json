@@ -1,0 +1,79 @@
+{
+  "query_id": "497",
+  "timestamp": "2025-10-23T09:56:32.161557",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "tx options for pt 67yo F w/ hx of HFrEF and CKD, discussed at Scripps Clinic on Apr 22nd, 2024, MRN: SC-998877?",
+  "ground_truth_phi": "GEOGRAPHIC_LOCATION: Scripps Clinic | DATE: Apr 22nd, 2024 | MEDICAL_RECORD_NUMBER: SC-998877",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "67yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9991146922111511,
+      "begin_offset": 18,
+      "end_offset": 22
+    },
+    {
+      "text": "Scripps Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9955202341079712,
+      "begin_offset": 62,
+      "end_offset": 76
+    },
+    {
+      "text": "Apr 22nd, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9831105470657349,
+      "begin_offset": 80,
+      "end_offset": 94
+    },
+    {
+      "text": "SC",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.2363816350698471,
+      "begin_offset": 101,
+      "end_offset": 103
+    },
+    {
+      "text": "998877",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6793787479400635,
+      "begin_offset": 104,
+      "end_offset": 110
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

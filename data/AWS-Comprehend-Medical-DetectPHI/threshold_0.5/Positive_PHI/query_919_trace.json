@@ -1,0 +1,79 @@
+{
+  "query_id": "919",
+  "timestamp": "2025-10-23T09:57:15.550225",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What is the appropriate dose of levothyroxine for a 40yo female pt w/ Hashimoto's dx'd by Dr. Brown on 5th Nov 2020 at NY Presbyterian. contact email: dr.brown@ny.presbyterian.org",
+  "ground_truth_phi": "NAME: Dr. Brown | GEOGRAPHIC_LOCATION: NY Presbyterian | DATE: 5th Nov 2020 | EMAIL_ADDRESS: dr.brown@ny.presbyterian.org",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "40yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.993766188621521,
+      "begin_offset": 52,
+      "end_offset": 56
+    },
+    {
+      "text": "Brown",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997773766517639,
+      "begin_offset": 94,
+      "end_offset": 99
+    },
+    {
+      "text": "5th Nov 2020",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9820929765701294,
+      "begin_offset": 103,
+      "end_offset": 115
+    },
+    {
+      "text": "NY Presbyterian",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.5304108262062073,
+      "begin_offset": 119,
+      "end_offset": 134
+    },
+    {
+      "text": "dr.brown@ny.presbyterian.org",
+      "aws_type": "EMAIL",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999030828475952,
+      "begin_offset": 151,
+      "end_offset": 179
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

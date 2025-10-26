@@ -1,0 +1,64 @@
+{
+  "query_id": "754",
+  "timestamp": "2025-10-22T16:12:45.975390",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Mgmt of 58yo F, Mary J., post cholecystectomy at Johns Hopkins, operated on Apr 22nd 2022 (MRN: #JH456789), now presenting with recurrent biliary colic?",
+  "ground_truth_phi": "NAME: Mary J. | GEOGRAPHIC_LOCATION: Johns Hopkins | DATE: Apr 22nd 2022 | MEDICAL_RECORD_NUMBER: #JH456789",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Mgmt of 58yo F, [REDACTED_NAME], post cholecystectomy at Johns Hopkins, operated on [REDACTED_DATE] (MRN: #JH456789), now presenting with recurrent biliary colic?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 16,
+      "end": 23,
+      "score": 0.85,
+      "text": "Mary J.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 76,
+      "end": 89,
+      "score": 0.85,
+      "text": "Apr 22nd 2022",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Johns Hopkins",
+        "start": 49,
+        "end": 62
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "#JH456789",
+        "start": 96,
+        "end": 105
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 2,
+    "recall": "0.5000",
+    "precision": "1.0000",
+    "f1_score": "0.6667"
+  }
+}

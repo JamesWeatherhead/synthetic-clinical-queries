@@ -1,0 +1,85 @@
+{
+  "query_id": "134",
+  "timestamp": "2025-10-22T16:12:42.755158",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What is the 5-year survival rate for a 70-year-old female with metastatic ovarian cancer, Patricia Lee, treated at UCSF on 2021-09-30 under MRN UCSF-20210930-567?",
+  "ground_truth_phi": "NAME: Patricia Lee | GEOGRAPHIC_LOCATION: UCSF | DATE: 2021-09-30 | MEDICAL_RECORD_NUMBER: UCSF-20210930-567",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What is the [REDACTED_DATE] survival rate for a [REDACTED_DATE] female with metastatic ovarian cancer, [REDACTED_NAME], treated at UCSF on [REDACTED_DATE] under MRN UCSF-[REDACTED_MEDICAL_RECORD_NUMBER]-567?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 12,
+      "end": 18,
+      "score": 0.85,
+      "text": "5-year",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 39,
+      "end": 50,
+      "score": 0.85,
+      "text": "70-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 90,
+      "end": 102,
+      "score": 0.85,
+      "text": "Patricia Lee",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 123,
+      "end": 133,
+      "score": 0.85,
+      "text": "2021-09-30",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 149,
+      "end": 157,
+      "score": 0.5,
+      "text": "20210930",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UCSF",
+        "start": 115,
+        "end": 119
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.4000",
+    "f1_score": "0.5217"
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "query_id": "212",
+  "timestamp": "2025-10-22T16:12:43.145391",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "best tx for pt w/ hx of HIV, refer to case of Michael B., treated at UCSF on 5/22/2022. concerned about drug interactions with his current meds. his email is michael.b@example.com.",
+  "ground_truth_phi": "NAME: Michael B. | GEOGRAPHIC_LOCATION: UCSF | DATE: 5/22/2022 | EMAIL_ADDRESS: michael.b@example.com",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "best [REDACTED_GEOGRAPHIC_LOCATION] for pt w/ hx of HIV, refer to case of [REDACTED_NAME], treated at UCSF on [REDACTED_DATE]. concerned about drug interactions with his current meds. his email is [REDACTED_EMAIL_ADDRESS].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "EMAIL_ADDRESS",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "start": 158,
+      "end": 179,
+      "score": 1.0,
+      "text": "michael.b@example.com",
+      "recognizer": "EmailRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 5,
+      "end": 7,
+      "score": 0.85,
+      "text": "tx",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 46,
+      "end": 56,
+      "score": 0.85,
+      "text": "Michael B.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 77,
+      "end": 86,
+      "score": 0.85,
+      "text": "5/22/2022",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "URL",
+      "hipaa_category": "WEB_URL",
+      "start": 168,
+      "end": 179,
+      "score": 0.5,
+      "text": "example.com",
+      "recognizer": "UrlRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UCSF",
+        "start": 69,
+        "end": 73
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.6000",
+    "f1_score": "0.6667"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "query_id": "472",
+  "timestamp": "2025-10-22T16:12:44.515128",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Can you provide the best practices for managing chronic migraines in a 34-year-old woman, Sarah Gonzalez, seen at the Albuquerque Neurology Center on September 5, 2022?",
+  "ground_truth_phi": "NAME: Sarah Gonzalez | GEOGRAPHIC_LOCATION: Albuquerque Neurology Center | DATE: September 5, 2022",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Can you provide the best practices for managing chronic migraines in a [REDACTED_DATE] woman, [REDACTED_NAME], seen at the Albuquerque Neurology Center on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 71,
+      "end": 82,
+      "score": 0.85,
+      "text": "34-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 90,
+      "end": 104,
+      "score": 0.85,
+      "text": "Sarah Gonzalez",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 150,
+      "end": 167,
+      "score": 0.85,
+      "text": "September 5, 2022",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Albuquerque Neurology Center",
+        "start": 118,
+        "end": 146
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.6667",
+    "precision": "0.6667",
+    "f1_score": "0.6667"
+  }
+}

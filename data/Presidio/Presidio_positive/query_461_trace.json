@@ -1,0 +1,94 @@
+{
+  "query_id": "461",
+  "timestamp": "2025-10-22T16:12:44.453287",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Updated clinical guidelines for managing hypertension in a 55-year-old African American male, Robert J., last evaluated at Southside Hospital on March 15th, 2023, with MRN: 12345678.",
+  "ground_truth_phi": "NAME: Robert J. | GEOGRAPHIC_LOCATION: Southside Hospital | DATE: March 15th, 2023 | MEDICAL_RECORD_NUMBER: 12345678",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Updated clinical guidelines for managing hypertension in a [REDACTED_DATE] [REDACTED_NRP] male, [REDACTED_NAME], last evaluated at Southside Hospital on [REDACTED_DATE], with [REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 168,
+      "end": 181,
+      "score": 0.9,
+      "text": "MRN: 12345678",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 59,
+      "end": 70,
+      "score": 0.85,
+      "text": "55-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "NRP",
+      "hipaa_category": "NRP",
+      "start": 71,
+      "end": 87,
+      "score": 0.85,
+      "text": "African American",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 94,
+      "end": 103,
+      "score": 0.85,
+      "text": "Robert J.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 145,
+      "end": 156,
+      "score": 0.85,
+      "text": "March 15th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 157,
+      "end": 161,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Southside Hospital",
+        "start": 123,
+        "end": 141
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 6,
+    "recall": "0.7500",
+    "precision": "0.1667",
+    "f1_score": "0.2727"
+  }
+}

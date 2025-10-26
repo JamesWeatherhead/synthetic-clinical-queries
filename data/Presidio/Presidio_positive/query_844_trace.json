@@ -1,0 +1,76 @@
+{
+  "query_id": "844",
+  "timestamp": "2025-10-22T16:12:46.474312",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Contraindications for prescribing warfarin to a 72-year-old female, Emily R., who was hospitalized at Cleveland Clinic on February 14th, 2024 (MRN: 987-65-4321)?",
+  "ground_truth_phi": "NAME: Emily R. | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: February 14th, 2024 | MEDICAL_RECORD_NUMBER: 987-65-4321",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Contraindications for prescribing warfarin to a [REDACTED_DATE] female, [REDACTED_NAME], who was hospitalized at Cleveland Clinic on [REDACTED_DATE] (MRN: [REDACTED_US_ITIN])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 48,
+      "end": 59,
+      "score": 0.85,
+      "text": "72-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 68,
+      "end": 76,
+      "score": 0.85,
+      "text": "Emily R.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 122,
+      "end": 141,
+      "score": 0.85,
+      "text": "February 14th, 2024",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "US_ITIN",
+      "hipaa_category": "US_ITIN",
+      "start": 148,
+      "end": 159,
+      "score": 0.5,
+      "text": "987-65-4321",
+      "recognizer": "UsItinRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Cleveland Clinic",
+        "start": 102,
+        "end": 118
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

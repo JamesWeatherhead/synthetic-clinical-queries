@@ -1,0 +1,79 @@
+{
+  "query_id": "249",
+  "timestamp": "2025-10-23T09:56:03.199366",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What is the 5-year survival rate for a 50-year-old male with Stage IV pancreatic cancer, Robert T., diagnosed on March 2nd, 2023, at MD Anderson (ins. #789-1234-567)?",
+  "ground_truth_phi": "NAME: Robert T. | GEOGRAPHIC_LOCATION: MD Anderson | DATE: March 2nd, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: 789-1234-567",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "50",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9643462896347046,
+      "begin_offset": 39,
+      "end_offset": 41
+    },
+    {
+      "text": "Robert T",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9143542647361755,
+      "begin_offset": 89,
+      "end_offset": 97
+    },
+    {
+      "text": "March 2nd, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999616146087646,
+      "begin_offset": 113,
+      "end_offset": 128
+    },
+    {
+      "text": "Anderson",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9946885108947754,
+      "begin_offset": 136,
+      "end_offset": 144
+    },
+    {
+      "text": "789-1234-567",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8985745906829834,
+      "begin_offset": 152,
+      "end_offset": 164
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

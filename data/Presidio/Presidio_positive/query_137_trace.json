@@ -1,0 +1,67 @@
+{
+  "query_id": "137",
+  "timestamp": "2025-10-22T16:12:42.772593",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "rec. mammo guidelines for 52yo female w/ fam hx of breast ca, pt name Mary W., seen at Lakeside Clinic on Jul 21st 2021.",
+  "ground_truth_phi": "NAME: Mary W. | GEOGRAPHIC_LOCATION: Lakeside Clinic | DATE: Jul 21st 2021",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "rec. [REDACTED_NAME] guidelines for 52yo female w/ fam hx of breast ca, pt name [REDACTED_NAME], seen at Lakeside Clinic on [REDACTED_DATE].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 5,
+      "end": 10,
+      "score": 0.85,
+      "text": "mammo",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 70,
+      "end": 77,
+      "score": 0.85,
+      "text": "Mary W.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 106,
+      "end": 119,
+      "score": 0.85,
+      "text": "Jul 21st 2021",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Lakeside Clinic",
+        "start": 87,
+        "end": 102
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.6667",
+    "precision": "0.6667",
+    "f1_score": "0.6667"
+  }
+}

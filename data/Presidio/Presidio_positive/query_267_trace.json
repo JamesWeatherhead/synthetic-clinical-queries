@@ -1,0 +1,67 @@
+{
+  "query_id": "267",
+  "timestamp": "2025-10-22T16:12:43.420512",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Mgmt plan for pt, 62yo F, dx'd w/ COPD, ref'd to pulm. clinic, Dr. Steven P. at UCLA Med Ctr on 07/18/2023. Ensure PT ID #SP-112233 is noted.",
+  "ground_truth_phi": "NAME: Steven P. | GEOGRAPHIC_LOCATION: UCLA Med Ctr | DATE: 07/18/2023 | UNIQUE_IDENTIFIER: #SP-112233",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Mgmt plan for pt, 62yo F, dx'd w/ COPD, ref'd to pulm. clinic, Dr. [REDACTED_NAME] at UCLA Med Ctr on [REDACTED_DATE]. Ensure PT ID #[REDACTED_MEDICAL_RECORD_NUMBER] is noted.",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 67,
+      "end": 76,
+      "score": 0.85,
+      "text": "Steven P.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 122,
+      "end": 131,
+      "score": 0.7,
+      "text": "SP-112233",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 96,
+      "end": 106,
+      "score": 0.6,
+      "text": "07/18/2023",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UCLA Med Ctr",
+        "start": 80,
+        "end": 92
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "0.6667",
+    "f1_score": "0.7059"
+  }
+}

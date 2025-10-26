@@ -1,0 +1,70 @@
+{
+  "query_id": "446",
+  "timestamp": "2025-10-23T09:56:26.394826",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Contraindications for prescribing ACE inhibitors to a 60-year-old female named Maria Gonzalez, seen at Cleveland Clinic last month (phone: 216-555-1234)?",
+  "ground_truth_phi": "NAME: Maria Gonzalez | GEOGRAPHIC_LOCATION: Cleveland Clinic | PHONE_NUMBER: 216-555-1234",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "60",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9926729798316956,
+      "begin_offset": 54,
+      "end_offset": 56
+    },
+    {
+      "text": "Maria Gonzalez",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9993187189102173,
+      "begin_offset": 79,
+      "end_offset": 93
+    },
+    {
+      "text": "Cleveland Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9965519905090332,
+      "begin_offset": 103,
+      "end_offset": 119
+    },
+    {
+      "text": "216-555-1234",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997828602790833,
+      "begin_offset": 139,
+      "end_offset": 151
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

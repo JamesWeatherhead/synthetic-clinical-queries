@@ -1,0 +1,70 @@
+{
+  "query_id": "473",
+  "timestamp": "2025-10-23T09:56:29.502526",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What complications should be monitored in a 42yo male with a prosthetic valve, Mr. Johnson, post-surgery at Stanford Health on March 22, 2023?",
+  "ground_truth_phi": "NAME: Mr. Johnson | GEOGRAPHIC_LOCATION: Stanford Health | DATE: March 22, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "42yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9988325238227844,
+      "begin_offset": 44,
+      "end_offset": 48
+    },
+    {
+      "text": "Johnson",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9252223372459412,
+      "begin_offset": 83,
+      "end_offset": 90
+    },
+    {
+      "text": "Stanford Health",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9837520122528076,
+      "begin_offset": 108,
+      "end_offset": 123
+    },
+    {
+      "text": "March 22, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999786615371704,
+      "begin_offset": 127,
+      "end_offset": 141
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

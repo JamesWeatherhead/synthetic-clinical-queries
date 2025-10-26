@@ -1,0 +1,79 @@
+{
+  "query_id": "531",
+  "timestamp": "2025-10-23T09:56:36.092789",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for post-operative care for a 67-year-old male, Robert Smith, who underwent surgery at Mercy Clinic on July 8th, 2024 (MRN: RS121314)?",
+  "ground_truth_phi": "NAME: Robert Smith | GEOGRAPHIC_LOCATION: Mercy Clinic | DATE: July 8th, 2024 | MEDICAL_RECORD_NUMBER: RS121314",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "67",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995551705360413,
+      "begin_offset": 41,
+      "end_offset": 43
+    },
+    {
+      "text": "Robert Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9979941844940186,
+      "begin_offset": 59,
+      "end_offset": 71
+    },
+    {
+      "text": "Mercy Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9883164763450623,
+      "begin_offset": 98,
+      "end_offset": 110
+    },
+    {
+      "text": "July 8th, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999699592590332,
+      "begin_offset": 114,
+      "end_offset": 128
+    },
+    {
+      "text": "RS121314",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9875540733337402,
+      "begin_offset": 135,
+      "end_offset": 143
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

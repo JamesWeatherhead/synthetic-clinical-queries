@@ -1,0 +1,67 @@
+{
+  "query_id": "226",
+  "timestamp": "2025-10-22T16:12:43.203776",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Current treatment recommendations for a 50-year-old male with COPD, Jane M., last seen at Chicago General on July 15th, 2022?",
+  "ground_truth_phi": "NAME: Jane M. | GEOGRAPHIC_LOCATION: Chicago General | DATE: July 15th, 2022",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Current treatment recommendations for a [REDACTED_DATE] male with COPD, [REDACTED_NAME], last seen at Chicago General on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 40,
+      "end": 51,
+      "score": 0.85,
+      "text": "50-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 68,
+      "end": 75,
+      "score": 0.85,
+      "text": "Jane M.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 109,
+      "end": 124,
+      "score": 0.85,
+      "text": "July 15th, 2022",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Chicago General",
+        "start": 90,
+        "end": 105
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.6667",
+    "precision": "0.6667",
+    "f1_score": "0.6667"
+  }
+}

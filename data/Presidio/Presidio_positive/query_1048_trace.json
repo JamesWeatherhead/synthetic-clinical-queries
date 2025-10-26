@@ -1,0 +1,69 @@
+{
+  "query_id": "1048",
+  "timestamp": "2025-10-22T16:12:47.564461",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Latest treatment protocols for a 72yo male, Johnathan Lee, diagnosed with COPD, currently residing at Greenfield Senior Center, seen on September 9th, 2023.",
+  "ground_truth_phi": "NAME: Johnathan Lee | GEOGRAPHIC_LOCATION: Greenfield Senior Center | DATE: September 9th, 2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Latest treatment protocols for a 72yo male, [REDACTED_NAME], diagnosed with COPD, currently residing at [REDACTED_GEOGRAPHIC_LOCATION], seen on [REDACTED_DATE].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 44,
+      "end": 57,
+      "score": 0.85,
+      "text": "Johnathan Lee",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 102,
+      "end": 126,
+      "score": 0.85,
+      "text": "Greenfield Senior Center",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 136,
+      "end": 150,
+      "score": 0.85,
+      "text": "September 9th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 151,
+      "end": 155,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "0.5000",
+    "f1_score": "0.6667"
+  }
+}

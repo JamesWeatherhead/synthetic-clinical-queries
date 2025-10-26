@@ -1,0 +1,70 @@
+{
+  "query_id": "926",
+  "timestamp": "2025-10-23T09:57:16.719820",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for managing atrial fibrillation in a 67-year-old female patient named Susan P., who lives at 123 Maple St, Springfield, seen on February 14, 2023?",
+  "ground_truth_phi": "NAME: Susan P. | GEOGRAPHIC_LOCATION: 123 Maple St, Springfield | DATE: February 14, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "67",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998345375061035,
+      "begin_offset": 49,
+      "end_offset": 51
+    },
+    {
+      "text": "Susan P",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9561130404472351,
+      "begin_offset": 82,
+      "end_offset": 89
+    },
+    {
+      "text": "123 Maple St, Springfield",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8508127331733704,
+      "begin_offset": 105,
+      "end_offset": 130
+    },
+    {
+      "text": "February 14, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999196529388428,
+      "begin_offset": 140,
+      "end_offset": 157
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

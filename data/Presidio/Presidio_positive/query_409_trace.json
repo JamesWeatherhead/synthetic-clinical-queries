@@ -1,0 +1,67 @@
+{
+  "query_id": "409",
+  "timestamp": "2025-10-22T16:12:44.191938",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Best anticoagulation therapy for a 68-year-old male with atrial fibrillation, Martin L., currently admitted to New York Presbyterian Hospital, MRN: NYP-112233.",
+  "ground_truth_phi": "NAME: Martin L. | GEOGRAPHIC_LOCATION: New York Presbyterian Hospital | MEDICAL_RECORD_NUMBER: NYP-112233",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Best anticoagulation therapy for a [REDACTED_DATE] male with atrial fibrillation, [REDACTED_NAME], currently admitted to New York Presbyterian Hospital, MRN: [REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 35,
+      "end": 46,
+      "score": 0.85,
+      "text": "68-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 78,
+      "end": 87,
+      "score": 0.85,
+      "text": "Martin L.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 148,
+      "end": 158,
+      "score": 0.7,
+      "text": "NYP-112233",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "New York Presbyterian Hospital",
+        "start": 111,
+        "end": 141
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.6667",
+    "precision": "0.6667",
+    "f1_score": "0.6667"
+  }
+}

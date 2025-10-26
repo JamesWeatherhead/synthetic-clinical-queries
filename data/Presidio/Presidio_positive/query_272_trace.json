@@ -1,0 +1,85 @@
+{
+  "query_id": "272",
+  "timestamp": "2025-10-22T16:12:43.450021",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Management strategies for a 54-year-old male with congestive heart failure, James R., last seen at UCLA Medical Center on July 20th, 2023 (MRN: 321-54-9876)?",
+  "ground_truth_phi": "NAME: James R. | GEOGRAPHIC_LOCATION: UCLA Medical Center | DATE: July 20th, 2023 | MEDICAL_RECORD_NUMBER: 321-54-9876",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Management strategies for a [REDACTED_DATE] male with congestive heart failure, [REDACTED_NAME], last seen at UCLA Medical Center on [REDACTED_DATE] (MRN: [REDACTED_SOCIAL_SECURITY_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 28,
+      "end": 39,
+      "score": 0.85,
+      "text": "54-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 76,
+      "end": 84,
+      "score": 0.85,
+      "text": "James R.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 122,
+      "end": 132,
+      "score": 0.85,
+      "text": "July 20th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 133,
+      "end": 137,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "US_SSN",
+      "hipaa_category": "SOCIAL_SECURITY_NUMBER",
+      "start": 144,
+      "end": 155,
+      "score": 0.5,
+      "text": "321-54-9876",
+      "recognizer": "UsSsnRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UCLA Medical Center",
+        "start": 99,
+        "end": 118
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.4000",
+    "f1_score": "0.5217"
+  }
+}

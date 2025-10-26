@@ -1,0 +1,75 @@
+{
+  "query_id": "90",
+  "timestamp": "2025-10-23T09:55:45.764057",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for managing hypertension in a 55-year-old female, Anna Smith, who presented at Cedars-Sinai Hospital on January 15th, 2023 (MRN: 1234-5678)?",
+  "ground_truth_phi": "NAME: Anna Smith | GEOGRAPHIC_LOCATION: Cedars-Sinai Hospital | DATE: January 15th, 2023 | MEDICAL_RECORD_NUMBER: 1234-5678",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "55",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998806715011597,
+      "begin_offset": 42,
+      "end_offset": 44
+    },
+    {
+      "text": "Anna Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9965487122535706,
+      "begin_offset": 62,
+      "end_offset": 72
+    },
+    {
+      "text": "Cedars-Sinai Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9953038692474365,
+      "begin_offset": 91,
+      "end_offset": 112
+    },
+    {
+      "text": "January 15th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998194575309753,
+      "begin_offset": 116,
+      "end_offset": 134
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "1234-5678"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 4
+}

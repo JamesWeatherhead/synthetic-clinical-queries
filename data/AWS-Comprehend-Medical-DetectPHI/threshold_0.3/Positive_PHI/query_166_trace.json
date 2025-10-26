@@ -1,0 +1,70 @@
+{
+  "query_id": "166",
+  "timestamp": "2025-10-23T09:55:53.732883",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Anticoagulation guidelines for a 65-year-old male named Robert J. with atrial fibrillation and discharge date of February 25th, 2021?",
+  "ground_truth_phi": "NAME: Robert J. | DATE: February 25th, 2021",
+  "ground_truth_phi_count": 2,
+  "aws_entities_detected": [
+    {
+      "text": "Anticoagulation guidelines",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.40268179774284363,
+      "begin_offset": 0,
+      "end_offset": 26
+    },
+    {
+      "text": "65",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996765851974487,
+      "begin_offset": 33,
+      "end_offset": 35
+    },
+    {
+      "text": "Robert J.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9976660013198853,
+      "begin_offset": 56,
+      "end_offset": 65
+    },
+    {
+      "text": "February 25th, 2021",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998414516448975,
+      "begin_offset": 113,
+      "end_offset": 132
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 2,
+    "successfully_detected": 2,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 2,
+    "recall": "1.0000",
+    "precision": "0.5000",
+    "f1_score": "0.6667"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

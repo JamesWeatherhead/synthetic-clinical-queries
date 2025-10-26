@@ -1,0 +1,75 @@
+{
+  "query_id": "819",
+  "timestamp": "2025-10-23T09:57:05.063164",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for management of a 75-year-old male with T2DM and chronic CHF seen at Johns Hopkins on March 1st, 2023. Patient is John D. (MRN: 987-65-4321).",
+  "ground_truth_phi": "NAME: John D. | GEOGRAPHIC_LOCATION: Johns Hopkins | DATE: March 1st, 2023 | MEDICAL_RECORD_NUMBER: 987-65-4321",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "75",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9981714487075806,
+      "begin_offset": 31,
+      "end_offset": 33
+    },
+    {
+      "text": "March 1st, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998822212219238,
+      "begin_offset": 99,
+      "end_offset": 114
+    },
+    {
+      "text": "John D.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8891618251800537,
+      "begin_offset": 127,
+      "end_offset": 134
+    },
+    {
+      "text": "987-65-4321",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997649788856506,
+      "begin_offset": 141,
+      "end_offset": 152
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Johns Hopkins"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 4
+}

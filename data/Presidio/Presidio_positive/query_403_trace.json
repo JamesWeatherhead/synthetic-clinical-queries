@@ -1,0 +1,67 @@
+{
+  "query_id": "403",
+  "timestamp": "2025-10-22T16:12:44.160203",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Management guidelines for pt w/ hx of atrial fibrillation, see Sarah B. at Cedar Sinai, recently admitted on Jul 15th 2023 (insurance: HPX345678)?",
+  "ground_truth_phi": "NAME: Sarah B. | GEOGRAPHIC_LOCATION: Cedar Sinai | DATE: Jul 15th 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: HPX345678",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Management guidelines for pt w/ hx of atrial fibrillation, see [REDACTED_NAME] at [REDACTED_GEOGRAPHIC_LOCATION], recently admitted on [REDACTED_DATE] (insurance: HPX345678)?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 63,
+      "end": 71,
+      "score": 0.85,
+      "text": "Sarah B.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 75,
+      "end": 86,
+      "score": 0.85,
+      "text": "Cedar Sinai",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 109,
+      "end": 122,
+      "score": 0.85,
+      "text": "Jul 15th 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+        "value": "HPX345678",
+        "start": 135,
+        "end": 144
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  }
+}

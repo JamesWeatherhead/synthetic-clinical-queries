@@ -1,0 +1,97 @@
+{
+  "query_id": "390",
+  "timestamp": "2025-10-23T09:56:20.972260",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guideline for treating hypertension in a 50-year-old African American male named Michael T. who resides in Los Angeles, admitted on July 15, 2023 (MRN: HLT-234567)?",
+  "ground_truth_phi": "NAME: Michael T. | GEOGRAPHIC_LOCATION: Los Angeles | DATE: July 15, 2023 | MEDICAL_RECORD_NUMBER: HLT-234567",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "50",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.997912585735321,
+      "begin_offset": 41,
+      "end_offset": 43
+    },
+    {
+      "text": "Michael",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.5106384754180908,
+      "begin_offset": 81,
+      "end_offset": 88
+    },
+    {
+      "text": "T.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.18282006680965424,
+      "begin_offset": 89,
+      "end_offset": 91
+    },
+    {
+      "text": "Los Angeles",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.998134434223175,
+      "begin_offset": 107,
+      "end_offset": 118
+    },
+    {
+      "text": "July 15, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999661445617676,
+      "begin_offset": 132,
+      "end_offset": 145
+    },
+    {
+      "text": "HLT",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.09079049527645111,
+      "begin_offset": 152,
+      "end_offset": 155
+    },
+    {
+      "text": "234567",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7428361773490906,
+      "begin_offset": 156,
+      "end_offset": 162
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 7,
+    "true_positives": 6,
+    "recall": "1.0000",
+    "precision": "0.8571",
+    "f1_score": "0.9231"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 7,
+  "aws_entities_filtered_count": 7
+}

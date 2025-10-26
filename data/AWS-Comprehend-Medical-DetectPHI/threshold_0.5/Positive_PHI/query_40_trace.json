@@ -1,0 +1,79 @@
+{
+  "query_id": "40",
+  "timestamp": "2025-10-23T09:55:40.703060",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the latest treatments for a 55-year-old male with recurrent glioblastoma, James A., who was diagnosed at Stanford Medical Center on January 15th, 2023 (MRN: #SG-920311)?",
+  "ground_truth_phi": "NAME: James A. | GEOGRAPHIC_LOCATION: Stanford Medical Center | DATE: January 15th, 2023 | MEDICAL_RECORD_NUMBER: #SG-920311",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "55",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9993016719818115,
+      "begin_offset": 37,
+      "end_offset": 39
+    },
+    {
+      "text": "James A",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9597797989845276,
+      "begin_offset": 83,
+      "end_offset": 90
+    },
+    {
+      "text": "Stanford Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9861099720001221,
+      "begin_offset": 114,
+      "end_offset": 137
+    },
+    {
+      "text": "January 15th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999933123588562,
+      "begin_offset": 141,
+      "end_offset": 159
+    },
+    {
+      "text": "920311",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9567500948905945,
+      "begin_offset": 170,
+      "end_offset": 176
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

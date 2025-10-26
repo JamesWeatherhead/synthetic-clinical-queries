@@ -1,0 +1,79 @@
+{
+  "query_id": "486",
+  "timestamp": "2025-10-23T09:56:31.013724",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Management of hypertension in a 63-year-old male, Robert Smith (MRN: 876-54-321), with a history of stroke, treated at Elmwood Hospital in Sacramento, CA.",
+  "ground_truth_phi": "NAME: Robert Smith | MEDICAL_RECORD_NUMBER: 876-54-321 | GEOGRAPHIC_LOCATION: Elmwood Hospital | GEOGRAPHIC_LOCATION: Sacramento, CA",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "63",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998347759246826,
+      "begin_offset": 32,
+      "end_offset": 34
+    },
+    {
+      "text": "Robert Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9959993362426758,
+      "begin_offset": 50,
+      "end_offset": 62
+    },
+    {
+      "text": "876-54-321",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996311664581299,
+      "begin_offset": 69,
+      "end_offset": 79
+    },
+    {
+      "text": "Elmwood Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9922618865966797,
+      "begin_offset": 119,
+      "end_offset": 135
+    },
+    {
+      "text": "Sacramento",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9433663487434387,
+      "begin_offset": 139,
+      "end_offset": 149
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 5
+}

@@ -1,0 +1,85 @@
+{
+  "query_id": "534",
+  "timestamp": "2025-10-22T16:12:44.846194",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "pt w/ HTN, hyperlipidemia seen at General Hospital, John D. on May 10th 2022. Concerned about side efects of atorvastatin (email: john.doe@example.com).",
+  "ground_truth_phi": "NAME: John D. | GEOGRAPHIC_LOCATION: General Hospital | DATE: May 10th 2022 | EMAIL_ADDRESS: john.doe@example.com",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "pt w/ HTN, hyperlipidemia seen at General Hospital, [REDACTED_NAME] on [REDACTED_DATE]. Concerned about side efects of atorvastatin (email: [REDACTED_EMAIL_ADDRESS]).",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "EMAIL_ADDRESS",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "start": 130,
+      "end": 150,
+      "score": 1.0,
+      "text": "john.doe@example.com",
+      "recognizer": "EmailRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 52,
+      "end": 59,
+      "score": 0.85,
+      "text": "John D.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 63,
+      "end": 76,
+      "score": 0.85,
+      "text": "May 10th 2022",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "URL",
+      "hipaa_category": "WEB_URL",
+      "start": 130,
+      "end": 137,
+      "score": 0.5,
+      "text": "john.do",
+      "recognizer": "UrlRecognizer"
+    },
+    {
+      "entity_type": "URL",
+      "hipaa_category": "WEB_URL",
+      "start": 139,
+      "end": 150,
+      "score": 0.5,
+      "text": "example.com",
+      "recognizer": "UrlRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "General Hospital",
+        "start": 34,
+        "end": 50
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.6000",
+    "f1_score": "0.6667"
+  }
+}

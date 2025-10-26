@@ -1,0 +1,79 @@
+{
+  "query_id": "395",
+  "timestamp": "2025-10-23T09:56:21.355006",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Recommended treatment protocol for a 55-year-old woman, Susan P., who presented with a pulmonary embolism at Elmhurst Hospital on September 12, 2023 (Insurance ID: BB-987654)?",
+  "ground_truth_phi": "NAME: Susan P. | GEOGRAPHIC_LOCATION: Elmhurst Hospital | DATE: September 12, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: BB-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "55",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997426867485046,
+      "begin_offset": 37,
+      "end_offset": 39
+    },
+    {
+      "text": "Susan P",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9670524001121521,
+      "begin_offset": 56,
+      "end_offset": 63
+    },
+    {
+      "text": "Elmhurst Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9977884292602539,
+      "begin_offset": 109,
+      "end_offset": 126
+    },
+    {
+      "text": "September 12, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999921441078186,
+      "begin_offset": 130,
+      "end_offset": 148
+    },
+    {
+      "text": "987654",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8404930233955383,
+      "begin_offset": 167,
+      "end_offset": 173
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

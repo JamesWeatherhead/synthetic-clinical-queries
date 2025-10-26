@@ -1,0 +1,79 @@
+{
+  "query_id": "624",
+  "timestamp": "2025-10-23T09:56:45.648564",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for postoperative care of a 50-year-old female following a total knee replacement, specifically for Sarah Doe visited at St. Joseph Hospital in Chicago on Sept 15th, 2022?",
+  "ground_truth_phi": "NAME: Sarah Doe | GEOGRAPHIC_LOCATION: St. Joseph Hospital in Chicago | DATE: Sept 15th, 2022",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "50",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9993263483047485,
+      "begin_offset": 39,
+      "end_offset": 41
+    },
+    {
+      "text": "Sarah",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7414307594299316,
+      "begin_offset": 111,
+      "end_offset": 116
+    },
+    {
+      "text": "St. Joseph Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9783450365066528,
+      "begin_offset": 132,
+      "end_offset": 151
+    },
+    {
+      "text": "Chicago",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9979255199432373,
+      "begin_offset": 155,
+      "end_offset": 162
+    },
+    {
+      "text": "Sept 15th, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996223449707031,
+      "begin_offset": 166,
+      "end_offset": 181
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

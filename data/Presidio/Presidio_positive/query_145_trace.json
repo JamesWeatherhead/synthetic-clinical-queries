@@ -1,0 +1,73 @@
+{
+  "query_id": "145",
+  "timestamp": "2025-10-22T16:12:42.815677",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Management of hypertension for a 72-year-old patient, John Smith, last seen at St. Mary's Clinic on April 12th, 2023, with MRN 123-45-6789?",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: St. Mary's Clinic | DATE: April 12th, 2023 | MEDICAL_RECORD_NUMBER: 123-45-6789",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Management of hypertension for a [REDACTED_DATE] patient, [REDACTED_NAME], last seen at St. Mary's Clinic on [REDACTED_DATE], with MRN 123-45-6789?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 33,
+      "end": 44,
+      "score": 0.85,
+      "text": "72-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 54,
+      "end": 64,
+      "score": 0.85,
+      "text": "John Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 100,
+      "end": 116,
+      "score": 0.85,
+      "text": "April 12th, 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "St. Mary's Clinic",
+        "start": 79,
+        "end": 96
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "123-45-6789",
+        "start": 127,
+        "end": 138
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 3,
+    "recall": "0.5000",
+    "precision": "0.6667",
+    "f1_score": "0.5714"
+  }
+}

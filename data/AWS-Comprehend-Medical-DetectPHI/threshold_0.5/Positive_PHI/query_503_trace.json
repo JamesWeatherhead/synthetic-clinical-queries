@@ -1,0 +1,79 @@
+{
+  "query_id": "503",
+  "timestamp": "2025-10-23T09:56:32.669401",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Management recommendations for a 52yo male with newly diagnosed HTN, David K., seen at St. Mary's Health on Jan 15th 2023? Patient's email: david.k@example.com",
+  "ground_truth_phi": "NAME: David K. | GEOGRAPHIC_LOCATION: St. Mary's Health | DATE: Jan 15th 2023 | EMAIL_ADDRESS: david.k@example.com",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "52yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999432563781738,
+      "begin_offset": 33,
+      "end_offset": 37
+    },
+    {
+      "text": "David K",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9981091022491455,
+      "begin_offset": 69,
+      "end_offset": 76
+    },
+    {
+      "text": "St. Mary's Health",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9838626980781555,
+      "begin_offset": 87,
+      "end_offset": 104
+    },
+    {
+      "text": "Jan 15th 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9971436858177185,
+      "begin_offset": 108,
+      "end_offset": 121
+    },
+    {
+      "text": "david.k@example.com",
+      "aws_type": "EMAIL",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999905824661255,
+      "begin_offset": 140,
+      "end_offset": 159
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

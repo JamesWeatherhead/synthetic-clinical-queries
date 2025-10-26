@@ -1,0 +1,79 @@
+{
+  "query_id": "731",
+  "timestamp": "2025-10-23T09:56:55.643242",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are contraindications for prescribing Lisinopril to a 70-year-old female, Susan B., admitted to St. John's Hospital on July 15th, 2023 (MRN: 876-54-321)?",
+  "ground_truth_phi": "NAME: Susan B. | GEOGRAPHIC_LOCATION: St. John's Hospital | DATE: July 15th, 2023 | MEDICAL_RECORD_NUMBER: 876-54-321",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "70",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9931079149246216,
+      "begin_offset": 59,
+      "end_offset": 61
+    },
+    {
+      "text": "Susan B",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9940733313560486,
+      "begin_offset": 79,
+      "end_offset": 86
+    },
+    {
+      "text": "St. John's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9938709735870361,
+      "begin_offset": 101,
+      "end_offset": 120
+    },
+    {
+      "text": "July 15th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999650716781616,
+      "begin_offset": 124,
+      "end_offset": 139
+    },
+    {
+      "text": "876-54-321",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9994496703147888,
+      "begin_offset": 146,
+      "end_offset": 156
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

@@ -1,0 +1,69 @@
+{
+  "query_id": "963",
+  "timestamp": "2025-10-22T16:12:47.102907",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Side effects of combining atorvastatin with lisinopril in a 65yo male, John D., who visited our Newport office on March 1st, 2024 (MRN: 98234)?",
+  "ground_truth_phi": "NAME: John D. | DATE: March 1st, 2024 | GEOGRAPHIC_LOCATION: Newport | MEDICAL_RECORD_NUMBER: 98234",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Side effects of combining atorvastatin with lisinopril in a 65yo male, [REDACTED_NAME], who visited our [REDACTED_GEOGRAPHIC_LOCATION] office on [REDACTED_DATE] (MRN: [REDACTED_NAME])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 71,
+      "end": 78,
+      "score": 0.85,
+      "text": "John D.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 96,
+      "end": 103,
+      "score": 0.85,
+      "text": "Newport",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 114,
+      "end": 129,
+      "score": 0.85,
+      "text": "March 1st, 2024",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 136,
+      "end": 141,
+      "score": 0.85,
+      "text": "98234",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  }
+}

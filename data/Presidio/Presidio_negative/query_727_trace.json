@@ -1,0 +1,23 @@
+{
+  "query_id": "727",
+  "timestamp": "2025-10-22T16:24:25.127925",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the side effects of amiodarone in elderly patients, especially those with a history of lung disease?",
+  "presidio_output": "What are the side effects of amiodarone in elderly patients, especially those with a history of lung disease?",
+  "presidio_entities_detected": [],
+  "false_redaction_check": {
+    "has_false_redactions": false,
+    "redaction_count": 0,
+    "false_redactions_by_type": {},
+    "status": "CLEAN"
+  }
+}

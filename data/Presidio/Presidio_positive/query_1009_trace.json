@@ -1,0 +1,67 @@
+{
+  "query_id": "1009",
+  "timestamp": "2025-10-22T16:12:47.350414",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "tx options for pt dx'd w/ gerd & dm, ref to Dr. Jane Perkins, treated at Stanford Med on 11/12/2021, SS# 987-65-4321.",
+  "ground_truth_phi": "NAME: Jane Perkins | GEOGRAPHIC_LOCATION: Stanford Med | DATE: 11/12/2021 | SOCIAL_SECURITY_NUMBER: 987-65-4321",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "tx options for pt dx'd w/ gerd & dm, ref to Dr. [REDACTED_NAME], treated at Stanford Med on [REDACTED_DATE], SS# [REDACTED_US_ITIN].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 48,
+      "end": 60,
+      "score": 0.85,
+      "text": "Jane Perkins",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 89,
+      "end": 99,
+      "score": 0.85,
+      "text": "11/12/2021",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "US_ITIN",
+      "hipaa_category": "US_ITIN",
+      "start": 105,
+      "end": 116,
+      "score": 0.5,
+      "text": "987-65-4321",
+      "recognizer": "UsItinRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Stanford Med",
+        "start": 73,
+        "end": 85
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  }
+}

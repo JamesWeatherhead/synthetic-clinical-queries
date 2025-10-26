@@ -1,0 +1,67 @@
+{
+  "query_id": "14",
+  "timestamp": "2025-10-22T16:12:42.086318",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Are there any known interactions between fluoxetine and gabapentin in a patient based on case reports, especially considering John D., admitted to Stanford Hospital on January 8, 2023 (MRN: ST-998877)?",
+  "ground_truth_phi": "NAME: John D. | GEOGRAPHIC_LOCATION: Stanford Hospital | DATE: January 8, 2023 | MEDICAL_RECORD_NUMBER: ST-998877",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Are there any known interactions between fluoxetine and gabapentin in a patient based on case reports, especially considering [REDACTED_NAME], admitted to Stanford Hospital on [REDACTED_DATE] (MRN: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 126,
+      "end": 133,
+      "score": 0.85,
+      "text": "John D.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 168,
+      "end": 183,
+      "score": 0.85,
+      "text": "January 8, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 190,
+      "end": 199,
+      "score": 0.7,
+      "text": "ST-998877",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Stanford Hospital",
+        "start": 147,
+        "end": 164
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  }
+}

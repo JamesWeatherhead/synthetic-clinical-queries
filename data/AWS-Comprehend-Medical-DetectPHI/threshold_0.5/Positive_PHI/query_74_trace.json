@@ -1,0 +1,70 @@
+{
+  "query_id": "74",
+  "timestamp": "2025-10-23T09:55:44.097002",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for managing chronic kidney disease in a 72-year-old female, Alice Davis, resident of 123 Maple Street, Chicago, IL, who was treated on February 14th, 2023 (Site ID: 98765).",
+  "ground_truth_phi": "NAME: Alice Davis | GEOGRAPHIC_LOCATION: 123 Maple Street, Chicago, IL | DATE: February 14th, 2023 | UNIQUE_IDENTIFIER: Site ID: 98765",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "72",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998384714126587,
+      "begin_offset": 52,
+      "end_offset": 54
+    },
+    {
+      "text": "Alice Davis",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.995079755783081,
+      "begin_offset": 72,
+      "end_offset": 83
+    },
+    {
+      "text": "February 14th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9993191957473755,
+      "begin_offset": 147,
+      "end_offset": 166
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "123 Maple Street, Chicago, IL"
+      },
+      {
+        "type": "UNIQUE_IDENTIFIER",
+        "value": "Site ID: 98765"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 2,
+    "leaked_failures": 2,
+    "total_detected": 3,
+    "true_positives": 2,
+    "recall": "0.5000",
+    "precision": "0.6667",
+    "f1_score": "0.5714"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 3
+}

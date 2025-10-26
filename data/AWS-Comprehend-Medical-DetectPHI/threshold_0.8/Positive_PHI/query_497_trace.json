@@ -1,0 +1,66 @@
+{
+  "query_id": "497",
+  "timestamp": "2025-10-23T09:56:32.161557",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "tx options for pt 67yo F w/ hx of HFrEF and CKD, discussed at Scripps Clinic on Apr 22nd, 2024, MRN: SC-998877?",
+  "ground_truth_phi": "GEOGRAPHIC_LOCATION: Scripps Clinic | DATE: Apr 22nd, 2024 | MEDICAL_RECORD_NUMBER: SC-998877",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "67yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9991146922111511,
+      "begin_offset": 18,
+      "end_offset": 22
+    },
+    {
+      "text": "Scripps Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9955202341079712,
+      "begin_offset": 62,
+      "end_offset": 76
+    },
+    {
+      "text": "Apr 22nd, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9831105470657349,
+      "begin_offset": 80,
+      "end_offset": 94
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "SC-998877"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "true_positives": 2,
+    "recall": "0.6667",
+    "precision": "0.6667",
+    "f1_score": "0.6667"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 3
+}

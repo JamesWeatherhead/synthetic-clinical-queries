@@ -1,0 +1,64 @@
+{
+  "query_id": "793",
+  "timestamp": "2025-10-22T16:12:46.203144",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommended diagnostic tests for a 60-year-old male presenting with symptoms of COPD, seeing Dr. Emily Clark at the county hospital, MRN: 123-45-6789.",
+  "ground_truth_phi": "NAME: Dr. Emily Clark | GEOGRAPHIC_LOCATION: county hospital | MEDICAL_RECORD_NUMBER: 123-45-6789",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Recommended diagnostic tests for a [REDACTED_DATE] male presenting with symptoms of COPD, seeing Dr. [REDACTED_NAME] at the county hospital, MRN: 123-45-6789.",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 35,
+      "end": 46,
+      "score": 0.85,
+      "text": "60-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 97,
+      "end": 108,
+      "score": 0.85,
+      "text": "Emily Clark",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "county hospital",
+        "start": 116,
+        "end": 131
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "123-45-6789",
+        "start": 138,
+        "end": 149
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 1,
+    "leaked_failures": 2,
+    "total_detected": 2,
+    "recall": "0.3333",
+    "precision": "0.0000",
+    "f1_score": "0.0000"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "query_id": "39",
+  "timestamp": "2025-10-23T09:55:40.567507",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Current ADA guidelines for managing diabetes in an 18-year-old female, Lisa Wong, seen at Children's Hospital Los Angeles on September 5, 2022?",
+  "ground_truth_phi": "NAME: Lisa Wong | GEOGRAPHIC_LOCATION: Children's Hospital Los Angeles | DATE: September 5, 2022",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "18",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998481273651123,
+      "begin_offset": 51,
+      "end_offset": 53
+    },
+    {
+      "text": "Lisa Wong",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9992814660072327,
+      "begin_offset": 71,
+      "end_offset": 80
+    },
+    {
+      "text": "Children's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.988323450088501,
+      "begin_offset": 90,
+      "end_offset": 109
+    },
+    {
+      "text": "Los Angeles",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.42162320017814636,
+      "begin_offset": 110,
+      "end_offset": 121
+    },
+    {
+      "text": "September 5, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999581575393677,
+      "begin_offset": 125,
+      "end_offset": 142
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

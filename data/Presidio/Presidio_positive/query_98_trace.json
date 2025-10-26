@@ -1,0 +1,76 @@
+{
+  "query_id": "98",
+  "timestamp": "2025-10-22T16:12:42.571728",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "management of 45yo male with new dx of a-fib, seen by Dr. Steven L., at St. Luke's Hosp on Aug 10, 2023, med rec #99887766, w/ hx of chronic kidney disease?",
+  "ground_truth_phi": "NAME: Dr. Steven L. | GEOGRAPHIC_LOCATION: St. Luke's Hosp | DATE: Aug 10, 2023 | MEDICAL_RECORD_NUMBER: 99887766",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "management of [REDACTED_DATE] male with new dx of a-fib, seen by Dr. [REDACTED_NAME], at St. Luke's Hosp on [REDACTED_DATE], med rec #[REDACTED_MEDICAL_RECORD_NUMBER], w/ hx of chronic kidney disease?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 14,
+      "end": 18,
+      "score": 0.85,
+      "text": "45yo",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 58,
+      "end": 67,
+      "score": 0.85,
+      "text": "Steven L.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 91,
+      "end": 103,
+      "score": 0.85,
+      "text": "Aug 10, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 114,
+      "end": 122,
+      "score": 0.5,
+      "text": "99887766",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "St. Luke's Hosp",
+        "start": 72,
+        "end": 87
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.5000",
+    "f1_score": "0.6000"
+  }
+}

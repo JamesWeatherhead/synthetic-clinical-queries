@@ -1,0 +1,76 @@
+{
+  "query_id": "395",
+  "timestamp": "2025-10-22T16:12:44.113276",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommended treatment protocol for a 55-year-old woman, Susan P., who presented with a pulmonary embolism at Elmhurst Hospital on September 12, 2023 (Insurance ID: BB-987654)?",
+  "ground_truth_phi": "NAME: Susan P. | GEOGRAPHIC_LOCATION: Elmhurst Hospital | DATE: September 12, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: BB-987654",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Recommended treatment protocol for a [REDACTED_DATE] woman, [REDACTED_NAME], who presented with a pulmonary embolism at Elmhurst Hospital on [REDACTED_DATE] (Insurance ID: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 37,
+      "end": 48,
+      "score": 0.85,
+      "text": "55-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 56,
+      "end": 64,
+      "score": 0.85,
+      "text": "Susan P.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 130,
+      "end": 148,
+      "score": 0.85,
+      "text": "September 12, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 164,
+      "end": 173,
+      "score": 0.7,
+      "text": "BB-987654",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Elmhurst Hospital",
+        "start": 109,
+        "end": 126
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

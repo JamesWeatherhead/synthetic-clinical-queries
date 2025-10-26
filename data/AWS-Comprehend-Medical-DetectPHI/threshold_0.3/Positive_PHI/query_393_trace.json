@@ -1,0 +1,70 @@
+{
+  "query_id": "393",
+  "timestamp": "2025-10-23T09:56:21.225007",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "f/u recs for pt w/ hx of CAD tx'd at Johns Hopkins, Jane D., 60yo Caucasian female. Visited on Feb 14th '23. concerned about med compliance and SEs.",
+  "ground_truth_phi": "NAME: Jane D. | GEOGRAPHIC_LOCATION: Johns Hopkins | DATE: Feb 14th '23",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "Johns Hopkins",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8586478233337402,
+      "begin_offset": 37,
+      "end_offset": 50
+    },
+    {
+      "text": "Jane",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.5073426961898804,
+      "begin_offset": 52,
+      "end_offset": 56
+    },
+    {
+      "text": "60yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9991970658302307,
+      "begin_offset": 61,
+      "end_offset": 65
+    },
+    {
+      "text": "Feb 14th '23",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9954938888549805,
+      "begin_offset": 95,
+      "end_offset": 107
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

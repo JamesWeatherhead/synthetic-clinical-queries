@@ -1,0 +1,23 @@
+{
+  "query_id": "394",
+  "timestamp": "2025-10-22T16:24:24.735755",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the risks of general anesthesia in elderly patients with a BMI of 30 and a history of COPD, considering the latest 2023 guidelines?",
+  "presidio_output": "What are the risks of general anesthesia in elderly patients with a BMI of 30 and a history of COPD, considering the latest 2023 guidelines?",
+  "presidio_entities_detected": [],
+  "false_redaction_check": {
+    "has_false_redactions": false,
+    "redaction_count": 0,
+    "false_redactions_by_type": {},
+    "status": "CLEAN"
+  }
+}

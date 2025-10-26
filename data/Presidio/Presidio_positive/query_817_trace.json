@@ -1,0 +1,78 @@
+{
+  "query_id": "817",
+  "timestamp": "2025-10-22T16:12:46.328814",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Can you provide the latest treatment guidelines for atrial fibrillation in a 68-year-old male, Richard B., treated at St. Francis Hospital on July 22nd, 2023?",
+  "ground_truth_phi": "NAME: Richard B. | GEOGRAPHIC_LOCATION: St. Francis Hospital | DATE: July 22nd, 2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Can you provide the latest treatment guidelines for atrial fibrillation in a [REDACTED_DATE] male, [REDACTED_NAME], treated at [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE], [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 77,
+      "end": 88,
+      "score": 0.85,
+      "text": "68-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 95,
+      "end": 105,
+      "score": 0.85,
+      "text": "Richard B.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 118,
+      "end": 138,
+      "score": 0.85,
+      "text": "St. Francis Hospital",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 142,
+      "end": 151,
+      "score": 0.85,
+      "text": "July 22nd",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 153,
+      "end": 157,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.4000",
+    "f1_score": "0.5714"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "query_id": "676",
+  "timestamp": "2025-10-23T09:56:50.532842",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Recommended vaccination schedule for a 6-month-old baby, Emily R., who was born on December 15th, 2022 at Seattle Children's Hospital?",
+  "ground_truth_phi": "NAME: Emily R. | DATE: December 15th, 2022 | GEOGRAPHIC_LOCATION: Seattle Children's Hospital",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "6",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7829248905181885,
+      "begin_offset": 39,
+      "end_offset": 40
+    },
+    {
+      "text": "Emily R",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9595152139663696,
+      "begin_offset": 57,
+      "end_offset": 64
+    },
+    {
+      "text": "December 15th, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997965693473816,
+      "begin_offset": 83,
+      "end_offset": 102
+    },
+    {
+      "text": "Seattle Children's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9978390336036682,
+      "begin_offset": 106,
+      "end_offset": 133
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

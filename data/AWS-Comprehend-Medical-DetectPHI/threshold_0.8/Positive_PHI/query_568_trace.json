@@ -1,0 +1,66 @@
+{
+  "query_id": "568",
+  "timestamp": "2025-10-23T09:56:39.719550",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Tx options for a pt w/ hx of AML, 31yo female named Jenna R., admitted at UPMC on Jan 9th '23 (MRN: #UPMC-231500JR)? Risks with bone marrow transplant?",
+  "ground_truth_phi": "NAME: Jenna R. | GEOGRAPHIC_LOCATION: UPMC | DATE: Jan 9th '23 | MEDICAL_RECORD_NUMBER: #UPMC-231500JR",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "31yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9954026937484741,
+      "begin_offset": 34,
+      "end_offset": 38
+    },
+    {
+      "text": "UPMC",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9807697534561157,
+      "begin_offset": 74,
+      "end_offset": 78
+    },
+    {
+      "text": "Jan 9th '23",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9942883253097534,
+      "begin_offset": 82,
+      "end_offset": 93
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "NAME",
+        "value": "Jenna R."
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "true_positives": 2,
+    "recall": "0.7500",
+    "precision": "0.6667",
+    "f1_score": "0.7059"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 3
+}

@@ -1,0 +1,70 @@
+{
+  "query_id": "518",
+  "timestamp": "2025-10-23T09:56:34.698628",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Current best practices for managing severe COPD in a 70-year-old male, Frank G. residing in Fresno, last hospitalization on 11/20/2021?",
+  "ground_truth_phi": "NAME: Frank G. | GEOGRAPHIC_LOCATION: Fresno | DATE: 11/20/2021",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "70",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9990873336791992,
+      "begin_offset": 53,
+      "end_offset": 55
+    },
+    {
+      "text": "Frank G.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7267707586288452,
+      "begin_offset": 71,
+      "end_offset": 79
+    },
+    {
+      "text": "Fresno",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9958413243293762,
+      "begin_offset": 92,
+      "end_offset": 98
+    },
+    {
+      "text": "11/20/2021",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999818801879883,
+      "begin_offset": 124,
+      "end_offset": 134
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

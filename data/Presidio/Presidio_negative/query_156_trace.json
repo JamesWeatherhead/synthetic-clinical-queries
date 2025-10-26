@@ -1,0 +1,54 @@
+{
+  "query_id": "156",
+  "timestamp": "2025-10-22T16:24:24.450314",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommended antibiotics for a 7-year-old with a high McIsaac score for strep throat, seen in an outpatient clinic last fall?",
+  "presidio_output": "Recommended antibiotics for a [REDACTED_DATE] with a high [REDACTED_NAME] score for strep throat, seen in an outpatient clinic [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 30,
+      "end": 40,
+      "score": 0.85,
+      "text": "7-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 53,
+      "end": 60,
+      "score": 0.85,
+      "text": "McIsaac",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 114,
+      "end": 123,
+      "score": 0.85,
+      "text": "last fall",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 3,
+    "false_redactions_by_type": {
+      "DATE": 2,
+      "NAME": 1
+    },
+    "status": "OVER_REDACTED"
+  }
+}

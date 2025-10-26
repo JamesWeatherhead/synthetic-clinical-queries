@@ -1,0 +1,85 @@
+{
+  "query_id": "1016",
+  "timestamp": "2025-10-22T16:12:47.389451",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Best blood pressure management strategies for a 60-year-old African American male, Richard H., recently admitted to St. Mary's Hospital on February 10th, 2024 (MRN: RH-446677)?",
+  "ground_truth_phi": "NAME: Richard H. | GEOGRAPHIC_LOCATION: St. Mary's Hospital | DATE: February 10th, 2024 | MEDICAL_RECORD_NUMBER: RH-446677",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Best blood pressure management strategies for a [REDACTED_DATE] [REDACTED_NRP] male, [REDACTED_NAME], recently admitted to St. Mary's Hospital on [REDACTED_DATE] (MRN: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 48,
+      "end": 59,
+      "score": 0.85,
+      "text": "60-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "NRP",
+      "hipaa_category": "NRP",
+      "start": 60,
+      "end": 76,
+      "score": 0.85,
+      "text": "African American",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 83,
+      "end": 93,
+      "score": 0.85,
+      "text": "Richard H.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 139,
+      "end": 158,
+      "score": 0.85,
+      "text": "February 10th, 2024",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 165,
+      "end": 174,
+      "score": 0.7,
+      "text": "RH-446677",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "St. Mary's Hospital",
+        "start": 116,
+        "end": 135
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.6000",
+    "f1_score": "0.6667"
+  }
+}

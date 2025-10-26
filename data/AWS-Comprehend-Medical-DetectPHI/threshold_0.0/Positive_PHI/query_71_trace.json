@@ -1,0 +1,79 @@
+{
+  "query_id": "71",
+  "timestamp": "2025-10-23T09:55:43.699536",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Management of atrial fibrillation in a 70-year-old male, Robert Lee, who lives in Sunnyvale, CA, and was diagnosed on April 15th, 2022.",
+  "ground_truth_phi": "NAME: Robert Lee | GEOGRAPHIC_LOCATION: Sunnyvale, CA | DATE: April 15th, 2022",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "70",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999670147895813,
+      "begin_offset": 39,
+      "end_offset": 41
+    },
+    {
+      "text": "Robert Lee",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9981486797332764,
+      "begin_offset": 57,
+      "end_offset": 67
+    },
+    {
+      "text": "Sunnyvale",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8731603622436523,
+      "begin_offset": 82,
+      "end_offset": 91
+    },
+    {
+      "text": "CA",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.45896586775779724,
+      "begin_offset": 93,
+      "end_offset": 95
+    },
+    {
+      "text": "April 15th, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9992951154708862,
+      "begin_offset": 118,
+      "end_offset": 134
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

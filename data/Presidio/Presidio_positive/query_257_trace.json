@@ -1,0 +1,58 @@
+{
+  "query_id": "257",
+  "timestamp": "2025-10-22T16:12:43.366690",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Latest ADA guidelines for type 1 diabetes management for a 14yo male seen by Dr. Emily S. at Children's Hospital Boston in July 2022?",
+  "ground_truth_phi": "NAME: Dr. Emily S. | GEOGRAPHIC_LOCATION: Children's Hospital Boston | DATE: July 2022",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Latest ADA guidelines for type 1 diabetes management for a 14yo male seen by Dr. [REDACTED_NAME] at Children's Hospital Boston in [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 81,
+      "end": 89,
+      "score": 0.85,
+      "text": "Emily S.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 123,
+      "end": 132,
+      "score": 0.85,
+      "text": "July 2022",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Children's Hospital Boston",
+        "start": 93,
+        "end": 119
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 2,
+    "recall": "0.6667",
+    "precision": "0.5000",
+    "f1_score": "0.5714"
+  }
+}

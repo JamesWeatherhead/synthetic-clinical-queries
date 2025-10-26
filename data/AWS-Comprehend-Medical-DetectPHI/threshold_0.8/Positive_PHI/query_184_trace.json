@@ -1,0 +1,70 @@
+{
+  "query_id": "184",
+  "timestamp": "2025-10-23T09:55:55.378605",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for the treatment of hypertension in a patient like Mary A., reviewed at Cedar Sinai on August 23rd, 2023 (Phone: 555-123-4567)?",
+  "ground_truth_phi": "NAME: Mary A. | GEOGRAPHIC_LOCATION: Cedar Sinai | DATE: August 23rd, 2023 | PHONE_NUMBER: 555-123-4567",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Mary A",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9789986610412598,
+      "begin_offset": 63,
+      "end_offset": 69
+    },
+    {
+      "text": "Cedar Sinai",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9940140843391418,
+      "begin_offset": 84,
+      "end_offset": 95
+    },
+    {
+      "text": "August 23rd, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999337196350098,
+      "begin_offset": 99,
+      "end_offset": 116
+    },
+    {
+      "text": "555-123-4567",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.994793713092804,
+      "begin_offset": 125,
+      "end_offset": 137
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

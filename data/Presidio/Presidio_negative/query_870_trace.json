@@ -1,0 +1,23 @@
+{
+  "query_id": "870",
+  "timestamp": "2025-10-22T16:24:25.274531",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the diagnostic criteria for Lyme disease according to the updated 2023 guidelines?",
+  "presidio_output": "What are the diagnostic criteria for Lyme disease according to the updated 2023 guidelines?",
+  "presidio_entities_detected": [],
+  "false_redaction_check": {
+    "has_false_redactions": false,
+    "redaction_count": 0,
+    "false_redactions_by_type": {},
+    "status": "CLEAN"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "query_id": "234",
+  "timestamp": "2025-10-22T16:12:43.236685",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What is the 5-year survival rate for a 58-year-old female with Stage III ovarian cancer, treated at Johns Hopkins Hospital, patient Maria L., with medical record 123-45-6789, diagnosed on September 21, 2023?",
+  "ground_truth_phi": "NAME: Maria L. | GEOGRAPHIC_LOCATION: Johns Hopkins Hospital | DATE: September 21, 2023 | MEDICAL_RECORD_NUMBER: 123-45-6789",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What is the [REDACTED_DATE] survival rate for a [REDACTED_DATE] female with Stage III ovarian cancer, treated at Johns Hopkins Hospital, patient [REDACTED_NAME], with medical record 123-45-6789, diagnosed on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 12,
+      "end": 18,
+      "score": 0.85,
+      "text": "5-year",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 39,
+      "end": 50,
+      "score": 0.85,
+      "text": "58-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 132,
+      "end": 140,
+      "score": 0.85,
+      "text": "Maria L.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 188,
+      "end": 206,
+      "score": 0.85,
+      "text": "September 21, 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Johns Hopkins Hospital",
+        "start": 100,
+        "end": 122
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "123-45-6789",
+        "start": 162,
+        "end": 173
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 4,
+    "recall": "0.5000",
+    "precision": "0.5000",
+    "f1_score": "0.5000"
+  }
+}

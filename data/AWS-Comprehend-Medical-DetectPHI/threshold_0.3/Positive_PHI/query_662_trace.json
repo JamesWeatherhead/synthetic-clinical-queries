@@ -1,0 +1,70 @@
+{
+  "query_id": "662",
+  "timestamp": "2025-10-23T09:56:49.307588",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Updated AHA/ASA guidelines for post-stroke management in a 67-year-old Caucasian female, Susan Q., who was discharged from Baylor Medical Center on October 22, 2023?",
+  "ground_truth_phi": "NAME: Susan Q. | GEOGRAPHIC_LOCATION: Baylor Medical Center | DATE: October 22, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "67",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998433589935303,
+      "begin_offset": 59,
+      "end_offset": 61
+    },
+    {
+      "text": "Susan Q",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9233298897743225,
+      "begin_offset": 89,
+      "end_offset": 96
+    },
+    {
+      "text": "Baylor Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9969040751457214,
+      "begin_offset": 123,
+      "end_offset": 144
+    },
+    {
+      "text": "October 22, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999825954437256,
+      "begin_offset": 148,
+      "end_offset": 164
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

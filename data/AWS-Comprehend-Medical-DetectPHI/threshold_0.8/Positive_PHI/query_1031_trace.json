@@ -1,0 +1,75 @@
+{
+  "query_id": "1031",
+  "timestamp": "2025-10-23T09:57:31.091670",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Recommendations for managing hypertension in a 60-year-old male, Robert Smith (SSN: 123-45-6789), found unresponsive at 112 Elm Street, New York, NY on 04/15/2023?",
+  "ground_truth_phi": "NAME: Robert Smith | SOCIAL_SECURITY_NUMBER: 123-45-6789 | GEOGRAPHIC_LOCATION: 112 Elm Street, New York, NY | DATE: 04/15/2023",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "60",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995624423027039,
+      "begin_offset": 47,
+      "end_offset": 49
+    },
+    {
+      "text": "Robert Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9917799830436707,
+      "begin_offset": 65,
+      "end_offset": 77
+    },
+    {
+      "text": "123-45-6789",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9989879727363586,
+      "begin_offset": 84,
+      "end_offset": 95
+    },
+    {
+      "text": "04/15/2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999483823776245,
+      "begin_offset": 152,
+      "end_offset": 162
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "112 Elm Street, New York, NY"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

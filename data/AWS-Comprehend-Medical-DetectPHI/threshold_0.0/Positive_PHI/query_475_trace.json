@@ -1,0 +1,79 @@
+{
+  "query_id": "475",
+  "timestamp": "2025-10-23T09:56:29.761579",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Can you provide updated vaccination guidelines for a 6-year-old male, Michael Smith, who visited our clinic at 123 Elm Street, Springfield on February 15th, 2024 with health policy number HP-987654?",
+  "ground_truth_phi": "NAME: Michael Smith | GEOGRAPHIC_LOCATION: 123 Elm Street, Springfield | DATE: February 15th, 2024 | HEALTH_PLAN_BENEFICIARY_NUMBER: HP-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "6",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9139052033424377,
+      "begin_offset": 53,
+      "end_offset": 54
+    },
+    {
+      "text": "Michael Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.995577335357666,
+      "begin_offset": 70,
+      "end_offset": 83
+    },
+    {
+      "text": "123 Elm Street, Springfield",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8465787172317505,
+      "begin_offset": 111,
+      "end_offset": 138
+    },
+    {
+      "text": "February 15th, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9993867874145508,
+      "begin_offset": 142,
+      "end_offset": 161
+    },
+    {
+      "text": "987654",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.638346254825592,
+      "begin_offset": 191,
+      "end_offset": 197
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

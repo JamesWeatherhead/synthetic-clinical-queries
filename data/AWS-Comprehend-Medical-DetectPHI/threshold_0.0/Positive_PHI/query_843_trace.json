@@ -1,0 +1,70 @@
+{
+  "query_id": "843",
+  "timestamp": "2025-10-23T09:57:07.554817",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the survival rates for colorectal cancer in a 67-year-old patient, Robert H., seen at Johns Hopkins on April 20th, 2023?",
+  "ground_truth_phi": "NAME: Robert H. | GEOGRAPHIC_LOCATION: Johns Hopkins | DATE: April 20th, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "67",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9992817044258118,
+      "begin_offset": 55,
+      "end_offset": 57
+    },
+    {
+      "text": "Robert H",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9962600469589233,
+      "begin_offset": 76,
+      "end_offset": 84
+    },
+    {
+      "text": "Johns Hopkins",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6641156673431396,
+      "begin_offset": 95,
+      "end_offset": 108
+    },
+    {
+      "text": "April 20th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997602105140686,
+      "begin_offset": 112,
+      "end_offset": 128
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

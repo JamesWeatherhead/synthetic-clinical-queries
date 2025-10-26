@@ -1,0 +1,73 @@
+{
+  "query_id": "531",
+  "timestamp": "2025-10-22T16:12:44.834162",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guidelines for post-operative care for a 67-year-old male, Robert Smith, who underwent surgery at Mercy Clinic on July 8th, 2024 (MRN: RS121314)?",
+  "ground_truth_phi": "NAME: Robert Smith | GEOGRAPHIC_LOCATION: Mercy Clinic | DATE: July 8th, 2024 | MEDICAL_RECORD_NUMBER: RS121314",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Guidelines for post-operative care for a [REDACTED_DATE] male, [REDACTED_NAME], who underwent surgery at Mercy Clinic on [REDACTED_DATE] (MRN: RS121314)?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 41,
+      "end": 52,
+      "score": 0.85,
+      "text": "67-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 59,
+      "end": 71,
+      "score": 0.85,
+      "text": "Robert Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 114,
+      "end": 128,
+      "score": 0.85,
+      "text": "July 8th, 2024",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Mercy Clinic",
+        "start": 98,
+        "end": 110
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "RS121314",
+        "start": 135,
+        "end": 143
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 3,
+    "recall": "0.5000",
+    "precision": "0.6667",
+    "f1_score": "0.5714"
+  }
+}

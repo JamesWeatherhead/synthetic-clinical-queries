@@ -1,0 +1,76 @@
+{
+  "query_id": "41",
+  "timestamp": "2025-10-22T16:12:42.245780",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Current AHA guidelines for managing atrial fibrillation in a 69-year-old female, Julia Smith, treated at NY Presbyterian on April 20th, 2024?",
+  "ground_truth_phi": "NAME: Julia Smith | GEOGRAPHIC_LOCATION: NY Presbyterian | DATE: April 20th, 2024",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Current AHA guidelines for managing atrial fibrillation in a [REDACTED_DATE] female, [REDACTED_NAME], treated at NY Presbyterian on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 61,
+      "end": 72,
+      "score": 0.85,
+      "text": "69-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 81,
+      "end": 92,
+      "score": 0.85,
+      "text": "Julia Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 124,
+      "end": 135,
+      "score": 0.85,
+      "text": "April 20th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 136,
+      "end": 140,
+      "score": 0.85,
+      "text": "2024",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "NY Presbyterian",
+        "start": 105,
+        "end": 120
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.6667",
+    "precision": "0.2500",
+    "f1_score": "0.3636"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "query_id": "462",
+  "timestamp": "2025-10-22T16:24:24.820081",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Preferred antibiotic treatment for a 34-year-old female diagnosed with cellulitis, considering her travel history to the Ohio River Valley last summer.",
+  "presidio_output": "Preferred antibiotic treatment for a [REDACTED_DATE] female diagnosed with cellulitis, considering her travel history to [REDACTED_GEOGRAPHIC_LOCATION] [REDACTED_DATE].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 37,
+      "end": 48,
+      "score": 0.85,
+      "text": "34-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 117,
+      "end": 138,
+      "score": 0.85,
+      "text": "the Ohio River Valley",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 139,
+      "end": 150,
+      "score": 0.85,
+      "text": "last summer",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 3,
+    "false_redactions_by_type": {
+      "DATE": 2,
+      "GEOGRAPHIC_LOCATION": 1
+    },
+    "status": "OVER_REDACTED"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "query_id": "96",
+  "timestamp": "2025-10-22T16:12:42.562929",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guidance on treating hypertension in 58-year-old male patients like John Smith, seen at Springfield Medical Center on February 14th, 2024, with MRN 12345678?",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: Springfield Medical Center | DATE: February 14th, 2024 | MEDICAL_RECORD_NUMBER: 12345678",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Guidance on treating hypertension in [REDACTED_DATE] male patients like [REDACTED_NAME], seen at [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE], with [REDACTED_MEDICAL_RECORD_NUMBER]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 144,
+      "end": 156,
+      "score": 0.9,
+      "text": "MRN 12345678",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 37,
+      "end": 48,
+      "score": 0.85,
+      "text": "58-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 68,
+      "end": 78,
+      "score": 0.85,
+      "text": "John Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 88,
+      "end": 114,
+      "score": 0.85,
+      "text": "Springfield Medical Center",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 118,
+      "end": 137,
+      "score": 0.85,
+      "text": "February 14th, 2024",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.6000",
+    "f1_score": "0.7500"
+  }
+}

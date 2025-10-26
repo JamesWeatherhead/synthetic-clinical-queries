@@ -1,0 +1,78 @@
+{
+  "query_id": "52",
+  "timestamp": "2025-10-22T16:12:42.311325",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Contraindications for using Jardiance in an 82-year-old male, Richard L., treated at St. Joseph's Health in Detroit, MI on 9/14/2020, considering his CHF.",
+  "ground_truth_phi": "NAME: Richard L. | GEOGRAPHIC_LOCATION: St. Joseph's Health in Detroit, MI | DATE: 9/14/2020",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Contraindications for using Jardiance in an [REDACTED_DATE] male, [REDACTED_NAME], treated at St. Joseph's Health in [REDACTED_GEOGRAPHIC_LOCATION], [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE], considering his CHF.",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 44,
+      "end": 55,
+      "score": 0.85,
+      "text": "82-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 62,
+      "end": 72,
+      "score": 0.85,
+      "text": "Richard L.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 108,
+      "end": 115,
+      "score": 0.85,
+      "text": "Detroit",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 117,
+      "end": 119,
+      "score": 0.85,
+      "text": "MI",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 123,
+      "end": 132,
+      "score": 0.85,
+      "text": "9/14/2020",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.4000",
+    "f1_score": "0.5714"
+  }
+}

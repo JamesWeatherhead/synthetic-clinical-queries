@@ -1,0 +1,79 @@
+{
+  "query_id": "656",
+  "timestamp": "2025-10-23T09:56:48.660636",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best treatment options for a 60-year-old male with newly diagnosed liver cirrhosis, David B., who was admitted to Cedars-Sinai on January 12th, 2023 (MRN: 789654123)?",
+  "ground_truth_phi": "NAME: David B. | GEOGRAPHIC_LOCATION: Cedars-Sinai | DATE: January 12th, 2023 | MEDICAL_RECORD_NUMBER: 789654123",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "60",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9991720914840698,
+      "begin_offset": 29,
+      "end_offset": 31
+    },
+    {
+      "text": "David B",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9983343482017517,
+      "begin_offset": 84,
+      "end_offset": 91
+    },
+    {
+      "text": "Cedars-Sinai",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9479600191116333,
+      "begin_offset": 114,
+      "end_offset": 126
+    },
+    {
+      "text": "January 12th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999587535858154,
+      "begin_offset": 130,
+      "end_offset": 148
+    },
+    {
+      "text": "789654123",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9964776635169983,
+      "begin_offset": 155,
+      "end_offset": 164
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

@@ -1,0 +1,79 @@
+{
+  "query_id": "551",
+  "timestamp": "2025-10-23T09:56:38.135444",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Are there any trials available for a 34-year-old female with refractory Hodgkin's lymphoma, named Lisa W., treated at Johns Hopkins Hospital in Baltimore, MD, on October 5th, 2023?",
+  "ground_truth_phi": "NAME: Lisa W. | GEOGRAPHIC_LOCATION: Johns Hopkins Hospital in Baltimore, MD | DATE: October 5th, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "34",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997044205665588,
+      "begin_offset": 37,
+      "end_offset": 39
+    },
+    {
+      "text": "Lisa W",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9615693688392639,
+      "begin_offset": 98,
+      "end_offset": 104
+    },
+    {
+      "text": "Johns Hopkins Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8786372542381287,
+      "begin_offset": 118,
+      "end_offset": 140
+    },
+    {
+      "text": "Baltimore",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9981069564819336,
+      "begin_offset": 144,
+      "end_offset": 153
+    },
+    {
+      "text": "October 5th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999567270278931,
+      "begin_offset": 162,
+      "end_offset": 179
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

@@ -1,0 +1,70 @@
+{
+  "query_id": "1009",
+  "timestamp": "2025-10-23T09:57:28.459452",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "tx options for pt dx'd w/ gerd & dm, ref to Dr. Jane Perkins, treated at Stanford Med on 11/12/2021, SS# 987-65-4321.",
+  "ground_truth_phi": "NAME: Jane Perkins | GEOGRAPHIC_LOCATION: Stanford Med | DATE: 11/12/2021 | SOCIAL_SECURITY_NUMBER: 987-65-4321",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Jane Perkins",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996217489242554,
+      "begin_offset": 48,
+      "end_offset": 60
+    },
+    {
+      "text": "Stanford Med",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8445414304733276,
+      "begin_offset": 73,
+      "end_offset": 85
+    },
+    {
+      "text": "11/12/2021",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999433755874634,
+      "begin_offset": 89,
+      "end_offset": 99
+    },
+    {
+      "text": "987-65-4321",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9967535138130188,
+      "begin_offset": 105,
+      "end_offset": 116
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

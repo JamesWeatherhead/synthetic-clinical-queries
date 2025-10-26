@@ -1,0 +1,73 @@
+{
+  "query_id": "35",
+  "timestamp": "2025-10-22T16:12:42.210278",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guidelines for managing heart failure in a 52-year-old male, John Smith, who was seen at St. Luke's Hospital on April 10, 2022 (Patient ID: ABCD1234)?",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: St. Luke's Hospital | DATE: April 10, 2022 | UNIQUE_IDENTIFIER: Patient ID: ABCD1234",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Guidelines for managing heart failure in a [REDACTED_DATE] male, [REDACTED_NAME], who was seen at St. Luke's Hospital on [REDACTED_DATE] (Patient ID: ABCD1234)?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 43,
+      "end": 54,
+      "score": 0.85,
+      "text": "52-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 61,
+      "end": 71,
+      "score": 0.85,
+      "text": "John Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 112,
+      "end": 126,
+      "score": 0.85,
+      "text": "April 10, 2022",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "St. Luke's Hospital",
+        "start": 89,
+        "end": 108
+      },
+      {
+        "type": "UNIQUE_IDENTIFIER",
+        "value": "Patient ID: ABCD1234",
+        "start": 128,
+        "end": 148
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 3,
+    "recall": "0.5000",
+    "precision": "0.6667",
+    "f1_score": "0.5714"
+  }
+}

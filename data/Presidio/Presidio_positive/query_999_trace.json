@@ -1,0 +1,85 @@
+{
+  "query_id": "999",
+  "timestamp": "2025-10-22T16:12:47.294247",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "effective tx for pt w/ hx of bipolar disorder and schizophrenia, seen by Dr. Lee at NY-Presbyterian on Feb 14 2023, what are the risks of lithium therapy? lab results sent to lee@example.com",
+  "ground_truth_phi": "NAME: Dr. Lee | GEOGRAPHIC_LOCATION: NY-Presbyterian | DATE: Feb 14 2023 | EMAIL_ADDRESS: lee@example.com",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "effective [REDACTED_GEOGRAPHIC_LOCATION] for pt w/ hx of bipolar disorder and schizophrenia, seen by Dr. [REDACTED_NAME] at NY-Presbyterian on [REDACTED_DATE], what are the risks of lithium therapy? lab results sent to [REDACTED_EMAIL_ADDRESS]",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "EMAIL_ADDRESS",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "start": 175,
+      "end": 190,
+      "score": 1.0,
+      "text": "lee@example.com",
+      "recognizer": "EmailRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 10,
+      "end": 12,
+      "score": 0.85,
+      "text": "tx",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 77,
+      "end": 80,
+      "score": 0.85,
+      "text": "Lee",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 103,
+      "end": 114,
+      "score": 0.85,
+      "text": "Feb 14 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "URL",
+      "hipaa_category": "WEB_URL",
+      "start": 179,
+      "end": 190,
+      "score": 0.5,
+      "text": "example.com",
+      "recognizer": "UrlRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "NY-Presbyterian",
+        "start": 84,
+        "end": 99
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.4000",
+    "f1_score": "0.5217"
+  }
+}

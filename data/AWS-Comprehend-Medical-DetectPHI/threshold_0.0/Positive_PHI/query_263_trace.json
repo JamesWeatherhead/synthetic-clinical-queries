@@ -1,0 +1,70 @@
+{
+  "query_id": "263",
+  "timestamp": "2025-10-23T09:56:05.819819",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Erica N., a 35yo female with MS, seen at Cedar Sinai on 03/10/2023, what is the best rehab protocol for her symptoms?",
+  "ground_truth_phi": "NAME: Erica N. | GEOGRAPHIC_LOCATION: Cedar Sinai | DATE: 03/10/2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "Erica N",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.5362721681594849,
+      "begin_offset": 0,
+      "end_offset": 7
+    },
+    {
+      "text": "35yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999920129776001,
+      "begin_offset": 12,
+      "end_offset": 16
+    },
+    {
+      "text": "Cedar Sinai",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9867373108863831,
+      "begin_offset": 41,
+      "end_offset": 52
+    },
+    {
+      "text": "03/10/2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999915361404419,
+      "begin_offset": 56,
+      "end_offset": 66
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

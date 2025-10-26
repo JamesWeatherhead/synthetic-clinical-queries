@@ -1,0 +1,70 @@
+{
+  "query_id": "341",
+  "timestamp": "2025-10-23T09:56:15.311771",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Updated protocols for treating a 52yo female with stage IV lung cancer, referred to by Dr. Smith from Downtown Hospital, seen on March 15th, 2022.",
+  "ground_truth_phi": "NAME: Smith | GEOGRAPHIC_LOCATION: Downtown Hospital | DATE: March 15th, 2022",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "52yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9940662384033203,
+      "begin_offset": 33,
+      "end_offset": 37
+    },
+    {
+      "text": "Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9988658428192139,
+      "begin_offset": 91,
+      "end_offset": 96
+    },
+    {
+      "text": "Downtown Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9971526861190796,
+      "begin_offset": 102,
+      "end_offset": 119
+    },
+    {
+      "text": "March 15th, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999418258666992,
+      "begin_offset": 129,
+      "end_offset": 145
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

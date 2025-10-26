@@ -1,0 +1,87 @@
+{
+  "query_id": "868",
+  "timestamp": "2025-10-22T16:12:46.594946",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Pls advise on next steps for pt w/ COPD exacerbation, Robert T., address is 1234 Elm St, Boston, seen on 04/14/2023. Med rec #: JH-12345.",
+  "ground_truth_phi": "NAME: Robert T. | GEOGRAPHIC_LOCATION: 1234 Elm St, Boston | DATE: 04/14/2023 | MEDICAL_RECORD_NUMBER: JH-12345",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Pls advise on next steps for pt w/ COPD exacerbation, [REDACTED_NAME], address is 1234 [REDACTED_GEOGRAPHIC_LOCATION], [REDACTED_GEOGRAPHIC_LOCATION], seen on [REDACTED_DATE]. Med rec #: [REDACTED_NRP].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 54,
+      "end": 63,
+      "score": 0.85,
+      "text": "Robert T.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 81,
+      "end": 87,
+      "score": 0.85,
+      "text": "Elm St",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 89,
+      "end": 95,
+      "score": 0.85,
+      "text": "Boston",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "NRP",
+      "hipaa_category": "NRP",
+      "start": 128,
+      "end": 136,
+      "score": 0.85,
+      "text": "JH-12345",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 128,
+      "end": 136,
+      "score": 0.7,
+      "text": "JH-12345",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 105,
+      "end": 115,
+      "score": 0.6,
+      "text": "04/14/2023",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "recall": "1.0000",
+    "precision": "0.5000",
+    "f1_score": "0.6667"
+  }
+}

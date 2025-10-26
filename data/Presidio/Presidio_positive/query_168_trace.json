@@ -1,0 +1,67 @@
+{
+  "query_id": "168",
+  "timestamp": "2025-10-22T16:12:42.925711",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guidelines for asthma management in 10yo pt, John D., s/p ED visit at Mercy Clinic on 8/12/2020. Has hx of peanut allergy.",
+  "ground_truth_phi": "NAME: John D. | GEOGRAPHIC_LOCATION: Mercy Clinic | DATE: 8/12/2020",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Guidelines for asthma management in [REDACTED_DATE] pt, [REDACTED_NAME], s/p ED visit at Mercy Clinic on [REDACTED_DATE]. Has hx of peanut allergy.",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 36,
+      "end": 40,
+      "score": 0.85,
+      "text": "10yo",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 45,
+      "end": 52,
+      "score": 0.85,
+      "text": "John D.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 86,
+      "end": 95,
+      "score": 0.85,
+      "text": "8/12/2020",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Mercy Clinic",
+        "start": 70,
+        "end": 82
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.6667",
+    "precision": "0.6667",
+    "f1_score": "0.6667"
+  }
+}

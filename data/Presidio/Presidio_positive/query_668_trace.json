@@ -1,0 +1,67 @@
+{
+  "query_id": "668",
+  "timestamp": "2025-10-22T16:12:45.564602",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Best tx options for pt w/ chronic migraines, seen by Dr. Alan S. at Johns Hopkins on 09/12/2022, reference his notes on case #JH-998877.",
+  "ground_truth_phi": "NAME: Dr. Alan S. | GEOGRAPHIC_LOCATION: Johns Hopkins | DATE: 09/12/2022 | UNIQUE_IDENTIFIER: case #JH-998877",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Best tx options for pt w/ chronic migraines, seen by Dr. [REDACTED_NAME] at Johns Hopkins on [REDACTED_DATE], reference his notes on case #[REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 57,
+      "end": 64,
+      "score": 0.85,
+      "text": "Alan S.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 126,
+      "end": 135,
+      "score": 0.7,
+      "text": "JH-998877",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 85,
+      "end": 95,
+      "score": 0.6,
+      "text": "09/12/2022",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Johns Hopkins",
+        "start": 68,
+        "end": 81
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "0.3333",
+    "f1_score": "0.4615"
+  }
+}

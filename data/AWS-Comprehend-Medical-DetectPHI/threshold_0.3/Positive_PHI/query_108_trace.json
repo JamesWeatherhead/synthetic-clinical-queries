@@ -1,0 +1,70 @@
+{
+  "query_id": "108",
+  "timestamp": "2025-10-23T09:55:47.746644",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "\"Best practices in managing chronic pain for a 45-year-old male veteran, name Robert L., presenting at Chicago VA on Sept 1st, 2023.\"",
+  "ground_truth_phi": "NAME: Robert L. | GEOGRAPHIC_LOCATION: Chicago VA | DATE: Sept 1st, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "45",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9935085773468018,
+      "begin_offset": 47,
+      "end_offset": 49
+    },
+    {
+      "text": "Robert L",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.998446524143219,
+      "begin_offset": 78,
+      "end_offset": 86
+    },
+    {
+      "text": "Chicago VA",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9384263157844543,
+      "begin_offset": 103,
+      "end_offset": 113
+    },
+    {
+      "text": "Sept 1st, 2023.",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9993415474891663,
+      "begin_offset": 117,
+      "end_offset": 132
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 4
+}

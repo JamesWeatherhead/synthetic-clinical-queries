@@ -1,0 +1,79 @@
+{
+  "query_id": "416",
+  "timestamp": "2025-10-23T09:56:23.695920",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for managing hypertension in a 52-year-old female, Nancy Johnson, who lives in Chicago, seen on September 7th, 2022 (MRN: CHI-789012)?",
+  "ground_truth_phi": "NAME: Nancy Johnson | GEOGRAPHIC_LOCATION: Chicago | DATE: September 7th, 2022 | MEDICAL_RECORD_NUMBER: CHI-789012",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "52",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999640703201294,
+      "begin_offset": 42,
+      "end_offset": 44
+    },
+    {
+      "text": "Nancy Johnson",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9968283772468567,
+      "begin_offset": 62,
+      "end_offset": 75
+    },
+    {
+      "text": "Chicago",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9978170394897461,
+      "begin_offset": 90,
+      "end_offset": 97
+    },
+    {
+      "text": "September 7th, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998694658279419,
+      "begin_offset": 107,
+      "end_offset": 126
+    },
+    {
+      "text": "789012",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.5992172956466675,
+      "begin_offset": 137,
+      "end_offset": 143
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

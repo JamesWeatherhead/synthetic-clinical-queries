@@ -1,0 +1,70 @@
+{
+  "query_id": "485",
+  "timestamp": "2025-10-23T09:56:30.885020",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Current treatment recommendations for a 52-year-old female with metastatic melanoma, patient name Susan Lee, last seen at St. Mary’s Clinic on October 14, 2023.",
+  "ground_truth_phi": "NAME: Susan Lee | GEOGRAPHIC_LOCATION: St. Mary’s Clinic | DATE: October 14, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "52",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999797523021698,
+      "begin_offset": 40,
+      "end_offset": 42
+    },
+    {
+      "text": "Susan Lee",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9984408020973206,
+      "begin_offset": 98,
+      "end_offset": 107
+    },
+    {
+      "text": "St. Mary’s Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9962053894996643,
+      "begin_offset": 122,
+      "end_offset": 139
+    },
+    {
+      "text": "October 14, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999945878982544,
+      "begin_offset": 143,
+      "end_offset": 159
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

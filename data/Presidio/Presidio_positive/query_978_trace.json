@@ -1,0 +1,67 @@
+{
+  "query_id": "978",
+  "timestamp": "2025-10-22T16:12:47.176934",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the latest ADA guidelines for a patient with Type 1 Diabetes, specifically a 30-year-old female, Emily R., monitored at UCLA Medical Center with MRN: UCLA-T1D-2023?",
+  "ground_truth_phi": "NAME: Emily R. | GEOGRAPHIC_LOCATION: UCLA Medical Center | MEDICAL_RECORD_NUMBER: UCLA-T1D-2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "What are the latest ADA guidelines for a patient with Type 1 Diabetes, specifically a [REDACTED_DATE] female, [REDACTED_NAME], monitored at [REDACTED_GEOGRAPHIC_LOCATION] with MRN: UCLA-T1D-2023?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 86,
+      "end": 97,
+      "score": 0.85,
+      "text": "30-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 106,
+      "end": 114,
+      "score": 0.85,
+      "text": "Emily R.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 129,
+      "end": 148,
+      "score": 0.85,
+      "text": "UCLA Medical Center",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "UCLA-T1D-2023",
+        "start": 159,
+        "end": 172
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.6667",
+    "precision": "0.6667",
+    "f1_score": "0.6667"
+  }
+}

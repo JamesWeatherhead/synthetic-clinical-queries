@@ -1,0 +1,69 @@
+{
+  "query_id": "44",
+  "timestamp": "2025-10-22T16:12:42.259778",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Comparative effectiveness of rivaroxaban vs. dabigatran for stroke prevention in a 75-year-old female with atrial fibrillation, Mary B., treated at Brigham and Women's Hospital, Boston on July 10, 2023?",
+  "ground_truth_phi": "NAME: Mary B. | GEOGRAPHIC_LOCATION: Brigham and Women's Hospital, Boston | DATE: July 10, 2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Comparative effectiveness of rivaroxaban vs. dabigatran for stroke prevention in a [REDACTED_DATE] female with atrial fibrillation, [REDACTED_NAME], treated at Brigham and Women's Hospital, [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 83,
+      "end": 94,
+      "score": 0.85,
+      "text": "75-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 128,
+      "end": 135,
+      "score": 0.85,
+      "text": "Mary B.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 178,
+      "end": 184,
+      "score": 0.85,
+      "text": "Boston",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 188,
+      "end": 201,
+      "score": 0.85,
+      "text": "July 10, 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "0.5000",
+    "f1_score": "0.6667"
+  }
+}

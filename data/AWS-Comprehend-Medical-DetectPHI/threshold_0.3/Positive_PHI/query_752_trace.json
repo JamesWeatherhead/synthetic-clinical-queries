@@ -1,0 +1,79 @@
+{
+  "query_id": "752",
+  "timestamp": "2025-10-23T09:56:57.531356",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Contraindications for prescribing warfarin to 72-year-old Alice B. with hx of stroke, currently at Cedar Sinai Medical Center, visited Jan 15, 2024 (MRN: #CSM987654)?",
+  "ground_truth_phi": "NAME: Alice B. | GEOGRAPHIC_LOCATION: Cedar Sinai Medical Center | DATE: Jan 15, 2024 | MEDICAL_RECORD_NUMBER: #CSM987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "72",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9228225350379944,
+      "begin_offset": 46,
+      "end_offset": 48
+    },
+    {
+      "text": "Alice B.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7730451822280884,
+      "begin_offset": 58,
+      "end_offset": 66
+    },
+    {
+      "text": "Cedar Sinai Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9959154725074768,
+      "begin_offset": 99,
+      "end_offset": 125
+    },
+    {
+      "text": "Jan 15, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997628331184387,
+      "begin_offset": 135,
+      "end_offset": 147
+    },
+    {
+      "text": "CSM987654",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9962887763977051,
+      "begin_offset": 155,
+      "end_offset": 164
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

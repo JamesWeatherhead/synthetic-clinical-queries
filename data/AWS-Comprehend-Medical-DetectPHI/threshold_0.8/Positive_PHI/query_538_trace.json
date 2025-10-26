@@ -1,0 +1,75 @@
+{
+  "query_id": "538",
+  "timestamp": "2025-10-23T09:56:36.747482",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Current treatment guidelines for a 30-year-old female diagnosed with acute lymphoblastic leukemia (ALL), referring to Emily N., treated at Mayo Clinic on July 19th, 2023 (MRN: ALL-98765)?",
+  "ground_truth_phi": "NAME: Emily N. | GEOGRAPHIC_LOCATION: Mayo Clinic | DATE: July 19th, 2023 | MEDICAL_RECORD_NUMBER: ALL-98765",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "30",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9990096092224121,
+      "begin_offset": 35,
+      "end_offset": 37
+    },
+    {
+      "text": "Emily N",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.892839252948761,
+      "begin_offset": 118,
+      "end_offset": 125
+    },
+    {
+      "text": "Mayo Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9947053790092468,
+      "begin_offset": 139,
+      "end_offset": 150
+    },
+    {
+      "text": "July 19th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999735355377197,
+      "begin_offset": 154,
+      "end_offset": 169
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "ALL-98765"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

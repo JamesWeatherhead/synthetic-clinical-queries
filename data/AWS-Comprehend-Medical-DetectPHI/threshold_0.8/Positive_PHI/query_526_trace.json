@@ -1,0 +1,79 @@
+{
+  "query_id": "526",
+  "timestamp": "2025-10-23T09:56:35.458203",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Management guidelines for a 55-year-old male with hypertension, John Smith, seen in New Orleans on May 10th, 2023 (Phone: 504-123-4567)?",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: New Orleans | DATE: May 10th, 2023 | PHONE_NUMBER: 504-123-4567",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "55",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998544454574585,
+      "begin_offset": 28,
+      "end_offset": 30
+    },
+    {
+      "text": "John Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9968022108078003,
+      "begin_offset": 64,
+      "end_offset": 74
+    },
+    {
+      "text": "New Orleans",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9802389144897461,
+      "begin_offset": 84,
+      "end_offset": 95
+    },
+    {
+      "text": "May 10th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998482465744019,
+      "begin_offset": 99,
+      "end_offset": 113
+    },
+    {
+      "text": "504-123-4567",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9914103150367737,
+      "begin_offset": 122,
+      "end_offset": 134
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

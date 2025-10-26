@@ -1,0 +1,79 @@
+{
+  "query_id": "352",
+  "timestamp": "2025-10-23T09:56:16.732616",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "How to manage hypertension in a 55yo male with a recent MI, James R., admitted to Cedar Sinai on 2023-04-25 (Insurance: HPB-654321)?",
+  "ground_truth_phi": "NAME: James R. | GEOGRAPHIC_LOCATION: Cedar Sinai | DATE: 2023-04-25 | HEALTH_PLAN_BENEFICIARY_NUMBER: HPB-654321",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "55yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.998284637928009,
+      "begin_offset": 32,
+      "end_offset": 36
+    },
+    {
+      "text": "James R",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9963449835777283,
+      "begin_offset": 60,
+      "end_offset": 67
+    },
+    {
+      "text": "Cedar Sinai",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9819146990776062,
+      "begin_offset": 82,
+      "end_offset": 93
+    },
+    {
+      "text": "2023-04-25",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9986334443092346,
+      "begin_offset": 97,
+      "end_offset": 107
+    },
+    {
+      "text": "654321",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8733383417129517,
+      "begin_offset": 124,
+      "end_offset": 130
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

@@ -1,0 +1,79 @@
+{
+  "query_id": "941",
+  "timestamp": "2025-10-23T09:57:19.220599",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the current treatment options for acute myeloid leukemia in a 63-year-old male, Robert L., diagnosed at St. Peter’s Hospital on April 12th, 2023 (MRN: SPH-12345)?",
+  "ground_truth_phi": "NAME: Robert L. | GEOGRAPHIC_LOCATION: St. Peter’s Hospital | DATE: April 12th, 2023 | MEDICAL_RECORD_NUMBER: SPH-12345",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "63",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9987686276435852,
+      "begin_offset": 71,
+      "end_offset": 73
+    },
+    {
+      "text": "Robert L",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9969558715820312,
+      "begin_offset": 89,
+      "end_offset": 97
+    },
+    {
+      "text": "St. Peter’s Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9928183555603027,
+      "begin_offset": 113,
+      "end_offset": 133
+    },
+    {
+      "text": "April 12th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998854398727417,
+      "begin_offset": 137,
+      "end_offset": 153
+    },
+    {
+      "text": "SPH-12345",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6251964569091797,
+      "begin_offset": 160,
+      "end_offset": 169
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

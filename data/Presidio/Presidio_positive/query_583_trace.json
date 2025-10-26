@@ -1,0 +1,85 @@
+{
+  "query_id": "583",
+  "timestamp": "2025-10-22T16:12:45.114618",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "tx recs for a 56yo female pt w/ hx of RA, seen by Dr. Patel at General Hosp. last Thursday. PT's email is patel56@example.com.",
+  "ground_truth_phi": "NAME: Patel | GEOGRAPHIC_LOCATION: General Hosp. | DATE: last Thursday | EMAIL_ADDRESS: patel56@example.com",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "[REDACTED_NAME] for a 56yo female pt w/ hx of RA, seen by Dr. [REDACTED_NAME] at General Hosp. [REDACTED_DATE]. PT's email is [REDACTED_EMAIL_ADDRESS].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "EMAIL_ADDRESS",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "start": 106,
+      "end": 125,
+      "score": 1.0,
+      "text": "patel56@example.com",
+      "recognizer": "EmailRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 0,
+      "end": 7,
+      "score": 0.85,
+      "text": "tx recs",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 54,
+      "end": 59,
+      "score": 0.85,
+      "text": "Patel",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 77,
+      "end": 90,
+      "score": 0.85,
+      "text": "last Thursday",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "URL",
+      "hipaa_category": "WEB_URL",
+      "start": 114,
+      "end": 125,
+      "score": 0.5,
+      "text": "example.com",
+      "recognizer": "UrlRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "General Hosp.",
+        "start": 63,
+        "end": 76
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.6000",
+    "f1_score": "0.6667"
+  }
+}

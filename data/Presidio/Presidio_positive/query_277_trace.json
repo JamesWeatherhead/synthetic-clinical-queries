@@ -1,0 +1,94 @@
+{
+  "query_id": "277",
+  "timestamp": "2025-10-22T16:12:43.480575",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "mgmt of T2DM in 67yo male, John S., dx'd 2018, seen at Cleveland Clinic on Jan 15th 2023 (MRN: 87654321). Pt's caregiver contacted via email at johndoe@gmail.com.",
+  "ground_truth_phi": "NAME: John S. | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: Jan 15th 2023 | MEDICAL_RECORD_NUMBER: 87654321 | EMAIL_ADDRESS: johndoe@gmail.com",
+  "ground_truth_phi_count": 5,
+  "presidio_output": "mgmt of T2DM in 67yo male, [REDACTED_NAME], dx'd [REDACTED_DATE], seen at Cleveland Clinic on [REDACTED_DATE] ([REDACTED_MEDICAL_RECORD_NUMBER]). Pt's caregiver contacted via email at [REDACTED_EMAIL_ADDRESS].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "EMAIL_ADDRESS",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "start": 144,
+      "end": 161,
+      "score": 1.0,
+      "text": "johndoe@gmail.com",
+      "recognizer": "EmailRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 90,
+      "end": 103,
+      "score": 0.9,
+      "text": "MRN: 87654321",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 27,
+      "end": 34,
+      "score": 0.85,
+      "text": "John S.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 41,
+      "end": 45,
+      "score": 0.85,
+      "text": "2018",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 75,
+      "end": 88,
+      "score": 0.85,
+      "text": "Jan 15th 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "URL",
+      "hipaa_category": "WEB_URL",
+      "start": 152,
+      "end": 161,
+      "score": 0.5,
+      "text": "gmail.com",
+      "recognizer": "UrlRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Cleveland Clinic",
+        "start": 55,
+        "end": 71
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 5,
+    "successfully_redacted": 4,
+    "leaked_failures": 1,
+    "total_detected": 6,
+    "recall": "0.8000",
+    "precision": "0.5000",
+    "f1_score": "0.6154"
+  }
+}

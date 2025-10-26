@@ -1,0 +1,88 @@
+{
+  "query_id": "901",
+  "timestamp": "2025-10-23T09:57:13.455152",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Recommended anticoagulation therapy for 62-year-old male with atrial fibrillation, diagnosed in New York-Presbyterian Hospital on April 15th, 2023, James Smith (MRN: 987654321)?",
+  "ground_truth_phi": "NAME: James Smith | GEOGRAPHIC_LOCATION: New York-Presbyterian Hospital | DATE: April 15th, 2023 | MEDICAL_RECORD_NUMBER: 987654321",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "62",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9965772032737732,
+      "begin_offset": 40,
+      "end_offset": 42
+    },
+    {
+      "text": "New York",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9813003540039062,
+      "begin_offset": 96,
+      "end_offset": 104
+    },
+    {
+      "text": "Presbyterian Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.975319504737854,
+      "begin_offset": 105,
+      "end_offset": 126
+    },
+    {
+      "text": "April 15th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9971568584442139,
+      "begin_offset": 130,
+      "end_offset": 146
+    },
+    {
+      "text": "James Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999688863754272,
+      "begin_offset": 148,
+      "end_offset": 159
+    },
+    {
+      "text": "987654321",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995081424713135,
+      "begin_offset": 166,
+      "end_offset": 175
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "0.8333",
+    "f1_score": "0.9091"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 6
+}

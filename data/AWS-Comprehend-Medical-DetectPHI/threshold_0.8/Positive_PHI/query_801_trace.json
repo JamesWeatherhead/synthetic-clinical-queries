@@ -1,0 +1,70 @@
+{
+  "query_id": "801",
+  "timestamp": "2025-10-23T09:57:03.030833",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What is the preferred treatment for stage 4 prostate cancer in a 70-year-old male, Robert L., who underwent surgery at Johns Hopkins on 03/14/2023 (MRN: 56789)?",
+  "ground_truth_phi": "NAME: Robert L. | GEOGRAPHIC_LOCATION: Johns Hopkins | DATE: 03/14/2023 | MEDICAL_RECORD_NUMBER: 56789",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "70",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995884299278259,
+      "begin_offset": 65,
+      "end_offset": 67
+    },
+    {
+      "text": "Robert L",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9986794590950012,
+      "begin_offset": 83,
+      "end_offset": 91
+    },
+    {
+      "text": "03/14/2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999758005142212,
+      "begin_offset": 136,
+      "end_offset": 146
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Johns Hopkins"
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "56789"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 2,
+    "leaked_failures": 2,
+    "total_detected": 3,
+    "true_positives": 2,
+    "recall": "0.5000",
+    "precision": "0.6667",
+    "f1_score": "0.5714"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 3
+}

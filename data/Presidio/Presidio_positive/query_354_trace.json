@@ -1,0 +1,85 @@
+{
+  "query_id": "354",
+  "timestamp": "2025-10-22T16:12:43.895300",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommendations for anticoagulation in a 68-year-old female post knee replacement, Anna K., who was treated at UCSF on March 3rd, 2023 (License No: CLN-112233)?",
+  "ground_truth_phi": "NAME: Anna K. | GEOGRAPHIC_LOCATION: UCSF | DATE: March 3rd, 2023 | CERTIFICATE_LICENSE_NUMBER: CLN-112233",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Recommendations for anticoagulation in a [REDACTED_DATE] female post knee replacement, [REDACTED_NAME], who was treated at UCSF on [REDACTED_DATE] (License No: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 41,
+      "end": 52,
+      "score": 0.85,
+      "text": "68-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 83,
+      "end": 90,
+      "score": 0.85,
+      "text": "Anna K.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 119,
+      "end": 134,
+      "score": 0.85,
+      "text": "March 3rd, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 148,
+      "end": 158,
+      "score": 0.7,
+      "text": "CLN-112233",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "US_DRIVER_LICENSE",
+      "hipaa_category": "US_DRIVER_LICENSE",
+      "start": 152,
+      "end": 158,
+      "score": 0.4,
+      "text": "112233",
+      "recognizer": "UsLicenseRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UCSF",
+        "start": 111,
+        "end": 115
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.6000",
+    "f1_score": "0.6667"
+  }
+}

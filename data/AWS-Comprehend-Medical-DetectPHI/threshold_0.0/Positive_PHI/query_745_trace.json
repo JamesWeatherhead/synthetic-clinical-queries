@@ -1,0 +1,70 @@
+{
+  "query_id": "745",
+  "timestamp": "2025-10-23T09:56:56.905523",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "help needed for managing pt w/ hx of CHF & hypothyroidism, similar to case of Michael B. from clinic in Dallas, last seen Jan 20, 2023. his insurance ID is 98765432.",
+  "ground_truth_phi": "NAME: Michael B. | GEOGRAPHIC_LOCATION: Dallas | DATE: Jan 20, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: 98765432",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Michael B.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9880921840667725,
+      "begin_offset": 78,
+      "end_offset": 88
+    },
+    {
+      "text": "Dallas",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9955938458442688,
+      "begin_offset": 104,
+      "end_offset": 110
+    },
+    {
+      "text": "Jan 20, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995003938674927,
+      "begin_offset": 122,
+      "end_offset": 134
+    },
+    {
+      "text": "98765432",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9202404022216797,
+      "begin_offset": 156,
+      "end_offset": 164
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

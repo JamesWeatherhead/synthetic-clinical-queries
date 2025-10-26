@@ -1,0 +1,94 @@
+{
+  "query_id": "60",
+  "timestamp": "2025-10-22T16:12:42.349061",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Updated JNC guidelines for managing hypertension in a 52-year-old male, Robert Lewis, who lives in Atlanta, GA. His last consultation was on January 10th, 2023. MRN: 123-45-6789.",
+  "ground_truth_phi": "NAME: Robert Lewis | GEOGRAPHIC_LOCATION: Atlanta, GA | DATE: January 10th, 2023 | MEDICAL_RECORD_NUMBER: 123-45-6789",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Updated JNC guidelines for managing hypertension in a [REDACTED_DATE] male, [REDACTED_NAME], who lives in [REDACTED_GEOGRAPHIC_LOCATION], [REDACTED_GEOGRAPHIC_LOCATION]. His last consultation was on [REDACTED_DATE]. MRN: 123-45-6789.",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 54,
+      "end": 65,
+      "score": 0.85,
+      "text": "52-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 72,
+      "end": 84,
+      "score": 0.85,
+      "text": "Robert Lewis",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 99,
+      "end": 106,
+      "score": 0.85,
+      "text": "Atlanta",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 108,
+      "end": 110,
+      "score": 0.85,
+      "text": "GA",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 141,
+      "end": 154,
+      "score": 0.85,
+      "text": "January 10th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 155,
+      "end": 159,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "123-45-6789",
+        "start": 166,
+        "end": 177
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 6,
+    "recall": "0.7500",
+    "precision": "0.1667",
+    "f1_score": "0.2727"
+  }
+}

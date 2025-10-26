@@ -1,0 +1,70 @@
+{
+  "query_id": "41",
+  "timestamp": "2025-10-23T09:55:40.825629",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Current AHA guidelines for managing atrial fibrillation in a 69-year-old female, Julia Smith, treated at NY Presbyterian on April 20th, 2024?",
+  "ground_truth_phi": "NAME: Julia Smith | GEOGRAPHIC_LOCATION: NY Presbyterian | DATE: April 20th, 2024",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "69",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999076128005981,
+      "begin_offset": 61,
+      "end_offset": 63
+    },
+    {
+      "text": "Julia Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9910825490951538,
+      "begin_offset": 81,
+      "end_offset": 92
+    },
+    {
+      "text": "NY Presbyterian",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.5788527131080627,
+      "begin_offset": 105,
+      "end_offset": 120
+    },
+    {
+      "text": "April 20th, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997314810752869,
+      "begin_offset": 124,
+      "end_offset": 140
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

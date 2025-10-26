@@ -1,0 +1,79 @@
+{
+  "query_id": "830",
+  "timestamp": "2025-10-23T09:57:06.059179",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Is it safe to prescribe lisinopril to a 60-year-old male patient, Gary Thompson, admitted to Mount Sinai Hospital on February 20th, 2024, with a medical record number MS-12345678?",
+  "ground_truth_phi": "NAME: Gary Thompson | GEOGRAPHIC_LOCATION: Mount Sinai Hospital | DATE: February 20th, 2024 | MEDICAL_RECORD_NUMBER: MS-12345678",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "60",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9935729503631592,
+      "begin_offset": 40,
+      "end_offset": 42
+    },
+    {
+      "text": "Gary Thompson",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9993659853935242,
+      "begin_offset": 66,
+      "end_offset": 79
+    },
+    {
+      "text": "Mount Sinai Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9973836541175842,
+      "begin_offset": 93,
+      "end_offset": 113
+    },
+    {
+      "text": "February 20th, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999911904335022,
+      "begin_offset": 117,
+      "end_offset": 136
+    },
+    {
+      "text": "12345678",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9842275977134705,
+      "begin_offset": 170,
+      "end_offset": 178
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

@@ -1,0 +1,61 @@
+{
+  "query_id": "637",
+  "timestamp": "2025-10-23T09:56:47.001165",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Management guidelines for an infant with severe GERD, seen at Children's Hospital, Boston, on 12-12-2022. pt has hx of prematurity.",
+  "ground_truth_phi": "GEOGRAPHIC_LOCATION: Children's Hospital, Boston | DATE: 12-12-2022",
+  "ground_truth_phi_count": 2,
+  "aws_entities_detected": [
+    {
+      "text": "Children's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9773105382919312,
+      "begin_offset": 62,
+      "end_offset": 81
+    },
+    {
+      "text": "Boston",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.772028386592865,
+      "begin_offset": 83,
+      "end_offset": 89
+    },
+    {
+      "text": "12-12-2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998476505279541,
+      "begin_offset": 94,
+      "end_offset": 104
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 2,
+    "successfully_detected": 2,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

@@ -1,0 +1,79 @@
+{
+  "query_id": "711",
+  "timestamp": "2025-10-23T09:56:53.805875",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the surgical outcomes for a 65-year-old male, Robert K., who underwent a bypass at Mount Sinai Hospital on July 12th, 2023? MRN: 987654321.",
+  "ground_truth_phi": "NAME: Robert K. | GEOGRAPHIC_LOCATION: Mount Sinai Hospital | DATE: July 12th, 2023 | MEDICAL_RECORD_NUMBER: 987654321",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "65",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9988105297088623,
+      "begin_offset": 37,
+      "end_offset": 39
+    },
+    {
+      "text": "Robert K",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9951679706573486,
+      "begin_offset": 55,
+      "end_offset": 63
+    },
+    {
+      "text": "Mount Sinai Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.995690643787384,
+      "begin_offset": 92,
+      "end_offset": 112
+    },
+    {
+      "text": "July 12th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999419450759888,
+      "begin_offset": 116,
+      "end_offset": 131
+    },
+    {
+      "text": "987654321",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9871174693107605,
+      "begin_offset": 138,
+      "end_offset": 147
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

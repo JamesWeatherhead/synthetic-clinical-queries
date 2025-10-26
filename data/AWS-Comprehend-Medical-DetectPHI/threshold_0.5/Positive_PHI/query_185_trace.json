@@ -1,0 +1,79 @@
+{
+  "query_id": "185",
+  "timestamp": "2025-10-23T09:55:55.500667",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Management guidelines for a 62-year-old male with atrial fibrillation, seen by Dr. Sarah Doe at St. Luke's Hospital, Los Angeles on March 4th, 2022?",
+  "ground_truth_phi": "GEOGRAPHIC_LOCATION: St. Luke's Hospital, Los Angeles | NAME: Dr. Sarah Doe | DATE: March 4th, 2022",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "62",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998247027397156,
+      "begin_offset": 28,
+      "end_offset": 30
+    },
+    {
+      "text": "Sarah Doe",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9426494240760803,
+      "begin_offset": 83,
+      "end_offset": 92
+    },
+    {
+      "text": "St. Luke's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9802801012992859,
+      "begin_offset": 96,
+      "end_offset": 115
+    },
+    {
+      "text": "Los Angeles",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9806644916534424,
+      "begin_offset": 117,
+      "end_offset": 128
+    },
+    {
+      "text": "March 4th, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999756813049316,
+      "begin_offset": 132,
+      "end_offset": 147
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

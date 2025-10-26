@@ -1,0 +1,79 @@
+{
+  "query_id": "323",
+  "timestamp": "2025-10-23T09:56:13.742757",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Can you provide the standard postoperative care for a 35-year-old male named Richard B. who underwent surgery at Johns Hopkins on May 10th, 2023 (MRN: RH-654321)?",
+  "ground_truth_phi": "NAME: Richard B. | GEOGRAPHIC_LOCATION: Johns Hopkins | DATE: May 10th, 2023 | MEDICAL_RECORD_NUMBER: RH-654321",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "35",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9978724718093872,
+      "begin_offset": 54,
+      "end_offset": 56
+    },
+    {
+      "text": "Richard B.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9882730841636658,
+      "begin_offset": 77,
+      "end_offset": 87
+    },
+    {
+      "text": "Johns Hopkins",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6195075511932373,
+      "begin_offset": 113,
+      "end_offset": 126
+    },
+    {
+      "text": "May 10th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999209642410278,
+      "begin_offset": 130,
+      "end_offset": 144
+    },
+    {
+      "text": "RH-654321",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6434265375137329,
+      "begin_offset": 151,
+      "end_offset": 160
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

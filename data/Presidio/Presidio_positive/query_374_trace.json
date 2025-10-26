@@ -1,0 +1,78 @@
+{
+  "query_id": "374",
+  "timestamp": "2025-10-22T16:12:44.007742",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What is the protocol for post-operative care of a 56-year-old female, Samantha R., following a knee replacement at Cedars-Sinai on January 3rd, 2023?",
+  "ground_truth_phi": "NAME: Samantha R. | GEOGRAPHIC_LOCATION: Cedars-Sinai | DATE: January 3rd, 2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "What is the protocol for post-operative care of a [REDACTED_DATE] female, [REDACTED_NAME], following a knee replacement at [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 50,
+      "end": 61,
+      "score": 0.85,
+      "text": "56-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 70,
+      "end": 81,
+      "score": 0.85,
+      "text": "Samantha R.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 115,
+      "end": 127,
+      "score": 0.85,
+      "text": "Cedars-Sinai",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 131,
+      "end": 143,
+      "score": 0.85,
+      "text": "January 3rd,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 144,
+      "end": 148,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.4000",
+    "f1_score": "0.5714"
+  }
+}

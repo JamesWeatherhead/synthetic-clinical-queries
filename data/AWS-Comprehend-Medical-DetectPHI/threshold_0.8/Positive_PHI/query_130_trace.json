@@ -1,0 +1,84 @@
+{
+  "query_id": "130",
+  "timestamp": "2025-10-23T09:55:50.180580",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the latest treatment options for stage 4 non-small cell lung cancer in a 67-year-old male, Michael Thompson, who was admitted to New York Presbyterian Hospital on February 10th, 2023, with MRN 12345-NYP?",
+  "ground_truth_phi": "NAME: Michael Thompson | GEOGRAPHIC_LOCATION: New York Presbyterian Hospital | DATE: February 10th, 2023 | MEDICAL_RECORD_NUMBER: 12345-NYP",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "67",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996838569641113,
+      "begin_offset": 82,
+      "end_offset": 84
+    },
+    {
+      "text": "Michael Thompson",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9968486428260803,
+      "begin_offset": 100,
+      "end_offset": 116
+    },
+    {
+      "text": "New York",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.998712420463562,
+      "begin_offset": 138,
+      "end_offset": 146
+    },
+    {
+      "text": "Presbyterian Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9763911366462708,
+      "begin_offset": 147,
+      "end_offset": 168
+    },
+    {
+      "text": "February 10th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998335838317871,
+      "begin_offset": 172,
+      "end_offset": 191
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "12345-NYP"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "0.7500",
+    "precision": "0.8000",
+    "f1_score": "0.7742"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 5
+}

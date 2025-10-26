@@ -1,0 +1,82 @@
+{
+  "query_id": "831",
+  "timestamp": "2025-10-22T16:12:46.399532",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the treatment options for atrial fibrillation in a 72-year-old male named Richard B. who was diagnosed at Johns Hopkins Hospital on January 15th, 2023 (MRN: 12345)?",
+  "ground_truth_phi": "NAME: Richard B. | GEOGRAPHIC_LOCATION: Johns Hopkins Hospital | DATE: January 15th, 2023 | MEDICAL_RECORD_NUMBER: 12345",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What are the treatment options for atrial fibrillation in a [REDACTED_DATE] male named [REDACTED_NAME] who was diagnosed at Johns Hopkins Hospital on [REDACTED_DATE] (MRN: 12345)?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 60,
+      "end": 71,
+      "score": 0.85,
+      "text": "72-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 83,
+      "end": 93,
+      "score": 0.85,
+      "text": "Richard B.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 141,
+      "end": 154,
+      "score": 0.85,
+      "text": "January 15th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 155,
+      "end": 159,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Johns Hopkins Hospital",
+        "start": 115,
+        "end": 137
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "12345",
+        "start": 166,
+        "end": 171
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 4,
+    "recall": "0.5000",
+    "precision": "0.2500",
+    "f1_score": "0.3333"
+  }
+}

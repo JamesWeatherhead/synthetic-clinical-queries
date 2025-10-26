@@ -1,0 +1,67 @@
+{
+  "query_id": "1037",
+  "timestamp": "2025-10-22T16:12:47.501751",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "guideline for antihypertensive med in pts w/ hx of T2DM, see case of Emily T. at NY Presbyterian visited on Dec 12th, 2022, (phone: 212-555-1234)?",
+  "ground_truth_phi": "NAME: Emily T. | GEOGRAPHIC_LOCATION: NY Presbyterian | DATE: Dec 12th, 2022 | PHONE_NUMBER: 212-555-1234",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "guideline for antihypertensive med in pts w/ hx of T2DM, see case of [REDACTED_NAME] at NY Presbyterian visited on [REDACTED_DATE], (phone: [REDACTED_PHONE_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 69,
+      "end": 77,
+      "score": 0.85,
+      "text": "Emily T.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 108,
+      "end": 122,
+      "score": 0.85,
+      "text": "Dec 12th, 2022",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 132,
+      "end": 144,
+      "score": 0.75,
+      "text": "212-555-1234",
+      "recognizer": "PhoneRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "NY Presbyterian",
+        "start": 81,
+        "end": 96
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  }
+}

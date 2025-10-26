@@ -1,0 +1,94 @@
+{
+  "query_id": "469",
+  "timestamp": "2025-10-22T16:12:44.494610",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "guidance for tx of 55yo male w/ hx of MI & HF, ref to David K., seen @ Stanford on Aug 19 2023. concerns about interactions w/ current meds. ins policy #PK-789032.",
+  "ground_truth_phi": "NAME: David K. | GEOGRAPHIC_LOCATION: Stanford | DATE: Aug 19 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: #PK-789032",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "guidance for [REDACTED_GEOGRAPHIC_LOCATION] of 55yo male w/ hx of MI & HF, ref to [REDACTED_NAME], seen @ Stanford on [REDACTED_DATE]. concerns about interactions w/ current meds. ins policy #[REDACTED_NRP].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 13,
+      "end": 15,
+      "score": 0.85,
+      "text": "tx",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 54,
+      "end": 62,
+      "score": 0.85,
+      "text": "David K.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 83,
+      "end": 94,
+      "score": 0.85,
+      "text": "Aug 19 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "NRP",
+      "hipaa_category": "NRP",
+      "start": 153,
+      "end": 162,
+      "score": 0.85,
+      "text": "PK-789032",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 153,
+      "end": 162,
+      "score": 0.7,
+      "text": "PK-789032",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "US_DRIVER_LICENSE",
+      "hipaa_category": "US_DRIVER_LICENSE",
+      "start": 156,
+      "end": 162,
+      "score": 0.4,
+      "text": "789032",
+      "recognizer": "UsLicenseRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Stanford",
+        "start": 71,
+        "end": 79
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 6,
+    "recall": "0.7500",
+    "precision": "0.3333",
+    "f1_score": "0.4615"
+  }
+}

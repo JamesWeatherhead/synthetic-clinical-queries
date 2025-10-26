@@ -1,0 +1,70 @@
+{
+  "query_id": "127",
+  "timestamp": "2025-10-23T09:55:49.911879",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "alternative antibiotics for pt w/ MRSA, seen by Dr. Adams at Chicago Med, 2/14/2022, due to allergy to vancomycin (SSN: 987-65-4321)?",
+  "ground_truth_phi": "NAME: Dr. Adams | GEOGRAPHIC_LOCATION: Chicago Med | DATE: 2/14/2022 | SOCIAL_SECURITY_NUMBER: 987-65-4321",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Adams",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9975784420967102,
+      "begin_offset": 52,
+      "end_offset": 57
+    },
+    {
+      "text": "Chicago",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.5317569375038147,
+      "begin_offset": 61,
+      "end_offset": 68
+    },
+    {
+      "text": "2/14/2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999895095825195,
+      "begin_offset": 74,
+      "end_offset": 83
+    },
+    {
+      "text": "987-65-4321",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9986270666122437,
+      "begin_offset": 120,
+      "end_offset": 131
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

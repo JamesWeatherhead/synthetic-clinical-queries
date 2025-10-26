@@ -1,0 +1,67 @@
+{
+  "query_id": "553",
+  "timestamp": "2025-10-22T16:12:44.951902",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What is the protocol for managing post-op infection in a pt with a hx of MRSA, referred by Dr. John D. from Memorial Clinic on 03/04/2022 (MRN: MC-998877)?",
+  "ground_truth_phi": "NAME: Dr. John D. | GEOGRAPHIC_LOCATION: Memorial Clinic | DATE: 03/04/2022 | MEDICAL_RECORD_NUMBER: MC-998877",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What is the protocol for managing post-op infection in a pt with a hx of MRSA, referred by Dr. [REDACTED_NAME] from Memorial Clinic on [REDACTED_DATE] (MRN: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 95,
+      "end": 102,
+      "score": 0.85,
+      "text": "John D.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 144,
+      "end": 153,
+      "score": 0.7,
+      "text": "MC-998877",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 127,
+      "end": 137,
+      "score": 0.6,
+      "text": "03/04/2022",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Memorial Clinic",
+        "start": 108,
+        "end": 123
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "0.6667",
+    "f1_score": "0.7059"
+  }
+}

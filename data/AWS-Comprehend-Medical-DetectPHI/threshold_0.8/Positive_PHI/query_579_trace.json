@@ -1,0 +1,61 @@
+{
+  "query_id": "579",
+  "timestamp": "2025-10-23T09:56:41.014870",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for treating pediatric asthma in a 10-year-old child, Sam W., living in Chicago, Illinois, who was seen in our clinic on August 1st, 2022.",
+  "ground_truth_phi": "NAME: Sam W. | GEOGRAPHIC_LOCATION: Chicago, Illinois | DATE: August 1st, 2022",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "10",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9854796528816223,
+      "begin_offset": 46,
+      "end_offset": 48
+    },
+    {
+      "text": "August 1st, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999743700027466,
+      "begin_offset": 132,
+      "end_offset": 148
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "NAME",
+        "value": "Sam W."
+      },
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Chicago, Illinois"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 1,
+    "leaked_failures": 2,
+    "total_detected": 2,
+    "true_positives": 1,
+    "recall": "0.3333",
+    "precision": "0.5000",
+    "f1_score": "0.4000"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 2
+}

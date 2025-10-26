@@ -1,0 +1,78 @@
+{
+  "query_id": "645",
+  "timestamp": "2025-10-22T16:12:45.429436",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the treatment options for COPD in a 65-year-old male named Robert Finley, residing at 123 Elm St, Springfield, with a birth date of April 15, 1958?",
+  "ground_truth_phi": "NAME: Robert Finley | GEOGRAPHIC_LOCATION: 123 Elm St, Springfield | DATE: April 15, 1958",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "What are the treatment options for COPD in a [REDACTED_DATE] male named [REDACTED_NAME], residing at 123 [REDACTED_GEOGRAPHIC_LOCATION], [REDACTED_GEOGRAPHIC_LOCATION], with a birth date of [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 45,
+      "end": 56,
+      "score": 0.85,
+      "text": "65-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 68,
+      "end": 81,
+      "score": 0.85,
+      "text": "Robert Finley",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 99,
+      "end": 105,
+      "score": 0.85,
+      "text": "Elm St",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 107,
+      "end": 118,
+      "score": 0.85,
+      "text": "Springfield",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 141,
+      "end": 155,
+      "score": 0.85,
+      "text": "April 15, 1958",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.4000",
+    "f1_score": "0.5714"
+  }
+}

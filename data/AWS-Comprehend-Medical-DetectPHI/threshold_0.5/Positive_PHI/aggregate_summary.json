@@ -1,0 +1,1831 @@
+{
+  "evaluation_timestamp": "2025-10-23T10:20:30.467577",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "confidence_threshold": 0.5,
+  "query_type": "positive",
+  "total_queries_processed": 832,
+  "total_phi_entities": 2973,
+  "successfully_detected": 2828,
+  "leaked_phi": 145,
+  "total_detected_entities": 3615,
+  "queries_with_leaks": 137,
+  "queries_perfect_detection": 695,
+  "recall": 0.9512277161116717,
+  "perfect_rate": 0.8353365384615384,
+  "errors": 0,
+  "failed_queries": [
+    {
+      "trace_file": "query_15_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_15_trace.json",
+      "query_id": "15",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 12345-JS not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "12345-JS"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_22_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_22_trace.json",
+      "query_id": "22",
+      "leaked_phi_count": 2,
+      "issue_description": "Location UCSF missed",
+      "leaked_phi_details": [
+        {
+          "type": "GEOGRAPHIC_LOCATION",
+          "value": "UCSF"
+        },
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "UCSF-12345"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_34_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_34_trace.json",
+      "query_id": "34",
+      "leaked_phi_count": 1,
+      "issue_description": "Health plan QW-987654 missed",
+      "leaked_phi_details": [
+        {
+          "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+          "value": "QW-987654"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_50_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_50_trace.json",
+      "query_id": "50",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 789-45-123 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "789-45-123"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_55_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_55_trace.json",
+      "query_id": "55",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 12345XJ not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "12345XJ"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_57_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_57_trace.json",
+      "query_id": "57",
+      "leaked_phi_count": 1,
+      "issue_description": "Location Methodist Hospital missed",
+      "leaked_phi_details": [
+        {
+          "type": "GEOGRAPHIC_LOCATION",
+          "value": "Methodist Hospital"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_62_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_62_trace.json",
+      "query_id": "62",
+      "leaked_phi_count": 1,
+      "issue_description": "Health plan HL-987654 missed",
+      "leaked_phi_details": [
+        {
+          "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+          "value": "HL-987654"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_74_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_74_trace.json",
+      "query_id": "74",
+      "leaked_phi_count": 2,
+      "issue_description": "Location 123 Maple Street,... missed",
+      "leaked_phi_details": [
+        {
+          "type": "GEOGRAPHIC_LOCATION",
+          "value": "123 Maple Street, Chicago, IL"
+        },
+        {
+          "type": "UNIQUE_IDENTIFIER",
+          "value": "Site ID: 98765"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_91_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_91_trace.json",
+      "query_id": "91",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 8765-4321 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "8765-4321"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_92_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_92_trace.json",
+      "query_id": "92",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 5432-2109 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "5432-2109"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_98_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_98_trace.json",
+      "query_id": "98",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 99887766 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "99887766"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_121_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_121_trace.json",
+      "query_id": "121",
+      "leaked_phi_count": 1,
+      "issue_description": "Location Cedars-Sinai ER missed",
+      "leaked_phi_details": [
+        {
+          "type": "GEOGRAPHIC_LOCATION",
+          "value": "Cedars-Sinai ER"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_130_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_130_trace.json",
+      "query_id": "130",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 12345-NYP not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "12345-NYP"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_135_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_135_trace.json",
+      "query_id": "135",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 12345 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "12345"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_149_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_149_trace.json",
+      "query_id": "149",
+      "leaked_phi_count": 1,
+      "issue_description": "Location Children's Clinic missed",
+      "leaked_phi_details": [
+        {
+          "type": "GEOGRAPHIC_LOCATION",
+          "value": "Children's Clinic"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_171_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_171_trace.json",
+      "query_id": "171",
+      "leaked_phi_count": 1,
+      "issue_description": "Location 33101 missed",
+      "leaked_phi_details": [
+        {
+          "type": "GEOGRAPHIC_LOCATION",
+          "value": "33101"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_177_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_177_trace.json",
+      "query_id": "177",
+      "leaked_phi_count": 1,
+      "issue_description": "Health plan 9875-4321 missed",
+      "leaked_phi_details": [
+        {
+          "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+          "value": "9875-4321"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_182_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_182_trace.json",
+      "query_id": "182",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN BD-654321 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "BD-654321"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_190_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_190_trace.json",
+      "query_id": "190",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 1122-3344 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "1122-3344"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_192_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_192_trace.json",
+      "query_id": "192",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN HJ-98654 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "HJ-98654"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_212_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_212_trace.json",
+      "query_id": "212",
+      "leaked_phi_count": 1,
+      "issue_description": "Location UCSF missed",
+      "leaked_phi_details": [
+        {
+          "type": "GEOGRAPHIC_LOCATION",
+          "value": "UCSF"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_215_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_215_trace.json",
+      "query_id": "215",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 789-45-123 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "789-45-123"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_217_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_217_trace.json",
+      "query_id": "217",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 12345-JH not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "12345-JH"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_223_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_223_trace.json",
+      "query_id": "223",
+      "leaked_phi_count": 1,
+      "issue_description": "Date last week not found",
+      "leaked_phi_details": [
+        {
+          "type": "DATE",
+          "value": "last week"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_245_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_245_trace.json",
+      "query_id": "245",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN SJ-12345 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "SJ-12345"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_260_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_260_trace.json",
+      "query_id": "260",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 98234-AB not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "98234-AB"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_262_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_262_trace.json",
+      "query_id": "262",
+      "leaked_phi_count": 1,
+      "issue_description": "Date last December not found",
+      "leaked_phi_details": [
+        {
+          "type": "DATE",
+          "value": "last December"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_271_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_271_trace.json",
+      "query_id": "271",
+      "leaked_phi_count": 1,
+      "issue_description": "Health plan HC-987654 missed",
+      "leaked_phi_details": [
+        {
+          "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+          "value": "HC-987654"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_280_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_280_trace.json",
+      "query_id": "280",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN CH-12345 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "CH-12345"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_285_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_285_trace.json",
+      "query_id": "285",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 12345ABC not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "12345ABC"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_287_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_287_trace.json",
+      "query_id": "287",
+      "leaked_phi_count": 1,
+      "issue_description": "Name Dr. Smith not detected",
+      "leaked_phi_details": [
+        {
+          "type": "NAME",
+          "value": "Dr. Smith"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_301_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_301_trace.json",
+      "query_id": "301",
+      "leaked_phi_count": 1,
+      "issue_description": "Location Good Samaritan Ho... missed",
+      "leaked_phi_details": [
+        {
+          "type": "GEOGRAPHIC_LOCATION",
+          "value": "Good Samaritan Hospital"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_304_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_304_trace.json",
+      "query_id": "304",
+      "leaked_phi_count": 1,
+      "issue_description": "Location Mercy Healthcare missed",
+      "leaked_phi_details": [
+        {
+          "type": "GEOGRAPHIC_LOCATION",
+          "value": "Mercy Healthcare"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_330_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_330_trace.json",
+      "query_id": "330",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 12345-EMH not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "12345-EMH"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_335_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_335_trace.json",
+      "query_id": "335",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN PROS-123456 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "PROS-123456"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_343_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_343_trace.json",
+      "query_id": "343",
+      "leaked_phi_count": 1,
+      "issue_description": "Health plan HD-112233 missed",
+      "leaked_phi_details": [
+        {
+          "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+          "value": "HD-112233"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_344_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_344_trace.json",
+      "query_id": "344",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN GV-994411 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "GV-994411"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_346_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_346_trace.json",
+      "query_id": "346",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN #UCLA-123456 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "#UCLA-123456"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_348_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_348_trace.json",
+      "query_id": "348",
+      "leaked_phi_count": 1,
+      "issue_description": "Date last week not found",
+      "leaked_phi_details": [
+        {
+          "type": "DATE",
+          "value": "last week"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_359_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_359_trace.json",
+      "query_id": "359",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN CHX-98765 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "CHX-98765"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_372_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_372_trace.json",
+      "query_id": "372",
+      "leaked_phi_count": 1,
+      "issue_description": "Date last Friday not found",
+      "leaked_phi_details": [
+        {
+          "type": "DATE",
+          "value": "last Friday"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_386_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_386_trace.json",
+      "query_id": "386",
+      "leaked_phi_count": 2,
+      "issue_description": "Location Mass General missed",
+      "leaked_phi_details": [
+        {
+          "type": "GEOGRAPHIC_LOCATION",
+          "value": "Mass General"
+        },
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "789-45-123"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_388_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_388_trace.json",
+      "query_id": "388",
+      "leaked_phi_count": 1,
+      "issue_description": "Health plan 54321-7890 missed",
+      "leaked_phi_details": [
+        {
+          "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+          "value": "54321-7890"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_400_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_400_trace.json",
+      "query_id": "400",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN APL-876-98 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "APL-876-98"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_406_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_406_trace.json",
+      "query_id": "406",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN CH-203948 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "CH-203948"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_409_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_409_trace.json",
+      "query_id": "409",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN NYP-112233 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "NYP-112233"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_419_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_419_trace.json",
+      "query_id": "419",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN UCS-908765 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "UCS-908765"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_420_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_420_trace.json",
+      "query_id": "420",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 12345-67890 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "12345-67890"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_443_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_443_trace.json",
+      "query_id": "443",
+      "leaked_phi_count": 2,
+      "issue_description": "Name Sam J. not detected",
+      "leaked_phi_details": [
+        {
+          "type": "NAME",
+          "value": "Sam J."
+        },
+        {
+          "type": "GEOGRAPHIC_LOCATION",
+          "value": "Baylor"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_444_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_444_trace.json",
+      "query_id": "444",
+      "leaked_phi_count": 1,
+      "issue_description": "Health plan HP-987654 missed",
+      "leaked_phi_details": [
+        {
+          "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+          "value": "HP-987654"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_447_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_447_trace.json",
+      "query_id": "447",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN BRK-1234 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "BRK-1234"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_457_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_457_trace.json",
+      "query_id": "457",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN WSM-321789 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "WSM-321789"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_464_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_464_trace.json",
+      "query_id": "464",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN ELM-12345 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "ELM-12345"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_468_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_468_trace.json",
+      "query_id": "468",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN MG-112233 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "MG-112233"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_482_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_482_trace.json",
+      "query_id": "482",
+      "leaked_phi_count": 1,
+      "issue_description": "Location 123 Main St., Spr... missed",
+      "leaked_phi_details": [
+        {
+          "type": "GEOGRAPHIC_LOCATION",
+          "value": "123 Main St., Springfield"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_490_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_490_trace.json",
+      "query_id": "490",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 12345-678-90 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "12345-678-90"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_492_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_492_trace.json",
+      "query_id": "492",
+      "leaked_phi_count": 1,
+      "issue_description": "Health plan AB-56789 missed",
+      "leaked_phi_details": [
+        {
+          "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+          "value": "AB-56789"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_493_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_493_trace.json",
+      "query_id": "493",
+      "leaked_phi_count": 1,
+      "issue_description": "Location UCSF missed",
+      "leaked_phi_details": [
+        {
+          "type": "GEOGRAPHIC_LOCATION",
+          "value": "UCSF"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_509_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_509_trace.json",
+      "query_id": "509",
+      "leaked_phi_count": 1,
+      "issue_description": "IP 192.168.1.1 missed",
+      "leaked_phi_details": [
+        {
+          "type": "IP_ADDRESS",
+          "value": "192.168.1.1"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_511_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_511_trace.json",
+      "query_id": "511",
+      "leaked_phi_count": 1,
+      "issue_description": "Health plan 5678-2345-4321 missed",
+      "leaked_phi_details": [
+        {
+          "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+          "value": "5678-2345-4321"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_515_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_515_trace.json",
+      "query_id": "515",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN CL-993847 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "CL-993847"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_517_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_517_trace.json",
+      "query_id": "517",
+      "leaked_phi_count": 1,
+      "issue_description": "Health plan 1234-567-890 missed",
+      "leaked_phi_details": [
+        {
+          "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+          "value": "1234-567-890"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_523_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_523_trace.json",
+      "query_id": "523",
+      "leaked_phi_count": 1,
+      "issue_description": "Date last July not found",
+      "leaked_phi_details": [
+        {
+          "type": "DATE",
+          "value": "last July"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_538_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_538_trace.json",
+      "query_id": "538",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN ALL-98765 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "ALL-98765"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_543_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_543_trace.json",
+      "query_id": "543",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN #567-89-012 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "#567-89-012"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_545_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_545_trace.json",
+      "query_id": "545",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 12345ABC not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "12345ABC"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_553_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_553_trace.json",
+      "query_id": "553",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN MC-998877 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "MC-998877"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_554_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_554_trace.json",
+      "query_id": "554",
+      "leaked_phi_count": 1,
+      "issue_description": "Health plan 54321-XYZ missed",
+      "leaked_phi_details": [
+        {
+          "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+          "value": "54321-XYZ"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_560_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_560_trace.json",
+      "query_id": "560",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN SJ-12345 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "SJ-12345"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_570_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_570_trace.json",
+      "query_id": "570",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 789-45-123 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "789-45-123"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_573_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_573_trace.json",
+      "query_id": "573",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN UCSF-987654 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "UCSF-987654"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_581_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_581_trace.json",
+      "query_id": "581",
+      "leaked_phi_count": 1,
+      "issue_description": "Health plan HP-998877 missed",
+      "leaked_phi_details": [
+        {
+          "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+          "value": "HP-998877"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_583_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_583_trace.json",
+      "query_id": "583",
+      "leaked_phi_count": 1,
+      "issue_description": "Date last Thursday not found",
+      "leaked_phi_details": [
+        {
+          "type": "DATE",
+          "value": "last Thursday"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_586_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_586_trace.json",
+      "query_id": "586",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN LH-98765 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "LH-98765"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_589_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_589_trace.json",
+      "query_id": "589",
+      "leaked_phi_count": 1,
+      "issue_description": "Date last month not found",
+      "leaked_phi_details": [
+        {
+          "type": "DATE",
+          "value": "last month"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_597_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_597_trace.json",
+      "query_id": "597",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 982-12-34 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "982-12-34"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_600_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_600_trace.json",
+      "query_id": "600",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN THH-12345 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "THH-12345"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_609_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_609_trace.json",
+      "query_id": "609",
+      "leaked_phi_count": 1,
+      "issue_description": "Health plan HP-1234-5678 missed",
+      "leaked_phi_details": [
+        {
+          "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+          "value": "HP-1234-5678"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_610_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_610_trace.json",
+      "query_id": "610",
+      "leaked_phi_count": 1,
+      "issue_description": "Name Thomas Q. not detected",
+      "leaked_phi_details": [
+        {
+          "type": "NAME",
+          "value": "Thomas Q."
+        }
+      ]
+    },
+    {
+      "trace_file": "query_620_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_620_trace.json",
+      "query_id": "620",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 12345-6789 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "12345-6789"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_622_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_622_trace.json",
+      "query_id": "622",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 99887-6543 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "99887-6543"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_629_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_629_trace.json",
+      "query_id": "629",
+      "leaked_phi_count": 1,
+      "issue_description": "Name Peter M. not detected",
+      "leaked_phi_details": [
+        {
+          "type": "NAME",
+          "value": "Peter M."
+        }
+      ]
+    },
+    {
+      "trace_file": "query_635_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_635_trace.json",
+      "query_id": "635",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 12345 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "12345"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_650_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_650_trace.json",
+      "query_id": "650",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN AF-12345 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "AF-12345"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_652_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_652_trace.json",
+      "query_id": "652",
+      "leaked_phi_count": 1,
+      "issue_description": "Name Dr. Smith not detected",
+      "leaked_phi_details": [
+        {
+          "type": "NAME",
+          "value": "Dr. Smith"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_653_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_653_trace.json",
+      "query_id": "653",
+      "leaked_phi_count": 1,
+      "issue_description": "Health plan HPN-456789 missed",
+      "leaked_phi_details": [
+        {
+          "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+          "value": "HPN-456789"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_658_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_658_trace.json",
+      "query_id": "658",
+      "leaked_phi_count": 1,
+      "issue_description": "Date last week not found",
+      "leaked_phi_details": [
+        {
+          "type": "DATE",
+          "value": "last week"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_661_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_661_trace.json",
+      "query_id": "661",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 12345-NYP not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "12345-NYP"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_664_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_664_trace.json",
+      "query_id": "664",
+      "leaked_phi_count": 1,
+      "issue_description": "Health plan HMO-67890 missed",
+      "leaked_phi_details": [
+        {
+          "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+          "value": "HMO-67890"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_665_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_665_trace.json",
+      "query_id": "665",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN #99881-BCH not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "#99881-BCH"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_666_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_666_trace.json",
+      "query_id": "666",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 789-45-123 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "789-45-123"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_678_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_678_trace.json",
+      "query_id": "678",
+      "leaked_phi_count": 1,
+      "issue_description": "Location Mass General missed",
+      "leaked_phi_details": [
+        {
+          "type": "GEOGRAPHIC_LOCATION",
+          "value": "Mass General"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_716_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_716_trace.json",
+      "query_id": "716",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 12345-JHU not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "12345-JHU"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_719_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_719_trace.json",
+      "query_id": "719",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN UCSF-43210 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "UCSF-43210"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_724_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_724_trace.json",
+      "query_id": "724",
+      "leaked_phi_count": 1,
+      "issue_description": "Health plan HF-789012 missed",
+      "leaked_phi_details": [
+        {
+          "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+          "value": "HF-789012"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_726_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_726_trace.json",
+      "query_id": "726",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 12345 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "12345"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_736_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_736_trace.json",
+      "query_id": "736",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 12345-678 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "12345-678"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_748_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_748_trace.json",
+      "query_id": "748",
+      "leaked_phi_count": 1,
+      "issue_description": "Health plan NP-1234AB missed",
+      "leaked_phi_details": [
+        {
+          "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+          "value": "NP-1234AB"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_760_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_760_trace.json",
+      "query_id": "760",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN #UCLA-12345 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "#UCLA-12345"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_771_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_771_trace.json",
+      "query_id": "771",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN SPH-123456 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "SPH-123456"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_782_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_782_trace.json",
+      "query_id": "782",
+      "leaked_phi_count": 1,
+      "issue_description": "Health plan TR-567899 missed",
+      "leaked_phi_details": [
+        {
+          "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+          "value": "TR-567899"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_789_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_789_trace.json",
+      "query_id": "789",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN CC-98765 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "CC-98765"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_795_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_795_trace.json",
+      "query_id": "795",
+      "leaked_phi_count": 1,
+      "issue_description": "Name Dr. Anthony Brown not detected",
+      "leaked_phi_details": [
+        {
+          "type": "NAME",
+          "value": "Dr. Anthony Brown"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_805_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_805_trace.json",
+      "query_id": "805",
+      "leaked_phi_count": 2,
+      "issue_description": "Name Sam H. not detected",
+      "leaked_phi_details": [
+        {
+          "type": "NAME",
+          "value": "Sam H."
+        },
+        {
+          "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+          "value": "99887-65432"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_814_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_814_trace.json",
+      "query_id": "814",
+      "leaked_phi_count": 1,
+      "issue_description": "Email email missed",
+      "leaked_phi_details": [
+        {
+          "type": "EMAIL_ADDRESS",
+          "value": "email"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_823_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_823_trace.json",
+      "query_id": "823",
+      "leaked_phi_count": 1,
+      "issue_description": "Name Maria G. not detected",
+      "leaked_phi_details": [
+        {
+          "type": "NAME",
+          "value": "Maria G."
+        }
+      ]
+    },
+    {
+      "trace_file": "query_831_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_831_trace.json",
+      "query_id": "831",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 12345 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "12345"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_866_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_866_trace.json",
+      "query_id": "866",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 87654-321 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "87654-321"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_868_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_868_trace.json",
+      "query_id": "868",
+      "leaked_phi_count": 2,
+      "issue_description": "Location 1234 Elm St, Boston missed",
+      "leaked_phi_details": [
+        {
+          "type": "GEOGRAPHIC_LOCATION",
+          "value": "1234 Elm St, Boston"
+        },
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "JH-12345"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_875_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_875_trace.json",
+      "query_id": "875",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 89234-5678 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "89234-5678"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_880_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_880_trace.json",
+      "query_id": "880",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN WH-123456 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "WH-123456"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_881_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_881_trace.json",
+      "query_id": "881",
+      "leaked_phi_count": 1,
+      "issue_description": "Date last year not found",
+      "leaked_phi_details": [
+        {
+          "type": "DATE",
+          "value": "last year"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_890_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_890_trace.json",
+      "query_id": "890",
+      "leaked_phi_count": 1,
+      "issue_description": "Name Dr. Michael Lee not detected",
+      "leaked_phi_details": [
+        {
+          "type": "NAME",
+          "value": "Dr. Michael Lee"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_915_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_915_trace.json",
+      "query_id": "915",
+      "leaked_phi_count": 1,
+      "issue_description": "ACCOUNT_NUMBER SH-456789 leaked",
+      "leaked_phi_details": [
+        {
+          "type": "ACCOUNT_NUMBER",
+          "value": "SH-456789"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_916_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_916_trace.json",
+      "query_id": "916",
+      "leaked_phi_count": 1,
+      "issue_description": "Name Dr. Smith not detected",
+      "leaked_phi_details": [
+        {
+          "type": "NAME",
+          "value": "Dr. Smith"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_932_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_932_trace.json",
+      "query_id": "932",
+      "leaked_phi_count": 1,
+      "issue_description": "Health plan WP-98765 missed",
+      "leaked_phi_details": [
+        {
+          "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+          "value": "WP-98765"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_933_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_933_trace.json",
+      "query_id": "933",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN DT-1234 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "DT-1234"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_939_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_939_trace.json",
+      "query_id": "939",
+      "leaked_phi_count": 1,
+      "issue_description": "Health plan ZY-765432 missed",
+      "leaked_phi_details": [
+        {
+          "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+          "value": "ZY-765432"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_940_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_940_trace.json",
+      "query_id": "940",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN #SF-54321 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "#SF-54321"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_944_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_944_trace.json",
+      "query_id": "944",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN BG-54321 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "BG-54321"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_951_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_951_trace.json",
+      "query_id": "951",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 12345A not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "12345A"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_961_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_961_trace.json",
+      "query_id": "961",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 12345-678 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "12345-678"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_963_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_963_trace.json",
+      "query_id": "963",
+      "leaked_phi_count": 2,
+      "issue_description": "Location Newport missed",
+      "leaked_phi_details": [
+        {
+          "type": "GEOGRAPHIC_LOCATION",
+          "value": "Newport"
+        },
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "98234"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_971_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_971_trace.json",
+      "query_id": "971",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 98765-43210 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "98765-43210"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_972_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_972_trace.json",
+      "query_id": "972",
+      "leaked_phi_count": 1,
+      "issue_description": "Health plan HN-54321 missed",
+      "leaked_phi_details": [
+        {
+          "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+          "value": "HN-54321"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_986_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_986_trace.json",
+      "query_id": "986",
+      "leaked_phi_count": 1,
+      "issue_description": "Date last month not found",
+      "leaked_phi_details": [
+        {
+          "type": "DATE",
+          "value": "last month"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_1001_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_1001_trace.json",
+      "query_id": "1001",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN NYP-12345 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "NYP-12345"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_1002_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_1002_trace.json",
+      "query_id": "1002",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN CL-78910 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "CL-78910"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_1005_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_1005_trace.json",
+      "query_id": "1005",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN CC-54321 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "CC-54321"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_1012_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_1012_trace.json",
+      "query_id": "1012",
+      "leaked_phi_count": 1,
+      "issue_description": "Health plan HBP-234987 missed",
+      "leaked_phi_details": [
+        {
+          "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+          "value": "HBP-234987"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_1014_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_1014_trace.json",
+      "query_id": "1014",
+      "leaked_phi_count": 1,
+      "issue_description": "ID LUP-98765 missed",
+      "leaked_phi_details": [
+        {
+          "type": "UNIQUE_IDENTIFIER",
+          "value": "LUP-98765"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_1024_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_1024_trace.json",
+      "query_id": "1024",
+      "leaked_phi_count": 1,
+      "issue_description": "Date last month not found",
+      "leaked_phi_details": [
+        {
+          "type": "DATE",
+          "value": "last month"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_1028_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_1028_trace.json",
+      "query_id": "1028",
+      "leaked_phi_count": 1,
+      "issue_description": "Name Dr. A. Smith not detected",
+      "leaked_phi_details": [
+        {
+          "type": "NAME",
+          "value": "Dr. A. Smith"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_1031_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_1031_trace.json",
+      "query_id": "1031",
+      "leaked_phi_count": 1,
+      "issue_description": "Location 112 Elm Street, N... missed",
+      "leaked_phi_details": [
+        {
+          "type": "GEOGRAPHIC_LOCATION",
+          "value": "112 Elm Street, New York, NY"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_1036_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_1036_trace.json",
+      "query_id": "1036",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN RSM-909090 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "RSM-909090"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_1039_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_1039_trace.json",
+      "query_id": "1039",
+      "leaked_phi_count": 2,
+      "issue_description": "Location Mass General missed",
+      "leaked_phi_details": [
+        {
+          "type": "GEOGRAPHIC_LOCATION",
+          "value": "Mass General"
+        },
+        {
+          "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+          "value": "INS-987654"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_1050_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.5/Positive_PHI/query_1050_trace.json",
+      "query_id": "1050",
+      "leaked_phi_count": 1,
+      "issue_description": "ID MTH-987654 missed",
+      "leaked_phi_details": [
+        {
+          "type": "UNIQUE_IDENTIFIER",
+          "value": "MTH-987654"
+        }
+      ]
+    }
+  ]
+}

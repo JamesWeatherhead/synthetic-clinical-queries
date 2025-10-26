@@ -1,0 +1,85 @@
+{
+  "query_id": "87",
+  "timestamp": "2025-10-22T16:12:42.497747",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Treatment protocol for a 55-year-old male, Joseph Davis, diagnosed with multiple myeloma, seen at Cleveland Clinic on July 15th, 2023. Phone: 555-123-4567.",
+  "ground_truth_phi": "NAME: Joseph Davis | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: July 15th, 2023 | PHONE_NUMBER: 555-123-4567",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Treatment protocol for a [REDACTED_DATE] male, [REDACTED_NAME], diagnosed with multiple myeloma, seen at Cleveland Clinic on [REDACTED_DATE]. Phone: [REDACTED_PHONE_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 25,
+      "end": 36,
+      "score": 0.85,
+      "text": "55-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 43,
+      "end": 55,
+      "score": 0.85,
+      "text": "Joseph Davis",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 118,
+      "end": 128,
+      "score": 0.85,
+      "text": "July 15th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 129,
+      "end": 133,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 142,
+      "end": 154,
+      "score": 0.75,
+      "text": "555-123-4567",
+      "recognizer": "PhoneRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Cleveland Clinic",
+        "start": 98,
+        "end": 114
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.4000",
+    "f1_score": "0.5217"
+  }
+}

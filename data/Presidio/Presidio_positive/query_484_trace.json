@@ -1,0 +1,85 @@
+{
+  "query_id": "484",
+  "timestamp": "2025-10-22T16:12:44.587375",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Management of hypertension in a 45yo female patient named Jessica Williams, admitted to the LA Medical Center on February 7th, 2023, with a medical record number MRN-11335577?",
+  "ground_truth_phi": "NAME: Jessica Williams | GEOGRAPHIC_LOCATION: LA Medical Center | DATE: February 7th, 2023 | MEDICAL_RECORD_NUMBER: MRN-11335577",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Management of hypertension in a 45yo female patient named [REDACTED_NAME], admitted to the LA Medical Center on [REDACTED_DATE], with a medical record number [REDACTED_NRP]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 58,
+      "end": 74,
+      "score": 0.85,
+      "text": "Jessica Williams",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 113,
+      "end": 126,
+      "score": 0.85,
+      "text": "February 7th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 127,
+      "end": 131,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "NRP",
+      "hipaa_category": "NRP",
+      "start": 162,
+      "end": 174,
+      "score": 0.85,
+      "text": "MRN-11335577",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 162,
+      "end": 174,
+      "score": 0.7,
+      "text": "MRN-11335577",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "LA Medical Center",
+        "start": 92,
+        "end": 109
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.4000",
+    "f1_score": "0.5217"
+  }
+}

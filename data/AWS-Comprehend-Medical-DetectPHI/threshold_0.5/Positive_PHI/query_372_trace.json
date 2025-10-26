@@ -1,0 +1,57 @@
+{
+  "query_id": "372",
+  "timestamp": "2025-10-23T09:56:18.932885",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the contraindications for prescribing warfarin to a patient with atrial fibrillation, specifically John D., who presented to UCLA Medical Center last Friday?",
+  "ground_truth_phi": "NAME: John D. | GEOGRAPHIC_LOCATION: UCLA Medical Center | DATE: last Friday",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "John D",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.911668062210083,
+      "begin_offset": 108,
+      "end_offset": 114
+    },
+    {
+      "text": "UCLA Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9878354668617249,
+      "begin_offset": 134,
+      "end_offset": 153
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "DATE",
+        "value": "last Friday"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 2,
+    "leaked_failures": 1,
+    "total_detected": 2,
+    "true_positives": 2,
+    "recall": "0.6667",
+    "precision": "1.0000",
+    "f1_score": "0.8000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 2,
+  "aws_entities_filtered_count": 2
+}

@@ -1,0 +1,61 @@
+{
+  "query_id": "886",
+  "timestamp": "2025-10-23T09:57:11.805966",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the current treatment options for a 67-year-old female with stage 3 lung cancer and a surgical history at Jefferson Memorial Hospital on April 15th, 2023?",
+  "ground_truth_phi": "GEOGRAPHIC_LOCATION: Jefferson Memorial Hospital | DATE: April 15th, 2023",
+  "ground_truth_phi_count": 2,
+  "aws_entities_detected": [
+    {
+      "text": "67",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997996687889099,
+      "begin_offset": 45,
+      "end_offset": 47
+    },
+    {
+      "text": "Jefferson Memorial Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9829476475715637,
+      "begin_offset": 115,
+      "end_offset": 142
+    },
+    {
+      "text": "April 15th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995829463005066,
+      "begin_offset": 146,
+      "end_offset": 162
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 2,
+    "successfully_detected": 2,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "true_positives": 2,
+    "recall": "1.0000",
+    "precision": "0.6667",
+    "f1_score": "0.8000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

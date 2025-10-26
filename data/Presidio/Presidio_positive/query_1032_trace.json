@@ -1,0 +1,76 @@
+{
+  "query_id": "1032",
+  "timestamp": "2025-10-22T16:12:47.469021",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Treatment guidelines for a case of chronic migraine in a 35-year-old female, patient Cindy L., referred by Dr. Anderson at Houston Healthcare on 01/09/2024?",
+  "ground_truth_phi": "NAME: Cindy L. | NAME: Dr. Anderson | GEOGRAPHIC_LOCATION: Houston Healthcare | DATE: 01/09/2024",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Treatment guidelines for a case of chronic migraine in a [REDACTED_DATE] female, patient [REDACTED_NAME], referred by Dr. [REDACTED_NAME] at Houston Healthcare on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 57,
+      "end": 68,
+      "score": 0.85,
+      "text": "35-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 85,
+      "end": 93,
+      "score": 0.85,
+      "text": "Cindy L.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 111,
+      "end": 119,
+      "score": 0.85,
+      "text": "Anderson",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 145,
+      "end": 155,
+      "score": 0.85,
+      "text": "01/09/2024",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Houston Healthcare",
+        "start": 123,
+        "end": 141
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.5000",
+    "f1_score": "0.6000"
+  }
+}

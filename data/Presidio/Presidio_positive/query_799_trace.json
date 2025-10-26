@@ -1,0 +1,85 @@
+{
+  "query_id": "799",
+  "timestamp": "2025-10-22T16:12:46.234427",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "new protocols for CHF mgmt in elderly pts, esp. those like Mr. John D. who came to General Hospital on Apr 5th 2023. His email is john.doe123@example.com.",
+  "ground_truth_phi": "NAME: John D. | GEOGRAPHIC_LOCATION: General Hospital | DATE: Apr 5th 2023 | EMAIL_ADDRESS: john.doe123@example.com",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "new protocols for CHF mgmt in elderly pts, esp. those like Mr. [REDACTED_NAME] who came to General Hospital on [REDACTED_DATE]. His email is [REDACTED_EMAIL_ADDRESS].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "EMAIL_ADDRESS",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "start": 130,
+      "end": 153,
+      "score": 1.0,
+      "text": "john.doe123@example.com",
+      "recognizer": "EmailRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 63,
+      "end": 70,
+      "score": 0.85,
+      "text": "John D.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 103,
+      "end": 115,
+      "score": 0.85,
+      "text": "Apr 5th 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "URL",
+      "hipaa_category": "WEB_URL",
+      "start": 130,
+      "end": 137,
+      "score": 0.5,
+      "text": "john.do",
+      "recognizer": "UrlRecognizer"
+    },
+    {
+      "entity_type": "URL",
+      "hipaa_category": "WEB_URL",
+      "start": 142,
+      "end": 153,
+      "score": 0.5,
+      "text": "example.com",
+      "recognizer": "UrlRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "General Hospital",
+        "start": 83,
+        "end": 99
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.6000",
+    "f1_score": "0.6667"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "query_id": "584",
+  "timestamp": "2025-10-23T09:56:41.536637",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Therapeutic options for a 30-year-old female with refractory epilepsy who visited Dr. Nguyen at Boston Children's Hospital on July 22nd, 2023 (MRN: BCH-111222)?",
+  "ground_truth_phi": "NAME: Nguyen | GEOGRAPHIC_LOCATION: Boston Children's Hospital | DATE: July 22nd, 2023 | MEDICAL_RECORD_NUMBER: BCH-111222",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "30",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9981169700622559,
+      "begin_offset": 26,
+      "end_offset": 28
+    },
+    {
+      "text": "Nguyen",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997243285179138,
+      "begin_offset": 86,
+      "end_offset": 92
+    },
+    {
+      "text": "Boston Children's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9932152032852173,
+      "begin_offset": 96,
+      "end_offset": 122
+    },
+    {
+      "text": "July 22nd, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999953031539917,
+      "begin_offset": 126,
+      "end_offset": 141
+    },
+    {
+      "text": "111222",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6044876575469971,
+      "begin_offset": 152,
+      "end_offset": 158
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 5
+}

@@ -1,0 +1,44 @@
+{
+  "query_id": "708",
+  "timestamp": "2025-10-22T16:24:25.102596",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What is the prognosis for a 68-year-old patient with stage III COPD and a previously diagnosed heart murmur, managed last summer with standard medications?",
+  "presidio_output": "What is the prognosis for a [REDACTED_DATE] patient with stage III COPD and a previously diagnosed heart murmur, managed [REDACTED_DATE] with standard medications?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 28,
+      "end": 39,
+      "score": 0.85,
+      "text": "68-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 117,
+      "end": 128,
+      "score": 0.85,
+      "text": "last summer",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 2,
+    "false_redactions_by_type": {
+      "DATE": 2
+    },
+    "status": "OVER_REDACTED"
+  }
+}

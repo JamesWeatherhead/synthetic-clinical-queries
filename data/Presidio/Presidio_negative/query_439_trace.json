@@ -1,0 +1,55 @@
+{
+  "query_id": "439",
+  "timestamp": "2025-10-22T16:24:24.801397",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Latest treatment protocols for adults with Marfan syndrome, seen in a tertiary care center in California during the summer.",
+  "presidio_output": "Latest treatment protocols for adults with [REDACTED_NAME] syndrome, seen in a tertiary care center in [REDACTED_GEOGRAPHIC_LOCATION] during [REDACTED_DATE].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 43,
+      "end": 49,
+      "score": 0.85,
+      "text": "Marfan",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 94,
+      "end": 104,
+      "score": 0.85,
+      "text": "California",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 112,
+      "end": 122,
+      "score": 0.85,
+      "text": "the summer",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 3,
+    "false_redactions_by_type": {
+      "NAME": 1,
+      "GEOGRAPHIC_LOCATION": 1,
+      "DATE": 1
+    },
+    "status": "OVER_REDACTED"
+  }
+}

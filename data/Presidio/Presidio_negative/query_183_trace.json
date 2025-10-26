@@ -1,0 +1,45 @@
+{
+  "query_id": "183",
+  "timestamp": "2025-10-22T16:24:24.494923",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Prognostic factors for chronic kidney disease in a 68-year-old Hispanic male with a GFR of 45 mL/min/1.73m2?",
+  "presidio_output": "Prognostic factors for chronic kidney disease in a [REDACTED_DATE] [REDACTED_NRP] male with a GFR of 45 mL/min/1.73m2?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 51,
+      "end": 62,
+      "score": 0.85,
+      "text": "68-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "NRP",
+      "hipaa_category": "NRP",
+      "start": 63,
+      "end": 71,
+      "score": 0.85,
+      "text": "Hispanic",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 2,
+    "false_redactions_by_type": {
+      "DATE": 1,
+      "NRP": 1
+    },
+    "status": "OVER_REDACTED"
+  }
+}

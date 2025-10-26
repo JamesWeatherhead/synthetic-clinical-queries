@@ -1,0 +1,70 @@
+{
+  "query_id": "1018",
+  "timestamp": "2025-10-23T09:57:29.762144",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "counseling required for pt w/ hx of schizophrenia, seen by Dr. Rebecca L., at New Hope Clinic on Apr 24 2021, her insurance is HPN-987654.",
+  "ground_truth_phi": "NAME: Rebecca L. | GEOGRAPHIC_LOCATION: New Hope Clinic | DATE: Apr 24 2021 | HEALTH_PLAN_BENEFICIARY_NUMBER: HPN-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Rebecca L",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9983426332473755,
+      "begin_offset": 63,
+      "end_offset": 72
+    },
+    {
+      "text": "New Hope Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9789573550224304,
+      "begin_offset": 78,
+      "end_offset": 93
+    },
+    {
+      "text": "Apr 24 2021",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9790431261062622,
+      "begin_offset": 97,
+      "end_offset": 108
+    },
+    {
+      "text": "987654",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.5970450043678284,
+      "begin_offset": 131,
+      "end_offset": 137
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

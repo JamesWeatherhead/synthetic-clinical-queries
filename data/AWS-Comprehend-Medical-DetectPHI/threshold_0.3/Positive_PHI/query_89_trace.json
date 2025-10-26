@@ -1,0 +1,88 @@
+{
+  "query_id": "89",
+  "timestamp": "2025-10-23T09:55:45.632881",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the side effects of levothyroxine in a 28-year-old female, Emily R., who was treated at Johns Hopkins on Feb 20th, 2021? Refer to record #EM-345678.",
+  "ground_truth_phi": "NAME: Emily R. | GEOGRAPHIC_LOCATION: Johns Hopkins | DATE: Feb 20th, 2021 | MEDICAL_RECORD_NUMBER: #EM-345678",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "28",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9923417568206787,
+      "begin_offset": 48,
+      "end_offset": 50
+    },
+    {
+      "text": "Emily R",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.978365421295166,
+      "begin_offset": 68,
+      "end_offset": 75
+    },
+    {
+      "text": "Johns Hopkins",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8003567457199097,
+      "begin_offset": 97,
+      "end_offset": 110
+    },
+    {
+      "text": "Feb 20th, 2021",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9990761280059814,
+      "begin_offset": 114,
+      "end_offset": 128
+    },
+    {
+      "text": "EM",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8767094016075134,
+      "begin_offset": 147,
+      "end_offset": 149
+    },
+    {
+      "text": "345678",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8366506099700928,
+      "begin_offset": 150,
+      "end_offset": 156
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "0.8333",
+    "f1_score": "0.9091"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 6
+}

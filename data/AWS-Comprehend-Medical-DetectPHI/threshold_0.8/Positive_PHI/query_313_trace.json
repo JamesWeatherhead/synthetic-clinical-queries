@@ -1,0 +1,70 @@
+{
+  "query_id": "313",
+  "timestamp": "2025-10-23T09:56:12.963521",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Prognostic factors for a 55-year-old male, Mr. Smith, with glioblastoma, treated at Sloan Kettering, last seen on February 20th, 2024?",
+  "ground_truth_phi": "NAME: Mr. Smith | GEOGRAPHIC_LOCATION: Sloan Kettering | DATE: February 20th, 2024",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "55",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9994893074035645,
+      "begin_offset": 25,
+      "end_offset": 27
+    },
+    {
+      "text": "Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997801184654236,
+      "begin_offset": 47,
+      "end_offset": 52
+    },
+    {
+      "text": "Sloan Kettering",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8614357709884644,
+      "begin_offset": 84,
+      "end_offset": 99
+    },
+    {
+      "text": "February 20th, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999567270278931,
+      "begin_offset": 114,
+      "end_offset": 133
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

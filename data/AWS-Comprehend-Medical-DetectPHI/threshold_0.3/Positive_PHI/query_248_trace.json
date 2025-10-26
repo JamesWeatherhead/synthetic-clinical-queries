@@ -1,0 +1,70 @@
+{
+  "query_id": "248",
+  "timestamp": "2025-10-23T09:56:03.001578",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "clarify dx and mngmnt for pt w/ hx of CHF, Stan M., seen at UW Med on July 4th 2023. also, concerns about drug interactions for his current meds. phone: 555-987-6543.",
+  "ground_truth_phi": "NAME: Stan M. | GEOGRAPHIC_LOCATION: UW Med | DATE: July 4th 2023 | PHONE_NUMBER: 555-987-6543",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Stan M",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7195793390274048,
+      "begin_offset": 43,
+      "end_offset": 49
+    },
+    {
+      "text": "UW Med",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7356334924697876,
+      "begin_offset": 60,
+      "end_offset": 66
+    },
+    {
+      "text": "July 4th 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998792409896851,
+      "begin_offset": 70,
+      "end_offset": 83
+    },
+    {
+      "text": "555-987-6543",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9987806677818298,
+      "begin_offset": 153,
+      "end_offset": 165
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

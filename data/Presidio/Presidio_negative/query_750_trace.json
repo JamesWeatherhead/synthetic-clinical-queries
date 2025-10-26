@@ -1,0 +1,35 @@
+{
+  "query_id": "750",
+  "timestamp": "2025-10-22T16:24:25.163122",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Best practices for managing diabetes in elderly patients with a history of heart disease and a recent HgbA1c of 7.5%?",
+  "presidio_output": "Best practices for managing diabetes in elderly patients with a history of heart disease and a recent [REDACTED_GEOGRAPHIC_LOCATION] of 7.5%?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 102,
+      "end": 108,
+      "score": 0.85,
+      "text": "HgbA1c",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 1,
+    "false_redactions_by_type": {
+      "GEOGRAPHIC_LOCATION": 1
+    },
+    "status": "OVER_REDACTED"
+  }
+}

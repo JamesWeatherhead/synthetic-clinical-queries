@@ -1,0 +1,66 @@
+{
+  "query_id": "348",
+  "timestamp": "2025-10-23T09:56:16.231895",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Updated treatment options for chronic migraine in a 32-year-old female, consulted Dr. Alice S. at Boston General Hospital last week?",
+  "ground_truth_phi": "NAME: Dr. Alice S. | GEOGRAPHIC_LOCATION: Boston General Hospital | DATE: last week",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "32",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9994414448738098,
+      "begin_offset": 52,
+      "end_offset": 54
+    },
+    {
+      "text": "Alice S.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.978882372379303,
+      "begin_offset": 86,
+      "end_offset": 94
+    },
+    {
+      "text": "Boston General Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9850409626960754,
+      "begin_offset": 98,
+      "end_offset": 121
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "DATE",
+        "value": "last week"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "true_positives": 2,
+    "recall": "0.6667",
+    "precision": "0.6667",
+    "f1_score": "0.6667"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

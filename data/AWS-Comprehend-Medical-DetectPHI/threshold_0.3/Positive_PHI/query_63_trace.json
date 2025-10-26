@@ -1,0 +1,79 @@
+{
+  "query_id": "63",
+  "timestamp": "2025-10-23T09:55:43.072401",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "5-year survival rate for a 70-year-old male named James Brown, diagnosed with stage IV lung cancer at Cedars-Sinai Medical Center on July 22nd, 2023. His phone number is (310) 555-1234.",
+  "ground_truth_phi": "NAME: James Brown | GEOGRAPHIC_LOCATION: Cedars-Sinai Medical Center | DATE: July 22nd, 2023 | PHONE_NUMBER: (310) 555-1234",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "70",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9781955480575562,
+      "begin_offset": 27,
+      "end_offset": 29
+    },
+    {
+      "text": "James Brown",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9990491271018982,
+      "begin_offset": 50,
+      "end_offset": 61
+    },
+    {
+      "text": "Cedars-Sinai Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9852010011672974,
+      "begin_offset": 102,
+      "end_offset": 129
+    },
+    {
+      "text": "July 22nd, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999464750289917,
+      "begin_offset": 133,
+      "end_offset": 148
+    },
+    {
+      "text": "(310) 555-1234",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9578793048858643,
+      "begin_offset": 170,
+      "end_offset": 184
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

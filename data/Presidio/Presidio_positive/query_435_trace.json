@@ -1,0 +1,67 @@
+{
+  "query_id": "435",
+  "timestamp": "2025-10-22T16:12:44.310577",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guidelines for management of heart failure in a 72-year-old male, Richard K., admitted to Cedar Sinai Medical Center on September 15, 2023?",
+  "ground_truth_phi": "NAME: Richard K. | GEOGRAPHIC_LOCATION: Cedar Sinai Medical Center | DATE: September 15, 2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Guidelines for management of heart failure in a [REDACTED_DATE] male, [REDACTED_NAME], admitted to Cedar Sinai Medical Center on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 48,
+      "end": 59,
+      "score": 0.85,
+      "text": "72-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 66,
+      "end": 76,
+      "score": 0.85,
+      "text": "Richard K.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 120,
+      "end": 138,
+      "score": 0.85,
+      "text": "September 15, 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Cedar Sinai Medical Center",
+        "start": 90,
+        "end": 116
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.6667",
+    "precision": "0.6667",
+    "f1_score": "0.6667"
+  }
+}

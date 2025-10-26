@@ -1,0 +1,76 @@
+{
+  "query_id": "16",
+  "timestamp": "2025-10-22T16:12:42.101027",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Are there any new guidelines for managing hypertension in patients similar to Jane D., a 55-year-old female seen at Brigham and Women's Hospital on March 22nd, 2024, with insurance number HP-678901?",
+  "ground_truth_phi": "NAME: Jane D. | GEOGRAPHIC_LOCATION: Brigham and Women's Hospital | DATE: March 22nd, 2024 | HEALTH_PLAN_BENEFICIARY_NUMBER: HP-678901",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Are there any new guidelines for managing hypertension in patients similar to [REDACTED_NAME], a [REDACTED_DATE] female seen at Brigham and Women's Hospital on [REDACTED_DATE], with insurance number [REDACTED_MEDICAL_RECORD_NUMBER]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 78,
+      "end": 85,
+      "score": 0.85,
+      "text": "Jane D.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 89,
+      "end": 100,
+      "score": 0.85,
+      "text": "55-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 148,
+      "end": 164,
+      "score": 0.85,
+      "text": "March 22nd, 2024",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 188,
+      "end": 197,
+      "score": 0.7,
+      "text": "HP-678901",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Brigham and Women's Hospital",
+        "start": 116,
+        "end": 144
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "query_id": "153",
+  "timestamp": "2025-10-22T16:12:42.861192",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Patient with hx of GERD, Barrett's esophagus. Recommendations for follow-up after endoscopy carried out on 09/12/2023 at Johns Hopkins?",
+  "ground_truth_phi": "DATE: 09/12/2023 | GEOGRAPHIC_LOCATION: Johns Hopkins",
+  "ground_truth_phi_count": 2,
+  "presidio_output": "Patient with hx of GERD, [REDACTED_NAME]'s esophagus. Recommendations for follow-up after endoscopy carried out on [REDACTED_DATE] at Johns Hopkins?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 25,
+      "end": 32,
+      "score": 0.85,
+      "text": "Barrett",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 107,
+      "end": 117,
+      "score": 0.6,
+      "text": "09/12/2023",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Johns Hopkins",
+        "start": 121,
+        "end": 134
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 2,
+    "successfully_redacted": 1,
+    "leaked_failures": 1,
+    "total_detected": 2,
+    "recall": "0.5000",
+    "precision": "0.5000",
+    "f1_score": "0.5000"
+  }
+}

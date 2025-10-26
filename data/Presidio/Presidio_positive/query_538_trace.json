@@ -1,0 +1,85 @@
+{
+  "query_id": "538",
+  "timestamp": "2025-10-22T16:12:44.868921",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Current treatment guidelines for a 30-year-old female diagnosed with acute lymphoblastic leukemia (ALL), referring to Emily N., treated at Mayo Clinic on July 19th, 2023 (MRN: ALL-98765)?",
+  "ground_truth_phi": "NAME: Emily N. | GEOGRAPHIC_LOCATION: Mayo Clinic | DATE: July 19th, 2023 | MEDICAL_RECORD_NUMBER: ALL-98765",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Current treatment guidelines for a [REDACTED_DATE] female diagnosed with acute lymphoblastic leukemia (ALL), referring to [REDACTED_NAME], treated at Mayo Clinic on [REDACTED_DATE] (MRN: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 35,
+      "end": 46,
+      "score": 0.85,
+      "text": "30-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 118,
+      "end": 126,
+      "score": 0.85,
+      "text": "Emily N.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 154,
+      "end": 164,
+      "score": 0.85,
+      "text": "July 19th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 165,
+      "end": 169,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 176,
+      "end": 185,
+      "score": 0.7,
+      "text": "ALL-98765",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Mayo Clinic",
+        "start": 139,
+        "end": 150
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.4000",
+    "f1_score": "0.5217"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "query_id": "43",
+  "timestamp": "2025-10-22T16:12:42.252697",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "efficacy of new RNA-based vx in pt w/ hx of HTN & CKD, John D. checked in at Cleveland Clinic on 02/14/2022. Also, any insurance issues with HMO-234567?",
+  "ground_truth_phi": "NAME: John D. | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: 02/14/2022 | HEALTH_PLAN_BENEFICIARY_NUMBER: HMO-234567",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "efficacy of new RNA-based vx in pt w/ hx of HTN & CKD, [REDACTED_NAME] checked in at Cleveland Clinic on [REDACTED_DATE]. Also, any insurance issues with [REDACTED_MEDICAL_RECORD_NUMBER]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 55,
+      "end": 62,
+      "score": 0.85,
+      "text": "John D.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 141,
+      "end": 151,
+      "score": 0.7,
+      "text": "HMO-234567",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 97,
+      "end": 107,
+      "score": 0.6,
+      "text": "02/14/2022",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Cleveland Clinic",
+        "start": 77,
+        "end": 93
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  }
+}

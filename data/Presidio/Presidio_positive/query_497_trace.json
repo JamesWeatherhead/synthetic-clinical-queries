@@ -1,0 +1,58 @@
+{
+  "query_id": "497",
+  "timestamp": "2025-10-22T16:12:44.659826",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "tx options for pt 67yo F w/ hx of HFrEF and CKD, discussed at Scripps Clinic on Apr 22nd, 2024, MRN: SC-998877?",
+  "ground_truth_phi": "GEOGRAPHIC_LOCATION: Scripps Clinic | DATE: Apr 22nd, 2024 | MEDICAL_RECORD_NUMBER: SC-998877",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "tx options for pt 67yo F w/ hx of HFrEF and CKD, discussed at Scripps Clinic on [REDACTED_DATE], MRN: [REDACTED_MEDICAL_RECORD_NUMBER]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 80,
+      "end": 94,
+      "score": 0.85,
+      "text": "Apr 22nd, 2024",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 101,
+      "end": 110,
+      "score": 0.7,
+      "text": "SC-998877",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Scripps Clinic",
+        "start": 62,
+        "end": 76
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 2,
+    "recall": "0.6667",
+    "precision": "1.0000",
+    "f1_score": "0.8000"
+  }
+}

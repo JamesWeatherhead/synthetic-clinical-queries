@@ -1,0 +1,66 @@
+{
+  "query_id": "459",
+  "timestamp": "2025-10-23T09:56:27.928515",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Contraindications for prescribing beta-blockers to a patient with asthma, Alan T., seen at Eastside Health Center on July 8, 2023, MRN: EHC-987123.",
+  "ground_truth_phi": "NAME: Alan T. | GEOGRAPHIC_LOCATION: Eastside Health Center | DATE: July 8, 2023 | MEDICAL_RECORD_NUMBER: EHC-987123",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Alan T",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9901154041290283,
+      "begin_offset": 74,
+      "end_offset": 80
+    },
+    {
+      "text": "Eastside Health Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9962995648384094,
+      "begin_offset": 91,
+      "end_offset": 113
+    },
+    {
+      "text": "July 8, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999574422836304,
+      "begin_offset": 117,
+      "end_offset": 129
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "EHC-987123"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 3
+}

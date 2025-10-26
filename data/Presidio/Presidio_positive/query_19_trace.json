@@ -1,0 +1,76 @@
+{
+  "query_id": "19",
+  "timestamp": "2025-10-22T16:12:42.122132",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Current best practices for managing chronic heart failure in a 58-year-old male, Michael T., admitted to Stanford Hospital on July 12th, 2024, under MRN S-987654?",
+  "ground_truth_phi": "NAME: Michael T. | GEOGRAPHIC_LOCATION: Stanford Hospital | DATE: July 12th, 2024 | MEDICAL_RECORD_NUMBER: S-987654",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Current best practices for managing chronic heart failure in a [REDACTED_DATE] male, [REDACTED_NAME], admitted to Stanford Hospital on [REDACTED_DATE], under MRN S-[REDACTED_MEDICAL_RECORD_NUMBER]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 63,
+      "end": 74,
+      "score": 0.85,
+      "text": "58-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 81,
+      "end": 91,
+      "score": 0.85,
+      "text": "Michael T.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 126,
+      "end": 141,
+      "score": 0.85,
+      "text": "July 12th, 2024",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 155,
+      "end": 161,
+      "score": 0.5,
+      "text": "987654",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Stanford Hospital",
+        "start": 105,
+        "end": 122
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.5000",
+    "f1_score": "0.6000"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "query_id": "122",
+  "timestamp": "2025-10-22T16:12:42.692752",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Updated COPD management guidelines for 65-year-old male, Jack B., who has been taking Spiriva and was seen at Mayo Clinic in Rochester, MN on July 20th, 2022 (insurance ID: 789456123)?",
+  "ground_truth_phi": "NAME: Jack B. | GEOGRAPHIC_LOCATION: Mayo Clinic in Rochester, MN | DATE: July 20th, 2022 | HEALTH_PLAN_BENEFICIARY_NUMBER: 789456123",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Updated COPD management guidelines for [REDACTED_DATE] male, [REDACTED_NAME], who has been taking [REDACTED_NAME] and was seen at Mayo Clinic in [REDACTED_GEOGRAPHIC_LOCATION], [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE] (insurance [REDACTED_UNIQUE_IDENTIFIER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "UNIQUE_IDENTIFIER",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "start": 169,
+      "end": 182,
+      "score": 0.9,
+      "text": "ID: 789456123",
+      "recognizer": "UniqueIdentifierRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 39,
+      "end": 50,
+      "score": 0.85,
+      "text": "65-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 57,
+      "end": 64,
+      "score": 0.85,
+      "text": "Jack B.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 86,
+      "end": 93,
+      "score": 0.85,
+      "text": "Spiriva",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 125,
+      "end": 134,
+      "score": 0.85,
+      "text": "Rochester",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 136,
+      "end": 138,
+      "score": 0.85,
+      "text": "MN",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 142,
+      "end": 157,
+      "score": 0.85,
+      "text": "July 20th, 2022",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 173,
+      "end": 182,
+      "score": 0.5,
+      "text": "789456123",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 8,
+    "recall": "1.0000",
+    "precision": "0.3750",
+    "f1_score": "0.5455"
+  }
+}

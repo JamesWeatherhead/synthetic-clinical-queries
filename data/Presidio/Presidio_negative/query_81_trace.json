@@ -1,0 +1,63 @@
+{
+  "query_id": "81",
+  "timestamp": "2025-10-22T16:24:24.366516",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What is the 5-year survival rate for a 70-year-old male with a Gleason score of 7 prostate cancer diagnosed in 2021?",
+  "presidio_output": "What is the [REDACTED_DATE] survival rate for a [REDACTED_DATE] male with a [REDACTED_NAME] score of 7 prostate cancer diagnosed in [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 12,
+      "end": 18,
+      "score": 0.85,
+      "text": "5-year",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 39,
+      "end": 50,
+      "score": 0.85,
+      "text": "70-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 63,
+      "end": 70,
+      "score": 0.85,
+      "text": "Gleason",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 111,
+      "end": 115,
+      "score": 0.85,
+      "text": "2021",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 4,
+    "false_redactions_by_type": {
+      "DATE": 3,
+      "NAME": 1
+    },
+    "status": "OVER_REDACTED"
+  }
+}

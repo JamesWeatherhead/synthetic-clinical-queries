@@ -1,0 +1,70 @@
+{
+  "query_id": "765",
+  "timestamp": "2025-10-23T09:56:58.933692",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Treatment protocol for a 48-year-old male, Michael Brown, with a new diagnosis of multiple myeloma, who had a prior bone marrow biopsy at Mayo Clinic on March 3rd, 2023?",
+  "ground_truth_phi": "NAME: Michael Brown | GEOGRAPHIC_LOCATION: Mayo Clinic | DATE: March 3rd, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "48",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996689558029175,
+      "begin_offset": 25,
+      "end_offset": 27
+    },
+    {
+      "text": "Michael Brown",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9975460171699524,
+      "begin_offset": 43,
+      "end_offset": 56
+    },
+    {
+      "text": "Mayo Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9899858236312866,
+      "begin_offset": 138,
+      "end_offset": 149
+    },
+    {
+      "text": "March 3rd, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999735355377197,
+      "begin_offset": 153,
+      "end_offset": 168
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

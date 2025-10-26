@@ -1,0 +1,69 @@
+{
+  "query_id": "286",
+  "timestamp": "2025-10-22T16:12:43.526928",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the side effects of atorvastatin in a male patient, Peter G., 40 years old, living in the Bronx, prescribed on July 15, 2023?",
+  "ground_truth_phi": "NAME: Peter G. | GEOGRAPHIC_LOCATION: the Bronx | DATE: July 15, 2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "What are the side effects of atorvastatin in a male patient, [REDACTED_NAME], [REDACTED_DATE], living in the [REDACTED_GEOGRAPHIC_LOCATION], prescribed on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 61,
+      "end": 69,
+      "score": 0.85,
+      "text": "Peter G.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 71,
+      "end": 83,
+      "score": 0.85,
+      "text": "40 years old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 99,
+      "end": 104,
+      "score": 0.85,
+      "text": "Bronx",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 120,
+      "end": 133,
+      "score": 0.85,
+      "text": "July 15, 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "0.5000",
+    "f1_score": "0.6667"
+  }
+}

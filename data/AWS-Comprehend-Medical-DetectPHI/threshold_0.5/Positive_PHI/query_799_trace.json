@@ -1,0 +1,70 @@
+{
+  "query_id": "799",
+  "timestamp": "2025-10-23T09:57:02.904105",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "new protocols for CHF mgmt in elderly pts, esp. those like Mr. John D. who came to General Hospital on Apr 5th 2023. His email is john.doe123@example.com.",
+  "ground_truth_phi": "NAME: John D. | GEOGRAPHIC_LOCATION: General Hospital | DATE: Apr 5th 2023 | EMAIL_ADDRESS: john.doe123@example.com",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "John D.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7921925783157349,
+      "begin_offset": 63,
+      "end_offset": 70
+    },
+    {
+      "text": "General Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.990230143070221,
+      "begin_offset": 83,
+      "end_offset": 99
+    },
+    {
+      "text": "Apr 5th 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9769978523254395,
+      "begin_offset": 103,
+      "end_offset": 115
+    },
+    {
+      "text": "john.doe123@example.com",
+      "aws_type": "EMAIL",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999030828475952,
+      "begin_offset": 130,
+      "end_offset": 153
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

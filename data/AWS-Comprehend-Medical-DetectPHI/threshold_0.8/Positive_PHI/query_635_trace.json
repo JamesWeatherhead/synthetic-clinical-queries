@@ -1,0 +1,66 @@
+{
+  "query_id": "635",
+  "timestamp": "2025-10-23T09:56:46.875487",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best treatment options for a 72-year-old female with advanced COPD, admitted to St. John's Hospital on February 15th, 2023, MRN 12345.",
+  "ground_truth_phi": "GEOGRAPHIC_LOCATION: St. John's Hospital | DATE: February 15th, 2023 | MEDICAL_RECORD_NUMBER: 12345",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "72",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9994620680809021,
+      "begin_offset": 29,
+      "end_offset": 31
+    },
+    {
+      "text": "St. John's Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.993644118309021,
+      "begin_offset": 80,
+      "end_offset": 99
+    },
+    {
+      "text": "February 15th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9991298317909241,
+      "begin_offset": 103,
+      "end_offset": 122
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "12345"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "true_positives": 2,
+    "recall": "0.6667",
+    "precision": "0.6667",
+    "f1_score": "0.6667"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 3
+}

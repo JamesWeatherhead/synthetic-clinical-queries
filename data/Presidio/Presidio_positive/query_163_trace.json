@@ -1,0 +1,67 @@
+{
+  "query_id": "163",
+  "timestamp": "2025-10-22T16:12:42.909041",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "best practices for managing T2DM in pt seen by Dr. Stevens at the Downtown Clinic; DOB 12/11/1958, case reviewed Mar 3, 2023.",
+  "ground_truth_phi": "NAME: Dr. Stevens | GEOGRAPHIC_LOCATION: Downtown Clinic | DATE: Mar 3, 2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "best practices for managing T2DM in pt seen by Dr. [REDACTED_NAME] at the Downtown Clinic; DOB [REDACTED_DATE], case reviewed [REDACTED_DATE].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 51,
+      "end": 58,
+      "score": 0.85,
+      "text": "Stevens",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 113,
+      "end": 124,
+      "score": 0.85,
+      "text": "Mar 3, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 87,
+      "end": 97,
+      "score": 0.6,
+      "text": "12/11/1958",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Downtown Clinic",
+        "start": 66,
+        "end": 81
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.6667",
+    "precision": "0.3333",
+    "f1_score": "0.4444"
+  }
+}

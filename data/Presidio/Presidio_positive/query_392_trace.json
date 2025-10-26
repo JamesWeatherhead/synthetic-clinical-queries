@@ -1,0 +1,76 @@
+{
+  "query_id": "392",
+  "timestamp": "2025-10-22T16:12:44.099656",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Best practices for post-op care in a 65-year-old male, Mr. Anderson, discharged from Bellevue Hospital on September 30, 2023 (MRN: BH-903123)?",
+  "ground_truth_phi": "NAME: Mr. Anderson | GEOGRAPHIC_LOCATION: Bellevue Hospital | DATE: September 30, 2023 | MEDICAL_RECORD_NUMBER: BH-903123",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Best practices for post-op care in a [REDACTED_DATE] male, Mr. [REDACTED_NAME], discharged from Bellevue Hospital on [REDACTED_DATE] (MRN: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 37,
+      "end": 48,
+      "score": 0.85,
+      "text": "65-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 59,
+      "end": 67,
+      "score": 0.85,
+      "text": "Anderson",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 106,
+      "end": 124,
+      "score": 0.85,
+      "text": "September 30, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 131,
+      "end": 140,
+      "score": 0.7,
+      "text": "BH-903123",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Bellevue Hospital",
+        "start": 85,
+        "end": 102
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.5000",
+    "f1_score": "0.6000"
+  }
+}

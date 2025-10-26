@@ -1,0 +1,66 @@
+{
+  "query_id": "553",
+  "timestamp": "2025-10-23T09:56:38.267090",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What is the protocol for managing post-op infection in a pt with a hx of MRSA, referred by Dr. John D. from Memorial Clinic on 03/04/2022 (MRN: MC-998877)?",
+  "ground_truth_phi": "NAME: Dr. John D. | GEOGRAPHIC_LOCATION: Memorial Clinic | DATE: 03/04/2022 | MEDICAL_RECORD_NUMBER: MC-998877",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "John D.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9861509203910828,
+      "begin_offset": 95,
+      "end_offset": 102
+    },
+    {
+      "text": "Memorial Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9954853057861328,
+      "begin_offset": 108,
+      "end_offset": 123
+    },
+    {
+      "text": "03/04/2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999333620071411,
+      "begin_offset": 127,
+      "end_offset": 137
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "MC-998877"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 3
+}

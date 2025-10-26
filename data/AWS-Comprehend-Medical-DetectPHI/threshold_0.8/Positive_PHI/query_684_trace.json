@@ -1,0 +1,65 @@
+{
+  "query_id": "684",
+  "timestamp": "2025-10-23T09:56:51.277025",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Prognosis for a 50-year-old male patient, Aaron Z., diagnosed with stage IV lung cancer, admitted to NYU Langone on 09/15/2022 (MRN: 654321-789)?",
+  "ground_truth_phi": "NAME: Aaron Z. | GEOGRAPHIC_LOCATION: NYU Langone | DATE: 09/15/2022 | MEDICAL_RECORD_NUMBER: 654321-789",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "50",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9994304776191711,
+      "begin_offset": 16,
+      "end_offset": 18
+    },
+    {
+      "text": "09/15/2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999499320983887,
+      "begin_offset": 116,
+      "end_offset": 126
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 3,
+    "leaked_phi_details": [
+      {
+        "type": "NAME",
+        "value": "Aaron Z."
+      },
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "NYU Langone"
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "654321-789"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 1,
+    "leaked_failures": 3,
+    "total_detected": 2,
+    "true_positives": 1,
+    "recall": "0.2500",
+    "precision": "0.5000",
+    "f1_score": "0.3333"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 2
+}

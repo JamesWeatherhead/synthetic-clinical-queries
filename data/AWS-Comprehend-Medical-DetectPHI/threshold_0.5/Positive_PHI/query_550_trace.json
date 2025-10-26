@@ -1,0 +1,79 @@
+{
+  "query_id": "550",
+  "timestamp": "2025-10-23T09:56:38.000618",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the treatment options for a 65-year-old male with stage 4 lung cancer, Robert Smith, at St. Joseph's Medical Center, diagnosed on August 17th, 2023 (MRN: 123-45-678)?",
+  "ground_truth_phi": "NAME: Robert Smith | GEOGRAPHIC_LOCATION: St. Joseph's Medical Center | DATE: August 17th, 2023 | MEDICAL_RECORD_NUMBER: 123-45-678",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "65",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998430013656616,
+      "begin_offset": 37,
+      "end_offset": 39
+    },
+    {
+      "text": "Robert Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9968801736831665,
+      "begin_offset": 80,
+      "end_offset": 92
+    },
+    {
+      "text": "St. Joseph's Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9894493222236633,
+      "begin_offset": 97,
+      "end_offset": 124
+    },
+    {
+      "text": "August 17th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999737739562988,
+      "begin_offset": 139,
+      "end_offset": 156
+    },
+    {
+      "text": "123-45-678",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.5334379076957703,
+      "begin_offset": 163,
+      "end_offset": 173
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

@@ -1,0 +1,69 @@
+{
+  "query_id": "331",
+  "timestamp": "2025-10-22T16:12:43.757701",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Suggestions for managing hypertension in a 54yo female, Lisa T., seen at our NYC clinic on 4/12/22 (SSN: 987-65-4321). She is allergic to ACE inhibitors.",
+  "ground_truth_phi": "NAME: Lisa T. | GEOGRAPHIC_LOCATION: NYC clinic | DATE: 4/12/22 | SOCIAL_SECURITY_NUMBER: 987-65-4321",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Suggestions for managing hypertension in a 54yo female, [REDACTED_NAME], seen at our [REDACTED_GEOGRAPHIC_LOCATION] clinic on [REDACTED_DATE] (SSN: [REDACTED_US_ITIN]). She is allergic to ACE inhibitors.",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 56,
+      "end": 63,
+      "score": 0.85,
+      "text": "Lisa T.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 77,
+      "end": 80,
+      "score": 0.85,
+      "text": "NYC",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 91,
+      "end": 98,
+      "score": 0.6,
+      "text": "4/12/22",
+      "recognizer": "DateRecognizer"
+    },
+    {
+      "entity_type": "US_ITIN",
+      "hipaa_category": "US_ITIN",
+      "start": 105,
+      "end": 116,
+      "score": 0.5,
+      "text": "987-65-4321",
+      "recognizer": "UsItinRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  }
+}

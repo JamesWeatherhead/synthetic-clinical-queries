@@ -1,0 +1,70 @@
+{
+  "query_id": "826",
+  "timestamp": "2025-10-23T09:57:05.681560",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Recommended treatment options for a 62-year-old male with newly diagnosed multiple myeloma, referred by Dr. Alice Smith at St. Francis Hospital on January 15, 2023.",
+  "ground_truth_phi": "NAME: Dr. Alice Smith | GEOGRAPHIC_LOCATION: St. Francis Hospital | DATE: January 15, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "62",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999043941497803,
+      "begin_offset": 36,
+      "end_offset": 38
+    },
+    {
+      "text": "Alice Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9987063407897949,
+      "begin_offset": 108,
+      "end_offset": 119
+    },
+    {
+      "text": "St. Francis Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9929540753364563,
+      "begin_offset": 123,
+      "end_offset": 143
+    },
+    {
+      "text": "January 15, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998983144760132,
+      "begin_offset": 147,
+      "end_offset": 163
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

@@ -1,0 +1,79 @@
+{
+  "query_id": "10",
+  "timestamp": "2025-10-23T09:55:37.498307",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Management guidelines for a 62-year-old male with newly diagnosed COPD, Robert S., who visited our New York clinic on September 10, 2023 (MRN: 112-45-789)?",
+  "ground_truth_phi": "NAME: Robert S. | GEOGRAPHIC_LOCATION: New York clinic | DATE: September 10, 2023 | MEDICAL_RECORD_NUMBER: 112-45-789",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "62",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998142123222351,
+      "begin_offset": 28,
+      "end_offset": 30
+    },
+    {
+      "text": "Robert S",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9857044219970703,
+      "begin_offset": 72,
+      "end_offset": 80
+    },
+    {
+      "text": "New York clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9920986890792847,
+      "begin_offset": 99,
+      "end_offset": 114
+    },
+    {
+      "text": "September 10, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999555349349976,
+      "begin_offset": 118,
+      "end_offset": 136
+    },
+    {
+      "text": "112-45-789",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9787019491195679,
+      "begin_offset": 143,
+      "end_offset": 153
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

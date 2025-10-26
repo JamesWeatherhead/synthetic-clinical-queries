@@ -1,0 +1,69 @@
+{
+  "query_id": "196",
+  "timestamp": "2025-10-22T16:12:43.052440",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Are there any interactions between atorvastatin and the medications prescribed to John Doe, who is treated in Dallas and has a follow-up on September 10th, 2023?",
+  "ground_truth_phi": "NAME: John Doe | GEOGRAPHIC_LOCATION: Dallas | DATE: September 10th, 2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Are there any interactions between atorvastatin and the medications prescribed to [REDACTED_NAME], who is treated in [REDACTED_GEOGRAPHIC_LOCATION] and has a follow-up on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 82,
+      "end": 90,
+      "score": 0.85,
+      "text": "John Doe",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 110,
+      "end": 116,
+      "score": 0.85,
+      "text": "Dallas",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 140,
+      "end": 155,
+      "score": 0.85,
+      "text": "September 10th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 156,
+      "end": 160,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "0.5000",
+    "f1_score": "0.6667"
+  }
+}

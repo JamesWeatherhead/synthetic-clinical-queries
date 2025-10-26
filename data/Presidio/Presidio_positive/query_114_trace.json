@@ -1,0 +1,64 @@
+{
+  "query_id": "114",
+  "timestamp": "2025-10-22T16:12:42.654489",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "mgmt of pt w/ hx of COPD, diabetes, and HTN, Richard K., follow-up scheduled at Johns Hopkins on Aug 10, '23, MRN: 123-456-789.",
+  "ground_truth_phi": "NAME: Richard K. | GEOGRAPHIC_LOCATION: Johns Hopkins | DATE: Aug 10, '23 | MEDICAL_RECORD_NUMBER: 123-456-789",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "mgmt of pt w/ hx of COPD, diabetes, and HTN, [REDACTED_NAME], follow-up scheduled at Johns Hopkins on [REDACTED_DATE], '23, MRN: 123-456-789.",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 45,
+      "end": 55,
+      "score": 0.85,
+      "text": "Richard K.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 97,
+      "end": 103,
+      "score": 0.85,
+      "text": "Aug 10",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Johns Hopkins",
+        "start": 80,
+        "end": 93
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "123-456-789",
+        "start": 115,
+        "end": 126
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 2,
+    "recall": "0.5000",
+    "precision": "0.5000",
+    "f1_score": "0.5000"
+  }
+}

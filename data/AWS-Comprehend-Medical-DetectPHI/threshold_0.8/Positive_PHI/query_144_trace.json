@@ -1,0 +1,79 @@
+{
+  "query_id": "144",
+  "timestamp": "2025-10-23T09:55:51.599359",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Current best practices for managing a 47-year-old male with persistent depressive disorder, Jack Taylor, who was seen at the Chicago downtown clinic on December 15, 2022 (phone: 312-555-1234)?",
+  "ground_truth_phi": "NAME: Jack Taylor | GEOGRAPHIC_LOCATION: Chicago downtown clinic | DATE: December 15, 2022 | PHONE_NUMBER: 312-555-1234",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "47",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9987782835960388,
+      "begin_offset": 38,
+      "end_offset": 40
+    },
+    {
+      "text": "Jack Taylor",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9977701902389526,
+      "begin_offset": 92,
+      "end_offset": 103
+    },
+    {
+      "text": "Chicago downtown clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9766886830329895,
+      "begin_offset": 125,
+      "end_offset": 148
+    },
+    {
+      "text": "December 15, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999856948852539,
+      "begin_offset": 152,
+      "end_offset": 169
+    },
+    {
+      "text": "312-555-1234",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9964397549629211,
+      "begin_offset": 178,
+      "end_offset": 190
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

@@ -1,0 +1,79 @@
+{
+  "query_id": "389",
+  "timestamp": "2025-10-23T09:56:20.843854",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Side effects of lithium in the treatment of bipolar disorder in a 33-year-old male, John T., presented at NYU Langone Health on August 11, 2023 (SSN: 987-65-4321)?",
+  "ground_truth_phi": "NAME: John T. | GEOGRAPHIC_LOCATION: NYU Langone Health | DATE: August 11, 2023 | SOCIAL_SECURITY_NUMBER: 987-65-4321",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "33",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9991737008094788,
+      "begin_offset": 66,
+      "end_offset": 68
+    },
+    {
+      "text": "John T",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9978674650192261,
+      "begin_offset": 84,
+      "end_offset": 90
+    },
+    {
+      "text": "NYU Langone Health",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9739479422569275,
+      "begin_offset": 106,
+      "end_offset": 124
+    },
+    {
+      "text": "August 11, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999974250793457,
+      "begin_offset": 128,
+      "end_offset": 143
+    },
+    {
+      "text": "987-65-4321",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9992386102676392,
+      "begin_offset": 150,
+      "end_offset": 161
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

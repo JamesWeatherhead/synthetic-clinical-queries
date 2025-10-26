@@ -1,0 +1,79 @@
+{
+  "query_id": "77",
+  "timestamp": "2025-10-23T09:55:44.475779",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Latest treatment options for a 72-year-old female with Alzheimer's disease, referred to by Dr. John Lee at Nevada Medical Group on January 5, 2023 (Contact: 702-555-1234)?",
+  "ground_truth_phi": "NAME: John Lee | GEOGRAPHIC_LOCATION: Nevada Medical Group | DATE: January 5, 2023 | PHONE_NUMBER: 702-555-1234",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "72",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997089505195618,
+      "begin_offset": 31,
+      "end_offset": 33
+    },
+    {
+      "text": "John Lee",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996812343597412,
+      "begin_offset": 95,
+      "end_offset": 103
+    },
+    {
+      "text": "Nevada Medical Group",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9954692125320435,
+      "begin_offset": 107,
+      "end_offset": 127
+    },
+    {
+      "text": "January 5, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998698234558105,
+      "begin_offset": 131,
+      "end_offset": 146
+    },
+    {
+      "text": "702-555-1234",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9772210121154785,
+      "begin_offset": 157,
+      "end_offset": 169
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

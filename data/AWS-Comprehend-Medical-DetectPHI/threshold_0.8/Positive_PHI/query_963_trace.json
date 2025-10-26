@@ -1,0 +1,70 @@
+{
+  "query_id": "963",
+  "timestamp": "2025-10-23T09:57:22.171760",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Side effects of combining atorvastatin with lisinopril in a 65yo male, John D., who visited our Newport office on March 1st, 2024 (MRN: 98234)?",
+  "ground_truth_phi": "NAME: John D. | DATE: March 1st, 2024 | GEOGRAPHIC_LOCATION: Newport | MEDICAL_RECORD_NUMBER: 98234",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "65yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9723290205001831,
+      "begin_offset": 60,
+      "end_offset": 64
+    },
+    {
+      "text": "John D",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9482231736183167,
+      "begin_offset": 71,
+      "end_offset": 77
+    },
+    {
+      "text": "March 1st, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999728202819824,
+      "begin_offset": 114,
+      "end_offset": 129
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Newport"
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "98234"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 2,
+    "leaked_failures": 2,
+    "total_detected": 3,
+    "true_positives": 2,
+    "recall": "0.5000",
+    "precision": "0.6667",
+    "f1_score": "0.5714"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 3
+}

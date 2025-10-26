@@ -1,0 +1,67 @@
+{
+  "query_id": "725",
+  "timestamp": "2025-10-22T16:12:45.842459",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Best practices for managing asthma in a 9-year-old boy, Timmy L., admitted to Boston Children's Hospital on March 18, 2023?",
+  "ground_truth_phi": "NAME: Timmy L. | GEOGRAPHIC_LOCATION: Boston Children's Hospital | DATE: March 18, 2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Best practices for managing asthma in a [REDACTED_DATE] boy, [REDACTED_NAME], admitted to Boston Children's Hospital on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 40,
+      "end": 50,
+      "score": 0.85,
+      "text": "9-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 56,
+      "end": 64,
+      "score": 0.85,
+      "text": "Timmy L.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 108,
+      "end": 122,
+      "score": 0.85,
+      "text": "March 18, 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Boston Children's Hospital",
+        "start": 78,
+        "end": 104
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.6667",
+    "precision": "0.6667",
+    "f1_score": "0.6667"
+  }
+}

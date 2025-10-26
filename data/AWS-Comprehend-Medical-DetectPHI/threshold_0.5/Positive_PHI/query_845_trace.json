@@ -1,0 +1,79 @@
+{
+  "query_id": "845",
+  "timestamp": "2025-10-23T09:57:07.810985",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the side effects of using amiodarone in a 60-year-old male, David A., documented at Stanford Hospital on December 5th, 2023, with his account number BA-98765432?",
+  "ground_truth_phi": "NAME: David A. | GEOGRAPHIC_LOCATION: Stanford Hospital | DATE: December 5th, 2023 | ACCOUNT_NUMBER: BA-98765432",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "60",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9784514904022217,
+      "begin_offset": 51,
+      "end_offset": 53
+    },
+    {
+      "text": "David A",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9861007332801819,
+      "begin_offset": 69,
+      "end_offset": 76
+    },
+    {
+      "text": "Stanford Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9833688139915466,
+      "begin_offset": 93,
+      "end_offset": 110
+    },
+    {
+      "text": "December 5th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999618530273438,
+      "begin_offset": 114,
+      "end_offset": 132
+    },
+    {
+      "text": "98765432",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8602915406227112,
+      "begin_offset": 161,
+      "end_offset": 169
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

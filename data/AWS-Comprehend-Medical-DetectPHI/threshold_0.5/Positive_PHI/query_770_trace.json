@@ -1,0 +1,70 @@
+{
+  "query_id": "770",
+  "timestamp": "2025-10-23T09:56:59.847436",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Latest management guidelines for chronic kidney disease in adults, case review of Tom H., dialysis at St. Luke's Medical Center, visit on October 10, 2023, contact: (555) 123-4567.",
+  "ground_truth_phi": "NAME: Tom H. | GEOGRAPHIC_LOCATION: St. Luke's Medical Center | DATE: October 10, 2023 | PHONE_NUMBER: (555) 123-4567",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Tom H",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9526637196540833,
+      "begin_offset": 82,
+      "end_offset": 87
+    },
+    {
+      "text": "St. Luke's Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9861314296722412,
+      "begin_offset": 102,
+      "end_offset": 127
+    },
+    {
+      "text": "October 10, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999581575393677,
+      "begin_offset": 138,
+      "end_offset": 154
+    },
+    {
+      "text": "(555) 123-4567",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8961029648780823,
+      "begin_offset": 165,
+      "end_offset": 179
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

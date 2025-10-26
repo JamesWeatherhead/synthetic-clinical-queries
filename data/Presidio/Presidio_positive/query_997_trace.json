@@ -1,0 +1,78 @@
+{
+  "query_id": "997",
+  "timestamp": "2025-10-22T16:12:47.286559",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommended follow-up care for a 58-year-old male patient, Robert L., seen in Dallas on March 22nd, 2024 after coronary artery bypass graft surgery?",
+  "ground_truth_phi": "NAME: Robert L. | GEOGRAPHIC_LOCATION: Dallas | DATE: March 22nd, 2024",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Recommended follow-up care for a [REDACTED_DATE] male patient, [REDACTED_NAME], seen in [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE] after coronary artery bypass graft surgery?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 33,
+      "end": 44,
+      "score": 0.85,
+      "text": "58-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 59,
+      "end": 68,
+      "score": 0.85,
+      "text": "Robert L.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 78,
+      "end": 84,
+      "score": 0.85,
+      "text": "Dallas",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 88,
+      "end": 99,
+      "score": 0.85,
+      "text": "March 22nd,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 100,
+      "end": 104,
+      "score": 0.85,
+      "text": "2024",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.4000",
+    "f1_score": "0.5714"
+  }
+}

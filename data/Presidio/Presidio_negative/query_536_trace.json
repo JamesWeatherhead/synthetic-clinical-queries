@@ -1,0 +1,54 @@
+{
+  "query_id": "536",
+  "timestamp": "2025-10-22T16:24:24.888511",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommended guidelines for managing hypertension in a 67-year-old male patient from the Denver metro area who was diagnosed last year.",
+  "presidio_output": "Recommended guidelines for managing hypertension in a [REDACTED_DATE] male patient from the [REDACTED_GEOGRAPHIC_LOCATION] metro area who was diagnosed [REDACTED_DATE].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 54,
+      "end": 65,
+      "score": 0.85,
+      "text": "67-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 88,
+      "end": 94,
+      "score": 0.85,
+      "text": "Denver",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 124,
+      "end": 133,
+      "score": 0.85,
+      "text": "last year",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 3,
+    "false_redactions_by_type": {
+      "DATE": 2,
+      "GEOGRAPHIC_LOCATION": 1
+    },
+    "status": "OVER_REDACTED"
+  }
+}

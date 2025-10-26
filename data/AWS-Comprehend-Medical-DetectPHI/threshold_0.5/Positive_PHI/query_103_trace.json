@@ -1,0 +1,70 @@
+{
+  "query_id": "103",
+  "timestamp": "2025-10-23T09:55:47.234888",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "side efects of atorvastatin in pt w/ hx of TIA? case reviewed by Dr. Emily P. at our Seattle office on 05/08/2023, ref. code: EM-2554.",
+  "ground_truth_phi": "NAME: Dr. Emily P. | GEOGRAPHIC_LOCATION: Seattle | DATE: 05/08/2023 | UNIQUE_IDENTIFIER: EM-2554",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Emily P.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9325113296508789,
+      "begin_offset": 69,
+      "end_offset": 77
+    },
+    {
+      "text": "Seattle",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8936983346939087,
+      "begin_offset": 85,
+      "end_offset": 92
+    },
+    {
+      "text": "05/08/2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999703168869019,
+      "begin_offset": 103,
+      "end_offset": 113
+    },
+    {
+      "text": "EM",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6478585004806519,
+      "begin_offset": 126,
+      "end_offset": 128
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

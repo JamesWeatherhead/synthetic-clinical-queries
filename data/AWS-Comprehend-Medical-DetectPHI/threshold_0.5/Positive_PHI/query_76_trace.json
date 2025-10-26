@@ -1,0 +1,70 @@
+{
+  "query_id": "76",
+  "timestamp": "2025-10-23T09:55:44.346101",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Contraindications for using warfarin in a patient similar to Alice Brown, seen at St. Louis Clinic on July 10th, 2023, with MRN 987-65-4321?",
+  "ground_truth_phi": "NAME: Alice Brown | GEOGRAPHIC_LOCATION: St. Louis Clinic | DATE: July 10th, 2023 | MEDICAL_RECORD_NUMBER: 987-65-4321",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Alice Brown",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9968379735946655,
+      "begin_offset": 61,
+      "end_offset": 72
+    },
+    {
+      "text": "St. Louis Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9964805245399475,
+      "begin_offset": 82,
+      "end_offset": 98
+    },
+    {
+      "text": "July 10th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999469518661499,
+      "begin_offset": 102,
+      "end_offset": 117
+    },
+    {
+      "text": "987-65-4321",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996964931488037,
+      "begin_offset": 128,
+      "end_offset": 139
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

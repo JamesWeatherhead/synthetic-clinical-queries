@@ -1,0 +1,58 @@
+{
+  "query_id": "1021",
+  "timestamp": "2025-10-22T16:12:47.407793",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Current recommendations for anticoagulation in a 65-year-old female with atrial fibrillation, recently seen at St. Joseph's Hospital on Feb 15, 2023?",
+  "ground_truth_phi": "GEOGRAPHIC_LOCATION: St. Joseph's Hospital | DATE: Feb 15, 2023",
+  "ground_truth_phi_count": 2,
+  "presidio_output": "Current recommendations for anticoagulation in a [REDACTED_DATE] female with atrial fibrillation, recently seen at St. Joseph's Hospital on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 49,
+      "end": 60,
+      "score": 0.85,
+      "text": "65-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 136,
+      "end": 148,
+      "score": 0.85,
+      "text": "Feb 15, 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "St. Joseph's Hospital",
+        "start": 111,
+        "end": 132
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 2,
+    "successfully_redacted": 1,
+    "leaked_failures": 1,
+    "total_detected": 2,
+    "recall": "0.5000",
+    "precision": "0.5000",
+    "f1_score": "0.5000"
+  }
+}

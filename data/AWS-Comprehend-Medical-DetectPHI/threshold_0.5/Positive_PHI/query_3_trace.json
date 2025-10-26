@@ -1,0 +1,70 @@
+{
+  "query_id": "3",
+  "timestamp": "2025-10-23T09:55:36.605156",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Rec mgmt of 70yo M w/ CHF, seen by Dr. John L. at Mt. Sinai on Feb 21, 2023. looking for alt tx options after beta-blocker intol.",
+  "ground_truth_phi": "NAME: John L. | GEOGRAPHIC_LOCATION: Mt. Sinai | DATE: Feb 21, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "70yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9936271905899048,
+      "begin_offset": 12,
+      "end_offset": 16
+    },
+    {
+      "text": "John L.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9983086585998535,
+      "begin_offset": 39,
+      "end_offset": 46
+    },
+    {
+      "text": "Mt. Sinai",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9957809448242188,
+      "begin_offset": 50,
+      "end_offset": 59
+    },
+    {
+      "text": "Feb 21, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9976606369018555,
+      "begin_offset": 63,
+      "end_offset": 75
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

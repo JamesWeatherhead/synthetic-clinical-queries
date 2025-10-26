@@ -1,0 +1,70 @@
+{
+  "query_id": "139",
+  "timestamp": "2025-10-23T09:55:51.067239",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "How does treatment outcome compare for 60yo male, Jack Thompson, dx'd with stage III lung cancer at Riverfield Medical Center on Sep 15, 2020, versus standard care protocols?",
+  "ground_truth_phi": "NAME: Jack Thompson | GEOGRAPHIC_LOCATION: Riverfield Medical Center | DATE: Sep 15, 2020",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "60yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9215348362922668,
+      "begin_offset": 39,
+      "end_offset": 43
+    },
+    {
+      "text": "Jack Thompson",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9979735016822815,
+      "begin_offset": 50,
+      "end_offset": 63
+    },
+    {
+      "text": "Riverfield Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9913246631622314,
+      "begin_offset": 100,
+      "end_offset": 125
+    },
+    {
+      "text": "Sep 15, 2020",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9907100796699524,
+      "begin_offset": 129,
+      "end_offset": 141
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

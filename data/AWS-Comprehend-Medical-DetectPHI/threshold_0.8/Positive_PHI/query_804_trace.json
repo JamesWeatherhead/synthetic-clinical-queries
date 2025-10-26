@@ -1,0 +1,70 @@
+{
+  "query_id": "804",
+  "timestamp": "2025-10-23T09:57:03.305936",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "rec. management for pt w/ hx of COPD & asthma, refer to notes for Dave B., seen at NYU Med. Center on 07/07/2023. concerned about interactions w/ albuterol. contact: 212-555-1234.",
+  "ground_truth_phi": "NAME: Dave B. | GEOGRAPHIC_LOCATION: NYU Med. Center | DATE: 07/07/2023 | PHONE_NUMBER: 212-555-1234",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Dave B",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9649646878242493,
+      "begin_offset": 66,
+      "end_offset": 72
+    },
+    {
+      "text": "NYU Med. Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8282251358032227,
+      "begin_offset": 83,
+      "end_offset": 98
+    },
+    {
+      "text": "07/07/2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998212456703186,
+      "begin_offset": 102,
+      "end_offset": 112
+    },
+    {
+      "text": "212-555-1234",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.980732798576355,
+      "begin_offset": 166,
+      "end_offset": 178
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

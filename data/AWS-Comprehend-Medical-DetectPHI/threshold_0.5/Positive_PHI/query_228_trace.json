@@ -1,0 +1,61 @@
+{
+  "query_id": "228",
+  "timestamp": "2025-10-23T09:56:00.379669",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "pt seen at Stanford 4/3/2023, dx'd w/ CHF, put on amiodarone, what are the monitoring guidelines? insurance is QX-789012.",
+  "ground_truth_phi": "GEOGRAPHIC_LOCATION: Stanford | DATE: 4/3/2023 | UNIQUE_IDENTIFIER: QX-789012",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "Stanford",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.984570324420929,
+      "begin_offset": 11,
+      "end_offset": 19
+    },
+    {
+      "text": "4/3/2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999685287475586,
+      "begin_offset": 20,
+      "end_offset": 28
+    },
+    {
+      "text": "789012",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.718292772769928,
+      "begin_offset": 114,
+      "end_offset": 120
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

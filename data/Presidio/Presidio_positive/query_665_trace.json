@@ -1,0 +1,64 @@
+{
+  "query_id": "665",
+  "timestamp": "2025-10-22T16:12:45.552220",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Current protocol for post-op care in 34y F, Emma H., pt listed under record #99881-BCH, s/p liver transplant on Jul 8 2023 at Boston Children's Hosp.",
+  "ground_truth_phi": "NAME: Emma H. | MEDICAL_RECORD_NUMBER: #99881-BCH | DATE: Jul 8 2023 | GEOGRAPHIC_LOCATION: Boston Children's Hosp",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Current protocol for post-op care in 34y F, [REDACTED_NAME], pt listed under record #99881-BCH, s/p liver transplant on [REDACTED_DATE] at Boston Children's Hosp.",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 44,
+      "end": 51,
+      "score": 0.85,
+      "text": "Emma H.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 112,
+      "end": 122,
+      "score": 0.85,
+      "text": "Jul 8 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "#99881-BCH",
+        "start": 76,
+        "end": 86
+      },
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Boston Children's Hosp",
+        "start": 126,
+        "end": 148
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 2,
+    "recall": "0.5000",
+    "precision": "1.0000",
+    "f1_score": "0.6667"
+  }
+}

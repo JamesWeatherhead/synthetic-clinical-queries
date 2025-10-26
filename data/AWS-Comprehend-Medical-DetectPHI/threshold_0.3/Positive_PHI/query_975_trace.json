@@ -1,0 +1,79 @@
+{
+  "query_id": "975",
+  "timestamp": "2025-10-23T09:57:23.556607",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Latest treatment protocols for methicillin-resistant Staphylococcus aureus (MRSA) pneumonia in an ICU patient, 47yo female, admitted to Mt. Sinai Hospital on 05/30/2023, physician in charge: Dr. Lee.",
+  "ground_truth_phi": "GEOGRAPHIC_LOCATION: Mt. Sinai Hospital | DATE: 05/30/2023 | NAME: Dr. Lee",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "ICU",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9973964691162109,
+      "begin_offset": 98,
+      "end_offset": 101
+    },
+    {
+      "text": "47yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999588668346405,
+      "begin_offset": 111,
+      "end_offset": 115
+    },
+    {
+      "text": "Mt. Sinai Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9964726567268372,
+      "begin_offset": 136,
+      "end_offset": 154
+    },
+    {
+      "text": "05/30/2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999929666519165,
+      "begin_offset": 158,
+      "end_offset": 168
+    },
+    {
+      "text": "Lee",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995800852775574,
+      "begin_offset": 195,
+      "end_offset": 198
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.6000",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

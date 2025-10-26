@@ -1,0 +1,70 @@
+{
+  "query_id": "403",
+  "timestamp": "2025-10-23T09:56:22.255583",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Management guidelines for pt w/ hx of atrial fibrillation, see Sarah B. at Cedar Sinai, recently admitted on Jul 15th 2023 (insurance: HPX345678)?",
+  "ground_truth_phi": "NAME: Sarah B. | GEOGRAPHIC_LOCATION: Cedar Sinai | DATE: Jul 15th 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: HPX345678",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Sarah B.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9895378351211548,
+      "begin_offset": 63,
+      "end_offset": 71
+    },
+    {
+      "text": "Cedar Sinai",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9955614805221558,
+      "begin_offset": 75,
+      "end_offset": 86
+    },
+    {
+      "text": "Jul 15th 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9986500144004822,
+      "begin_offset": 109,
+      "end_offset": 122
+    },
+    {
+      "text": "HPX345678",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9839163422584534,
+      "begin_offset": 135,
+      "end_offset": 144
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

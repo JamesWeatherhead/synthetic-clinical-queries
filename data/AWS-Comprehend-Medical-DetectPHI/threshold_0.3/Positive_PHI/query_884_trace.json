@@ -1,0 +1,79 @@
+{
+  "query_id": "884",
+  "timestamp": "2025-10-23T09:57:11.559216",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "5-yr survival rate for 65yo male post liver tx, like pt James T., admitted to UCLA Med Ctr, s/p surgery on Sep 10th, 2023?",
+  "ground_truth_phi": "NAME: James T. | GEOGRAPHIC_LOCATION: UCLA Med Ctr | DATE: Sep 10th, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "5",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.3387775421142578,
+      "begin_offset": 0,
+      "end_offset": 1
+    },
+    {
+      "text": "65yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9101248383522034,
+      "begin_offset": 23,
+      "end_offset": 27
+    },
+    {
+      "text": "James T",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9983127117156982,
+      "begin_offset": 56,
+      "end_offset": 63
+    },
+    {
+      "text": "UCLA Med Ctr",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8916988372802734,
+      "begin_offset": 78,
+      "end_offset": 90
+    },
+    {
+      "text": "Sep 10th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9943114519119263,
+      "begin_offset": 107,
+      "end_offset": 121
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.6000",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

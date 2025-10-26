@@ -1,0 +1,76 @@
+{
+  "query_id": "453",
+  "timestamp": "2025-10-22T16:12:44.402389",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "pt w/ hx of COPD, Susan L., seen at John Hopkins on 08/12/2022, asking about the newest inhaler options. contact info is susan.l@example.com.",
+  "ground_truth_phi": "NAME: Susan L. | GEOGRAPHIC_LOCATION: John Hopkins | DATE: 08/12/2022 | EMAIL_ADDRESS: susan.l@example.com",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "pt w/ hx of COPD, [REDACTED_NAME], seen at John Hopkins on [REDACTED_DATE], asking about the newest inhaler options. contact info is [REDACTED_EMAIL_ADDRESS].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "EMAIL_ADDRESS",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "start": 121,
+      "end": 140,
+      "score": 1.0,
+      "text": "susan.l@example.com",
+      "recognizer": "EmailRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 18,
+      "end": 26,
+      "score": 0.85,
+      "text": "Susan L.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 52,
+      "end": 62,
+      "score": 0.6,
+      "text": "08/12/2022",
+      "recognizer": "DateRecognizer"
+    },
+    {
+      "entity_type": "URL",
+      "hipaa_category": "WEB_URL",
+      "start": 129,
+      "end": 140,
+      "score": 0.5,
+      "text": "example.com",
+      "recognizer": "UrlRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "John Hopkins",
+        "start": 36,
+        "end": 48
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

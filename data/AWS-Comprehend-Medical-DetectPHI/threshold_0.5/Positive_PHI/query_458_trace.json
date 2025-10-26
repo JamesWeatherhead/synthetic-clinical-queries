@@ -1,0 +1,70 @@
+{
+  "query_id": "458",
+  "timestamp": "2025-10-23T09:56:27.804730",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Recommendations for treating chronic migraines in a patient, Sarah B., who visited Springfield Clinic on March 9th, 2023, MRN: SC-654321.",
+  "ground_truth_phi": "NAME: Sarah B. | GEOGRAPHIC_LOCATION: Springfield Clinic | DATE: March 9th, 2023 | MEDICAL_RECORD_NUMBER: SC-654321",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Sarah B",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9800631999969482,
+      "begin_offset": 61,
+      "end_offset": 68
+    },
+    {
+      "text": "Springfield Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9918580651283264,
+      "begin_offset": 83,
+      "end_offset": 101
+    },
+    {
+      "text": "March 9th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997658133506775,
+      "begin_offset": 105,
+      "end_offset": 120
+    },
+    {
+      "text": "654321",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6803057193756104,
+      "begin_offset": 130,
+      "end_offset": 136
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 4
+}

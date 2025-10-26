@@ -1,0 +1,79 @@
+{
+  "query_id": "902",
+  "timestamp": "2025-10-23T09:57:13.582965",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for managing chronic heart failure in a 75-year-old female patient, Lisa Thompson from Houston, admitted on September 12, 2022. Insurance policy number TX-456789.",
+  "ground_truth_phi": "NAME: Lisa Thompson | GEOGRAPHIC_LOCATION: Houston | DATE: September 12, 2022 | HEALTH_PLAN_BENEFICIARY_NUMBER: TX-456789",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "75",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996509552001953,
+      "begin_offset": 51,
+      "end_offset": 53
+    },
+    {
+      "text": "Lisa Thompson",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9985872507095337,
+      "begin_offset": 79,
+      "end_offset": 92
+    },
+    {
+      "text": "Houston",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9661060571670532,
+      "begin_offset": 98,
+      "end_offset": 105
+    },
+    {
+      "text": "September 12, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998130202293396,
+      "begin_offset": 119,
+      "end_offset": 137
+    },
+    {
+      "text": "456789",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8393927812576294,
+      "begin_offset": 166,
+      "end_offset": 172
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

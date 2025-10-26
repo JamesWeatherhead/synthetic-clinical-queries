@@ -1,0 +1,70 @@
+{
+  "query_id": "904",
+  "timestamp": "2025-10-23T09:57:13.780612",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "protocol for T2DM pt, mrn 22334455, Jane D., seen at Johns Hopkins on Feb 20 2024. Consideration for new tx regimen plz.",
+  "ground_truth_phi": "NAME: Jane D. | GEOGRAPHIC_LOCATION: Johns Hopkins | DATE: Feb 20 2024 | MEDICAL_RECORD_NUMBER: 22334455",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "22334455",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9949068427085876,
+      "begin_offset": 26,
+      "end_offset": 34
+    },
+    {
+      "text": "Jane D",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8837727308273315,
+      "begin_offset": 36,
+      "end_offset": 42
+    },
+    {
+      "text": "Johns Hopkins",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6590840220451355,
+      "begin_offset": 53,
+      "end_offset": 66
+    },
+    {
+      "text": "Feb 20 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9976478219032288,
+      "begin_offset": 70,
+      "end_offset": 81
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

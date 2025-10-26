@@ -1,0 +1,79 @@
+{
+  "query_id": "1046",
+  "timestamp": "2025-10-23T09:57:32.874161",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidance on post-operative care for a 59yo female, Emily Carter, who underwent knee replacement surgery at Memorial Hospital on April 12th, 2023. Her insurance number is AB-654321.",
+  "ground_truth_phi": "NAME: Emily Carter | GEOGRAPHIC_LOCATION: Memorial Hospital | DATE: April 12th, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: AB-654321",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "59yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9864029884338379,
+      "begin_offset": 38,
+      "end_offset": 42
+    },
+    {
+      "text": "Emily Carter",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9981946349143982,
+      "begin_offset": 51,
+      "end_offset": 63
+    },
+    {
+      "text": "Memorial Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9964553117752075,
+      "begin_offset": 107,
+      "end_offset": 124
+    },
+    {
+      "text": "April 12th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9992615580558777,
+      "begin_offset": 128,
+      "end_offset": 144
+    },
+    {
+      "text": "654321",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8423197865486145,
+      "begin_offset": 173,
+      "end_offset": 179
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

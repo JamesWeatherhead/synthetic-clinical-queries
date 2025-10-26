@@ -1,0 +1,70 @@
+{
+  "query_id": "328",
+  "timestamp": "2025-10-23T09:56:14.134789",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Updated protocols for managing COPD exacerbations in a 69-year-old male, John Smith from Elm Street, Denver, assessed on May 15th, 2023.",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: Elm Street, Denver | DATE: May 15th, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "69",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998076558113098,
+      "begin_offset": 55,
+      "end_offset": 57
+    },
+    {
+      "text": "John Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9922825694084167,
+      "begin_offset": 73,
+      "end_offset": 83
+    },
+    {
+      "text": "Elm Street, Denver",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9978194236755371,
+      "begin_offset": 89,
+      "end_offset": 107
+    },
+    {
+      "text": "May 15th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999763548374176,
+      "begin_offset": 121,
+      "end_offset": 135
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

@@ -1,0 +1,79 @@
+{
+  "query_id": "517",
+  "timestamp": "2025-10-23T09:56:34.580071",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Adverse effects of taking lisinopril for a 55-year-old male, David L. seen at our San Francisco clinic on July 10, 2022. Insurance number: 1234-567-890?",
+  "ground_truth_phi": "NAME: David L. | GEOGRAPHIC_LOCATION: San Francisco clinic | DATE: July 10, 2022 | HEALTH_PLAN_BENEFICIARY_NUMBER: 1234-567-890",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "55",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9985244870185852,
+      "begin_offset": 43,
+      "end_offset": 45
+    },
+    {
+      "text": "David L.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9621571898460388,
+      "begin_offset": 61,
+      "end_offset": 69
+    },
+    {
+      "text": "San Francisco clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9962592124938965,
+      "begin_offset": 82,
+      "end_offset": 102
+    },
+    {
+      "text": "July 10, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999967098236084,
+      "begin_offset": 106,
+      "end_offset": 119
+    },
+    {
+      "text": "1234-567-890",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.33919060230255127,
+      "begin_offset": 139,
+      "end_offset": 151
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

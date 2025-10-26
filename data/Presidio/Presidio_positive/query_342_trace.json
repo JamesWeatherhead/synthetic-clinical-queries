@@ -1,0 +1,78 @@
+{
+  "query_id": "342",
+  "timestamp": "2025-10-22T16:12:43.814735",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guidelines for prescribing anticoagulation therapy for atrial fibrillation in a 70-year-old man, attending Dr. Patel's clinic in San Francisco, last visit on February 1st, 2023.",
+  "ground_truth_phi": "NAME: Patel | GEOGRAPHIC_LOCATION: San Francisco | DATE: February 1st, 2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Guidelines for prescribing anticoagulation therapy for atrial fibrillation in a [REDACTED_DATE] man, attending Dr. [REDACTED_NAME]'s clinic in [REDACTED_GEOGRAPHIC_LOCATION], last visit on [REDACTED_DATE], [REDACTED_DATE].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 80,
+      "end": 91,
+      "score": 0.85,
+      "text": "70-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 111,
+      "end": 116,
+      "score": 0.85,
+      "text": "Patel",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 129,
+      "end": 142,
+      "score": 0.85,
+      "text": "San Francisco",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 158,
+      "end": 170,
+      "score": 0.85,
+      "text": "February 1st",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 172,
+      "end": 176,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.4000",
+    "f1_score": "0.5714"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "query_id": "233",
+  "timestamp": "2025-10-22T16:12:43.228164",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "current EBM for pt w/ hx of CHF, seen at Harborview Medical. Name: Sam K., DOB: 04/22/1955. He has insurance id: PL-987654321.",
+  "ground_truth_phi": "NAME: Sam K. | DATE: 04/22/1955 | HEALTH_PLAN_BENEFICIARY_NUMBER: PL-987654321 | GEOGRAPHIC_LOCATION: Harborview Medical",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "current EBM for pt w/ hx of CHF, seen at Harborview Medical. Name: [REDACTED_NAME], DOB: [REDACTED_DATE]. He has insurance id: PL-[REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 67,
+      "end": 73,
+      "score": 0.85,
+      "text": "Sam K.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 80,
+      "end": 90,
+      "score": 0.6,
+      "text": "04/22/1955",
+      "recognizer": "DateRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 116,
+      "end": 125,
+      "score": 0.5,
+      "text": "987654321",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Harborview Medical",
+        "start": 41,
+        "end": 59
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "0.6667",
+    "f1_score": "0.7059"
+  }
+}

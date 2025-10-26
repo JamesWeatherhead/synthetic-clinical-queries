@@ -1,0 +1,87 @@
+{
+  "query_id": "772",
+  "timestamp": "2025-10-22T16:12:46.089752",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the latest treatment options for a 56-year-old female with rheumatoid arthritis, seen at Dallas Medical Center on Sep 15th, 2023, named Lisa T. (MRN: DMC-987654)?",
+  "ground_truth_phi": "GEOGRAPHIC_LOCATION: Dallas Medical Center | DATE: Sep 15th, 2023 | NAME: Lisa T. | MEDICAL_RECORD_NUMBER: DMC-987654",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What are the latest treatment options for a [REDACTED_DATE] female with rheumatoid arthritis, seen at [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE], named [REDACTED_NAME] (MRN: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 44,
+      "end": 55,
+      "score": 0.85,
+      "text": "56-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 98,
+      "end": 119,
+      "score": 0.85,
+      "text": "Dallas Medical Center",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 123,
+      "end": 132,
+      "score": 0.85,
+      "text": "Sep 15th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 133,
+      "end": 137,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 145,
+      "end": 152,
+      "score": 0.85,
+      "text": "Lisa T.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 159,
+      "end": 169,
+      "score": 0.7,
+      "text": "DMC-987654",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "recall": "1.0000",
+    "precision": "0.5000",
+    "f1_score": "0.6667"
+  }
+}

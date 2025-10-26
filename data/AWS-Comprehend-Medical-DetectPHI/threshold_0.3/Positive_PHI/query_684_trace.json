@@ -1,0 +1,79 @@
+{
+  "query_id": "684",
+  "timestamp": "2025-10-23T09:56:51.277025",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Prognosis for a 50-year-old male patient, Aaron Z., diagnosed with stage IV lung cancer, admitted to NYU Langone on 09/15/2022 (MRN: 654321-789)?",
+  "ground_truth_phi": "NAME: Aaron Z. | GEOGRAPHIC_LOCATION: NYU Langone | DATE: 09/15/2022 | MEDICAL_RECORD_NUMBER: 654321-789",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "50",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9994304776191711,
+      "begin_offset": 16,
+      "end_offset": 18
+    },
+    {
+      "text": "Aaron",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6462354063987732,
+      "begin_offset": 42,
+      "end_offset": 47
+    },
+    {
+      "text": "NYU Langone",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6872154474258423,
+      "begin_offset": 101,
+      "end_offset": 112
+    },
+    {
+      "text": "09/15/2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999499320983887,
+      "begin_offset": 116,
+      "end_offset": 126
+    },
+    {
+      "text": "654321",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.5926282405853271,
+      "begin_offset": 133,
+      "end_offset": 139
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

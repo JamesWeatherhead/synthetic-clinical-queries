@@ -1,0 +1,75 @@
+{
+  "query_id": "307",
+  "timestamp": "2025-10-23T09:56:12.111611",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Contraindications for adalimumab in a 32-year-old female, Ana Johnson from New York City, seen on March 15, 2024, with insurance ID ABC-987654.",
+  "ground_truth_phi": "NAME: Ana Johnson | GEOGRAPHIC_LOCATION: New York City | DATE: March 15, 2024 | HEALTH_PLAN_BENEFICIARY_NUMBER: ABC-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "32",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9946734309196472,
+      "begin_offset": 38,
+      "end_offset": 40
+    },
+    {
+      "text": "Ana Johnson",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9906604886054993,
+      "begin_offset": 58,
+      "end_offset": 69
+    },
+    {
+      "text": "New York City",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9832711815834045,
+      "begin_offset": 75,
+      "end_offset": 88
+    },
+    {
+      "text": "March 15, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999644756317139,
+      "begin_offset": 98,
+      "end_offset": 112
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+        "value": "ABC-987654"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 4
+}

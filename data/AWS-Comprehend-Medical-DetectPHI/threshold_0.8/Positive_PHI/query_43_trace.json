@@ -1,0 +1,61 @@
+{
+  "query_id": "43",
+  "timestamp": "2025-10-23T09:55:40.951523",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "efficacy of new RNA-based vx in pt w/ hx of HTN & CKD, John D. checked in at Cleveland Clinic on 02/14/2022. Also, any insurance issues with HMO-234567?",
+  "ground_truth_phi": "NAME: John D. | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: 02/14/2022 | HEALTH_PLAN_BENEFICIARY_NUMBER: HMO-234567",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Cleveland Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9981405735015869,
+      "begin_offset": 77,
+      "end_offset": 93
+    },
+    {
+      "text": "02/14/2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999707937240601,
+      "begin_offset": 97,
+      "end_offset": 107
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "NAME",
+        "value": "John D."
+      },
+      {
+        "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+        "value": "HMO-234567"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 2,
+    "leaked_failures": 2,
+    "total_detected": 2,
+    "true_positives": 2,
+    "recall": "0.5000",
+    "precision": "1.0000",
+    "f1_score": "0.6667"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 2
+}

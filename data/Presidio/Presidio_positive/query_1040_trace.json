@@ -1,0 +1,76 @@
+{
+  "query_id": "1040",
+  "timestamp": "2025-10-22T16:12:47.514739",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "contraindications for prescribing warfarin in pt w/ hx of afib, ref. case of John D., treated at Stanford on Nov 3, 2022, email johndoe@hospital.org?",
+  "ground_truth_phi": "NAME: John D. | GEOGRAPHIC_LOCATION: Stanford | DATE: Nov 3, 2022 | EMAIL_ADDRESS: johndoe@hospital.org",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "contraindications for prescribing warfarin in pt w/ hx of afib, ref. case of [REDACTED_NAME], treated at Stanford on [REDACTED_DATE], email [REDACTED_EMAIL_ADDRESS]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "EMAIL_ADDRESS",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "start": 128,
+      "end": 148,
+      "score": 1.0,
+      "text": "johndoe@hospital.org",
+      "recognizer": "EmailRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 77,
+      "end": 84,
+      "score": 0.85,
+      "text": "John D.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 109,
+      "end": 120,
+      "score": 0.85,
+      "text": "Nov 3, 2022",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "URL",
+      "hipaa_category": "WEB_URL",
+      "start": 136,
+      "end": 148,
+      "score": 0.5,
+      "text": "hospital.org",
+      "recognizer": "UrlRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Stanford",
+        "start": 97,
+        "end": 105
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

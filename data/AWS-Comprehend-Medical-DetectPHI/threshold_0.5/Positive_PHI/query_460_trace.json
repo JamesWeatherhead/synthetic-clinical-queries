@@ -1,0 +1,88 @@
+{
+  "query_id": "460",
+  "timestamp": "2025-10-23T09:56:28.061210",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best practices for treating osteoarthritis in a 68-year-old female, Mary L., who has been attending physical therapy at Westside Clinic in Seattle since Jan 10th, 2023 (Health Plan Number: HR-567890)?",
+  "ground_truth_phi": "NAME: Mary L. | GEOGRAPHIC_LOCATION: Westside Clinic in Seattle | DATE: Jan 10th, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: HR-567890",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "68",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9992018342018127,
+      "begin_offset": 48,
+      "end_offset": 50
+    },
+    {
+      "text": "Mary L",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9975680708885193,
+      "begin_offset": 68,
+      "end_offset": 74
+    },
+    {
+      "text": "Westside Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9978793859481812,
+      "begin_offset": 120,
+      "end_offset": 135
+    },
+    {
+      "text": "Seattle",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9853276014328003,
+      "begin_offset": 139,
+      "end_offset": 146
+    },
+    {
+      "text": "Jan 10th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995555281639099,
+      "begin_offset": 153,
+      "end_offset": 167
+    },
+    {
+      "text": "567890",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.547236442565918,
+      "begin_offset": 192,
+      "end_offset": 198
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "0.8333",
+    "f1_score": "0.9091"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 6
+}

@@ -1,0 +1,60 @@
+{
+  "query_id": "214",
+  "timestamp": "2025-10-22T16:12:43.152112",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Comparative efficacy of clopidogrel vs. aspirin in reducing recurrent stroke risk in patients like John Q. from Boston, who had a stroke on March 4, 2023?",
+  "ground_truth_phi": "NAME: John Q. | GEOGRAPHIC_LOCATION: Boston | DATE: March 4, 2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Comparative efficacy of clopidogrel vs. aspirin in reducing recurrent stroke risk in patients like [REDACTED_NAME] from [REDACTED_GEOGRAPHIC_LOCATION], who had a stroke on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 99,
+      "end": 106,
+      "score": 0.85,
+      "text": "John Q.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 112,
+      "end": 118,
+      "score": 0.85,
+      "text": "Boston",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 140,
+      "end": 153,
+      "score": 0.85,
+      "text": "March 4, 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  }
+}

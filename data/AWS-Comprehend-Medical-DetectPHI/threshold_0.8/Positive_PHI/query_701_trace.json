@@ -1,0 +1,79 @@
+{
+  "query_id": "701",
+  "timestamp": "2025-10-23T09:56:52.789648",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Current treatment recommendations for hypertension in a 60-year-old African American male, Michael B., evaluated at Houston General Hospital on July 8th, 2023 (MRN: H678934).",
+  "ground_truth_phi": "NAME: Michael B. | GEOGRAPHIC_LOCATION: Houston General Hospital | DATE: July 8th, 2023 | MEDICAL_RECORD_NUMBER: H678934",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "60",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9994901418685913,
+      "begin_offset": 56,
+      "end_offset": 58
+    },
+    {
+      "text": "Michael B",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9906023740768433,
+      "begin_offset": 91,
+      "end_offset": 100
+    },
+    {
+      "text": "Houston General Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9860754609107971,
+      "begin_offset": 116,
+      "end_offset": 140
+    },
+    {
+      "text": "July 8th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999473094940186,
+      "begin_offset": 144,
+      "end_offset": 158
+    },
+    {
+      "text": "H678934",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9992169141769409,
+      "begin_offset": 165,
+      "end_offset": 172
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

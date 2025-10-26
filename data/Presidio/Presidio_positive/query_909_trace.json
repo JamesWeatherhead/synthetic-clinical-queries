@@ -1,0 +1,69 @@
+{
+  "query_id": "909",
+  "timestamp": "2025-10-22T16:12:46.798040",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "current managmnt of COPD in 65yo M, hx of smoking, seen at Johns Hopkins, Baltimore on Jan 15 '23, MRN: 789-03-456?",
+  "ground_truth_phi": "GEOGRAPHIC_LOCATION: Johns Hopkins, Baltimore | DATE: Jan 15 '23 | MEDICAL_RECORD_NUMBER: 789-03-456",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "[REDACTED_NAME] of COPD in 65yo M, hx of smoking, seen at Johns Hopkins, [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE], MRN: [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 0,
+      "end": 16,
+      "score": 0.85,
+      "text": "current managmnt",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 74,
+      "end": 83,
+      "score": 0.85,
+      "text": "Baltimore",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 87,
+      "end": 97,
+      "score": 0.85,
+      "text": "Jan 15 '23",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 104,
+      "end": 114,
+      "score": 0.85,
+      "text": "789-03-456",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "0.5000",
+    "f1_score": "0.6667"
+  }
+}

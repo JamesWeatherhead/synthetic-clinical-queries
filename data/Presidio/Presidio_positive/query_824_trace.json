@@ -1,0 +1,85 @@
+{
+  "query_id": "824",
+  "timestamp": "2025-10-22T16:12:46.367679",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommendations for vaccinating a 34-year-old woman, Lisa S., who visited NYU Medical Center on April 14th, 2023, phone: (555) 123-4567?",
+  "ground_truth_phi": "NAME: Lisa S. | GEOGRAPHIC_LOCATION: NYU Medical Center | DATE: April 14th, 2023 | PHONE_NUMBER: (555) 123-4567",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Recommendations for vaccinating a [REDACTED_DATE] woman, [REDACTED_NAME], who visited NYU Medical Center on [REDACTED_DATE], phone: [REDACTED_PHONE_NUMBER]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 34,
+      "end": 45,
+      "score": 0.85,
+      "text": "34-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 53,
+      "end": 60,
+      "score": 0.85,
+      "text": "Lisa S.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 96,
+      "end": 107,
+      "score": 0.85,
+      "text": "April 14th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 108,
+      "end": 112,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 121,
+      "end": 135,
+      "score": 0.75,
+      "text": "(555) 123-4567",
+      "recognizer": "PhoneRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "NYU Medical Center",
+        "start": 74,
+        "end": 92
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.4000",
+    "f1_score": "0.5217"
+  }
+}

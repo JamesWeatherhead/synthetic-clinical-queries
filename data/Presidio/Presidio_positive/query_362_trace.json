@@ -1,0 +1,67 @@
+{
+  "query_id": "362",
+  "timestamp": "2025-10-22T16:12:43.935668",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What is the best practice for treating a pt w/ hx of COPD and asthma, check notes of Sam T., admitted to St. Luke's on 10/11/23. Also, consider his insurance ID AX-987654.",
+  "ground_truth_phi": "NAME: Sam T. | GEOGRAPHIC_LOCATION: St. Luke's | DATE: 10/11/23 | HEALTH_PLAN_BENEFICIARY_NUMBER: AX-987654",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What is the best practice for treating a pt w/ hx of COPD and asthma, check notes of [REDACTED_NAME], admitted to St. Luke's on [REDACTED_DATE]. Also, consider his insurance ID [REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 85,
+      "end": 91,
+      "score": 0.85,
+      "text": "Sam T.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 161,
+      "end": 170,
+      "score": 0.7,
+      "text": "AX-987654",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 119,
+      "end": 127,
+      "score": 0.6,
+      "text": "10/11/23",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "St. Luke's",
+        "start": 105,
+        "end": 115
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  }
+}

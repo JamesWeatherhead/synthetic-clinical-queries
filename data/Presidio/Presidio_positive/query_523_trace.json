@@ -1,0 +1,58 @@
+{
+  "query_id": "523",
+  "timestamp": "2025-10-22T16:12:44.784743",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "pt w/ hx of HTN & HL seen by Dr. A. at Stanford last July w/ LDL of 190. mgmt options?",
+  "ground_truth_phi": "NAME: Dr. A. | GEOGRAPHIC_LOCATION: Stanford | DATE: last July",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "pt w/ hx of HTN & HL seen by Dr. [REDACTED_NAME] at Stanford [REDACTED_DATE] w/ LDL of 190. mgmt options?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 33,
+      "end": 35,
+      "score": 0.85,
+      "text": "A.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 48,
+      "end": 57,
+      "score": 0.85,
+      "text": "last July",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Stanford",
+        "start": 39,
+        "end": 47
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 2,
+    "recall": "0.6667",
+    "precision": "0.5000",
+    "f1_score": "0.5714"
+  }
+}

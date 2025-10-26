@@ -1,0 +1,82 @@
+{
+  "query_id": "215",
+  "timestamp": "2025-10-22T16:12:43.159444",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Preferred treatment approach for a 62-year-old male, Robert S., with newly diagnosed multiple myeloma, seen at Cleveland Clinic on February 14th, 2023, MRN# 789-45-123.",
+  "ground_truth_phi": "NAME: Robert S. | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: February 14th, 2023 | MEDICAL_RECORD_NUMBER: 789-45-123",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Preferred treatment approach for a [REDACTED_DATE] male, [REDACTED_NAME], with newly diagnosed multiple myeloma, seen at Cleveland Clinic on [REDACTED_DATE], MRN# 789-45-123.",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 35,
+      "end": 46,
+      "score": 0.85,
+      "text": "62-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 53,
+      "end": 62,
+      "score": 0.85,
+      "text": "Robert S.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 131,
+      "end": 145,
+      "score": 0.85,
+      "text": "February 14th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 146,
+      "end": 150,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Cleveland Clinic",
+        "start": 111,
+        "end": 127
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "789-45-123",
+        "start": 157,
+        "end": 167
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 4,
+    "recall": "0.5000",
+    "precision": "0.2500",
+    "f1_score": "0.3333"
+  }
+}

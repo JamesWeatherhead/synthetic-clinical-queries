@@ -1,0 +1,70 @@
+{
+  "query_id": "278",
+  "timestamp": "2025-10-23T09:56:07.916989",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Side effects of doxorubicin in a 52-year-old male, David T., treated at UCSF Hospital, with sessions starting on October 22, 2023?",
+  "ground_truth_phi": "NAME: David T. | GEOGRAPHIC_LOCATION: UCSF Hospital | DATE: October 22, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "52",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9966469407081604,
+      "begin_offset": 33,
+      "end_offset": 35
+    },
+    {
+      "text": "David T",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9982718229293823,
+      "begin_offset": 51,
+      "end_offset": 58
+    },
+    {
+      "text": "UCSF Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9026537537574768,
+      "begin_offset": 72,
+      "end_offset": 85
+    },
+    {
+      "text": "October 22, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999912977218628,
+      "begin_offset": 113,
+      "end_offset": 129
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

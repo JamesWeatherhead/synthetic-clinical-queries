@@ -1,0 +1,88 @@
+{
+  "query_id": "1041",
+  "timestamp": "2025-10-23T09:57:32.244264",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best practices for treating MRSA in a 32-year-old male, John Smith, admitted to NYU Langone on April 12, 2023 (MRN: NY-987654)?",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: NYU Langone | DATE: April 12, 2023 | MEDICAL_RECORD_NUMBER: NY-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "32",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.997687578201294,
+      "begin_offset": 38,
+      "end_offset": 40
+    },
+    {
+      "text": "John Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9982770681381226,
+      "begin_offset": 56,
+      "end_offset": 66
+    },
+    {
+      "text": "NYU Langone",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9120492935180664,
+      "begin_offset": 80,
+      "end_offset": 91
+    },
+    {
+      "text": "April 12, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998339414596558,
+      "begin_offset": 95,
+      "end_offset": 109
+    },
+    {
+      "text": "NY",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7168611884117126,
+      "begin_offset": 116,
+      "end_offset": 118
+    },
+    {
+      "text": "987654",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.5479778051376343,
+      "begin_offset": 119,
+      "end_offset": 125
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "0.8333",
+    "f1_score": "0.9091"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 6
+}

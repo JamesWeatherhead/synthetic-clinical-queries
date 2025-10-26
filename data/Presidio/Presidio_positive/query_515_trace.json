@@ -1,0 +1,76 @@
+{
+  "query_id": "515",
+  "timestamp": "2025-10-22T16:12:44.757801",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Rec'd tx options for pt w/ hx of atrial fibrillation, Johnathon Smith, who's been at Cleveland Clinic since 02/15/2023. MRN: CL-993847?",
+  "ground_truth_phi": "NAME: Johnathon Smith | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: 02/15/2023 | MEDICAL_RECORD_NUMBER: CL-993847",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "[REDACTED_NAME] options for pt w/ hx of atrial fibrillation, [REDACTED_NAME], who's been at Cleveland Clinic since [REDACTED_DATE]. MRN: [REDACTED_MEDICAL_RECORD_NUMBER]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 0,
+      "end": 8,
+      "score": 0.85,
+      "text": "Rec'd tx",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 54,
+      "end": 69,
+      "score": 0.85,
+      "text": "Johnathon Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 125,
+      "end": 134,
+      "score": 0.7,
+      "text": "CL-993847",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 108,
+      "end": 118,
+      "score": 0.6,
+      "text": "02/15/2023",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Cleveland Clinic",
+        "start": 85,
+        "end": 101
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "query_id": "1050",
+  "timestamp": "2025-10-22T16:12:47.578891",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Management steps for a 50-year-old female, Maria Thompson, diagnosed with rheumatoid arthritis, currently a patient at Coastal Health Clinic (Patient ID: MTH-987654) since May 5th, 2021.",
+  "ground_truth_phi": "NAME: Maria Thompson | GEOGRAPHIC_LOCATION: Coastal Health Clinic | DATE: May 5th, 2021 | UNIQUE_IDENTIFIER: MTH-987654",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Management steps for a [REDACTED_DATE] female, [REDACTED_NAME], diagnosed with rheumatoid arthritis, currently a patient at Coastal Health Clinic (Patient ID: [REDACTED_MEDICAL_RECORD_NUMBER]) since [REDACTED_DATE].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 23,
+      "end": 34,
+      "score": 0.85,
+      "text": "50-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 43,
+      "end": 57,
+      "score": 0.85,
+      "text": "Maria Thompson",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 172,
+      "end": 185,
+      "score": 0.85,
+      "text": "May 5th, 2021",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 154,
+      "end": 164,
+      "score": 0.7,
+      "text": "MTH-987654",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Coastal Health Clinic",
+        "start": 119,
+        "end": 140
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

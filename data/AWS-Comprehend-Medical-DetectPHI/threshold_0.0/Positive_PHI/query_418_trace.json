@@ -1,0 +1,70 @@
+{
+  "query_id": "418",
+  "timestamp": "2025-10-23T09:56:23.825922",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "tx options for pt w/ SLE, Lisa M., seen at Cedar Sinai on Jan 12, 2023, concern about cyclophosphamide side efects, insurer ID #CS-456789.",
+  "ground_truth_phi": "NAME: Lisa M. | GEOGRAPHIC_LOCATION: Cedar Sinai | DATE: Jan 12, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: #CS-456789",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Lisa M",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9654174447059631,
+      "begin_offset": 26,
+      "end_offset": 32
+    },
+    {
+      "text": "Cedar Sinai",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9929146766662598,
+      "begin_offset": 43,
+      "end_offset": 54
+    },
+    {
+      "text": "Jan 12, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997538924217224,
+      "begin_offset": 58,
+      "end_offset": 70
+    },
+    {
+      "text": "456789",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.5684075951576233,
+      "begin_offset": 131,
+      "end_offset": 137
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

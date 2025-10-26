@@ -1,0 +1,60 @@
+{
+  "query_id": "930",
+  "timestamp": "2025-10-22T16:12:46.919927",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Current treatment protocols for managing pediatric asthma in children under 12, referencing a patient, Lily A., with the id number MRN: 998877?",
+  "ground_truth_phi": "NAME: Lily A. | MEDICAL_RECORD_NUMBER: 998877",
+  "ground_truth_phi_count": 2,
+  "presidio_output": "Current treatment protocols for managing pediatric asthma in children [REDACTED_DATE], referencing a patient, [REDACTED_NAME], with the id number [REDACTED_MEDICAL_RECORD_NUMBER]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 131,
+      "end": 142,
+      "score": 0.9,
+      "text": "MRN: 998877",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 70,
+      "end": 78,
+      "score": 0.85,
+      "text": "under 12",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 103,
+      "end": 110,
+      "score": 0.85,
+      "text": "Lily A.",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 2,
+    "successfully_redacted": 2,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "recall": "1.0000",
+    "precision": "0.3333",
+    "f1_score": "0.5000"
+  }
+}

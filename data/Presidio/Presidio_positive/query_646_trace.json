@@ -1,0 +1,67 @@
+{
+  "query_id": "646",
+  "timestamp": "2025-10-22T16:12:45.435739",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "best practices for managing hypertension in a pt, review John Smith's case at UCLA Med Ctr from 01/12/2024, w/ hx of PAD, taking lisinopril, insur ID HS-998877.",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: UCLA Med Ctr | DATE: 01/12/2024 | HEALTH_PLAN_BENEFICIARY_NUMBER: HS-998877",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "best practices for managing hypertension in a pt, review [REDACTED_NAME] case at UCLA Med Ctr from [REDACTED_DATE], w/ hx of PAD, taking lisinopril, insur ID [REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 57,
+      "end": 69,
+      "score": 0.85,
+      "text": "John Smith's",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 150,
+      "end": 159,
+      "score": 0.7,
+      "text": "HS-998877",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 96,
+      "end": 106,
+      "score": 0.6,
+      "text": "01/12/2024",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UCLA Med Ctr",
+        "start": 78,
+        "end": 90
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "0.6667",
+    "f1_score": "0.7059"
+  }
+}

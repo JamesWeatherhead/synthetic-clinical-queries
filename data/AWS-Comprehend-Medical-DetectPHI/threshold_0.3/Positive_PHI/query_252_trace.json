@@ -1,0 +1,70 @@
+{
+  "query_id": "252",
+  "timestamp": "2025-10-23T09:56:03.722986",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Current recommendations for managing hypertension in a 62-year-old patient, Robert Johnson, with concurrent diabetes, treated at UCLA Medical Center on March 22, 2021.",
+  "ground_truth_phi": "NAME: Robert Johnson | GEOGRAPHIC_LOCATION: UCLA Medical Center | DATE: March 22, 2021",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "62",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998524188995361,
+      "begin_offset": 55,
+      "end_offset": 57
+    },
+    {
+      "text": "Robert Johnson",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999427080154419,
+      "begin_offset": 76,
+      "end_offset": 90
+    },
+    {
+      "text": "UCLA Medical Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9719050526618958,
+      "begin_offset": 129,
+      "end_offset": 148
+    },
+    {
+      "text": "March 22, 2021",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999700784683228,
+      "begin_offset": 152,
+      "end_offset": 166
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

@@ -1,0 +1,79 @@
+{
+  "query_id": "275",
+  "timestamp": "2025-10-23T09:56:07.526251",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for managing early-onset Alzheimer's in a 55-year-old female, Patricia A., admitted to Johns Hopkins on April 10th, 2023 (MRN: #123-45-6789)?",
+  "ground_truth_phi": "NAME: Patricia A. | GEOGRAPHIC_LOCATION: Johns Hopkins | DATE: April 10th, 2023 | MEDICAL_RECORD_NUMBER: #123-45-6789",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "55",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999681711196899,
+      "begin_offset": 53,
+      "end_offset": 55
+    },
+    {
+      "text": "Patricia A",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9205756783485413,
+      "begin_offset": 73,
+      "end_offset": 83
+    },
+    {
+      "text": "Johns Hopkins",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.5431506633758545,
+      "begin_offset": 98,
+      "end_offset": 111
+    },
+    {
+      "text": "April 10th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996143579483032,
+      "begin_offset": 115,
+      "end_offset": 131
+    },
+    {
+      "text": "123-45-6789",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9859053492546082,
+      "begin_offset": 139,
+      "end_offset": 150
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

@@ -1,0 +1,78 @@
+{
+  "query_id": "367",
+  "timestamp": "2025-10-22T16:12:43.961683",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Updated management guidelines for hypertension in a 50-year-old male, seen by Dr. Alice Turner at our Seattle clinic on March 3rd, 2023?",
+  "ground_truth_phi": "NAME: Dr. Alice Turner | GEOGRAPHIC_LOCATION: Seattle clinic | DATE: March 3rd, 2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Updated management guidelines for hypertension in a [REDACTED_DATE] male, seen by Dr. [REDACTED_NAME] at our [REDACTED_GEOGRAPHIC_LOCATION] clinic on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 52,
+      "end": 63,
+      "score": 0.85,
+      "text": "50-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 82,
+      "end": 94,
+      "score": 0.85,
+      "text": "Alice Turner",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 102,
+      "end": 109,
+      "score": 0.85,
+      "text": "Seattle",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 120,
+      "end": 130,
+      "score": 0.85,
+      "text": "March 3rd,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 131,
+      "end": 135,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 3,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.0000",
+    "f1_score": "0.0000"
+  }
+}

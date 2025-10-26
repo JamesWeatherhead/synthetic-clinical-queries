@@ -1,0 +1,70 @@
+{
+  "query_id": "979",
+  "timestamp": "2025-10-23T09:57:24.265600",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for postoperative care of a 67-year-old male, James T., after hip replacement surgery on October 21, 2023, at Stanford Hospital with insurance ID SH-8567?",
+  "ground_truth_phi": "NAME: James T. | GEOGRAPHIC_LOCATION: Stanford Hospital | DATE: October 21, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: SH-8567",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "67",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997598528862,
+      "begin_offset": 39,
+      "end_offset": 41
+    },
+    {
+      "text": "James T",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9872217774391174,
+      "begin_offset": 57,
+      "end_offset": 64
+    },
+    {
+      "text": "October 21, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999477863311768,
+      "begin_offset": 100,
+      "end_offset": 116
+    },
+    {
+      "text": "Stanford Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9926169514656067,
+      "begin_offset": 121,
+      "end_offset": 138
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

@@ -1,0 +1,70 @@
+{
+  "query_id": "18",
+  "timestamp": "2025-10-23T09:55:38.530456",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What is the prognosis for a 67-year-old patient, Mary A., with advanced Alzheimer's who presented at Cleveland Clinic on November 3rd, 2022?",
+  "ground_truth_phi": "NAME: Mary A. | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: November 3rd, 2022",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "67",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997525811195374,
+      "begin_offset": 28,
+      "end_offset": 30
+    },
+    {
+      "text": "Mary A",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8824312090873718,
+      "begin_offset": 49,
+      "end_offset": 55
+    },
+    {
+      "text": "Cleveland Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9984716773033142,
+      "begin_offset": 101,
+      "end_offset": 117
+    },
+    {
+      "text": "November 3rd, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999799728393555,
+      "begin_offset": 121,
+      "end_offset": 139
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

@@ -1,0 +1,79 @@
+{
+  "query_id": "563",
+  "timestamp": "2025-10-23T09:56:39.207677",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Looking for latest COPD management guidelines for a 72yo male, James P., last seen at UCLA clinic on Feb 5, 2023. He's on insurance plan #YH-543210.",
+  "ground_truth_phi": "NAME: James P. | GEOGRAPHIC_LOCATION: UCLA clinic | DATE: Feb 5, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: #YH-543210",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "72yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9992265701293945,
+      "begin_offset": 52,
+      "end_offset": 56
+    },
+    {
+      "text": "James P",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.979091465473175,
+      "begin_offset": 63,
+      "end_offset": 70
+    },
+    {
+      "text": "UCLA clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9835067987442017,
+      "begin_offset": 86,
+      "end_offset": 97
+    },
+    {
+      "text": "Feb 5, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9989379048347473,
+      "begin_offset": 101,
+      "end_offset": 112
+    },
+    {
+      "text": "YH-543210",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6043257117271423,
+      "begin_offset": 138,
+      "end_offset": 147
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

@@ -1,0 +1,79 @@
+{
+  "query_id": "225",
+  "timestamp": "2025-10-23T09:56:00.053359",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Management options for a 60-year-old female with a history of hypertension and diabetes, John S., seen at New York Presbyterian on April 10th, 2023 (MRN: #NY-123456)?",
+  "ground_truth_phi": "NAME: John S. | GEOGRAPHIC_LOCATION: New York Presbyterian | DATE: April 10th, 2023 | MEDICAL_RECORD_NUMBER: #NY-123456",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "60",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9991976618766785,
+      "begin_offset": 25,
+      "end_offset": 27
+    },
+    {
+      "text": "John S",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9667859077453613,
+      "begin_offset": 89,
+      "end_offset": 95
+    },
+    {
+      "text": "New York Presbyterian",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9951289892196655,
+      "begin_offset": 106,
+      "end_offset": 127
+    },
+    {
+      "text": "April 10th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997190833091736,
+      "begin_offset": 131,
+      "end_offset": 147
+    },
+    {
+      "text": "123456",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.678352415561676,
+      "begin_offset": 158,
+      "end_offset": 164
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 5
+}

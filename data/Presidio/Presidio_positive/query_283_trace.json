@@ -1,0 +1,67 @@
+{
+  "query_id": "283",
+  "timestamp": "2025-10-22T16:12:43.512838",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "guidelines for treating CHF in 70yo male, Robert B., admitted to Mercy Hospital on Oct 3rd 2023? Also, instructions on adjusting beta-blockers for this pt. Contact number: 123-456-7890.",
+  "ground_truth_phi": "NAME: Robert B. | GEOGRAPHIC_LOCATION: Mercy Hospital | DATE: Oct 3rd 2023 | PHONE_NUMBER: 123-456-7890",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "guidelines for treating CHF in 70yo male, [REDACTED_NAME], admitted to Mercy Hospital on [REDACTED_DATE]? Also, instructions on adjusting beta-blockers for this pt. Contact number: [REDACTED_PHONE_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 42,
+      "end": 51,
+      "score": 0.85,
+      "text": "Robert B.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 83,
+      "end": 95,
+      "score": 0.85,
+      "text": "Oct 3rd 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 172,
+      "end": 184,
+      "score": 0.75,
+      "text": "123-456-7890",
+      "recognizer": "PhoneRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Mercy Hospital",
+        "start": 65,
+        "end": 79
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "1.0000",
+    "f1_score": "0.8571"
+  }
+}

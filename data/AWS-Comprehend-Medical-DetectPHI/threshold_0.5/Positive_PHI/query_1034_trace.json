@@ -1,0 +1,70 @@
+{
+  "query_id": "1034",
+  "timestamp": "2025-10-23T09:57:31.468201",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best practices for anticoagulation in an 80-year-old female, Eleanor M., currently residing at 789 Pine Street, San Francisco, CA with phone number 415-555-1234?",
+  "ground_truth_phi": "NAME: Eleanor M. | GEOGRAPHIC_LOCATION: 789 Pine Street, San Francisco, CA | PHONE_NUMBER: 415-555-1234",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "80",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.997840404510498,
+      "begin_offset": 41,
+      "end_offset": 43
+    },
+    {
+      "text": "Eleanor M",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9359681606292725,
+      "begin_offset": 61,
+      "end_offset": 70
+    },
+    {
+      "text": "789 Pine Street, San Francisco, CA",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9939361214637756,
+      "begin_offset": 95,
+      "end_offset": 129
+    },
+    {
+      "text": "415-555-1234",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9945374131202698,
+      "begin_offset": 148,
+      "end_offset": 160
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

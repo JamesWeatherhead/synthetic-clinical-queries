@@ -1,0 +1,76 @@
+{
+  "query_id": "1023",
+  "timestamp": "2025-10-22T16:12:47.422528",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Best practices for treating hypertension in a 70-year-old patient, Robert L., with a history of renal insufficiency, as discussed in case notes from October 18, 2023 at Cedar Sinai Medical Center (MRN: 345-67-8901)?",
+  "ground_truth_phi": "NAME: Robert L. | GEOGRAPHIC_LOCATION: Cedar Sinai Medical Center | DATE: October 18, 2023 | MEDICAL_RECORD_NUMBER: 345-67-8901",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Best practices for treating hypertension in a [REDACTED_DATE] patient, [REDACTED_NAME], with a history of renal insufficiency, as discussed in case notes from [REDACTED_DATE] at Cedar Sinai Medical Center (MRN: [REDACTED_SOCIAL_SECURITY_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 46,
+      "end": 57,
+      "score": 0.85,
+      "text": "70-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 67,
+      "end": 76,
+      "score": 0.85,
+      "text": "Robert L.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 149,
+      "end": 165,
+      "score": 0.85,
+      "text": "October 18, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "US_SSN",
+      "hipaa_category": "SOCIAL_SECURITY_NUMBER",
+      "start": 202,
+      "end": 213,
+      "score": 0.5,
+      "text": "345-67-8901",
+      "recognizer": "UsSsnRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Cedar Sinai Medical Center",
+        "start": 169,
+        "end": 195
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "query_id": "507",
+  "timestamp": "2025-10-23T09:56:33.558597",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Management guidelines for a 29-year-old female patient with type 1 diabetes, patient ID 987654, diagnosed at Johns Hopkins Hospital on March 3, 2019.",
+  "ground_truth_phi": "UNIQUE_IDENTIFIER: patient ID 987654 | GEOGRAPHIC_LOCATION: Johns Hopkins Hospital | DATE: March 3, 2019",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "29",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9993195533752441,
+      "begin_offset": 28,
+      "end_offset": 30
+    },
+    {
+      "text": "987654",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.902378499507904,
+      "begin_offset": 88,
+      "end_offset": 94
+    },
+    {
+      "text": "Johns Hopkins Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9639046788215637,
+      "begin_offset": 109,
+      "end_offset": 131
+    },
+    {
+      "text": "March 3, 2019",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999696016311646,
+      "begin_offset": 135,
+      "end_offset": 148
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

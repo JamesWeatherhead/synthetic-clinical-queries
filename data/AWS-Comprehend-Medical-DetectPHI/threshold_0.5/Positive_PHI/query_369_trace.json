@@ -1,0 +1,88 @@
+{
+  "query_id": "369",
+  "timestamp": "2025-10-23T09:56:18.564567",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best practices for managing chronic migraine in a 37-year-old female patient, Andrea H., who visited Dr. Robert Miles at the Chicago clinic on June 21st, 2023 (Phone: 555-123-4567)?",
+  "ground_truth_phi": "NAME: Andrea H. | NAME: Dr. Robert Miles | GEOGRAPHIC_LOCATION: Chicago clinic | DATE: June 21st, 2023 | PHONE_NUMBER: 555-123-4567",
+  "ground_truth_phi_count": 5,
+  "aws_entities_detected": [
+    {
+      "text": "37",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995166063308716,
+      "begin_offset": 50,
+      "end_offset": 52
+    },
+    {
+      "text": "Andrea H",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9567065834999084,
+      "begin_offset": 78,
+      "end_offset": 86
+    },
+    {
+      "text": "Robert Miles",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9979398846626282,
+      "begin_offset": 105,
+      "end_offset": 117
+    },
+    {
+      "text": "Chicago clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9746658802032471,
+      "begin_offset": 125,
+      "end_offset": 139
+    },
+    {
+      "text": "June 21st, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999144077301025,
+      "begin_offset": 143,
+      "end_offset": 158
+    },
+    {
+      "text": "555-123-4567",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9919536709785461,
+      "begin_offset": 167,
+      "end_offset": 179
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 5,
+    "successfully_detected": 5,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "0.8333",
+    "f1_score": "0.9091"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 6
+}

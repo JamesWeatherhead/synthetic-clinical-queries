@@ -1,0 +1,94 @@
+{
+  "query_id": "755",
+  "timestamp": "2025-10-22T16:12:45.982480",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What is the 5-year survival rate for stage 3 ovarian cancer in 54-year-old Patricia L., treated at Memorial Sloan Kettering on Feb 3rd, 2023 (MRN: #MSK112233)?",
+  "ground_truth_phi": "NAME: Patricia L. | GEOGRAPHIC_LOCATION: Memorial Sloan Kettering | DATE: Feb 3rd, 2023 | MEDICAL_RECORD_NUMBER: #MSK112233",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What is the [REDACTED_DATE] survival rate for stage 3 ovarian cancer in [REDACTED_DATE] [REDACTED_NAME], treated at [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE] (MRN: #MSK112233)?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 12,
+      "end": 18,
+      "score": 0.85,
+      "text": "5-year",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 63,
+      "end": 74,
+      "score": 0.85,
+      "text": "54-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 75,
+      "end": 86,
+      "score": 0.85,
+      "text": "Patricia L.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 99,
+      "end": 123,
+      "score": 0.85,
+      "text": "Memorial Sloan Kettering",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 127,
+      "end": 135,
+      "score": 0.85,
+      "text": "Feb 3rd,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 136,
+      "end": 140,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "#MSK112233",
+        "start": 147,
+        "end": 157
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 6,
+    "recall": "0.7500",
+    "precision": "0.3333",
+    "f1_score": "0.4615"
+  }
+}

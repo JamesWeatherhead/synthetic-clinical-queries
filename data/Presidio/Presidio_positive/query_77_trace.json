@@ -1,0 +1,76 @@
+{
+  "query_id": "77",
+  "timestamp": "2025-10-22T16:12:42.448391",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Latest treatment options for a 72-year-old female with Alzheimer's disease, referred to by Dr. John Lee at Nevada Medical Group on January 5, 2023 (Contact: 702-555-1234)?",
+  "ground_truth_phi": "NAME: John Lee | GEOGRAPHIC_LOCATION: Nevada Medical Group | DATE: January 5, 2023 | PHONE_NUMBER: 702-555-1234",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Latest treatment options for a [REDACTED_DATE] female with Alzheimer's disease, referred to by Dr. [REDACTED_NAME] at Nevada Medical Group on [REDACTED_DATE] (Contact: [REDACTED_PHONE_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 31,
+      "end": 42,
+      "score": 0.85,
+      "text": "72-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 95,
+      "end": 103,
+      "score": 0.85,
+      "text": "John Lee",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 131,
+      "end": 146,
+      "score": 0.85,
+      "text": "January 5, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 157,
+      "end": 169,
+      "score": 0.4,
+      "text": "702-555-1234",
+      "recognizer": "PhoneRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Nevada Medical Group",
+        "start": 107,
+        "end": 127
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

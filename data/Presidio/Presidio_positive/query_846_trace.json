@@ -1,0 +1,91 @@
+{
+  "query_id": "846",
+  "timestamp": "2025-10-22T16:12:46.489098",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the eligibility criteria for the new clinical trial for a 35-year-old male with Primary Sclerosing Cholangitis, patient name: John Smith, evaluated at Houston Clinic on July 15th, 2023 (SSN: 123-45-6789)?",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: Houston Clinic | DATE: July 15th, 2023 | SOCIAL_SECURITY_NUMBER: 123-45-6789",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What are the eligibility criteria for the new clinical trial for a [REDACTED_DATE] male with Primary [REDACTED_NAME], patient name: [REDACTED_NAME], evaluated at Houston Clinic on [REDACTED_DATE] (SSN: 123-45-6789)?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 67,
+      "end": 78,
+      "score": 0.85,
+      "text": "35-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 97,
+      "end": 119,
+      "score": 0.85,
+      "text": "Sclerosing Cholangitis",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 135,
+      "end": 145,
+      "score": 0.85,
+      "text": "John Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 178,
+      "end": 188,
+      "score": 0.85,
+      "text": "July 15th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 189,
+      "end": 193,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Houston Clinic",
+        "start": 160,
+        "end": 174
+      },
+      {
+        "type": "SOCIAL_SECURITY_NUMBER",
+        "value": "123-45-6789",
+        "start": 200,
+        "end": 211
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 5,
+    "recall": "0.5000",
+    "precision": "0.2000",
+    "f1_score": "0.2857"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "query_id": "455",
+  "timestamp": "2025-10-23T09:56:27.425442",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for managing hypertension in an elderly patient, Richard L., treated at Central Clinic in Chicago on April 11, 2023, MRN: 789-123-456.",
+  "ground_truth_phi": "NAME: Richard L. | GEOGRAPHIC_LOCATION: Central Clinic in Chicago | DATE: April 11, 2023 | MEDICAL_RECORD_NUMBER: 789-123-456",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Richard L",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9956982135772705,
+      "begin_offset": 60,
+      "end_offset": 69
+    },
+    {
+      "text": "Central Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9051605463027954,
+      "begin_offset": 83,
+      "end_offset": 97
+    },
+    {
+      "text": "Chicago",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9971185922622681,
+      "begin_offset": 101,
+      "end_offset": 108
+    },
+    {
+      "text": "April 11, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9994091987609863,
+      "begin_offset": 112,
+      "end_offset": 126
+    },
+    {
+      "text": "789-123-456",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.990688681602478,
+      "begin_offset": 133,
+      "end_offset": 144
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

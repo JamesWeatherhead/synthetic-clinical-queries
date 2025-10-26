@@ -1,0 +1,79 @@
+{
+  "query_id": "283",
+  "timestamp": "2025-10-23T09:56:08.440554",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "guidelines for treating CHF in 70yo male, Robert B., admitted to Mercy Hospital on Oct 3rd 2023? Also, instructions on adjusting beta-blockers for this pt. Contact number: 123-456-7890.",
+  "ground_truth_phi": "NAME: Robert B. | GEOGRAPHIC_LOCATION: Mercy Hospital | DATE: Oct 3rd 2023 | PHONE_NUMBER: 123-456-7890",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "70yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.917725145816803,
+      "begin_offset": 31,
+      "end_offset": 35
+    },
+    {
+      "text": "Robert B",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9973899722099304,
+      "begin_offset": 42,
+      "end_offset": 50
+    },
+    {
+      "text": "Mercy Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9526693224906921,
+      "begin_offset": 65,
+      "end_offset": 79
+    },
+    {
+      "text": "Oct 3rd 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9980947375297546,
+      "begin_offset": 83,
+      "end_offset": 95
+    },
+    {
+      "text": "123-456-7890",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.99970942735672,
+      "begin_offset": 172,
+      "end_offset": 184
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

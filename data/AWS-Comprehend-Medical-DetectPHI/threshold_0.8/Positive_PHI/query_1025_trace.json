@@ -1,0 +1,88 @@
+{
+  "query_id": "1025",
+  "timestamp": "2025-10-23T09:57:30.568392",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for prescribing statins to a 63-year-old male with a history of myocardial infarction, Mark Thompson, who visited Dr. Robertson at St. Mary's Clinic, New York on July 7, 2023?",
+  "ground_truth_phi": "NAME: Mark Thompson | NAME: Dr. Robertson | GEOGRAPHIC_LOCATION: St. Mary's Clinic, New York | DATE: July 7, 2023",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "63",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998939037322998,
+      "begin_offset": 40,
+      "end_offset": 42
+    },
+    {
+      "text": "Mark Thompson",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9974494576454163,
+      "begin_offset": 98,
+      "end_offset": 111
+    },
+    {
+      "text": "Robertson",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9986966252326965,
+      "begin_offset": 129,
+      "end_offset": 138
+    },
+    {
+      "text": "St. Mary's Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9936221241950989,
+      "begin_offset": 142,
+      "end_offset": 159
+    },
+    {
+      "text": "New York",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9810404181480408,
+      "begin_offset": 161,
+      "end_offset": 169
+    },
+    {
+      "text": "July 7, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999868869781494,
+      "begin_offset": 173,
+      "end_offset": 185
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "0.8333",
+    "f1_score": "0.9091"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 6
+}

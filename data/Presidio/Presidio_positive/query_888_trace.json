@@ -1,0 +1,76 @@
+{
+  "query_id": "888",
+  "timestamp": "2025-10-22T16:12:46.699874",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Latest treatment protocols for a 38-year-old female with rheumatoid arthritis found in the records of Dr. Sarah Brown, treated on December 2nd, 2023, at Cleveland Clinic.",
+  "ground_truth_phi": "NAME: Dr. Sarah Brown | DATE: December 2nd, 2023 | GEOGRAPHIC_LOCATION: Cleveland Clinic",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Latest treatment protocols for a [REDACTED_DATE] female with rheumatoid arthritis found in the records of Dr. [REDACTED_NAME], treated on [REDACTED_DATE], at Cleveland Clinic.",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 33,
+      "end": 44,
+      "score": 0.85,
+      "text": "38-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 106,
+      "end": 117,
+      "score": 0.85,
+      "text": "Sarah Brown",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 130,
+      "end": 143,
+      "score": 0.85,
+      "text": "December 2nd,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 144,
+      "end": 148,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Cleveland Clinic",
+        "start": 153,
+        "end": 169
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.6667",
+    "precision": "0.0000",
+    "f1_score": "0.0000"
+  }
+}

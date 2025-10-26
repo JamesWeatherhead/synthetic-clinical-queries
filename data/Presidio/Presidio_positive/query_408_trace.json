@@ -1,0 +1,67 @@
+{
+  "query_id": "408",
+  "timestamp": "2025-10-22T16:12:44.186034",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the latest recommendations for managing bipolar disorder in a 32-year-old female, Emily R., who is a patient at St. Vincent's Clinic and was last seen on October 10, 2022?",
+  "ground_truth_phi": "NAME: Emily R. | GEOGRAPHIC_LOCATION: St. Vincent's Clinic | DATE: October 10, 2022",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "What are the latest recommendations for managing bipolar disorder in a [REDACTED_DATE] female, [REDACTED_NAME], who is a patient at St. Vincent's Clinic and was last seen on [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 71,
+      "end": 82,
+      "score": 0.85,
+      "text": "32-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 91,
+      "end": 99,
+      "score": 0.85,
+      "text": "Emily R.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 163,
+      "end": 179,
+      "score": 0.85,
+      "text": "October 10, 2022",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "St. Vincent's Clinic",
+        "start": 121,
+        "end": 141
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.6667",
+    "precision": "0.6667",
+    "f1_score": "0.6667"
+  }
+}

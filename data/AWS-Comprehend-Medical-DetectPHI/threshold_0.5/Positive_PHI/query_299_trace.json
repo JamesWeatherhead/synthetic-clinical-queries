@@ -1,0 +1,79 @@
+{
+  "query_id": "299",
+  "timestamp": "2025-10-23T09:56:10.867867",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best surveillance methods for a 55-year-old female with Lynch syndrome, Jane M., treated at NYU Langone on June 10, 2023 (SSN: 987-65-4321)?",
+  "ground_truth_phi": "NAME: Jane M. | GEOGRAPHIC_LOCATION: NYU Langone | DATE: June 10, 2023 | SOCIAL_SECURITY_NUMBER: 987-65-4321",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "55",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9968764781951904,
+      "begin_offset": 32,
+      "end_offset": 34
+    },
+    {
+      "text": "Jane M",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7804197072982788,
+      "begin_offset": 72,
+      "end_offset": 78
+    },
+    {
+      "text": "NYU Langone",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.688653290271759,
+      "begin_offset": 92,
+      "end_offset": 103
+    },
+    {
+      "text": "June 10, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999966025352478,
+      "begin_offset": 107,
+      "end_offset": 120
+    },
+    {
+      "text": "987-65-4321",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9991803765296936,
+      "begin_offset": 127,
+      "end_offset": 138
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

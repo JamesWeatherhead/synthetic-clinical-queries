@@ -1,0 +1,70 @@
+{
+  "query_id": "472",
+  "timestamp": "2025-10-23T09:56:29.366365",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Can you provide the best practices for managing chronic migraines in a 34-year-old woman, Sarah Gonzalez, seen at the Albuquerque Neurology Center on September 5, 2022?",
+  "ground_truth_phi": "NAME: Sarah Gonzalez | GEOGRAPHIC_LOCATION: Albuquerque Neurology Center | DATE: September 5, 2022",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "34",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997058510780334,
+      "begin_offset": 71,
+      "end_offset": 73
+    },
+    {
+      "text": "Sarah Gonzalez",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9949658513069153,
+      "begin_offset": 90,
+      "end_offset": 104
+    },
+    {
+      "text": "Albuquerque Neurology Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9937906861305237,
+      "begin_offset": 118,
+      "end_offset": 146
+    },
+    {
+      "text": "September 5, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999477863311768,
+      "begin_offset": 150,
+      "end_offset": 167
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

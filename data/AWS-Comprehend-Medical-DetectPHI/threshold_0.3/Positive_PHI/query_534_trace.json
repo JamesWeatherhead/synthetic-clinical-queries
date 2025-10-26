@@ -1,0 +1,70 @@
+{
+  "query_id": "534",
+  "timestamp": "2025-10-23T09:56:36.354474",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "pt w/ HTN, hyperlipidemia seen at General Hospital, John D. on May 10th 2022. Concerned about side efects of atorvastatin (email: john.doe@example.com).",
+  "ground_truth_phi": "NAME: John D. | GEOGRAPHIC_LOCATION: General Hospital | DATE: May 10th 2022 | EMAIL_ADDRESS: john.doe@example.com",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "General Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.8987656831741333,
+      "begin_offset": 34,
+      "end_offset": 50
+    },
+    {
+      "text": "John D.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9831423759460449,
+      "begin_offset": 52,
+      "end_offset": 59
+    },
+    {
+      "text": "May 10th 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998317956924438,
+      "begin_offset": 63,
+      "end_offset": 76
+    },
+    {
+      "text": "john.doe@example.com",
+      "aws_type": "EMAIL",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999641180038452,
+      "begin_offset": 130,
+      "end_offset": 150
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

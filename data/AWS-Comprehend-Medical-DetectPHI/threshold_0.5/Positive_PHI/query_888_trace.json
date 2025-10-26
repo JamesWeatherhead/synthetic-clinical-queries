@@ -1,0 +1,70 @@
+{
+  "query_id": "888",
+  "timestamp": "2025-10-23T09:57:12.196638",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Latest treatment protocols for a 38-year-old female with rheumatoid arthritis found in the records of Dr. Sarah Brown, treated on December 2nd, 2023, at Cleveland Clinic.",
+  "ground_truth_phi": "NAME: Dr. Sarah Brown | DATE: December 2nd, 2023 | GEOGRAPHIC_LOCATION: Cleveland Clinic",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "38",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9991791844367981,
+      "begin_offset": 33,
+      "end_offset": 35
+    },
+    {
+      "text": "Sarah Brown",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9990047812461853,
+      "begin_offset": 106,
+      "end_offset": 117
+    },
+    {
+      "text": "December 2nd, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999690055847168,
+      "begin_offset": 130,
+      "end_offset": 148
+    },
+    {
+      "text": "Cleveland Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9987523555755615,
+      "begin_offset": 153,
+      "end_offset": 169
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

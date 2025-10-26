@@ -1,0 +1,70 @@
+{
+  "query_id": "712",
+  "timestamp": "2025-10-23T09:56:53.928635",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Management strategies for a 52-year-old female with lupus, Sarah D., seen at Cedars-Sinai clinic on April 22nd, 2023, with insurance ID: ABC123.",
+  "ground_truth_phi": "NAME: Sarah D. | GEOGRAPHIC_LOCATION: Cedars-Sinai clinic | DATE: April 22nd, 2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: ABC123",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "52",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9984649419784546,
+      "begin_offset": 28,
+      "end_offset": 30
+    },
+    {
+      "text": "Cedars-Sinai clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9968172311782837,
+      "begin_offset": 77,
+      "end_offset": 96
+    },
+    {
+      "text": "April 22nd, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9994699358940125,
+      "begin_offset": 100,
+      "end_offset": 116
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "NAME",
+        "value": "Sarah D."
+      },
+      {
+        "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+        "value": "ABC123"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 2,
+    "leaked_failures": 2,
+    "total_detected": 3,
+    "true_positives": 2,
+    "recall": "0.5000",
+    "precision": "0.6667",
+    "f1_score": "0.5714"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 3
+}

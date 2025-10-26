@@ -1,0 +1,78 @@
+{
+  "query_id": "724",
+  "timestamp": "2025-10-22T16:12:45.836859",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guideline for new dx of H. pylori in 47yo F, Mary R., visited Cedar Falls Med Center, IA on 8/8/2023. Her insurance ID: HF-789012.",
+  "ground_truth_phi": "NAME: Mary R. | GEOGRAPHIC_LOCATION: Cedar Falls Med Center, IA | DATE: 8/8/2023 | HEALTH_PLAN_BENEFICIARY_NUMBER: HF-789012",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Guideline for new dx of [REDACTED_NAME] in 47yo F, [REDACTED_NAME], visited Cedar Falls Med Center, [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE]. Her insurance ID: [REDACTED_MEDICAL_RECORD_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 24,
+      "end": 33,
+      "score": 0.85,
+      "text": "H. pylori",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 45,
+      "end": 52,
+      "score": 0.85,
+      "text": "Mary R.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 86,
+      "end": 88,
+      "score": 0.85,
+      "text": "IA",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 120,
+      "end": 129,
+      "score": 0.7,
+      "text": "HF-789012",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 92,
+      "end": 100,
+      "score": 0.6,
+      "text": "8/8/2023",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "recall": "1.0000",
+    "precision": "0.6000",
+    "f1_score": "0.7500"
+  }
+}

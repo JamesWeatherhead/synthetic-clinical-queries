@@ -1,0 +1,76 @@
+{
+  "query_id": "526",
+  "timestamp": "2025-10-22T16:12:44.804525",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Management guidelines for a 55-year-old male with hypertension, John Smith, seen in New Orleans on May 10th, 2023 (Phone: 504-123-4567)?",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: New Orleans | DATE: May 10th, 2023 | PHONE_NUMBER: 504-123-4567",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Management guidelines for a [REDACTED_DATE] male with hypertension, [REDACTED_NAME], seen in [REDACTED_GEOGRAPHIC_LOCATION] on [REDACTED_DATE] (Phone: 504-123-4567)?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 28,
+      "end": 39,
+      "score": 0.85,
+      "text": "55-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 64,
+      "end": 74,
+      "score": 0.85,
+      "text": "John Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 84,
+      "end": 95,
+      "score": 0.85,
+      "text": "New Orleans",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 99,
+      "end": 113,
+      "score": 0.85,
+      "text": "May 10th, 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "PHONE_NUMBER",
+        "value": "504-123-4567",
+        "start": 122,
+        "end": 134
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "query_id": "634",
+  "timestamp": "2025-10-22T16:12:45.379556",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Comparative effectiveness of atorvastatin vs simvastatin in reducing LDL levels in John Smith, a 58-year-old male patient treated at Texas Health Presbyterian Hospital on 08/22/2023 (MRN: TX108765).",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: Texas Health Presbyterian Hospital | DATE: 08/22/2023 | MEDICAL_RECORD_NUMBER: TX108765",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Comparative effectiveness of atorvastatin vs simvastatin in reducing LDL levels in [REDACTED_NAME], a [REDACTED_DATE] male patient treated at Texas Health Presbyterian Hospital on [REDACTED_DATE] (MRN: TX108765).",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 83,
+      "end": 93,
+      "score": 0.85,
+      "text": "John Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 97,
+      "end": 108,
+      "score": 0.85,
+      "text": "58-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 171,
+      "end": 181,
+      "score": 0.6,
+      "text": "08/22/2023",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Texas Health Presbyterian Hospital",
+        "start": 133,
+        "end": 167
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "TX108765",
+        "start": 188,
+        "end": 196
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 3,
+    "recall": "0.5000",
+    "precision": "0.6667",
+    "f1_score": "0.5714"
+  }
+}

@@ -1,0 +1,577 @@
+{
+  "evaluation_timestamp": "2025-10-23T10:20:30.157025",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "confidence_threshold": 0.0,
+  "query_type": "positive",
+  "total_queries_processed": 832,
+  "total_phi_entities": 2973,
+  "successfully_detected": 2930,
+  "leaked_phi": 43,
+  "total_detected_entities": 3778,
+  "queries_with_leaks": 43,
+  "queries_perfect_detection": 789,
+  "recall": 0.9855364951227716,
+  "perfect_rate": 0.9483173076923077,
+  "errors": 0,
+  "failed_queries": [
+    {
+      "trace_file": "query_74_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_74_trace.json",
+      "query_id": "74",
+      "leaked_phi_count": 1,
+      "issue_description": "ID Site ID: 98765 missed",
+      "leaked_phi_details": [
+        {
+          "type": "UNIQUE_IDENTIFIER",
+          "value": "Site ID: 98765"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_135_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_135_trace.json",
+      "query_id": "135",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 12345 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "12345"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_149_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_149_trace.json",
+      "query_id": "149",
+      "leaked_phi_count": 1,
+      "issue_description": "Location Children's Clinic missed",
+      "leaked_phi_details": [
+        {
+          "type": "GEOGRAPHIC_LOCATION",
+          "value": "Children's Clinic"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_190_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_190_trace.json",
+      "query_id": "190",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 1122-3344 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "1122-3344"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_223_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_223_trace.json",
+      "query_id": "223",
+      "leaked_phi_count": 1,
+      "issue_description": "Date last week not found",
+      "leaked_phi_details": [
+        {
+          "type": "DATE",
+          "value": "last week"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_262_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_262_trace.json",
+      "query_id": "262",
+      "leaked_phi_count": 1,
+      "issue_description": "Date last December not found",
+      "leaked_phi_details": [
+        {
+          "type": "DATE",
+          "value": "last December"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_280_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_280_trace.json",
+      "query_id": "280",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN CH-12345 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "CH-12345"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_287_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_287_trace.json",
+      "query_id": "287",
+      "leaked_phi_count": 1,
+      "issue_description": "Name Dr. Smith not detected",
+      "leaked_phi_details": [
+        {
+          "type": "NAME",
+          "value": "Dr. Smith"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_330_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_330_trace.json",
+      "query_id": "330",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 12345-EMH not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "12345-EMH"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_348_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_348_trace.json",
+      "query_id": "348",
+      "leaked_phi_count": 1,
+      "issue_description": "Date last week not found",
+      "leaked_phi_details": [
+        {
+          "type": "DATE",
+          "value": "last week"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_359_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_359_trace.json",
+      "query_id": "359",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN CHX-98765 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "CHX-98765"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_372_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_372_trace.json",
+      "query_id": "372",
+      "leaked_phi_count": 1,
+      "issue_description": "Date last Friday not found",
+      "leaked_phi_details": [
+        {
+          "type": "DATE",
+          "value": "last Friday"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_400_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_400_trace.json",
+      "query_id": "400",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN APL-876-98 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "APL-876-98"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_443_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_443_trace.json",
+      "query_id": "443",
+      "leaked_phi_count": 1,
+      "issue_description": "Name Sam J. not detected",
+      "leaked_phi_details": [
+        {
+          "type": "NAME",
+          "value": "Sam J."
+        }
+      ]
+    },
+    {
+      "trace_file": "query_447_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_447_trace.json",
+      "query_id": "447",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN BRK-1234 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "BRK-1234"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_523_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_523_trace.json",
+      "query_id": "523",
+      "leaked_phi_count": 1,
+      "issue_description": "Date last July not found",
+      "leaked_phi_details": [
+        {
+          "type": "DATE",
+          "value": "last July"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_538_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_538_trace.json",
+      "query_id": "538",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN ALL-98765 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "ALL-98765"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_583_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_583_trace.json",
+      "query_id": "583",
+      "leaked_phi_count": 1,
+      "issue_description": "Date last Thursday not found",
+      "leaked_phi_details": [
+        {
+          "type": "DATE",
+          "value": "last Thursday"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_589_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_589_trace.json",
+      "query_id": "589",
+      "leaked_phi_count": 1,
+      "issue_description": "Date last month not found",
+      "leaked_phi_details": [
+        {
+          "type": "DATE",
+          "value": "last month"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_622_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_622_trace.json",
+      "query_id": "622",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 99887-6543 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "99887-6543"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_652_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_652_trace.json",
+      "query_id": "652",
+      "leaked_phi_count": 1,
+      "issue_description": "Name Dr. Smith not detected",
+      "leaked_phi_details": [
+        {
+          "type": "NAME",
+          "value": "Dr. Smith"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_658_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_658_trace.json",
+      "query_id": "658",
+      "leaked_phi_count": 1,
+      "issue_description": "Date last week not found",
+      "leaked_phi_details": [
+        {
+          "type": "DATE",
+          "value": "last week"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_661_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_661_trace.json",
+      "query_id": "661",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 12345-NYP not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "12345-NYP"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_678_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_678_trace.json",
+      "query_id": "678",
+      "leaked_phi_count": 1,
+      "issue_description": "Location Mass General missed",
+      "leaked_phi_details": [
+        {
+          "type": "GEOGRAPHIC_LOCATION",
+          "value": "Mass General"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_726_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_726_trace.json",
+      "query_id": "726",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN 12345 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "12345"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_789_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_789_trace.json",
+      "query_id": "789",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN CC-98765 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "CC-98765"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_795_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_795_trace.json",
+      "query_id": "795",
+      "leaked_phi_count": 1,
+      "issue_description": "Name Dr. Anthony Brown not detected",
+      "leaked_phi_details": [
+        {
+          "type": "NAME",
+          "value": "Dr. Anthony Brown"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_814_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_814_trace.json",
+      "query_id": "814",
+      "leaked_phi_count": 1,
+      "issue_description": "Email email missed",
+      "leaked_phi_details": [
+        {
+          "type": "EMAIL_ADDRESS",
+          "value": "email"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_823_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_823_trace.json",
+      "query_id": "823",
+      "leaked_phi_count": 1,
+      "issue_description": "Name Maria G. not detected",
+      "leaked_phi_details": [
+        {
+          "type": "NAME",
+          "value": "Maria G."
+        }
+      ]
+    },
+    {
+      "trace_file": "query_881_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_881_trace.json",
+      "query_id": "881",
+      "leaked_phi_count": 1,
+      "issue_description": "Date last year not found",
+      "leaked_phi_details": [
+        {
+          "type": "DATE",
+          "value": "last year"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_890_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_890_trace.json",
+      "query_id": "890",
+      "leaked_phi_count": 1,
+      "issue_description": "Name Dr. Michael Lee not detected",
+      "leaked_phi_details": [
+        {
+          "type": "NAME",
+          "value": "Dr. Michael Lee"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_916_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_916_trace.json",
+      "query_id": "916",
+      "leaked_phi_count": 1,
+      "issue_description": "Name Dr. Smith not detected",
+      "leaked_phi_details": [
+        {
+          "type": "NAME",
+          "value": "Dr. Smith"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_940_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_940_trace.json",
+      "query_id": "940",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN #SF-54321 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "#SF-54321"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_944_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_944_trace.json",
+      "query_id": "944",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN BG-54321 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "BG-54321"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_972_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_972_trace.json",
+      "query_id": "972",
+      "leaked_phi_count": 1,
+      "issue_description": "Health plan HN-54321 missed",
+      "leaked_phi_details": [
+        {
+          "type": "HEALTH_PLAN_BENEFICIARY_NUMBER",
+          "value": "HN-54321"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_986_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_986_trace.json",
+      "query_id": "986",
+      "leaked_phi_count": 1,
+      "issue_description": "Date last month not found",
+      "leaked_phi_details": [
+        {
+          "type": "DATE",
+          "value": "last month"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_1001_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_1001_trace.json",
+      "query_id": "1001",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN NYP-12345 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "NYP-12345"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_1002_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_1002_trace.json",
+      "query_id": "1002",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN CL-78910 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "CL-78910"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_1005_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_1005_trace.json",
+      "query_id": "1005",
+      "leaked_phi_count": 1,
+      "issue_description": "MRN CC-54321 not detected",
+      "leaked_phi_details": [
+        {
+          "type": "MEDICAL_RECORD_NUMBER",
+          "value": "CC-54321"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_1014_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_1014_trace.json",
+      "query_id": "1014",
+      "leaked_phi_count": 1,
+      "issue_description": "ID LUP-98765 missed",
+      "leaked_phi_details": [
+        {
+          "type": "UNIQUE_IDENTIFIER",
+          "value": "LUP-98765"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_1024_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_1024_trace.json",
+      "query_id": "1024",
+      "leaked_phi_count": 1,
+      "issue_description": "Date last month not found",
+      "leaked_phi_details": [
+        {
+          "type": "DATE",
+          "value": "last month"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_1028_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_1028_trace.json",
+      "query_id": "1028",
+      "leaked_phi_count": 1,
+      "issue_description": "Name Dr. A. Smith not detected",
+      "leaked_phi_details": [
+        {
+          "type": "NAME",
+          "value": "Dr. A. Smith"
+        }
+      ]
+    },
+    {
+      "trace_file": "query_1031_trace.json",
+      "trace_path": "/Users/jacweath/Desktop/safesearch_/data/AWS/threshold_0.0/Positive_PHI/query_1031_trace.json",
+      "query_id": "1031",
+      "leaked_phi_count": 1,
+      "issue_description": "Location 112 Elm Street, N... missed",
+      "leaked_phi_details": [
+        {
+          "type": "GEOGRAPHIC_LOCATION",
+          "value": "112 Elm Street, New York, NY"
+        }
+      ]
+    }
+  ]
+}

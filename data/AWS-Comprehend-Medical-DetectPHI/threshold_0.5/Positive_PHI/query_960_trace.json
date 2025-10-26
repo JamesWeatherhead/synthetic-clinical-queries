@@ -1,0 +1,88 @@
+{
+  "query_id": "960",
+  "timestamp": "2025-10-23T09:57:21.842383",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best practices for managing a diabetic foot ulcer in a 55-year-old male, David Brown, who received care at Johns Hopkins Hospital on September 5th, 2023 (MRN: JH-456789)?",
+  "ground_truth_phi": "NAME: David Brown | GEOGRAPHIC_LOCATION: Johns Hopkins Hospital | DATE: September 5th, 2023 | MEDICAL_RECORD_NUMBER: JH-456789",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "55",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9994301199913025,
+      "begin_offset": 55,
+      "end_offset": 57
+    },
+    {
+      "text": "David Brown",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9993839263916016,
+      "begin_offset": 73,
+      "end_offset": 84
+    },
+    {
+      "text": "Johns Hopkins Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9663415551185608,
+      "begin_offset": 107,
+      "end_offset": 129
+    },
+    {
+      "text": "September 5th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999626636505127,
+      "begin_offset": 133,
+      "end_offset": 152
+    },
+    {
+      "text": "JH",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9862679243087769,
+      "begin_offset": 159,
+      "end_offset": 161
+    },
+    {
+      "text": "456789",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.676948606967926,
+      "begin_offset": 162,
+      "end_offset": 168
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "0.8333",
+    "f1_score": "0.9091"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 6
+}

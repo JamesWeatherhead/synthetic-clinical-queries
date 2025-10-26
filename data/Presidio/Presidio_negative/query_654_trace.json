@@ -1,0 +1,35 @@
+{
+  "query_id": "654",
+  "timestamp": "2025-10-22T16:24:25.028233",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Treatment guidelines for a patient with bipolar disorder aged 34, considering side effects of lithium and valproate?",
+  "presidio_output": "Treatment guidelines for a patient with bipolar disorder aged [REDACTED_DATE], considering side effects of lithium and valproate?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 62,
+      "end": 64,
+      "score": 0.85,
+      "text": "34",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 1,
+    "false_redactions_by_type": {
+      "DATE": 1
+    },
+    "status": "OVER_REDACTED"
+  }
+}

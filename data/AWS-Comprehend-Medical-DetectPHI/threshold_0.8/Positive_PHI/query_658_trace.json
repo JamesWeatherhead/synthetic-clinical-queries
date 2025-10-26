@@ -1,0 +1,75 @@
+{
+  "query_id": "658",
+  "timestamp": "2025-10-23T09:56:48.790810",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Current guidelines for anticoagulation in a 58-year-old female, Lisa S., with non-valvular atrial fibrillation, seen last week at Baylor Scott & White. Her phone number is (123) 456-7890.",
+  "ground_truth_phi": "NAME: Lisa S. | GEOGRAPHIC_LOCATION: Baylor Scott & White | DATE: last week | PHONE_NUMBER: (123) 456-7890",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "58",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999305009841919,
+      "begin_offset": 44,
+      "end_offset": 46
+    },
+    {
+      "text": "Lisa S",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9819950461387634,
+      "begin_offset": 64,
+      "end_offset": 70
+    },
+    {
+      "text": "Baylor Scott & White",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9474450349807739,
+      "begin_offset": 130,
+      "end_offset": 150
+    },
+    {
+      "text": "(123) 456-7890",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.992926299571991,
+      "begin_offset": 172,
+      "end_offset": 186
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "DATE",
+        "value": "last week"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

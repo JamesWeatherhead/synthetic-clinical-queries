@@ -1,0 +1,88 @@
+{
+  "query_id": "488",
+  "timestamp": "2025-10-23T09:56:31.137421",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Guidelines for treating HIV in a 32yo male, name Chris B., diagnosed at the Johns Hopkins Clinic on Apr 17th 2022. Contact phone: 123-456-7890.",
+  "ground_truth_phi": "NAME: Chris B. | GEOGRAPHIC_LOCATION: Johns Hopkins Clinic | DATE: Apr 17th 2022 | PHONE_NUMBER: 123-456-7890",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "32yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9944198727607727,
+      "begin_offset": 33,
+      "end_offset": 37
+    },
+    {
+      "text": "Chris B",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9633493423461914,
+      "begin_offset": 49,
+      "end_offset": 56
+    },
+    {
+      "text": "Johns Hopkins Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9843711256980896,
+      "begin_offset": 76,
+      "end_offset": 96
+    },
+    {
+      "text": "Apr 17th",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9806759357452393,
+      "begin_offset": 100,
+      "end_offset": 108
+    },
+    {
+      "text": "2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.5217761397361755,
+      "begin_offset": 109,
+      "end_offset": 113
+    },
+    {
+      "text": "123-456-7890",
+      "aws_type": "PHONE_OR_FAX",
+      "hipaa_category": "PHONE_NUMBER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9995238780975342,
+      "begin_offset": 130,
+      "end_offset": 142
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "0.8333",
+    "f1_score": "0.9091"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 6
+}

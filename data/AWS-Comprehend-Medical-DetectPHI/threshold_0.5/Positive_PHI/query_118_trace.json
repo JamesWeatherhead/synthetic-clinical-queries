@@ -1,0 +1,70 @@
+{
+  "query_id": "118",
+  "timestamp": "2025-10-23T09:55:48.634958",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Indications for starting anticoagulation in a 55-year-old male patient, Sam L., with atrial fibrillation, followed at Bellevue Clinic, seen on July 15th, 2023?",
+  "ground_truth_phi": "NAME: Sam L. | GEOGRAPHIC_LOCATION: Bellevue Clinic | DATE: July 15th, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "55",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997935891151428,
+      "begin_offset": 46,
+      "end_offset": 48
+    },
+    {
+      "text": "Sam L",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9837100505828857,
+      "begin_offset": 72,
+      "end_offset": 77
+    },
+    {
+      "text": "Bellevue Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9957063794136047,
+      "begin_offset": 118,
+      "end_offset": 133
+    },
+    {
+      "text": "July 15th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999962329864502,
+      "begin_offset": 143,
+      "end_offset": 158
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

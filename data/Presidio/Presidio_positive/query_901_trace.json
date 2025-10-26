@@ -1,0 +1,87 @@
+{
+  "query_id": "901",
+  "timestamp": "2025-10-22T16:12:46.764114",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommended anticoagulation therapy for 62-year-old male with atrial fibrillation, diagnosed in New York-Presbyterian Hospital on April 15th, 2023, James Smith (MRN: 987654321)?",
+  "ground_truth_phi": "NAME: James Smith | GEOGRAPHIC_LOCATION: New York-Presbyterian Hospital | DATE: April 15th, 2023 | MEDICAL_RECORD_NUMBER: 987654321",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Recommended anticoagulation therapy for [REDACTED_DATE] male with atrial fibrillation, diagnosed in [REDACTED_GEOGRAPHIC_LOCATION]Presbyterian Hospital on [REDACTED_DATE], [REDACTED_NAME] ([REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 161,
+      "end": 175,
+      "score": 0.9,
+      "text": "MRN: 987654321",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 40,
+      "end": 51,
+      "score": 0.85,
+      "text": "62-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 96,
+      "end": 105,
+      "score": 0.85,
+      "text": "New York-",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 130,
+      "end": 141,
+      "score": 0.85,
+      "text": "April 15th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 142,
+      "end": 146,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 148,
+      "end": 159,
+      "score": 0.85,
+      "text": "James Smith",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "recall": "1.0000",
+    "precision": "0.1667",
+    "f1_score": "0.2857"
+  }
+}

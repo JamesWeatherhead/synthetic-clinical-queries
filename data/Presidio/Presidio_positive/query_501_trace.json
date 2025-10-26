@@ -1,0 +1,67 @@
+{
+  "query_id": "501",
+  "timestamp": "2025-10-22T16:12:44.679776",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Tx options for pt s/p acute MI & T2DM, admitted to NewYork-Presbyterian on Sep 9, 2024. Patient: John H. MRN: 678-90-1234.",
+  "ground_truth_phi": "GEOGRAPHIC_LOCATION: NewYork-Presbyterian | DATE: Sep 9, 2024 | NAME: John H. | MEDICAL_RECORD_NUMBER: 678-90-1234",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Tx options for pt s/p acute MI & T2DM, admitted to NewYork-Presbyterian on [REDACTED_DATE]. Patient: [REDACTED_NAME]: [REDACTED_SOCIAL_SECURITY_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 75,
+      "end": 86,
+      "score": 0.85,
+      "text": "Sep 9, 2024",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 97,
+      "end": 108,
+      "score": 0.85,
+      "text": "John H. MRN",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "US_SSN",
+      "hipaa_category": "SOCIAL_SECURITY_NUMBER",
+      "start": 110,
+      "end": 121,
+      "score": 0.5,
+      "text": "678-90-1234",
+      "recognizer": "UsSsnRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "NewYork-Presbyterian",
+        "start": 51,
+        "end": 71
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 3,
+    "recall": "0.7500",
+    "precision": "0.6667",
+    "f1_score": "0.7059"
+  }
+}

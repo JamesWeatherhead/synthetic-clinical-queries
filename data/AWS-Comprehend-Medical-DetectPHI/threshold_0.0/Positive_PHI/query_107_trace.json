@@ -1,0 +1,61 @@
+{
+  "query_id": "107",
+  "timestamp": "2025-10-23T09:55:47.620454",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "\"Latest CDC guidelines for treating Hepatitis C in a 33-year-old pregnant woman, referred by Dr. Anna Smith, appointment on August 8, 2021.\"",
+  "ground_truth_phi": "NAME: Dr. Anna Smith | DATE: August 8, 2021",
+  "ground_truth_phi_count": 2,
+  "aws_entities_detected": [
+    {
+      "text": "33",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9991439580917358,
+      "begin_offset": 53,
+      "end_offset": 55
+    },
+    {
+      "text": "Anna Smith",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9997913241386414,
+      "begin_offset": 97,
+      "end_offset": 107
+    },
+    {
+      "text": "August 8, 2021.",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999895095825195,
+      "begin_offset": 124,
+      "end_offset": 139
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 2,
+    "successfully_detected": 2,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "true_positives": 2,
+    "recall": "1.0000",
+    "precision": "0.6667",
+    "f1_score": "0.8000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

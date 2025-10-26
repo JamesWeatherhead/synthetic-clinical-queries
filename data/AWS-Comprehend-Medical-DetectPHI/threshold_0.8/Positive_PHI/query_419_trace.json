@@ -1,0 +1,84 @@
+{
+  "query_id": "419",
+  "timestamp": "2025-10-23T09:56:23.956472",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "What are the treatment recommendations for epilepsy in a 30-year-old male, Michael Johnson, seen at UCSF Hospital in San Francisco on March 2, 2023 (MRN: UCS-908765)?",
+  "ground_truth_phi": "NAME: Michael Johnson | GEOGRAPHIC_LOCATION: UCSF Hospital in San Francisco | DATE: March 2, 2023 | MEDICAL_RECORD_NUMBER: UCS-908765",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "30",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9984126091003418,
+      "begin_offset": 57,
+      "end_offset": 59
+    },
+    {
+      "text": "Michael Johnson",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.996863603591919,
+      "begin_offset": 75,
+      "end_offset": 90
+    },
+    {
+      "text": "UCSF Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9674385190010071,
+      "begin_offset": 100,
+      "end_offset": 113
+    },
+    {
+      "text": "San Francisco",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9946901798248291,
+      "begin_offset": 117,
+      "end_offset": 130
+    },
+    {
+      "text": "March 2, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999740123748779,
+      "begin_offset": 134,
+      "end_offset": 147
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "UCS-908765"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "0.7500",
+    "precision": "0.8000",
+    "f1_score": "0.7742"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 5
+}

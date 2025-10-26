@@ -1,0 +1,75 @@
+{
+  "query_id": "583",
+  "timestamp": "2025-10-23T09:56:41.409240",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "tx recs for a 56yo female pt w/ hx of RA, seen by Dr. Patel at General Hosp. last Thursday. PT's email is patel56@example.com.",
+  "ground_truth_phi": "NAME: Patel | GEOGRAPHIC_LOCATION: General Hosp. | DATE: last Thursday | EMAIL_ADDRESS: patel56@example.com",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "56yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9990482926368713,
+      "begin_offset": 14,
+      "end_offset": 18
+    },
+    {
+      "text": "Patel",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9987012147903442,
+      "begin_offset": 54,
+      "end_offset": 59
+    },
+    {
+      "text": "General Hosp",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6253131031990051,
+      "begin_offset": 63,
+      "end_offset": 75
+    },
+    {
+      "text": "patel56@example.com",
+      "aws_type": "EMAIL",
+      "hipaa_category": "EMAIL_ADDRESS",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998728036880493,
+      "begin_offset": 106,
+      "end_offset": 125
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "DATE",
+        "value": "last Thursday"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

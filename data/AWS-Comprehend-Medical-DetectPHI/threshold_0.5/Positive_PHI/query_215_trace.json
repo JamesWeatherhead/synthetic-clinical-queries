@@ -1,0 +1,75 @@
+{
+  "query_id": "215",
+  "timestamp": "2025-10-23T09:55:59.004830",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Preferred treatment approach for a 62-year-old male, Robert S., with newly diagnosed multiple myeloma, seen at Cleveland Clinic on February 14th, 2023, MRN# 789-45-123.",
+  "ground_truth_phi": "NAME: Robert S. | GEOGRAPHIC_LOCATION: Cleveland Clinic | DATE: February 14th, 2023 | MEDICAL_RECORD_NUMBER: 789-45-123",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "62",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999431371688843,
+      "begin_offset": 35,
+      "end_offset": 37
+    },
+    {
+      "text": "Robert S",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9745907783508301,
+      "begin_offset": 53,
+      "end_offset": 61
+    },
+    {
+      "text": "Cleveland Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9971764087677002,
+      "begin_offset": 111,
+      "end_offset": 127
+    },
+    {
+      "text": "February 14th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9985066056251526,
+      "begin_offset": 131,
+      "end_offset": 150
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "789-45-123"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 4
+}

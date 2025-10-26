@@ -1,0 +1,88 @@
+{
+  "query_id": "331",
+  "timestamp": "2025-10-23T09:56:14.402565",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Suggestions for managing hypertension in a 54yo female, Lisa T., seen at our NYC clinic on 4/12/22 (SSN: 987-65-4321). She is allergic to ACE inhibitors.",
+  "ground_truth_phi": "NAME: Lisa T. | GEOGRAPHIC_LOCATION: NYC clinic | DATE: 4/12/22 | SOCIAL_SECURITY_NUMBER: 987-65-4321",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "54yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.996938943862915,
+      "begin_offset": 43,
+      "end_offset": 47
+    },
+    {
+      "text": "Lisa T",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9970347881317139,
+      "begin_offset": 56,
+      "end_offset": 62
+    },
+    {
+      "text": "NYC clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9017769694328308,
+      "begin_offset": 77,
+      "end_offset": 87
+    },
+    {
+      "text": "4/12/22",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998087286949158,
+      "begin_offset": 91,
+      "end_offset": 98
+    },
+    {
+      "text": "SSN",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.3477034866809845,
+      "begin_offset": 100,
+      "end_offset": 103
+    },
+    {
+      "text": "987-65-4321",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9971344470977783,
+      "begin_offset": 105,
+      "end_offset": 116
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.6667",
+    "f1_score": "0.8000"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 6
+}

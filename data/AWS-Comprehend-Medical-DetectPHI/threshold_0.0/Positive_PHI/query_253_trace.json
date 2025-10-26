@@ -1,0 +1,61 @@
+{
+  "query_id": "253",
+  "timestamp": "2025-10-23T09:56:03.846093",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "How to handle opioid withdrawal in a 29-year-old male, Michael Brown, currently at Johns Hopkins Hospital with a history of substance abuse?",
+  "ground_truth_phi": "NAME: Michael Brown | GEOGRAPHIC_LOCATION: Johns Hopkins Hospital",
+  "ground_truth_phi_count": 2,
+  "aws_entities_detected": [
+    {
+      "text": "29",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9779893755912781,
+      "begin_offset": 37,
+      "end_offset": 39
+    },
+    {
+      "text": "Michael Brown",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9966890215873718,
+      "begin_offset": 55,
+      "end_offset": 68
+    },
+    {
+      "text": "Johns Hopkins Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9304692149162292,
+      "begin_offset": 83,
+      "end_offset": 105
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 2,
+    "successfully_detected": 2,
+    "leaked_failures": 0,
+    "total_detected": 3,
+    "true_positives": 2,
+    "recall": "1.0000",
+    "precision": "0.6667",
+    "f1_score": "0.8000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 3
+}

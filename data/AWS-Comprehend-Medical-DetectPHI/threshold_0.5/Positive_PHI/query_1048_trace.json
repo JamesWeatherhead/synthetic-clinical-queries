@@ -1,0 +1,70 @@
+{
+  "query_id": "1048",
+  "timestamp": "2025-10-23T09:57:33.123365",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Latest treatment protocols for a 72yo male, Johnathan Lee, diagnosed with COPD, currently residing at Greenfield Senior Center, seen on September 9th, 2023.",
+  "ground_truth_phi": "NAME: Johnathan Lee | GEOGRAPHIC_LOCATION: Greenfield Senior Center | DATE: September 9th, 2023",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "72yo",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9989217519760132,
+      "begin_offset": 33,
+      "end_offset": 37
+    },
+    {
+      "text": "Johnathan Lee",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9981769323348999,
+      "begin_offset": 44,
+      "end_offset": 57
+    },
+    {
+      "text": "Greenfield Senior Center",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9898737668991089,
+      "begin_offset": 102,
+      "end_offset": 126
+    },
+    {
+      "text": "September 9th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9993384480476379,
+      "begin_offset": 136,
+      "end_offset": 155
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 3,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "1.0000",
+    "precision": "0.7500",
+    "f1_score": "0.8571"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

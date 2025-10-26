@@ -1,0 +1,88 @@
+{
+  "query_id": "560",
+  "timestamp": "2025-10-23T09:56:38.954198",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best treatment options for an 82-year-old female with recurrent UTI, Lynn S., who visited St. Joseph's Clinic on April 12th, 2023 (MRN: SJ-12345)?",
+  "ground_truth_phi": "NAME: Lynn S. | GEOGRAPHIC_LOCATION: St. Joseph's Clinic | DATE: April 12th, 2023 | MEDICAL_RECORD_NUMBER: SJ-12345",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "82",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999872088432312,
+      "begin_offset": 30,
+      "end_offset": 32
+    },
+    {
+      "text": "Lynn S",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6644479632377625,
+      "begin_offset": 69,
+      "end_offset": 75
+    },
+    {
+      "text": "St. Joseph's Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9731572866439819,
+      "begin_offset": 90,
+      "end_offset": 109
+    },
+    {
+      "text": "April 12th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998760223388672,
+      "begin_offset": 113,
+      "end_offset": 129
+    },
+    {
+      "text": "SJ",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.41693803668022156,
+      "begin_offset": 136,
+      "end_offset": 138
+    },
+    {
+      "text": "12345",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.45679405331611633,
+      "begin_offset": 139,
+      "end_offset": 144
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 6,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "0.8333",
+    "f1_score": "0.9091"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 6,
+  "aws_entities_filtered_count": 6
+}

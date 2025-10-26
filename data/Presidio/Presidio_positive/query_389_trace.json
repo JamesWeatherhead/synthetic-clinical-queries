@@ -1,0 +1,76 @@
+{
+  "query_id": "389",
+  "timestamp": "2025-10-22T16:12:44.086191",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Side effects of lithium in the treatment of bipolar disorder in a 33-year-old male, John T., presented at NYU Langone Health on August 11, 2023 (SSN: 987-65-4321)?",
+  "ground_truth_phi": "NAME: John T. | GEOGRAPHIC_LOCATION: NYU Langone Health | DATE: August 11, 2023 | SOCIAL_SECURITY_NUMBER: 987-65-4321",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Side effects of lithium in the treatment of bipolar disorder in a [REDACTED_DATE] male, [REDACTED_NAME], presented at NYU Langone Health on [REDACTED_DATE] (SSN: [REDACTED_US_ITIN])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 66,
+      "end": 77,
+      "score": 0.85,
+      "text": "33-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 84,
+      "end": 91,
+      "score": 0.85,
+      "text": "John T.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 128,
+      "end": 143,
+      "score": 0.85,
+      "text": "August 11, 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "US_ITIN",
+      "hipaa_category": "US_ITIN",
+      "start": 150,
+      "end": 161,
+      "score": 0.5,
+      "text": "987-65-4321",
+      "recognizer": "UsItinRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "NYU Langone Health",
+        "start": 106,
+        "end": 124
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

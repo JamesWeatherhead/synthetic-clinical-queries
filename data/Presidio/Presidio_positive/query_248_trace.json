@@ -1,0 +1,76 @@
+{
+  "query_id": "248",
+  "timestamp": "2025-10-22T16:12:43.310961",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "clarify dx and mngmnt for pt w/ hx of CHF, Stan M., seen at UW Med on July 4th 2023. also, concerns about drug interactions for his current meds. phone: 555-987-6543.",
+  "ground_truth_phi": "NAME: Stan M. | GEOGRAPHIC_LOCATION: UW Med | DATE: July 4th 2023 | PHONE_NUMBER: 555-987-6543",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "clarify dx and [REDACTED_GEOGRAPHIC_LOCATION] hx of CHF, [REDACTED_NAME], seen at UW Med on [REDACTED_DATE]. also, concerns about drug interactions for his current meds. phone: [REDACTED_PHONE_NUMBER].",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 15,
+      "end": 31,
+      "score": 0.85,
+      "text": "mngmnt for pt w/",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 43,
+      "end": 50,
+      "score": 0.85,
+      "text": "Stan M.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 70,
+      "end": 83,
+      "score": 0.85,
+      "text": "July 4th 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PHONE_NUMBER",
+      "hipaa_category": "PHONE_NUMBER",
+      "start": 153,
+      "end": 165,
+      "score": 0.75,
+      "text": "555-987-6543",
+      "recognizer": "PhoneRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "UW Med",
+        "start": 60,
+        "end": 66
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  }
+}

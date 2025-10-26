@@ -1,0 +1,76 @@
+{
+  "query_id": "791",
+  "timestamp": "2025-10-22T16:12:46.189879",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the common side effects of Losartan in a 63-year-old Hispanic female, Angela Rivera, who was admitted to Elmwood Clinic on December 15, 2023, for hypertension management?",
+  "ground_truth_phi": "NAME: Angela Rivera | GEOGRAPHIC_LOCATION: Elmwood Clinic | DATE: December 15, 2023",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "What are the common side effects of Losartan in a [REDACTED_DATE] [REDACTED_NRP] female, [REDACTED_NAME], who was admitted to Elmwood Clinic on [REDACTED_DATE], for hypertension management?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 50,
+      "end": 61,
+      "score": 0.85,
+      "text": "63-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "NRP",
+      "hipaa_category": "NRP",
+      "start": 62,
+      "end": 70,
+      "score": 0.85,
+      "text": "Hispanic",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 79,
+      "end": 92,
+      "score": 0.85,
+      "text": "Angela Rivera",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 132,
+      "end": 149,
+      "score": 0.85,
+      "text": "December 15, 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Elmwood Clinic",
+        "start": 114,
+        "end": 128
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "recall": "0.6667",
+    "precision": "0.5000",
+    "f1_score": "0.5714"
+  }
+}

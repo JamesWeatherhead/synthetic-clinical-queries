@@ -1,0 +1,82 @@
+{
+  "query_id": "15",
+  "timestamp": "2025-10-22T16:12:42.093711",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the latest treatment options for a 60-year-old male with stage IV lung cancer, John Smith, who was admitted to NY Presbyterian Hospital on January 10th, 2023, under MRN 12345-JS?",
+  "ground_truth_phi": "NAME: John Smith | GEOGRAPHIC_LOCATION: NY Presbyterian Hospital | DATE: January 10th, 2023 | MEDICAL_RECORD_NUMBER: 12345-JS",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What are the latest treatment options for a [REDACTED_DATE] male with stage IV lung cancer, [REDACTED_NAME], who was admitted to NY Presbyterian Hospital on [REDACTED_DATE], under MRN 12345-JS?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 44,
+      "end": 55,
+      "score": 0.85,
+      "text": "60-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 88,
+      "end": 98,
+      "score": 0.85,
+      "text": "John Smith",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 148,
+      "end": 161,
+      "score": 0.85,
+      "text": "January 10th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 162,
+      "end": 166,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "NY Presbyterian Hospital",
+        "start": 120,
+        "end": 144
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "12345-JS",
+        "start": 178,
+        "end": 186
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 4,
+    "recall": "0.5000",
+    "precision": "0.2500",
+    "f1_score": "0.3333"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "query_id": "321",
+  "timestamp": "2025-10-22T16:24:24.659029",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Are there any new treatment protocols for elderly patients with COPD in the southern US, particularly those diagnosed in 2021?",
+  "presidio_output": "Are there any new treatment protocols for elderly patients with COPD in the southern [REDACTED_GEOGRAPHIC_LOCATION], particularly those diagnosed in [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 85,
+      "end": 87,
+      "score": 0.85,
+      "text": "US",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 121,
+      "end": 125,
+      "score": 0.85,
+      "text": "2021",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 2,
+    "false_redactions_by_type": {
+      "GEOGRAPHIC_LOCATION": 1,
+      "DATE": 1
+    },
+    "status": "OVER_REDACTED"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "query_id": "1050",
+  "timestamp": "2025-10-23T09:57:33.380126",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Management steps for a 50-year-old female, Maria Thompson, diagnosed with rheumatoid arthritis, currently a patient at Coastal Health Clinic (Patient ID: MTH-987654) since May 5th, 2021.",
+  "ground_truth_phi": "NAME: Maria Thompson | GEOGRAPHIC_LOCATION: Coastal Health Clinic | DATE: May 5th, 2021 | UNIQUE_IDENTIFIER: MTH-987654",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "50",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9861597418785095,
+      "begin_offset": 23,
+      "end_offset": 25
+    },
+    {
+      "text": "Maria Thompson",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9982728958129883,
+      "begin_offset": 43,
+      "end_offset": 57
+    },
+    {
+      "text": "Coastal Health Clinic",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9921941757202148,
+      "begin_offset": 119,
+      "end_offset": 140
+    },
+    {
+      "text": "May 5th, 2021",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999399185180664,
+      "begin_offset": 172,
+      "end_offset": 185
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "UNIQUE_IDENTIFIER",
+        "value": "MTH-987654"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 4,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.7500",
+    "f1_score": "0.7500"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 4
+}

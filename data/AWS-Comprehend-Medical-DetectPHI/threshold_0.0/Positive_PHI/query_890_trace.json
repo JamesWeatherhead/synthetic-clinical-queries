@@ -1,0 +1,84 @@
+{
+  "query_id": "890",
+  "timestamp": "2025-10-23T09:57:12.448737",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Approaches to managing a 62-year-old male with type 1 diabetes, seen in Dr. Michael Lee's office in Houston on November 19th, 2023. His medical record number is MX-456789.",
+  "ground_truth_phi": "NAME: Dr. Michael Lee | GEOGRAPHIC_LOCATION: Houston | DATE: November 19th, 2023 | MEDICAL_RECORD_NUMBER: MX-456789",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "62",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9996095299720764,
+      "begin_offset": 25,
+      "end_offset": 27
+    },
+    {
+      "text": "Michael Lee's",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9946290850639343,
+      "begin_offset": 76,
+      "end_offset": 89
+    },
+    {
+      "text": "Houston",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9968894124031067,
+      "begin_offset": 100,
+      "end_offset": 107
+    },
+    {
+      "text": "November 19th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998112320899963,
+      "begin_offset": 111,
+      "end_offset": 130
+    },
+    {
+      "text": "456789",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.5775061845779419,
+      "begin_offset": 164,
+      "end_offset": 170
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "NAME",
+        "value": "Dr. Michael Lee"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "true_positives": 3,
+    "recall": "0.7500",
+    "precision": "0.6000",
+    "f1_score": "0.6667"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

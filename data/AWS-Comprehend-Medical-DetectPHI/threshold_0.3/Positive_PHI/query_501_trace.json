@@ -1,0 +1,79 @@
+{
+  "query_id": "501",
+  "timestamp": "2025-10-23T09:56:32.536896",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Tx options for pt s/p acute MI & T2DM, admitted to NewYork-Presbyterian on Sep 9, 2024. Patient: John H. MRN: 678-90-1234.",
+  "ground_truth_phi": "GEOGRAPHIC_LOCATION: NewYork-Presbyterian | DATE: Sep 9, 2024 | NAME: John H. | MEDICAL_RECORD_NUMBER: 678-90-1234",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "NewYork",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.6220380663871765,
+      "begin_offset": 51,
+      "end_offset": 58
+    },
+    {
+      "text": "Presbyterian",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9709397554397583,
+      "begin_offset": 59,
+      "end_offset": 71
+    },
+    {
+      "text": "Sep 9, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9857431054115295,
+      "begin_offset": 75,
+      "end_offset": 86
+    },
+    {
+      "text": "John H.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.99444580078125,
+      "begin_offset": 97,
+      "end_offset": 104
+    },
+    {
+      "text": "678-90-1234",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9794186353683472,
+      "begin_offset": 110,
+      "end_offset": 121
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 5,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.3,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}

@@ -1,0 +1,58 @@
+{
+  "query_id": "59",
+  "timestamp": "2025-10-22T16:12:42.341330",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Is there an interaction between warfarin and amiodarone for Jane Doe, DOB: 06/12/1950, seen at Cleveland Clinic?",
+  "ground_truth_phi": "NAME: Jane Doe | DATE: 06/12/1950 | GEOGRAPHIC_LOCATION: Cleveland Clinic",
+  "ground_truth_phi_count": 3,
+  "presidio_output": "Is there an interaction between warfarin and amiodarone for [REDACTED_NAME], DOB: [REDACTED_DATE], seen at Cleveland Clinic?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 60,
+      "end": 68,
+      "score": 0.85,
+      "text": "Jane Doe",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 75,
+      "end": 85,
+      "score": 0.6,
+      "text": "06/12/1950",
+      "recognizer": "DateRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Cleveland Clinic",
+        "start": 95,
+        "end": 111
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_redacted": 2,
+    "leaked_failures": 1,
+    "total_detected": 2,
+    "recall": "0.6667",
+    "precision": "1.0000",
+    "f1_score": "0.8000"
+  }
+}

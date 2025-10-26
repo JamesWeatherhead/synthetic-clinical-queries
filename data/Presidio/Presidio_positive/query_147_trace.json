@@ -1,0 +1,85 @@
+{
+  "query_id": "147",
+  "timestamp": "2025-10-22T16:12:42.827573",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Recommended treatment for a 5-year-old child named Michael B., referred to Boston Children's Hospital on May 15th, 2023, with MRN 987-65-4321?",
+  "ground_truth_phi": "NAME: Michael B. | GEOGRAPHIC_LOCATION: Boston Children's Hospital | DATE: May 15th, 2023 | MEDICAL_RECORD_NUMBER: 987-65-4321",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Recommended treatment for a [REDACTED_DATE] child named [REDACTED_NAME], referred to Boston Children's Hospital on [REDACTED_DATE], with MRN [REDACTED_US_ITIN]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 28,
+      "end": 38,
+      "score": 0.85,
+      "text": "5-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 51,
+      "end": 61,
+      "score": 0.85,
+      "text": "Michael B.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 105,
+      "end": 114,
+      "score": 0.85,
+      "text": "May 15th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 115,
+      "end": 119,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "US_ITIN",
+      "hipaa_category": "US_ITIN",
+      "start": 130,
+      "end": 141,
+      "score": 0.5,
+      "text": "987-65-4321",
+      "recognizer": "UsItinRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 1,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Boston Children's Hospital",
+        "start": 75,
+        "end": 101
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 3,
+    "leaked_failures": 1,
+    "total_detected": 5,
+    "recall": "0.7500",
+    "precision": "0.4000",
+    "f1_score": "0.5217"
+  }
+}

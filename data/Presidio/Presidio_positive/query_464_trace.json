@@ -1,0 +1,69 @@
+{
+  "query_id": "464",
+  "timestamp": "2025-10-22T16:12:44.468780",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "What are the potential interactions between warfarin and new diabetic meds for a 70yo male patient, John D., observed at Elm Street Clinic, who had follow-up labs done on Feb 5 2023 (MRN: ELM-12345)?",
+  "ground_truth_phi": "NAME: John D. | GEOGRAPHIC_LOCATION: Elm Street Clinic | DATE: Feb 5 2023 | MEDICAL_RECORD_NUMBER: ELM-12345",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "What are the potential interactions between warfarin and new diabetic meds for a 70yo male patient, [REDACTED_NAME], observed at [REDACTED_GEOGRAPHIC_LOCATION], who had follow-up labs done on [REDACTED_DATE] (MRN: [REDACTED_MEDICAL_RECORD_NUMBER])?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 100,
+      "end": 107,
+      "score": 0.85,
+      "text": "John D.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "LOCATION",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "start": 121,
+      "end": 138,
+      "score": 0.85,
+      "text": "Elm Street Clinic",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 171,
+      "end": 181,
+      "score": 0.85,
+      "text": "Feb 5 2023",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "MEDICAL_RECORD_NUMBER",
+      "hipaa_category": "MEDICAL_RECORD_NUMBER",
+      "start": 188,
+      "end": 197,
+      "score": 0.7,
+      "text": "ELM-12345",
+      "recognizer": "MedicalRecordNumberRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  }
+}

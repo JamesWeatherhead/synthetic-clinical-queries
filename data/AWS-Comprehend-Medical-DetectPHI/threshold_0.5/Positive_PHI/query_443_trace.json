@@ -1,0 +1,61 @@
+{
+  "query_id": "443",
+  "timestamp": "2025-10-23T09:56:26.008602",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Need info on tx options for 73F w/ hx of CHF & DM2, seen at Baylor - Sam J., appt on Feb 4, 2024. what about Jardiance use?",
+  "ground_truth_phi": "NAME: Sam J. | GEOGRAPHIC_LOCATION: Baylor | DATE: Feb 4, 2024",
+  "ground_truth_phi_count": 3,
+  "aws_entities_detected": [
+    {
+      "text": "73F",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.7965407967567444,
+      "begin_offset": 28,
+      "end_offset": 31
+    },
+    {
+      "text": "Feb 4, 2024",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9989767074584961,
+      "begin_offset": 85,
+      "end_offset": 96
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "NAME",
+        "value": "Sam J."
+      },
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Baylor"
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 3,
+    "successfully_detected": 1,
+    "leaked_failures": 2,
+    "total_detected": 2,
+    "true_positives": 1,
+    "recall": "0.3333",
+    "precision": "0.5000",
+    "f1_score": "0.4000"
+  },
+  "error": null,
+  "confidence_threshold": 0.5,
+  "aws_entities_original_count": 3,
+  "aws_entities_filtered_count": 2
+}

@@ -1,0 +1,45 @@
+{
+  "query_id": "619",
+  "timestamp": "2025-10-22T16:24:24.979734",
+  "model": "Presidio-2.2.360",
+  "query_type": "NEGATIVE (No PHI)",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Current evidence for the use of SGLT2 inhibitors in managing Type 2 Diabetes in patients with concomitant heart failure diagnosed last year?",
+  "presidio_output": "Current evidence for the use of [REDACTED_NAME] inhibitors in managing Type 2 Diabetes in patients with concomitant heart failure diagnosed [REDACTED_DATE]?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 32,
+      "end": 37,
+      "score": 0.85,
+      "text": "SGLT2",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 130,
+      "end": 139,
+      "score": 0.85,
+      "text": "last year",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "false_redaction_check": {
+    "has_false_redactions": true,
+    "redaction_count": 2,
+    "false_redactions_by_type": {
+      "NAME": 1,
+      "DATE": 1
+    },
+    "status": "OVER_REDACTED"
+  }
+}

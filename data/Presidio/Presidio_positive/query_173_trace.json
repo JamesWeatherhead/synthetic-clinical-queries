@@ -1,0 +1,64 @@
+{
+  "query_id": "173",
+  "timestamp": "2025-10-22T16:12:42.950198",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Guidelines for prescribing anticoagulants to patients with atrial fibrillation like Margaret W., seen at Stanford Clinic on February 12, 2023 (MRN: #SC987654)?",
+  "ground_truth_phi": "NAME: Margaret W. | GEOGRAPHIC_LOCATION: Stanford Clinic | DATE: February 12, 2023 | MEDICAL_RECORD_NUMBER: #SC987654",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Guidelines for prescribing anticoagulants to patients with atrial fibrillation like [REDACTED_NAME], seen at Stanford Clinic on [REDACTED_DATE] (MRN: #SC987654)?",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 84,
+      "end": 95,
+      "score": 0.85,
+      "text": "Margaret W.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 124,
+      "end": 141,
+      "score": 0.85,
+      "text": "February 12, 2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Stanford Clinic",
+        "start": 105,
+        "end": 120
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "#SC987654",
+        "start": 148,
+        "end": 157
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 2,
+    "recall": "0.5000",
+    "precision": "1.0000",
+    "f1_score": "0.6667"
+  }
+}

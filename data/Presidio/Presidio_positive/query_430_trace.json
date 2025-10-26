@@ -1,0 +1,82 @@
+{
+  "query_id": "430",
+  "timestamp": "2025-10-22T16:12:44.291496",
+  "model": "Presidio-2.2.360",
+  "analyzer_config": {
+    "language": "en",
+    "score_threshold": 0.35,
+    "custom_recognizers": [
+      "MedicalRecordNumberRecognizer",
+      "UniqueIdentifierRecognizer"
+    ]
+  },
+  "original_query": "Updated treatment options for chronic migraine in a 32-year-old female, Sarah T., who was admitted to Bellevue Hospital on April 15th, 2023 (MRN: B123-456).",
+  "ground_truth_phi": "NAME: Sarah T. | GEOGRAPHIC_LOCATION: Bellevue Hospital | DATE: April 15th, 2023 | MEDICAL_RECORD_NUMBER: B123-456",
+  "ground_truth_phi_count": 4,
+  "presidio_output": "Updated treatment options for chronic migraine in a [REDACTED_DATE] female, [REDACTED_NAME], who was admitted to Bellevue Hospital on [REDACTED_DATE] (MRN: B123-456).",
+  "presidio_entities_detected": [
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 52,
+      "end": 63,
+      "score": 0.85,
+      "text": "32-year-old",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "PERSON",
+      "hipaa_category": "NAME",
+      "start": 72,
+      "end": 80,
+      "score": 0.85,
+      "text": "Sarah T.",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 123,
+      "end": 134,
+      "score": 0.85,
+      "text": "April 15th,",
+      "recognizer": "SpacyRecognizer"
+    },
+    {
+      "entity_type": "DATE_TIME",
+      "hipaa_category": "DATE",
+      "start": 135,
+      "end": 139,
+      "score": 0.85,
+      "text": "2023",
+      "recognizer": "SpacyRecognizer"
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 2,
+    "leaked_phi_details": [
+      {
+        "type": "GEOGRAPHIC_LOCATION",
+        "value": "Bellevue Hospital",
+        "start": 102,
+        "end": 119
+      },
+      {
+        "type": "MEDICAL_RECORD_NUMBER",
+        "value": "B123-456",
+        "start": 146,
+        "end": 154
+      }
+    ],
+    "status": "LEAK_DETECTED"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_redacted": 2,
+    "leaked_failures": 2,
+    "total_detected": 4,
+    "recall": "0.5000",
+    "precision": "0.2500",
+    "f1_score": "0.3333"
+  }
+}

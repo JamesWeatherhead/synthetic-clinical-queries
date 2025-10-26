@@ -1,0 +1,70 @@
+{
+  "query_id": "322",
+  "timestamp": "2025-10-23T09:56:13.617281",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Best mgmt for pt w/ hx of epilepsy, current meds include lamotrigine, pt is Jack W. from NYC, last seen on Oct 12, 2022 (SSN: 123-45-6789)?",
+  "ground_truth_phi": "NAME: Jack W. | GEOGRAPHIC_LOCATION: NYC | DATE: Oct 12, 2022 | SOCIAL_SECURITY_NUMBER: 123-45-6789",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "Jack W.",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9027188420295715,
+      "begin_offset": 76,
+      "end_offset": 83
+    },
+    {
+      "text": "NYC",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9601455330848694,
+      "begin_offset": 89,
+      "end_offset": 92
+    },
+    {
+      "text": "Oct 12, 2022",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.999798595905304,
+      "begin_offset": 107,
+      "end_offset": 119
+    },
+    {
+      "text": "123-45-6789",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9925147891044617,
+      "begin_offset": 126,
+      "end_offset": 137
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 4,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "1.0000",
+    "f1_score": "1.0000"
+  },
+  "error": null,
+  "confidence_threshold": 0.0,
+  "aws_entities_original_count": 4,
+  "aws_entities_filtered_count": 4
+}

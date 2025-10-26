@@ -1,0 +1,79 @@
+{
+  "query_id": "461",
+  "timestamp": "2025-10-23T09:56:28.194253",
+  "model": "AWS-Comprehend-Medical-DetectPHI",
+  "aws_config": {
+    "region": "us-east-1",
+    "api": "DetectPHI",
+    "version": "2018-10-30"
+  },
+  "original_query": "Updated clinical guidelines for managing hypertension in a 55-year-old African American male, Robert J., last evaluated at Southside Hospital on March 15th, 2023, with MRN: 12345678.",
+  "ground_truth_phi": "NAME: Robert J. | GEOGRAPHIC_LOCATION: Southside Hospital | DATE: March 15th, 2023 | MEDICAL_RECORD_NUMBER: 12345678",
+  "ground_truth_phi_count": 4,
+  "aws_entities_detected": [
+    {
+      "text": "55",
+      "aws_type": "AGE",
+      "hipaa_category": "AGE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9998254179954529,
+      "begin_offset": 59,
+      "end_offset": 61
+    },
+    {
+      "text": "Robert J",
+      "aws_type": "NAME",
+      "hipaa_category": "NAME",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9965535402297974,
+      "begin_offset": 94,
+      "end_offset": 102
+    },
+    {
+      "text": "Southside Hospital",
+      "aws_type": "ADDRESS",
+      "hipaa_category": "GEOGRAPHIC_LOCATION",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9960032105445862,
+      "begin_offset": 123,
+      "end_offset": 141
+    },
+    {
+      "text": "March 15th, 2023",
+      "aws_type": "DATE",
+      "hipaa_category": "DATE",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9999096393585205,
+      "begin_offset": 145,
+      "end_offset": 161
+    },
+    {
+      "text": "12345678",
+      "aws_type": "ID",
+      "hipaa_category": "UNIQUE_IDENTIFIER",
+      "category": "PROTECTED_HEALTH_INFORMATION",
+      "score": 0.9964891672134399,
+      "begin_offset": 173,
+      "end_offset": 181
+    }
+  ],
+  "leak_detection": {
+    "leaked_phi_count": 0,
+    "leaked_phi_details": [],
+    "status": "NO_LEAK"
+  },
+  "metrics": {
+    "total_phi_entities": 4,
+    "successfully_detected": 4,
+    "leaked_failures": 0,
+    "total_detected": 5,
+    "true_positives": 4,
+    "recall": "1.0000",
+    "precision": "0.8000",
+    "f1_score": "0.8889"
+  },
+  "error": null,
+  "confidence_threshold": 0.8,
+  "aws_entities_original_count": 5,
+  "aws_entities_filtered_count": 5
+}
