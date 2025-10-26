@@ -33,17 +33,17 @@ This dataset is the start of a much larger discussion about HIPAA compliance wit
 ![Specificity and False Positives](data/AWS-Comprehend-Medical-DetectPHI/Figures/Figure3_Negative_Utility_Preservation.png)
 *Results for queries without PHI run through AWS Comprehend Medical, showing over-redaction risks and utility preservation (specificity vs. false positives).*
 
-- [1]: https://arxiv.org/abs/2508.08529
-- [2]: https://pmc.ncbi.nlm.nih.gov/articles/PMC11836953/
-- [3]: https://pmc.ncbi.nlm.nih.gov/articles/PMC11512648/
-- [4]: https://www.hipaajournal.com/hipaa-violation-fines/
-- [5]: https://www.hhs.gov/hipaa/for-professionals/special-topics/cloud-computing/index.html
-- [6]: https://www.ama-assn.org/practice-management/digital-health/what-doctors-wish-patients-knew-about-using-ai-health-tips
-- [7]: https://www.hhs.gov/hipaa/for-professionals/special-topics/research/index.html
-- [8]: https://aihc-assn.org/importance-of-addressing-shadow-ai-for-hipaa-compliance/
-- [9]: https://www.hhs.gov/hipaa/for-professionals/privacy/guidance/de-identification/index.html
-- [10]: https://pmc.ncbi.nlm.nih.gov/articles/PMC2528029/
-- [11]: https://www.cdc.gov/high-blood-pressure/data-research/facts-stats/index.html
-- [12]: https://www.hhs.gov/hipaa/for-professionals/privacy/special-topics/de-identification/index.html
-- [13]: https://www.cdc.gov/diabetes/php/data-research/index.html
-- [14]: https://www.niddk.nih.gov/health-information/health-statistics/kidney-disease
+[1]: https://arxiv.org/abs/2508.08529
+[2]: https://pmc.ncbi.nlm.nih.gov/articles/PMC11836953/
+[3]: https://pmc.ncbi.nlm.nih.gov/articles/PMC11512648/
+[4]: https://www.hipaajournal.com/hipaa-violation-fines/
+[5]: https://www.hhs.gov/hipaa/for-professionals/special-topics/cloud-computing/index.html
+[6]: https://www.ama-assn.org/practice-management/digital-health/what-doctors-wish-patients-knew-about-using-ai-health-tips
+[7]: https://www.hhs.gov/hipaa/for-professionals/special-topics/research/index.html
+[8]: https://aihc-assn.org/importance-of-addressing-shadow-ai-for-hipaa-compliance/
+[9]: https://www.hhs.gov/hipaa/for-professionals/privacy/guidance/de-identification/index.html
+[10]: https://pmc.ncbi.nlm.nih.gov/articles/PMC2528029/
+[11]: https://www.cdc.gov/high-blood-pressure/data-research/facts-stats/index.html
+[12]: https://www.hhs.gov/hipaa/for-professionals/privacy/special-topics/de-identification/index.html
+[13]: https://www.cdc.gov/diabetes/php/data-research/index.html
+[14]: https://www.niddk.nih.gov/health-information/health-statistics/kidney-disease
