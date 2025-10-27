@@ -13,7 +13,7 @@ This framework solves these issues by enabling the generation of labeled synthet
 
 These queries are not meant to be ground truth for realism; they’re meant to be ground truth for the start - simple ground-truth detection. As every medical professional prompts uniquely, simulating all of them in one dataset may need to be tailored to the organization, which I have accounted for by allowing the institution to change the few-shot examples in `synthetic_data_gen_method.ipynb`.
 
-This dataset is the start of a much larger discussion about HIPAA compliance with LLMs. Currently, it is considered “enough” to be HIPAA compliant if you sufficiently de-identify at the individual query level [19]. However, as multiple messages are sent in succession in the same chat, with each message containing more and more de-identified context about the patient, that begins to narrow down who the person could be - from a large number to a very small number. This is known as the k-anonymity re-identification issue [20]. Each term in a query has a probability within a population. For example, roughly **≈48%** of people in the United States have hypertension [21], [22], so querying for: “What are the latest treatment options for a 55-year-old male with Hypertension?” is not breaking HIPAA; there are probabilities within that query. HIPAA, according to the Safe Harbor method (45 CFR 164.514(b)(2)), states you only have to remove age older than 89 [23], [24]. So that query alone is considered sufficiently de-identified. However, what if the next query is: “And what if he also has Type 2 Diabetes?” **About 11.6% of U.S. adults have diabetes** [25], and **~90–95% of diagnosed cases are Type 2** [26]. And the follow-up query is “And he’s on dialysis for CKD stage 5,” which has prevalence on the order of **≈0.2%** of the U.S. population for dialysis-dependent ESKD [27]. You have now re-identified the patient inadvertently because only a handful of patients within a hospital system have those sets of characteristics.
+This dataset is the start of a much larger discussion about HIPAA compliance with LLMs. Currently, it is considered “enough” to be HIPAA compliant if you sufficiently de-identify at the individual query level. However, as multiple messages are sent in succession in the same chat, with each message containing more and more de-identified context about the patient, that begins to narrow down who the person could be - from a large number to a very small number. This is known as the k-anonymity re-identification issue [19]. Each term in a query has a probability within a population. For example, roughly **≈48%** of people in the United States have hypertension [20], [21], so querying for: “What are the latest treatment options for a 55-year-old male with Hypertension?” is not breaking HIPAA; there are probabilities within that query. HIPAA, according to the Safe Harbor method (45 CFR 164.514(b)(2)), states you only have to remove age older than 89 [22], [23]. So that query alone is considered sufficiently de-identified. However, what if the next query is: “And what if he also has Type 2 Diabetes?” **About 11.6% of U.S. adults have diabetes** [24], and **~90–95% of diagnosed cases are Type 2** [25]. And the follow-up query is “And he’s on dialysis for CKD stage 5,” which has prevalence on the order of **≈0.2%** of the U.S. population for dialysis-dependent ESKD [26]. You have now re-identified the patient inadvertently because only a handful of patients within a hospital system have those sets of characteristics.
 
 > **Notes on de-identification and utility:** Traditional de-identification corpora (e.g., i2b2/UTHealth, PhysioNet/MIMIC subsets) focus evaluation on PHI detection (precision/recall/F1) with placeholders/surrogates [9], [10]. Several studies document that de-identification can reduce downstream NLP/ML utility, underscoring the privacy-utility trade-off this dataset explicitly targets [11].
 
@@ -52,13 +52,12 @@ This dataset is the start of a much larger discussion about HIPAA compliance wit
 [15]: https://www.ama-assn.org/practice-management/digital-health/what-doctors-wish-patients-knew-about-using-ai-health-tips  
 [16]: https://www.hipaajournal.com/hipaa-violation-fines/  
 [17]: https://www.hhs.gov/hipaa/for-professionals/special-topics/research/index.html  
-[18]: https://aihc-assn.org/importance-of-addressing-shadow-ai-for-hipaa-compliance/  
-[19]: https://www.hhs.gov/hipaa/for-professionals/privacy/guidance/de-identification/index.html  
-[20]: https://pmc.ncbi.nlm.nih.gov/articles/PMC2528029/  
-[21]: https://www.cdc.gov/high-blood-pressure/data-research/facts-stats/index.html  
-[22]: https://www.cdc.gov/nchs/products/databriefs/db511.htm  
-[23]: https://www.hhs.gov/hipaa/for-professionals/privacy/special-topics/de-identification/index.html  
-[24]: https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-E/section-164.514  
-[25]: https://www.cdc.gov/diabetes/php/data-research/index.html  
-[26]: https://www.cdc.gov/diabetes/about/about-type-2-diabetes.html  
-[27]: https://www.niddk.nih.gov/health-information/health-statistics/kidney-disease
+[18]: https://aihc-assn.org/importance-of-addressing-shadow-ai-for-hipaa-compliance/   
+[19]: https://pmc.ncbi.nlm.nih.gov/articles/PMC2528029/  
+[20]: https://www.cdc.gov/high-blood-pressure/data-research/facts-stats/index.html  
+[21]: https://www.cdc.gov/nchs/products/databriefs/db511.htm  
+[22]: https://www.hhs.gov/hipaa/for-professionals/privacy/special-topics/de-identification/index.html  
+[23]: https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-E/section-164.514  
+[24]: https://www.cdc.gov/diabetes/php/data-research/index.html  
+[25]: https://www.cdc.gov/diabetes/about/about-type-2-diabetes.html  
+[26]: https://www.niddk.nih.gov/health-information/health-statistics/kidney-disease
